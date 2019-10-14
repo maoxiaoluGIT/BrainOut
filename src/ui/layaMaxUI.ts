@@ -14,15 +14,66 @@ export module ui {
         }
     }
     REG("ui.initViewUI",initViewUI);
+    export class level1UI extends Laya.View {
+		public item0:Laya.Image;
+		public item3:Laya.Image;
+		public item2:Laya.Image;
+		public item1:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":454,"x":123.5,"width":184,"var":"item0","skin":"guanqia/1/3_pic_3_1.png","height":173},"compId":6},{"type":"Image","props":{"y":860,"x":397,"width":282,"var":"item3","skin":"guanqia/1/apple.png","height":282,"alpha":1},"compId":7},{"type":"Image","props":{"y":794,"x":92.5,"width":215,"var":"item2","skin":"guanqia/1/pic_20_1.png","height":256},"compId":8},{"type":"Image","props":{"y":543.5,"x":443,"width":222,"var":"item1","skin":"guanqia/1/pic_20_2.png","height":167},"compId":9}],"loadList":["guanqia/1/3_pic_3_1.png","guanqia/1/apple.png","guanqia/1/pic_20_1.png","guanqia/1/pic_20_2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level1UI.uiView);
+        }
+    }
+    REG("ui.level1UI",level1UI);
+    export class level2UI extends Laya.View {
+		public 3:Laya.Sprite;
+		public 6:Laya.Sprite;
+		public 1:Laya.Sprite;
+		public 2:Laya.Sprite;
+		public 4:Laya.Sprite;
+		public 5:Laya.Sprite;
+		public 7:Laya.Sprite;
+		public 9:Laya.Sprite;
+		public 10:Laya.Sprite;
+		public 8:Laya.Sprite;
+		public ba:Laya.Button;
+		public shiyi:Laya.Button;
+		public shi:Laya.Button;
+		public jiu:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":0,"x":0,"texture":"2.jpg"},"compId":3},{"type":"Sprite","props":{"y":485,"x":366,"width":112,"var":"3","texture":"guanqia/2/pic_157_2.png","height":155},"compId":7},{"type":"Sprite","props":{"y":526,"x":148,"width":56,"var":"6","texture":"guanqia/2/pic_157_1.png","height":96},"compId":14},{"type":"Sprite","props":{"y":608,"x":509,"width":186,"var":"1","texture":"guanqia/2/pic_157_2.png","height":257},"compId":5},{"type":"Sprite","props":{"y":583,"x":408,"width":135,"var":"2","texture":"guanqia/2/pic_157_2.png","height":187},"compId":6},{"type":"Sprite","props":{"y":504,"x":267,"width":101,"var":"4","texture":"guanqia/2/pic_157_2.png","height":140},"compId":8},{"type":"Sprite","props":{"y":553.5,"x":184,"width":86,"var":"5","texture":"guanqia/2/pic_157_2.png","height":119},"compId":9},{"type":"Sprite","props":{"y":509,"x":97,"width":56,"var":"7","texture":"guanqia/2/pic_157_2.png","height":77},"compId":10},{"type":"Sprite","props":{"y":452,"x":56,"width":50,"var":"9","texture":"guanqia/2/pic_157_2.png","height":69},"compId":11},{"type":"Sprite","props":{"y":447,"x":-6,"width":37,"var":"10","texture":"guanqia/2/pic_157_2.png","height":51},"compId":12},{"type":"Sprite","props":{"y":438,"x":165,"width":50,"var":"8","texture":"guanqia/2/pic_157_2.png","scaleX":-1,"height":69},"compId":13},{"type":"Button","props":{"y":891,"x":86,"width":282,"var":"ba","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"8","height":125},"compId":15},{"type":"Button","props":{"y":1054,"x":402,"width":282,"var":"shiyi","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"11","height":125},"compId":16},{"type":"Button","props":{"y":1054,"x":93,"width":282,"var":"shi","stateNum":1,"skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"10","height":125},"compId":17},{"type":"Button","props":{"y":891,"x":402,"width":282,"var":"jiu","stateNum":1,"skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"9","height":125},"compId":18}],"loadList":["2.jpg","guanqia/2/pic_157_2.png","guanqia/2/pic_157_1.png","pubRes/btn_1.png","pubRes/btn_2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level2UI.uiView);
+        }
+    }
+    REG("ui.level2UI",level2UI);
+    export class level3UI extends Laya.View {
+		public 5:Laya.Sprite;
+		public 4:Laya.Sprite;
+		public 3:Laya.Sprite;
+		public 2:Laya.Sprite;
+		public 1:Laya.Sprite;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":1003,"x":478,"width":178,"var":"5","texture":"guanqia/3/pic_12_6.png","height":161},"compId":4},{"type":"Sprite","props":{"y":873,"x":82,"width":270,"var":"4","texture":"guanqia/3/pic_23_1.png","height":310},"compId":5},{"type":"Sprite","props":{"y":427,"x":431.5,"width":271,"var":"3","texture":"guanqia/3/pic_23_2 2.png","height":389},"compId":6},{"type":"Sprite","props":{"y":562,"x":145.5,"width":143,"var":"2","texture":"guanqia/3/pic_38_1 2.png","height":161},"compId":7},{"type":"Sprite","props":{"y":186,"x":26,"width":191,"var":"1","texture":"guanqia/3/pic_7_4.png","height":179},"compId":8}],"loadList":["guanqia/3/pic_12_6.png","guanqia/3/pic_23_1.png","guanqia/3/pic_23_2 2.png","guanqia/3/pic_38_1 2.png","guanqia/3/pic_7_4.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level3UI.uiView);
+        }
+    }
+    REG("ui.level3UI",level3UI);
     export class mainuiUI extends Laya.View {
 		public shezhi:Laya.Image;
 		public xuanguan:Laya.Image;
-		public shuaxin:Laya.Sprite;
-		public kuaijin:Laya.Sprite;
+		public shuaxin:Laya.Image;
+		public kuaijin:Laya.Image;
 		public jinyaoshi:Laya.Image;
 		public yaoshishu:laya.display.Text;
 		public dengjishuzi:Laya.FontClip;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":25,"x":559,"width":171,"skin":"pubRes/qiandi.png","sizeGrid":"0,44,0,42","height":78},"compId":10},{"type":"Image","props":{"y":29,"x":30,"width":75,"var":"shezhi","skin":"pubRes/ic_setting_1.png","height":73},"compId":3},{"type":"Image","props":{"y":31,"x":149,"width":67,"var":"xuanguan","skin":"pubRes/ic_list_1.png","height":71},"compId":5},{"type":"Sprite","props":{"y":34,"x":268,"width":64,"var":"shuaxin","texture":"pubRes/ic_reset_1.png","height":64},"compId":6},{"type":"Sprite","props":{"y":34,"x":383,"width":70,"var":"kuaijin","texture":"pubRes/ic_skip_1.png","height":59},"compId":7},{"type":"Image","props":{"y":27,"x":572,"width":82,"var":"jinyaoshi","skin":"pubRes/ic_key_1.png","height":80},"compId":8},{"type":"Text","props":{"y":36,"x":653,"width":65,"var":"yaoshishu","text":"2","height":60,"fontSize":60,"runtime":"laya.display.Text"},"compId":11},{"type":"Sprite","props":{"y":157,"x":300,"texture":"pubRes/dengji.png"},"compId":12},{"type":"FontClip","props":{"y":159,"x":401,"var":"dengjishuzi","value":"1","skin":"pubRes/shuzi.png","sheet":"01234 56789"},"compId":17}],"loadList":["pubRes/qiandi.png","pubRes/ic_setting_1.png","pubRes/ic_list_1.png","pubRes/ic_reset_1.png","pubRes/ic_skip_1.png","pubRes/ic_key_1.png","pubRes/dengji.png","pubRes/shuzi.png"],"loadList3D":[]};
+		public titleTxt:laya.display.Text;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":25,"x":559,"width":171,"skin":"pubRes/qiandi.png","sizeGrid":"0,44,0,42","height":78},"compId":10},{"type":"Image","props":{"y":29,"x":30,"width":75,"var":"shezhi","skin":"pubRes/ic_setting_1.png","height":73},"compId":3},{"type":"Image","props":{"y":31,"x":149,"width":67,"var":"xuanguan","skin":"pubRes/ic_list_1.png","height":71},"compId":5},{"type":"Image","props":{"y":34,"x":268,"width":64,"var":"shuaxin","skin":"pubRes/ic_reset_1.png","height":64},"compId":6},{"type":"Image","props":{"y":34,"x":383,"width":70,"var":"kuaijin","skin":"pubRes/ic_skip_1.png","height":59},"compId":7},{"type":"Image","props":{"y":27,"x":572,"width":82,"var":"jinyaoshi","skin":"pubRes/ic_key_1.png","height":80},"compId":8},{"type":"Text","props":{"y":36,"x":653,"width":65,"var":"yaoshishu","text":"2","height":60,"fontSize":60,"runtime":"laya.display.Text"},"compId":11},{"type":"Sprite","props":{"y":157,"x":300,"texture":"pubRes/dengji.png"},"compId":12},{"type":"FontClip","props":{"y":159,"x":401,"var":"dengjishuzi","value":"1","skin":"pubRes/shuzi.png","sheet":"01234 56789"},"compId":17},{"type":"Text","props":{"y":249,"x":34,"width":678,"var":"titleTxt","text":"哪个最大？","height":96,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":19}],"loadList":["pubRes/qiandi.png","pubRes/ic_setting_1.png","pubRes/ic_list_1.png","pubRes/ic_reset_1.png","pubRes/ic_skip_1.png","pubRes/ic_key_1.png","pubRes/dengji.png","pubRes/shuzi.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -39,4 +90,38 @@ export module ui {
         }
     }
     REG("ui.mainViewUI",mainViewUI);
+    export class rightIconUI extends Laya.View {
+		public icon:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{},"compId":2,"child":[{"type":"Image","props":{"var":"icon","skin":"pubRes/ic_choice.png","anchorY":0.5,"anchorX":0.5},"compId":3}],"loadList":["pubRes/ic_choice.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(rightIconUI.uiView);
+        }
+    }
+    REG("ui.rightIconUI",rightIconUI);
+    export class shengliUI extends Laya.View {
+		public ads:Laya.Sprite;
+		public zi1:laya.display.Text;
+		public zi2:laya.display.Text;
+		public ba:Laya.Button;
+		public paishou:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":0,"x":0,"width":750,"height":1334,"bgColor":"#ffffff","alpha":0.75},"compId":20},{"type":"Image","props":{"y":328,"x":47,"width":656,"skin":"pubRes/fram_big.png","height":297},"compId":3},{"type":"Image","props":{"y":398,"x":192,"width":366,"skin":"pubRes/top_yellow.png","sizeGrid":"0,216,0,121","height":87},"compId":5},{"type":"Button","props":{"y":667,"x":398,"width":305,"stateNum":1,"skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"下一关","height":125},"compId":15,"child":[{"type":"Sprite","props":{"y":25,"x":48,"width":69,"var":"ads","texture":"pubRes/ic_ad_1.png","height":74},"compId":10},{"type":"Sprite","props":{"y":-24,"x":180,"width":134,"texture":"pubRes/hongyuan.png","height":69},"compId":17,"child":[{"type":"Text","props":{"y":16,"x":6,"width":127,"text":"+提示","height":50,"fontSize":40,"align":"center","runtime":"laya.display.Text"},"compId":18}]}]},{"type":"Text","props":{"y":416.5,"x":248,"width":254,"var":"zi1","text":"恭喜你呀！","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":6},{"type":"Text","props":{"y":513,"x":99,"width":539,"var":"zi2","text":"恭喜你呀！","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":7},{"type":"Button","props":{"y":667,"x":53,"width":305,"var":"ba","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"下一关","height":125},"compId":9},{"type":"Image","props":{"y":857,"x":0,"width":752,"var":"paishou","skin":"pubRes/pic_hand_1.png","height":477},"compId":19}],"loadList":["pubRes/fram_big.png","pubRes/top_yellow.png","pubRes/btn_3.png","pubRes/ic_ad_1.png","pubRes/hongyuan.png","pubRes/btn_1.png","pubRes/pic_hand_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(shengliUI.uiView);
+        }
+    }
+    REG("ui.shengliUI",shengliUI);
+    export class wrongIconUI extends Laya.View {
+		public icon:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{},"compId":2,"child":[{"type":"Image","props":{"y":10,"x":10,"var":"icon","skin":"pubRes/ic_wrong.png","anchorY":0.5,"anchorX":0.5},"compId":3}],"loadList":["pubRes/ic_wrong.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(wrongIconUI.uiView);
+        }
+    }
+    REG("ui.wrongIconUI",wrongIconUI);
 }

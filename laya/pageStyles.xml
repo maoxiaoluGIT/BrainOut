@@ -2,4 +2,10 @@
    <item name="mainui.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="initView.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="mainView.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level1.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level2.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level3.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="shengli.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="rightIcon.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="wrongIcon.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

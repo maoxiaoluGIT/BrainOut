@@ -1,9 +1,11 @@
 import ViewManager from "./views/ViewManager";
+import ImageEffect from "../core/utils/ImageEffect";
 
 /**游戏总管理 */
 export default class GM{
     static isConsoleLog:number;
     static viewManager:ViewManager = new ViewManager();
+    static imgEffect:ImageEffect = new ImageEffect();
 
     static log(message?: any, ...optionalParams: any[]):void
     {

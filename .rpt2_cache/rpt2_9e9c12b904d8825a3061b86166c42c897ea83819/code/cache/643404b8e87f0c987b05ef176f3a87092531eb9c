@@ -1,0 +1,11 @@
+{
+  "code": "import MainView from \"./views/main/MainView\";\r\nimport { ViewID } from \"./views/ViewID\";\r\nimport GM from \"./GM\";\r\nexport default class GameMain {\r\n    constructor() {\r\n    }\r\n    static onInit() {\r\n        let REG = Laya.ClassUtils.regClass;\r\n        REG(ViewID.main, MainView);\r\n        Laya.loader.load(\"res/atlas/pubRes.atlas\", Laya.Handler.create(this, GameMain.onCom));\r\n    }\r\n    static onCom() {\r\n        GM.viewManager.showView(ViewID.main);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/GameConfig.ts",
+    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewManager.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/MainView.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewID.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GM.ts"
+  ]
+}

@@ -1,13 +1,13 @@
 {
     "x":0,
-    "type":"Scene",
+    "type":"View",
     "selectedBox":2,
-    "selecteID":19,
-    "searchKey":"Scene",
-    "props":{"width":750,"sceneColor":"#ffffff","height":1334},
+    "selecteID":20,
+    "searchKey":"View",
+    "props":{"width":750,"height":1334},
     "nodeParent":-1,
-    "maxID":20,
-    "label":"Scene",
+    "maxID":21,
+    "label":"View",
     "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
@@ -16,18 +16,17 @@
     "child":[
         {
             "x":15,
-            "type":"Sprite",
-            "searchKey":"Sprite",
-            "props":{"y":0,"x":0,"texture":"jiesuan.jpg"},
+            "type":"Box",
+            "searchKey":"Box",
+            "props":{"y":0,"x":0,"width":750,"height":1334,"bgColor":"#ffffff","alpha":0.75},
             "nodeParent":2,
-            "label":"Sprite",
+            "label":"Box",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":4,
+            "compId":20,
             "child":[
-                ],
-            "$HIDDEN":true
+                ]
         },
         {
             "x":15,
@@ -66,14 +65,13 @@
             "props":{"y":667,"x":398,"width":305,"stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"下一关","height":125},
             "nodeParent":2,
             "label":"Button",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":15,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,ads",
                     "props":{"y":25,"x":48,"width":69,"var":"ads","texture":"pubRes/ic_ad_1.png","height":74},
@@ -88,7 +86,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"y":-24,"x":180,"width":134,"texture":"pubRes/hongyuan.png","height":69},
@@ -101,7 +98,6 @@
                     "compId":17,
                     "child":[
                         {
-                            "x":45,
                             "type":"Text",
                             "searchKey":"Text",
                             "props":{"y":16,"x":6,"width":127,"text":"+提示","height":50,"fontSize":40,"align":"center"},

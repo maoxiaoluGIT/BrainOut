@@ -1,0 +1,6 @@
+{
+  "code": "export default class BaseLevel extends Laya.Box {\r\n    constructor() {\r\n        super();\r\n    }\r\n    onInit() {\r\n    }\r\n    onShow(level, parentBox) {\r\n        parentBox && parentBox.addChild(this);\r\n        Laya.loader.load(\"res/atlas/guanqia/\" + level + \".atlas\", Laya.Handler.create(this, this.onInit));\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/main/levels/LevelID.ts"
+  ]
+}

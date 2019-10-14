@@ -1,0 +1,7 @@
+{
+  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport MainFace from \"./MainFace\";\r\nexport default class MainView extends ui.mainViewUI {\r\n    constructor() {\r\n        super();\r\n        this._mainFace = new MainFace();\r\n        this.addChild(this._mainFace);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/MainFace.ts"
+  ]
+}

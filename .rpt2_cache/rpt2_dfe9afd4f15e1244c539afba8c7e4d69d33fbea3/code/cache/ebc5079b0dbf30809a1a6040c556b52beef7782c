@@ -1,0 +1,8 @@
+{
+  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport GM from \"../../GM\";\r\nexport default class RightView extends ui.shengliUI {\r\n    constructor() {\r\n        super();\r\n        this.on(Laya.Event.DISPLAY, this, this.onDis);\r\n        GM.imgEffect.addEffect(this.paishou, 2);\r\n    }\r\n    onDis() {\r\n        this.paishou.y = 1334;\r\n        Laya.Tween.to(this.paishou, { y: 857 }, 500, null, Laya.Handler.create(this, this.onEff), 600);\r\n    }\r\n    onEff() {\r\n    }\r\n    setWin(sys) {\r\n        this.zi2.text = sys.stageWin;\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GM.ts",
+    "D:/BrainOutGame/BrainOut/src/main/sys/SysTitles.ts"
+  ]
+}

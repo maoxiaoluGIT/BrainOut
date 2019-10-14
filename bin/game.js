@@ -5,6 +5,6 @@ if ((typeof swan !== 'undefined') && (typeof swanGlobal !== 'undefined')) {
 	require("weapp-adapter.js");
 	require("libs/laya.wxmini.js");
 }
+window.JSZip = require("jszip.min.js");
 window.loadLib = require;
 require("index.js");
-window.JSZip = require("jszip.min.js");

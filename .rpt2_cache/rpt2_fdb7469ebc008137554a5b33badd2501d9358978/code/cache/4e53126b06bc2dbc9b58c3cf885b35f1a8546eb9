@@ -1,0 +1,14 @@
+{
+  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport MainFace from \"./MainFace\";\r\nimport { LevelID } from \"../../levels/LevelID\";\r\nimport RightIcon from \"../../levels/RightIcon\";\r\nimport WrongIcon from \"../../levels/WrongIcon\";\r\nimport Game from \"../../../core/Game\";\r\nimport GameEvent from \"../../GameEvent\";\r\nimport RightView from \"./RightView\";\r\nexport default class MainView extends ui.mainViewUI {\r\n    constructor() {\r\n        super();\r\n        this._mainFace = new MainFace();\r\n        this.addChild(this._mainFace);\r\n        this.showLevel(LevelID.level_1);\r\n        RightIcon.ins = new RightIcon();\r\n        WrongIcon.ins = new WrongIcon();\r\n        Game.eventManager.on(GameEvent.SHOW_RIGHT, this, this.showRight);\r\n        Game.eventManager.on(GameEvent.ON_NEXT, this, this.onNext);\r\n    }\r\n    showRight() {\r\n        if (!this._rightView) {\r\n            this._rightView = new RightView();\r\n        }\r\n        this.addChild(this._rightView);\r\n    }\r\n    onNext() {\r\n    }\r\n    showLevel(lv) {\r\n        let VIEW = Laya.ClassUtils.getClass(lv + \"\");\r\n        let view = new VIEW();\r\n        view.onShow(lv, this);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/MainFace.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/LevelID.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/BaseLevel.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/RightIcon.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/WrongIcon.ts",
+    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GameEvent.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/RightView.ts"
+  ]
+}

@@ -67,6 +67,11 @@ export default class TableManager {
 				}
 				dataList.push(clazz);
 			}
+
+			dataList.sort((a:any,b:any)=>{
+				return a.id - b.id;
+			});
+
 			this.mapList[keyname] = dataList;
 
 		}

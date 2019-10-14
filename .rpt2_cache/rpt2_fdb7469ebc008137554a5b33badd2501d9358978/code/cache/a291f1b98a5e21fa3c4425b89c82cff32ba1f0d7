@@ -1,0 +1,15 @@
+{
+  "code": "import Game from \"../core/Game\";\r\nimport MainView from \"./views/main/MainView\";\r\nimport { ViewID } from \"./views/ViewID\";\r\nimport GM from \"./GM\";\r\nimport { LevelID } from \"./levels/LevelID\";\r\nimport Level_1 from \"./levels/Level_1\";\r\nimport ZipLoader from \"../core/utils/ZipLoader\";\r\nimport SysTitles from \"./sys/SysTitles\";\r\nexport default class GameMain {\r\n    constructor() {\r\n    }\r\n    static onInit() {\r\n        let REG = Laya.ClassUtils.regClass;\r\n        REG(ViewID.main, MainView);\r\n        REG(LevelID.level_1, Level_1);\r\n        let arr = [{ url: \"res/atlas/pubRes.atlas\", type: Laya.Loader.ATLAS }, { url: \"res/tables.zip\", type: Laya.Loader.BUFFER }];\r\n        Laya.loader.load(arr, Laya.Handler.create(this, GameMain.onCom));\r\n    }\r\n    static onCom() {\r\n        ZipLoader.instance.zipFun(Laya.loader.getRes(\"res/tables.zip\"), new Laya.Handler(this, this.zipFun));\r\n    }\r\n    static zipFun(arr) {\r\n        Game.tableManager.register(SysTitles.NAME, SysTitles);\r\n        Game.tableManager.onParse(arr);\r\n        GM.viewManager.showView(ViewID.main);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/GameConfig.ts",
+    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewManager.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/MainView.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewID.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GM.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/LevelID.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_1.ts",
+    "D:/BrainOutGame/BrainOut/src/core/utils/ZipLoader.ts",
+    "D:/BrainOutGame/BrainOut/src/main/sys/SysTitles.ts"
+  ]
+}

@@ -18,6 +18,7 @@ class Main {
 		if (GameConfig.stat) Laya.Stat.show();
 
 		Game.init();
+		GM.imgEffect.start();
 
 		this._initView = new ui.initViewUI();
 		Game.layerManager.addChild(this._initView);

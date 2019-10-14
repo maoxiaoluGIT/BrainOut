@@ -1,0 +1,4 @@
+{
+  "code": "export var ViewID;\r\n(function (ViewID) {\r\n    ViewID[ViewID[\"main\"] = 1001] = \"main\";\r\n})(ViewID || (ViewID = {}));\r\n",
+  "references": []
+}

@@ -1,0 +1,4 @@
+{
+  "code": "export default class DialogManager {\r\n    constructor() {\r\n        this.dialogMap = {};\r\n    }\r\n    register(dialogName, dialogClass, res = null) {\r\n        this.dialogMap[dialogName] = [dialogClass, res];\r\n    }\r\n    open(dialogName) {\r\n        let arr = this.dialogMap[dialogName];\r\n        Laya.loader.load(arr[1], new Laya.Handler(this, this.loaderFun, [dialogName]));\r\n    }\r\n    loaderFun(dialogName) {\r\n        let arr = this.dialogMap[dialogName];\r\n        let dc = arr[0];\r\n        let a = new dc();\r\n        a.popup(true, a.isShowEffect);\r\n        a.once(Laya.Event.UNDISPLAY, this, this.undisFun, [a]);\r\n    }\r\n    undisFun(a) {\r\n        a.destroy(true);\r\n    }\r\n}\r\n",
+  "references": []
+}

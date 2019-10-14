@@ -1,0 +1,11 @@
+{
+  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport MainFace from \"./MainFace\";\r\nimport { LevelID } from \"../../levels/LevelID\";\r\nimport RightIcon from \"../../levels/RightIcon\";\r\nimport WrongIcon from \"../../levels/WrongIcon\";\r\nexport default class MainView extends ui.mainViewUI {\r\n    constructor() {\r\n        super();\r\n        this._mainFace = new MainFace();\r\n        this.addChild(this._mainFace);\r\n        this.showLevel(LevelID.level_1);\r\n        RightIcon.ins = new RightIcon();\r\n        WrongIcon.ins = new WrongIcon();\r\n    }\r\n    showLevel(lv) {\r\n        let VIEW = Laya.ClassUtils.getClass(lv + \"\");\r\n        let view = new VIEW();\r\n        view.onShow(lv, this);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/MainFace.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/LevelID.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/BaseLevel.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/RightIcon.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/WrongIcon.ts"
+  ]
+}
