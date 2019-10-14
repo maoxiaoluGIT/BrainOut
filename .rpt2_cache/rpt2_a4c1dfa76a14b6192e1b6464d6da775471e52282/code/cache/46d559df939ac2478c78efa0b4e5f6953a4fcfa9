@@ -1,0 +1,6 @@
+{
+  "code": "import { ui } from \"../../ui/layaMaxUI\";\r\nexport default class WrongIcon extends ui.wrongIconUI {\r\n    constructor() { super(); }\r\n    add(parentSpr) {\r\n        parentSpr && parentSpr.addChild(this);\r\n        this.pos(parentSpr.width * 0.5, parentSpr.height * 0.5);\r\n        this.icon.scale(0, 0);\r\n        let t = new Laya.TimeLine();\r\n        t.to(this.icon, { scaleX: 0.4, scaleY: 0.4 }, 100);\r\n        t.to(this.icon, { scaleX: 1, scaleY: 1 }, 800, Laya.Ease.backOut);\r\n        t.to(this.icon, { scaleX: 0, scaleY: 0 }, 400);\r\n        t.play();\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts"
+  ]
+}

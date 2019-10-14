@@ -18,7 +18,14 @@ export default class MainFace extends ui.mainuiUI {
         GM.imgEffect.addEffect(this.kuaijin);
         GM.imgEffect.addEffect(this.jinyaoshi);
 
+        this.jinyaoshi.on(Laya.Event.CLICK,this,this.onTips);
+
         this.mouseThrough = true;
+    }
+
+    private onTips():void
+    {
+        Game.eventManager.event(GameEvent.SHOW_TIPS);
     }
 
     setTitle(sys:SysTitles):void

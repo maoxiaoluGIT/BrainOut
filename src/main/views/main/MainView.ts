@@ -8,10 +8,12 @@ import GameEvent from "../../GameEvent";
 import RightView from "./RightView";
 import MyEffect from "../../../core/utils/MyEffect";
 import GameConfig from "../../../GameConfig";
+import TipsView from "./TipsView";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
     private _rightView:RightView;
+    private _tipsView:TipsView;
     private _box:Laya.Box = new Laya.Box();
     constructor() { 
         super(); 
@@ -27,6 +29,19 @@ export default class MainView extends ui.mainViewUI {
         Game.eventManager.on(GameEvent.SHOW_RIGHT,this,this.showRight);
         Game.eventManager.on(GameEvent.ON_NEXT,this,this.onNext);
         Game.eventManager.on(GameEvent.ON_REFRESH,this,this.onRefresh);
+        Game.eventManager.on(GameEvent.SHOW_TIPS,this,this.showTips);
+    }
+
+    private showTips():void
+    {
+        if(!this._tipsView)
+        {
+            this._tipsView = new TipsView();
+        }
+        this.addChild(this._tipsView);
+        this._tipsView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+        MyEffect.popup(this._tipsView,1,500,100);
+        this._tipsView.setTips(this.curView.sys);
     }
 
     private onRefresh():void

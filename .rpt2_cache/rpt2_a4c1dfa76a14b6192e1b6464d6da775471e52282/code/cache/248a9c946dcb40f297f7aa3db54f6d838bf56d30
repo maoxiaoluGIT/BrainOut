@@ -1,0 +1,4 @@
+{
+  "code": "export default class SysTitles {\r\n    constructor() {\r\n        this.id = 0;\r\n        this.stageLv = 0;\r\n        this.stageQuestion = '';\r\n        this.stageTips = '';\r\n        this.stageWin = '';\r\n    }\r\n}\r\nSysTitles.NAME = \"sys_titles.txt\";\r\n",
+  "references": []
+}

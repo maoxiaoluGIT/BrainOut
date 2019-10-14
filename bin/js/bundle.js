@@ -13,7 +13,7 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "middle";
     GameConfig.alignH = "center";
-    GameConfig.startScene = "shengli.scene";
+    GameConfig.startScene = "tishi.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
     GameConfig.stat = false;
@@ -292,6 +292,16 @@
         shengliUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0, "width": 750, "height": 1334, "bgColor": "#ffffff", "alpha": 0.75 }, "compId": 20 }, { "type": "Image", "props": { "y": 328, "x": 47, "width": 656, "skin": "pubRes/fram_big.png", "height": 297 }, "compId": 3 }, { "type": "Image", "props": { "y": 398, "x": 192, "width": 366, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,216,0,121", "height": 87 }, "compId": 5 }, { "type": "Button", "props": { "y": 667, "x": 398, "width": 305, "stateNum": 1, "skin": "pubRes/btn_3.png", "labelStrokeColor": "‘", "labelSize": 40, "labelPadding": "10,10,10,40", "labelColors": "#000000", "label": "下一关", "height": 125 }, "compId": 15, "child": [{ "type": "Sprite", "props": { "y": 25, "x": 48, "width": 69, "var": "ads", "texture": "pubRes/ic_ad_1.png", "height": 74 }, "compId": 10 }, { "type": "Sprite", "props": { "y": -24, "x": 180, "width": 134, "texture": "pubRes/hongyuan.png", "height": 69 }, "compId": 17, "child": [{ "type": "Text", "props": { "y": 16, "x": 6, "width": 127, "text": "+提示", "height": 50, "fontSize": 40, "align": "center", "runtime": "laya.display.Text" }, "compId": 18 }] }] }, { "type": "Text", "props": { "y": 416.5, "x": 248, "width": 254, "var": "zi1", "text": "恭喜你呀！", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 6 }, { "type": "Text", "props": { "y": 513, "x": 99, "width": 539, "var": "zi2", "text": "恭喜你呀！", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 7 }, { "type": "Button", "props": { "y": 667, "x": 53, "width": 305, "var": "ba", "stateNum": 1, "skin": "pubRes/btn_1.png", "labelStrokeColor": "‘", "labelSize": 40, "labelColors": "#000000", "label": "下一关", "height": 125 }, "compId": 9 }, { "type": "Image", "props": { "y": 857, "x": 0, "width": 752, "var": "paishou", "skin": "pubRes/pic_hand_1.png", "height": 477 }, "compId": 19 }], "loadList": ["pubRes/fram_big.png", "pubRes/top_yellow.png", "pubRes/btn_3.png", "pubRes/ic_ad_1.png", "pubRes/hongyuan.png", "pubRes/btn_1.png", "pubRes/pic_hand_1.png"], "loadList3D": [] };
         ui.shengliUI = shengliUI;
         REG("ui.shengliUI", shengliUI);
+        class tishiUI extends Laya.View {
+            constructor() { super(); }
+            createChildren() {
+                super.createChildren();
+                this.createView(tishiUI.uiView);
+            }
+        }
+        tishiUI.uiView = { "type": "View", "props": { "y": 667, "x": 375, "width": 750, "height": 1334, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0, "width": 750, "height": 1334, "bgColor": "#ffffff", "alpha": 0.75 }, "compId": 7 }, { "type": "Image", "props": { "y": 414, "x": 57, "width": 656, "skin": "pubRes/fram_big.png", "height": 297 }, "compId": 3 }, { "type": "Image", "props": { "y": 484, "x": 263, "width": 223, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,86,0,87", "height": 87 }, "compId": 4 }, { "type": "Text", "props": { "y": 502, "x": 321, "width": 107, "var": "zi1", "text": "提示", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 5 }, { "type": "Text", "props": { "y": 599, "x": 105, "width": 539, "var": "zi2", "text": "恭喜你呀！", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 6 }, { "type": "Image", "props": { "y": 367, "x": 675, "var": "cha", "skin": "pubRes/ic_colse_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 8 }], "loadList": ["pubRes/fram_big.png", "pubRes/top_yellow.png", "pubRes/ic_colse_1.png"], "loadList3D": [] };
+        ui.tishiUI = tishiUI;
+        REG("ui.tishiUI", tishiUI);
         class wrongIconUI extends Laya.View {
             constructor() { super(); }
             createChildren() {
@@ -390,6 +400,7 @@
     GameEvent.SHOW_RIGHT = "SHOW_RIGHT";
     GameEvent.ON_NEXT = "ON_NEXT";
     GameEvent.ON_REFRESH = "ON_REFRESH";
+    GameEvent.SHOW_TIPS = "SHOW_TIPS";
 
     class MainFace extends ui.mainuiUI {
         constructor() {
@@ -403,7 +414,11 @@
             GM.imgEffect.addEffect(this.shuaxin);
             GM.imgEffect.addEffect(this.kuaijin);
             GM.imgEffect.addEffect(this.jinyaoshi);
+            this.jinyaoshi.on(Laya.Event.CLICK, this, this.onTips);
             this.mouseThrough = true;
+        }
+        onTips() {
+            Game.eventManager.event(GameEvent.SHOW_TIPS);
         }
         setTitle(sys) {
             this.titleTxt.text = sys.stageQuestion;
@@ -438,7 +453,6 @@
         add(parentSpr) {
             parentSpr && parentSpr.addChild(this);
             this.pos(parentSpr.width * 0.5, parentSpr.height * 0.5);
-            this.icon.scale(0, 0);
             this.icon.scale(0, 0);
             let t = new Laya.TimeLine();
             t.to(this.icon, { scaleX: 0.4, scaleY: 0.4 }, 100);
@@ -545,6 +559,20 @@
         }
     }
 
+    class TipsView extends ui.tishiUI {
+        constructor() {
+            super();
+            GM.imgEffect.addEffect(this.cha);
+            this.cha.on(Laya.Event.CLICK, this, this.onClose);
+        }
+        onClose() {
+            this.removeSelf();
+        }
+        setTips(sys) {
+            this.zi2.text = sys.stageTips;
+        }
+    }
+
     class MainView extends ui.mainViewUI {
         constructor() {
             super();
@@ -558,6 +586,16 @@
             Game.eventManager.on(GameEvent.SHOW_RIGHT, this, this.showRight);
             Game.eventManager.on(GameEvent.ON_NEXT, this, this.onNext);
             Game.eventManager.on(GameEvent.ON_REFRESH, this, this.onRefresh);
+            Game.eventManager.on(GameEvent.SHOW_TIPS, this, this.showTips);
+        }
+        showTips() {
+            if (!this._tipsView) {
+                this._tipsView = new TipsView();
+            }
+            this.addChild(this._tipsView);
+            this._tipsView.pos(GameConfig.width * 0.5, GameConfig.height * 0.5);
+            MyEffect.popup(this._tipsView, 1, 500, 100);
+            this._tipsView.setTips(this.curView.sys);
         }
         onRefresh() {
             this.curView.refresh();

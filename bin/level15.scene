@@ -1,0 +1,1 @@
+{"type":"Scene","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":459,"x":127,"texture":"guanqia/15/pic_8_1.png"},"compId":3}],"loadList":["guanqia/15/pic_8_1.png"],"loadList3D":[]}

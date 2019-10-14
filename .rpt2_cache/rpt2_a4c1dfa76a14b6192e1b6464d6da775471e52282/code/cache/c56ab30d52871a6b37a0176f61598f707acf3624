@@ -1,0 +1,7 @@
+{
+  "code": "import ViewManager from \"./views/ViewManager\";\r\nimport ImageEffect from \"../core/utils/ImageEffect\";\r\nexport default class GM {\r\n    static log(message, ...optionalParams) {\r\n        if (GM.isConsoleLog == 1) {\r\n            console.log(message, optionalParams);\r\n        }\r\n    }\r\n}\r\nGM.viewManager = new ViewManager();\r\nGM.imgEffect = new ImageEffect();\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewManager.ts",
+    "D:/BrainOutGame/BrainOut/src/core/utils/ImageEffect.ts"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport GM from \"../../GM\";\r\nimport Game from \"../../../core/Game\";\r\nimport GameEvent from \"../../GameEvent\";\r\nexport default class MainFace extends ui.mainuiUI {\r\n    constructor() {\r\n        super();\r\n        this.shezhi.on(Laya.Event.CLICK, this, this.onClick, [1]);\r\n        this.xuanguan.on(Laya.Event.CLICK, this, this.onClick, [2]);\r\n        this.shuaxin.on(Laya.Event.CLICK, this, this.onClick, [3]);\r\n        this.kuaijin.on(Laya.Event.CLICK, this, this.onClick, [4]);\r\n        GM.imgEffect.addEffect(this.shezhi);\r\n        GM.imgEffect.addEffect(this.xuanguan);\r\n        GM.imgEffect.addEffect(this.shuaxin);\r\n        GM.imgEffect.addEffect(this.kuaijin);\r\n        GM.imgEffect.addEffect(this.jinyaoshi);\r\n        this.jinyaoshi.on(Laya.Event.CLICK, this, this.onTips);\r\n        this.mouseThrough = true;\r\n    }\r\n    onTips() {\r\n        Game.eventManager.event(GameEvent.SHOW_TIPS);\r\n    }\r\n    setTitle(sys) {\r\n        this.titleTxt.text = sys.stageQuestion;\r\n        this.dengjishuzi.value = \"\" + sys.id;\r\n    }\r\n    onClick(type) {\r\n        if (type == 1) {\r\n        }\r\n        else if (type == 2) {\r\n        }\r\n        else if (type == 3) {\r\n            Game.eventManager.event(GameEvent.ON_REFRESH);\r\n        }\r\n        else if (type == 4) {\r\n        }\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GM.ts",
+    "D:/BrainOutGame/BrainOut/src/main/sys/SysTitles.ts",
+    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GameEvent.ts"
+  ]
+}

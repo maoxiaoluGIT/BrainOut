@@ -114,6 +114,18 @@ export module ui {
         }
     }
     REG("ui.shengliUI",shengliUI);
+    export class tishiUI extends Laya.View {
+		public zi1:laya.display.Text;
+		public zi2:laya.display.Text;
+		public cha:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"y":667,"x":375,"width":750,"height":1334,"anchorY":0.5,"anchorX":0.5},"compId":2,"child":[{"type":"Box","props":{"y":0,"x":0,"width":750,"height":1334,"bgColor":"#ffffff","alpha":0.75},"compId":7},{"type":"Image","props":{"y":414,"x":57,"width":656,"skin":"pubRes/fram_big.png","height":297},"compId":3},{"type":"Image","props":{"y":484,"x":263,"width":223,"skin":"pubRes/top_yellow.png","sizeGrid":"0,86,0,87","height":87},"compId":4},{"type":"Text","props":{"y":502,"x":321,"width":107,"var":"zi1","text":"提示","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":5},{"type":"Text","props":{"y":599,"x":105,"width":539,"var":"zi2","text":"恭喜你呀！","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":6},{"type":"Image","props":{"y":367,"x":675,"var":"cha","skin":"pubRes/ic_colse_1.png","anchorY":0.5,"anchorX":0.5},"compId":8}],"loadList":["pubRes/fram_big.png","pubRes/top_yellow.png","pubRes/ic_colse_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(tishiUI.uiView);
+        }
+    }
+    REG("ui.tishiUI",tishiUI);
     export class wrongIconUI extends Laya.View {
 		public icon:Laya.Image;
         public static  uiView:any ={"type":"View","props":{},"compId":2,"child":[{"type":"Image","props":{"y":10,"x":10,"var":"icon","skin":"pubRes/ic_wrong.png","anchorY":0.5,"anchorX":0.5},"compId":3}],"loadList":["pubRes/ic_wrong.png"],"loadList3D":[]};
