@@ -1,6 +1,55 @@
 {
+    "x":0,
     "type":"Scene",
+    "selectedBox":2,
+    "selecteID":4,
+    "searchKey":"Scene",
     "props":{"width":750,"sceneColor":"#000000","height":1334},
+    "nodeParent":-1,
+    "maxID":5,
+    "label":"Scene",
+    "isOpen":true,
+    "isDirectory":true,
+    "isAniNode":true,
+    "hasChild":true,
+    "compId":2,
     "child":[
-        ]
+        {
+            "x":15,
+            "type":"Sprite",
+            "searchKey":"Sprite",
+            "props":{"y":0,"x":0,"texture":"2.jpg"},
+            "nodeParent":2,
+            "label":"Sprite",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":3,
+            "child":[
+                ],
+            "$LOCKED":true
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text,yaoshishu",
+            "props":{"y":254,"x":187,"width":401,"var":"yaoshishu","text":"数一数有几只鸭子","height":60,"fontSize":46},
+            "nodeParent":2,
+            "label":"yaoshishu",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":4,
+            "child":[
+                ]
+        }],
+    "animations":[
+        {
+            "nodes":[
+                ],
+            "name":"ani1",
+            "id":1,
+            "frameRate":24,
+            "action":0
+        }]
 }
