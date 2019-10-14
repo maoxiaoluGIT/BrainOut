@@ -1,0 +1,7 @@
+{
+  "code": "export default class GameMain {\r\n    constructor() {\r\n    }\r\n    static onStart() {\r\n        Laya.loader.load(\"res/atlas/pubRes.atlas\", Laya.Handler.create(this, GameMain.onCom));\r\n    }\r\n    static onCom() {\r\n        console.log(\"加载完了\");\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/GameConfig.ts",
+    "D:/BrainOutGame/BrainOut/src/core/Game.ts"
+  ]
+}

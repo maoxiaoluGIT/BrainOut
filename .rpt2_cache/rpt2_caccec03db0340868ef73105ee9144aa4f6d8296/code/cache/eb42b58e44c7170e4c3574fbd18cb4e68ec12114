@@ -1,0 +1,6 @@
+{
+  "code": "import ViewManager from \"./views/ViewManager\";\r\nexport default class GM {\r\n    static log(message, ...optionalParams) {\r\n        if (GM.isConsoleLog == 1) {\r\n            console.log(message, optionalParams);\r\n        }\r\n    }\r\n}\r\nGM.viewManager = new ViewManager();\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewManager.ts"
+  ]
+}

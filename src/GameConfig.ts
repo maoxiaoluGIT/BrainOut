@@ -8,14 +8,14 @@ export default class GameConfig{
     static height:number=1334;
     static scaleMode:string="fixedwidth";
     static screenMode:string="none";
-    static alignV:string="top";
-    static alignH:string="left";
+    static alignV:string="middle";
+    static alignH:string="center";
     static startScene:any="mainui.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
-    static stat:boolean=true;
+    static stat:boolean=false;
     static physicsDebug:boolean=false;
-    static exportSceneToJson:boolean=true;
+    static exportSceneToJson:boolean=false;
     constructor(){}
     static init(){
         var reg: Function = Laya.ClassUtils.regClass;
