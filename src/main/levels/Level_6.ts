@@ -13,5 +13,18 @@ export default class Level_6 extends BaseLevel{
         this.ui = new ui.level6UI();
         this.addChild(this.ui);
         this.isInit = true;
+
+        for (let i = 0; i < 2; i++)  {
+            let itemImg = this.ui["item" + i];
+            this.addEvent(itemImg, this.onClick);
+        }
+        this.refresh();
+
+        this.isInit = true;
+        
+
+    }
+    private onClick(fontclip): void {
+        this.setAnswer(fontclip,fontclip.shuzi == 9);
     }
 }

@@ -15,15 +15,18 @@ export default class Level_2 extends BaseLevel{
         this.ui = new ui.level2UI();
         this.addChild(this.ui);
         this.isInit = true;
+
+        for (let i = 0; i < 4; i++)  {
+            let itemImg = this.ui["item" + i];
+            this.addEvent(itemImg, this.onClick);
+        }
+        this.refresh();
+
+        this.isInit = true;
+
+        
     }
-    private onClick(img: Laya.Image): void {
-        if (img.tag == 1)  {
-            RightIcon.ins.add(img);
-            Laya.MouseManager.enabled = false;
-            Laya.timer.once(500, this, this.onRight);
-        }
-        else  {
-            WrongIcon.ins.add(img);
-        }
+    private onClick(img): void {
+        this.setAnswer(img,img == this.ui.item1);
     }
 }
