@@ -13,7 +13,7 @@ export default class Level_9 extends BaseLevel{
         this.ui = new ui.level9UI();
         this.addChild(this.ui);
         this.isInit = true;
-        for (let i = 0; i < 6; i++)  {
+        for (let i = 0; i < 5; i++)  {
             let itemImg = this.ui["item" + i];
             this.addEvent(itemImg, this.onClick);
         }
@@ -21,6 +21,12 @@ export default class Level_9 extends BaseLevel{
 
         this.isInit = true;
     }
+
+    refresh():void
+    {
+        super.refresh();
+    }
+
     private onClick(img): void {
         this.setAnswer(img,img == this.ui.item4);
     }

@@ -15,13 +15,14 @@ export default class MainView extends ui.mainViewUI {
     private _rightView:RightView;
     private _tipsView:TipsView;
     private _box:Laya.Box = new Laya.Box();
+    private _viewMap:any = {};
     constructor() { 
         super(); 
         this.addChild(this._box);
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 
-        this.showLevel(6);
+        this.showLevel(1);
 
         RightIcon.ins = new RightIcon();
         WrongIcon.ins = new WrongIcon();
@@ -75,9 +76,20 @@ export default class MainView extends ui.mainViewUI {
         this._box.removeChildren();
 
         this.curLv = lv;
-        let VIEW:any = Laya.ClassUtils.getClass(lv + "");
-        this.curView = new VIEW();
+        this.curView = this._viewMap[lv];
+        if(!this.curView)
+        {
+            let VIEW:any = Laya.ClassUtils.getClass(lv + "");
+            this.curView = new VIEW();
+            this._viewMap[lv] = this.curView;
+        }
+        else
+        {
+            this.curView.refresh();
+        }
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
+
+        
     }
 }
