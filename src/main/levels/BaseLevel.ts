@@ -48,7 +48,7 @@ export default class BaseLevel extends Laya.Box{
         {
             RightIcon.ins.add(sprite);
             Laya.MouseManager.enabled = false;
-            Laya.timer.once(500, this, this.onRight);
+            Laya.timer.once(800, this, this.onRight);
         }
         else
         {

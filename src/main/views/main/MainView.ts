@@ -22,7 +22,7 @@ export default class MainView extends ui.mainViewUI {
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 
-        this.showLevel(1);
+        this.showLevel(12);
 
         RightIcon.ins = new RightIcon();
         WrongIcon.ins = new WrongIcon();
@@ -59,7 +59,7 @@ export default class MainView extends ui.mainViewUI {
         this.addChild(this._rightView);
         this._rightView.anchorX = this._rightView.anchorY = 0.5;
         this._rightView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
-        MyEffect.popup(this._rightView,1,500,100);
+        MyEffect.popup(this._rightView,1,500,250);
         this._rightView.setWin(this.curView.sys);
     }
 

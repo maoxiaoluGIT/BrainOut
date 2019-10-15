@@ -41,7 +41,7 @@ export default class Level_10 extends BaseLevel{
     onUp(sprite:Laya.Sprite):void
     {
         super.onUp(sprite);
-        if(this.ui.sunImg.x <= -85 || this.ui.sunImg.x >= GameConfig.width + 85)
+        if(this.ui.sunImg.x <= -60 || this.ui.sunImg.x >= GameConfig.width + 75)
         {
             this.setAnswer(this.ui.rightBox,true);
             this.ui.blankBox.visible = true;
