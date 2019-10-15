@@ -5,7 +5,7 @@ export default class WrongIcon extends ui.wrongIconUI{
     static ins:WrongIcon;
     constructor() { super(); }
 
-    add(parentSpr:Laya.Image):void
+    add(parentSpr:Laya.Sprite):void
     {
         parentSpr && parentSpr.addChild(this);
         this.pos(parentSpr.width * 0.5,parentSpr.height * 0.5);

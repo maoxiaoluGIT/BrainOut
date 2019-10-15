@@ -7,7 +7,7 @@ export default class RightIcon extends ui.rightIconUI{
         super();
     }
 
-    add(parentSpr:Laya.Image):void
+    add(parentSpr:Laya.Sprite):void
     {
         parentSpr && parentSpr.addChild(this);
         this.pos(parentSpr.width * 0.5,parentSpr.height * 0.5);

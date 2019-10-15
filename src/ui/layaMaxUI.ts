@@ -144,14 +144,14 @@ export module ui {
     }
     REG("ui.level3UI",level3UI);
     export class level4UI extends Laya.View {
-		public img0:Laya.Sprite;
-		public img1:Laya.Sprite;
-		public img2:Laya.Sprite;
-		public img3:Laya.Sprite;
-		public img4:Laya.Sprite;
-		public img6:Laya.Sprite;
-		public img5:Laya.Sprite;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":568,"x":38,"width":202,"var":"img0","texture":"guanqia/4/pic_watermelon_1.png","height":162},"compId":4},{"type":"Sprite","props":{"y":568,"x":274,"width":202,"var":"img1","texture":"guanqia/4/pic_watermelon_1.png","height":162},"compId":5},{"type":"Sprite","props":{"y":568,"x":523,"width":202,"var":"img2","texture":"guanqia/4/pic_watermelon_1.png","height":162},"compId":6},{"type":"Sprite","props":{"y":889,"x":25,"width":202,"var":"img3","texture":"guanqia/4/pic_watermelon_1.png","height":162},"compId":7},{"type":"Sprite","props":{"y":889,"x":274,"width":202,"var":"img4","texture":"guanqia/4/pic_watermelon_1.png","height":162},"compId":8},{"type":"Sprite","props":{"y":923,"x":515,"width":181,"var":"img6","texture":"guanqia/4/pic_watermelon_2.png","height":128},"compId":10},{"type":"Sprite","props":{"y":889,"x":515,"width":202,"var":"img5","texture":"guanqia/4/pic_watermelon_1.png","height":162},"compId":9}],"loadList":["guanqia/4/pic_watermelon_1.png","guanqia/4/pic_watermelon_2.png"],"loadList3D":[]};
+		public img0:Laya.Image;
+		public img1:Laya.Image;
+		public img2:Laya.Image;
+		public img3:Laya.Image;
+		public img4:Laya.Image;
+		public img6:Laya.Image;
+		public img5:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":568,"x":38,"width":202,"var":"img0","skin":"guanqia/4/pic_watermelon_1.png","height":162},"compId":4},{"type":"Image","props":{"y":568,"x":274,"width":202,"var":"img1","skin":"guanqia/4/pic_watermelon_1.png","height":162},"compId":5},{"type":"Image","props":{"y":568,"x":523,"width":202,"var":"img2","skin":"guanqia/4/pic_watermelon_1.png","height":162},"compId":6},{"type":"Image","props":{"y":889,"x":25,"width":202,"var":"img3","skin":"guanqia/4/pic_watermelon_1.png","height":162},"compId":7},{"type":"Image","props":{"y":889,"x":274,"width":202,"var":"img4","skin":"guanqia/4/pic_watermelon_1.png","height":162},"compId":8},{"type":"Image","props":{"y":923,"x":515,"width":181,"var":"img6","skin":"guanqia/4/pic_watermelon_2.png","height":128},"compId":10},{"type":"Image","props":{"y":889,"x":515,"width":202,"var":"img5","skin":"guanqia/4/pic_watermelon_1.png","height":162},"compId":9}],"loadList":["guanqia/4/pic_watermelon_1.png","guanqia/4/pic_watermelon_2.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

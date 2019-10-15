@@ -1,10 +1,7 @@
 import BaseLevel from "./BaseLevel";
 import { ui } from "../../ui/layaMaxUI";
-import RightIcon from "./RightIcon";
-import WrongIcon from "./WrongIcon";
 
 export default class Level_1 extends BaseLevel {
-
     private ui: ui.level1UI;
     static itemskins: any[] = [
         { skin: "guanqia/1/3_pic_3_1.png", right: 1, ww: 184, hh: 173 },
@@ -45,18 +42,7 @@ export default class Level_1 extends BaseLevel {
         }
     }
 
-    private addEvent(img: Laya.Image, func: Function): void {
-        img.on(Laya.Event.CLICK, this, func, [img]);
-    }
-
     private onClick(img: Laya.Image): void {
-        if (img.tag == 1)  {
-            RightIcon.ins.add(img);
-            Laya.MouseManager.enabled = false;
-            Laya.timer.once(500, this, this.onRight);
-        }
-        else  {
-            WrongIcon.ins.add(img);
-        }
+        this.setAnswer(img,img.tag == 1);
     }
 }
