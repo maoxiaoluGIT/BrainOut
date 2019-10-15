@@ -1,0 +1,4 @@
+{
+  "code": "export default class GameEvent {\r\n}\r\nGameEvent.SHOW_RIGHT = \"SHOW_RIGHT\";\r\nGameEvent.ON_NEXT = \"ON_NEXT\";\r\nGameEvent.ON_REFRESH = \"ON_REFRESH\";\r\nGameEvent.SHOW_TIPS = \"SHOW_TIPS\";\r\n",
+  "references": []
+}

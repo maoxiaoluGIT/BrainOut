@@ -1,0 +1,7 @@
+{
+  "code": "import { ui } from \"../../ui/layaMaxUI\";\r\nimport BaseLevel from \"./BaseLevel\";\r\nexport default class Level_6 extends BaseLevel {\r\n    constructor() { super(); }\r\n    onInit() {\r\n        if (this.isInit) {\r\n            return;\r\n        }\r\n        this.ui = new ui.level6UI();\r\n        this.addChild(this.ui);\r\n        this.isInit = true;\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/BaseLevel.ts"
+  ]
+}

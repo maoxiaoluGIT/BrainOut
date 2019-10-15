@@ -1,4 +1,5 @@
 import { ui } from "../../ui/layaMaxUI";
+import Game from "../../core/Game";
 
 export default class WrongIcon extends ui.wrongIconUI{
     static ins:WrongIcon;
@@ -16,5 +17,7 @@ export default class WrongIcon extends ui.wrongIconUI{
         t.to( this.icon , { scaleX:0 , scaleY:0 } , 400);
 
         t.play();
+
+        Game.soundManager.play("wrong.wav");
     }
 }

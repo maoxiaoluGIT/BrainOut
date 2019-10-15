@@ -1,0 +1,29 @@
+{
+  "code": "import Game from \"../core/Game\";\r\nimport MainView from \"./views/main/MainView\";\r\nimport { ViewID } from \"./views/ViewID\";\r\nimport GM from \"./GM\";\r\nimport Level_1 from \"./levels/Level_1\";\r\nimport ZipLoader from \"../core/utils/ZipLoader\";\r\nimport SysTitles from \"./sys/SysTitles\";\r\nimport Level_2 from \"./levels/Level_2\";\r\nimport Level_3 from \"./levels/Level_3\";\r\nimport Level_4 from \"./levels/Level_4\";\r\nimport Level_5 from \"./levels/Level_5\";\r\nimport Level_6 from \"./levels/Level_6\";\r\nimport Level_7 from \"./levels/Level_7\";\r\nimport Level_8 from \"./levels/Level_8\";\r\nimport Level_9 from \"./levels/Level_9\";\r\nimport Level_10 from \"./levels/Level_10\";\r\nimport Level_11 from \"./levels/Level_11\";\r\nimport Level_12 from \"./levels/Level_12\";\r\nimport Level_13 from \"./levels/Level_13\";\r\nimport Level_14 from \"./levels/Level_14\";\r\nimport Level_15 from \"./levels/Level_15\";\r\nimport Level_16 from \"./levels/Level_16\";\r\nexport default class GameMain {\r\n    constructor() {\r\n    }\r\n    static onInit() {\r\n        let REG = Laya.ClassUtils.regClass;\r\n        REG(ViewID.main, MainView);\r\n        let CLAS = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9, Level_10, Level_11, Level_12, Level_13, Level_14, Level_15, Level_16];\r\n        let index = 1;\r\n        for (let i = 0; i < CLAS.length; i++) {\r\n            REG(index, CLAS[i]);\r\n            index++;\r\n        }\r\n        let arr = [{ url: \"res/atlas/pubRes.atlas\", type: Laya.Loader.ATLAS }, { url: \"res/tables.zip\", type: Laya.Loader.BUFFER }];\r\n        Laya.loader.load(arr, Laya.Handler.create(this, GameMain.onCom));\r\n    }\r\n    static onCom() {\r\n        ZipLoader.instance.zipFun(Laya.loader.getRes(\"res/tables.zip\"), new Laya.Handler(this, this.zipFun));\r\n    }\r\n    static zipFun(arr) {\r\n        Game.tableManager.register(SysTitles.NAME, SysTitles);\r\n        Game.tableManager.onParse(arr);\r\n        GM.viewManager.showView(ViewID.main);\r\n        Game.soundManager.play(\"bg.mp3\", true);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/BrainOutGame/BrainOut/src/GameConfig.ts",
+    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewManager.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/main/MainView.ts",
+    "D:/BrainOutGame/BrainOut/src/main/views/ViewID.ts",
+    "D:/BrainOutGame/BrainOut/src/main/GM.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_1.ts",
+    "D:/BrainOutGame/BrainOut/src/core/utils/ZipLoader.ts",
+    "D:/BrainOutGame/BrainOut/src/main/sys/SysTitles.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_2.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_3.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_4.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_5.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_6.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_7.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_8.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_9.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_10.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_11.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_12.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_13.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_14.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_15.ts",
+    "D:/BrainOutGame/BrainOut/src/main/levels/Level_16.ts"
+  ]
+}

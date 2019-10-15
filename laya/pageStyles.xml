@@ -9,4 +9,17 @@
    <item name="rightIcon.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="wrongIcon.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="tishi.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level4.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level5.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level6.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level7.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level8.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level9.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level10.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level11.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level12.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level13.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level14.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level15.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level16.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

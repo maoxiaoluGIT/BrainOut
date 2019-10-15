@@ -18,6 +18,7 @@ class Main {
 		if (GameConfig.stat) Laya.Stat.show();
 
 		Game.init();
+		Game.soundManager.pre = "res/sounds/"
 		GM.imgEffect.start();
 
 		this._initView = new ui.initViewUI();
