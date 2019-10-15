@@ -1,6 +1,8 @@
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
 import SysTitles from "../sys/SysTitles";
+import RightIcon from "./RightIcon";
+import WrongIcon from "./WrongIcon";
 
 export default class BaseLevel extends Laya.Box{
     isInit:boolean;
@@ -16,6 +18,24 @@ export default class BaseLevel extends Laya.Box{
     refresh():void
     {
         
+    }
+
+    addEvent(sprite: Laya.Sprite, func: Function): void {
+        sprite.on(Laya.Event.CLICK, this, func, [sprite]);
+    }
+
+    setAnswer(sprite:Laya.Sprite,isRight:boolean):void
+    {
+        if(isRight)
+        {
+            RightIcon.ins.add(sprite);
+            Laya.MouseManager.enabled = false;
+            Laya.timer.once(500, this, this.onRight);
+        }
+        else
+        {
+            WrongIcon.ins.add(sprite);
+        }
     }
 
     onRight():void
