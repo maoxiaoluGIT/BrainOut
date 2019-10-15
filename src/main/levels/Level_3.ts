@@ -23,6 +23,13 @@ export default class Level_3 extends BaseLevel{
 
         this.isInit = true;
     }
+
+    refresh():void
+    {
+        super.refresh();
+    }
+
+    
     private onClick(img): void {
         this.setAnswer(img,img == this.ui.item0);
     }

@@ -21,10 +21,12 @@ export default class Level_2 extends BaseLevel{
             this.addEvent(itemImg, this.onClick);
         }
         this.refresh();
-
         this.isInit = true;
+    }
 
-        
+    refresh():void
+    {
+        super.refresh();
     }
     private onClick(img): void {
         this.setAnswer(img,img == this.ui.item1);

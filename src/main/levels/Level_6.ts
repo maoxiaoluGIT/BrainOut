@@ -6,6 +6,8 @@ export default class Level_6 extends BaseLevel{
     
     constructor() { super(); }
 
+    private curValue:number;
+
     onInit(): void {
         if (this.isInit) {
             return;
@@ -14,17 +16,43 @@ export default class Level_6 extends BaseLevel{
         this.addChild(this.ui);
         this.isInit = true;
 
-        for (let i = 0; i < 2; i++)  {
-            let itemImg = this.ui["item" + i];
-            this.addEvent(itemImg, this.onClick);
-        }
-        this.refresh();
+        this.ui.jian.on(Laya.Event.CLICK,this,this.onJian);
+        this.ui.jia.on(Laya.Event.CLICK,this,this.onJia);
+        this.ui.clearBtn.clickHandler = new Laya.Handler(this,this.refresh);
+        this.ui.sureBtn.clickHandler = new Laya.Handler(this,this.onSure);
 
-        this.isInit = true;
-        
-
+        this.curValue = 0;
+        this.ui.shuzi.value  = "" + this.curValue;
     }
-    private onClick(fontclip): void {
-        this.setAnswer(fontclip,fontclip.shuzi == 9);
+
+    private onJian():void
+    {
+        if(this.curValue == 0)
+        {
+            return;
+        }
+        this.curValue--;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    private onJia():void
+    {
+        if(this.curValue == 99)
+        {
+            return;
+        }
+        this.curValue++;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    refresh():void
+    {
+        this.curValue = 0;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    private onSure():void
+    {
+        this.setAnswer(this.ui.rightBox,this.curValue == 11);
     }
 }

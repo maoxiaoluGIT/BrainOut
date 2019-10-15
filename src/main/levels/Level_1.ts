@@ -29,6 +29,7 @@ export default class Level_1 extends BaseLevel {
     }
 
     refresh(): void {
+        super.refresh();
         let skins: any[] = Level_1.itemskins;
         skins.sort((a: any, b: any) => {
             return Math.random() > 0.5 ? 1 : -1;
