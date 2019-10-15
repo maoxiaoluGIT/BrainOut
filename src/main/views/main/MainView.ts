@@ -21,7 +21,7 @@ export default class MainView extends ui.mainViewUI {
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 
-        this.showLevel(4);
+        this.showLevel(6);
 
         RightIcon.ins = new RightIcon();
         WrongIcon.ins = new WrongIcon();

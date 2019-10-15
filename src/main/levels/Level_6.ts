@@ -6,6 +6,8 @@ export default class Level_6 extends BaseLevel{
     
     constructor() { super(); }
 
+    private curValue:number;
+
     onInit(): void {
         if (this.isInit) {
             return;
@@ -13,5 +15,44 @@ export default class Level_6 extends BaseLevel{
         this.ui = new ui.level6UI();
         this.addChild(this.ui);
         this.isInit = true;
+
+        this.ui.jian.on(Laya.Event.CLICK,this,this.onJian);
+        this.ui.jia.on(Laya.Event.CLICK,this,this.onJia);
+        this.ui.clearBtn.clickHandler = new Laya.Handler(this,this.refresh);
+        this.ui.sureBtn.clickHandler = new Laya.Handler(this,this.onSure);
+
+        this.curValue = 0;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    private onJian():void
+    {
+        if(this.curValue == 0)
+        {
+            return;
+        }
+        this.curValue--;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    private onJia():void
+    {
+        if(this.curValue == 99)
+        {
+            return;
+        }
+        this.curValue++;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    refresh():void
+    {
+        this.curValue = 0;
+        this.ui.shuzi.value  = "" + this.curValue;
+    }
+
+    private onSure():void
+    {
+        this.setAnswer(this.ui.rightBox,this.curValue == 9);
     }
 }
