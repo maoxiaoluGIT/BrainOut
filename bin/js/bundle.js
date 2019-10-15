@@ -13,7 +13,7 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "middle";
     GameConfig.alignH = "center";
-    GameConfig.startScene = "level2.scene";
+    GameConfig.startScene = "level1.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
     GameConfig.stat = false;
@@ -329,7 +329,7 @@
                 this.createView(level4UI.uiView);
             }
         }
-        level4UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 568, "x": 25, "width": 202, "var": "1", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 4 }, { "type": "Sprite", "props": { "y": 568, "x": 274, "width": 202, "var": "2", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 5 }, { "type": "Sprite", "props": { "y": 568, "x": 523, "width": 202, "var": "3", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 6 }, { "type": "Sprite", "props": { "y": 889, "x": 25, "width": 202, "var": "4", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 7 }, { "type": "Sprite", "props": { "y": 889, "x": 274, "width": 202, "var": "5", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 8 }, { "type": "Sprite", "props": { "y": 923, "x": 515, "width": 181, "var": "7", "texture": "guanqia/4/pic_watermelon_2.png", "height": 128 }, "compId": 10 }, { "type": "Sprite", "props": { "y": 889, "x": 504, "width": 202, "var": "6", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 9 }], "loadList": ["guanqia/4/pic_watermelon_1.png", "guanqia/4/pic_watermelon_2.png"], "loadList3D": [] };
+        level4UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 568, "x": 38, "width": 202, "var": "img0", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 4 }, { "type": "Sprite", "props": { "y": 568, "x": 274, "width": 202, "var": "img1", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 5 }, { "type": "Sprite", "props": { "y": 568, "x": 523, "width": 202, "var": "img2", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 6 }, { "type": "Sprite", "props": { "y": 889, "x": 25, "width": 202, "var": "img3", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 7 }, { "type": "Sprite", "props": { "y": 889, "x": 274, "width": 202, "var": "img4", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 8 }, { "type": "Sprite", "props": { "y": 923, "x": 515, "width": 181, "var": "img6", "texture": "guanqia/4/pic_watermelon_2.png", "height": 128 }, "compId": 10 }, { "type": "Sprite", "props": { "y": 889, "x": 515, "width": 202, "var": "img5", "texture": "guanqia/4/pic_watermelon_1.png", "height": 162 }, "compId": 9 }], "loadList": ["guanqia/4/pic_watermelon_1.png", "guanqia/4/pic_watermelon_2.png"], "loadList3D": [] };
         ui.level4UI = level4UI;
         REG("ui.level4UI", level4UI);
         class level5UI extends Laya.View {
@@ -902,6 +902,16 @@
             this.ui = new ui.level2UI();
             this.addChild(this.ui);
             this.isInit = true;
+        }
+        onClick(img) {
+            if (img.tag == 1) {
+                RightIcon.ins.add(img);
+                Laya.MouseManager.enabled = false;
+                Laya.timer.once(500, this, this.onRight);
+            }
+            else {
+                WrongIcon.ins.add(img);
+            }
         }
     }
 
