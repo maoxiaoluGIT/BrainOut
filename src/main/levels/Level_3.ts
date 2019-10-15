@@ -1,6 +1,7 @@
 import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
 
+
 export default class Level_3 extends BaseLevel{
     private ui: ui.level3UI;
     
@@ -13,5 +14,16 @@ export default class Level_3 extends BaseLevel{
         this.ui = new ui.level3UI();
         this.addChild(this.ui);
         this.isInit = true;
+
+        for (let i = 0; i < 5; i++)  {
+            let itemImg = this.ui["item" + i];
+            this.addEvent(itemImg, this.onClick);
+        }
+        this.refresh();
+
+        this.isInit = true;
+    }
+    private onClick(img): void {
+        this.setAnswer(img,img == this.ui.item0);
     }
 }
