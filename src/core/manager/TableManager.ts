@@ -30,7 +30,6 @@ export default class TableManager {
 		for (var i = 0; i < arr.length; i += 2) {
 			var keyname = arr[i];
 			var Cla = this.getOneByName(keyname);
-			console.log(keyname);
 			if (Cla == null) {
 				console.error("没有注册表-------" + keyname);
 				continue;

@@ -24,8 +24,6 @@ export default class MainView extends ui.mainViewUI {
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 
-        this.showLevel(16);
-
         RightIcon.ins = new RightIcon();
         WrongIcon.ins = new WrongIcon();
 
@@ -37,12 +35,14 @@ export default class MainView extends ui.mainViewUI {
         this._monseIcon = new ui.mouseIconUI();
 
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
+
+        this.showLevel(1);
     }
 
     private onMouseDown():void
     {
         this.addChild(this._monseIcon);
-        this._monseIcon.pos(Laya.stage.mouseX,Laya.stage.mouseY);
+        this._monseIcon.pos(Laya.stage.mouseX,Laya.stage.mouseY + Game.layerManager.y);
         MyEffect.smallBig(this._monseIcon,1.4,0);
     }
 

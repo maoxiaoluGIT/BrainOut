@@ -13,7 +13,7 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "middle";
     GameConfig.alignH = "center";
-    GameConfig.startScene = "level16.scene";
+    GameConfig.startScene = "initView.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
     GameConfig.stat = false;
@@ -63,7 +63,6 @@
             for (var i = 0; i < arr.length; i += 2) {
                 var keyname = arr[i];
                 var Cla = this.getOneByName(keyname);
-                console.log(keyname);
                 if (Cla == null) {
                     console.error("没有注册表-------" + keyname);
                     continue;
@@ -163,11 +162,12 @@
     }
 
     class Game {
-        static init() {
+        static init(soundPre) {
             Game.layerManager = new LayerManager();
             Laya.stage.addChild(Game.layerManager);
             Game.tableManager = new TableManager();
             Game.soundManager = new SoundManager();
+            Game.soundManager.pre = soundPre;
         }
         static RandomByArray(arr, deleteArr = false) {
             let value = Math.random() * arr.length;
@@ -209,6 +209,82 @@
     Game.eventManager = new Laya.EventDispatcher();
     Game.dialogManager = new DialogManager();
 
+    class ViewManager {
+        constructor() {
+            this.allView = {};
+        }
+        showView(viewId) {
+            let curView = this.allView[viewId];
+            if (curView == null) {
+                let VIEW = Laya.ClassUtils.getClass(viewId + "");
+                if (VIEW) {
+                    this.allView[viewId] = new VIEW();
+                }
+            }
+            curView = this.allView[viewId];
+            Game.layerManager.viewLayer.removeChildren();
+            Game.layerManager.viewLayer.addChild(curView);
+        }
+    }
+
+    class ImageEffect {
+        constructor() {
+            this.arr = [];
+        }
+        start() {
+            Laya.timer.loop(300, this, this.onUpdate);
+        }
+        onUpdate() {
+            let vo;
+            let img;
+            let arr1;
+            let s1;
+            let s2;
+            for (let i = 0; i < this.arr.length; i++) {
+                vo = this.arr[i];
+                img = vo.spr;
+                arr1 = img.skin.split(".");
+                if (arr1.length == 2) {
+                    s1 = arr1[0];
+                    s2 = arr1[1];
+                    s1 = s1.substr(0, s1.length - 1);
+                    img.skin = s1 + vo.curTimes + "." + s2;
+                    vo.curTimes++;
+                    if (vo.curTimes > vo.times) {
+                        vo.curTimes = 1;
+                    }
+                }
+            }
+        }
+        addEffect(spr, times = 3) {
+            let vo = new EffectVO();
+            vo.spr = spr;
+            vo.times = times;
+            vo.curTimes = 1;
+            spr.on(Laya.Event.DISPLAY, this, this.onDis, [vo]);
+            spr.on(Laya.Event.UNDISPLAY, this, this.onUndis, [vo]);
+        }
+        onDis(vo) {
+            this.arr.push(vo);
+        }
+        onUndis(vo) {
+            for (let i = 0; i < this.arr.length; i++) {
+                let tvo = this.arr[i];
+                if (tvo && tvo == vo) {
+                    this.arr[i] = null;
+                    this.arr.splice(i, 1);
+                }
+            }
+        }
+    }
+    class EffectVO {
+    }
+
+    var ViewID;
+    (function (ViewID) {
+        ViewID[ViewID["main"] = 1001] = "main";
+    })(ViewID || (ViewID = {}));
+
     var REG = Laya.ClassUtils.regClass;
     var ui;
     (function (ui) {
@@ -219,7 +295,7 @@
                 this.createView(initViewUI.uiView);
             }
         }
-        initViewUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Label", "props": { "y": 642, "x": 225, "width": 300, "var": "txt", "text": "0%", "height": 50, "fontSize": 36, "color": "#000000", "bold": true, "align": "center" }, "compId": 3 }], "loadList": [], "loadList3D": [] };
+        initViewUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Label", "props": { "x": 225, "width": 300, "var": "txt", "text": "0%", "fontSize": 36, "color": "#000000", "centerY": 0, "bold": true, "align": "center" }, "compId": 3 }], "loadList": [], "loadList3D": [] };
         ui.initViewUI = initViewUI;
         REG("ui.initViewUI", initViewUI);
         class level1UI extends Laya.View {
@@ -389,7 +465,7 @@
                 this.createView(loadingUI.uiView);
             }
         }
-        loadingUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 0, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 3 }, { "type": "Sprite", "props": { "y": 70, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 4 }, { "type": "Sprite", "props": { "y": 140, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 5 }, { "type": "Sprite", "props": { "y": 210, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 6 }, { "type": "Sprite", "props": { "y": 280, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 7 }, { "type": "Sprite", "props": { "y": 350, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 8 }, { "type": "Sprite", "props": { "y": 420, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 9 }, { "type": "Sprite", "props": { "y": 490, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 10 }, { "type": "Sprite", "props": { "y": 560, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 15 }, { "type": "Sprite", "props": { "y": 630, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 16 }, { "type": "Sprite", "props": { "y": 700, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 17 }, { "type": "Sprite", "props": { "y": 770, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 18 }, { "type": "Sprite", "props": { "y": 840, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 19 }, { "type": "Sprite", "props": { "y": 910, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 20 }, { "type": "Sprite", "props": { "y": 980, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 21 }, { "type": "Sprite", "props": { "y": 1050, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 22 }, { "type": "Sprite", "props": { "y": 1120, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 23 }, { "type": "Sprite", "props": { "y": 1190, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 24 }, { "type": "Sprite", "props": { "y": 1260, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 25 }, { "type": "Sprite", "props": { "y": 1330, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 26 }, { "type": "Sprite", "props": { "y": 490, "x": 193, "texture": "loading/loding.png" }, "compId": 27 }, { "type": "Sprite", "props": { "y": 1278, "x": 236, "texture": "loading/jiazaizhong.png" }, "compId": 28 }, { "type": "Sprite", "props": { "y": 1281, "x": 440, "texture": "loading/baifenhao.png" }, "compId": 29 }, { "type": "FontClip", "props": { "y": 1275, "x": 377, "width": 118, "var": "dengjishuzi", "value": "1", "skin": "loading/shuzijia.png", "sheet": "-+09 8765 4321", "scaleY": 0.5, "scaleX": 0.5, "height": 79, "align": "right" }, "compId": 30 }], "loadList": ["loading/bg.jpg", "loading/loding.png", "loading/jiazaizhong.png", "loading/baifenhao.png", "loading/shuzijia.png"], "loadList3D": [] };
+        loadingUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "FontClip", "props": { "y": 1215, "x": 404, "width": 118, "var": "dengjishuzi", "value": "100", "skin": "loading/shuzi2.png", "sheet": "-+09 8765 4321", "scaleY": 0.4, "scaleX": 0.4, "height": 79, "align": "right" }, "compId": 30 }, { "type": "Sprite", "props": { "y": 1215, "x": 258, "texture": "loading/jiazaizhong.png" }, "compId": 31 }, { "type": "Image", "props": { "y": 641, "x": 375, "skin": "loading/loding.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 32 }], "animations": [{ "nodes": [{ "target": 32, "keyframes": { "scaleY": [{ "value": 0, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleY", "index": 0 }, { "value": 1.5, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleY", "index": 4 }, { "value": 0.7, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleY", "index": 7 }, { "value": 1.2, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleY", "index": 10 }, { "value": 0.9, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleY", "index": 13 }, { "value": 1, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleY", "index": 16 }], "scaleX": [{ "value": 0, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleX", "index": 0 }, { "value": 1.5, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleX", "index": 4 }, { "value": 0.7, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleX", "index": 7 }, { "value": 1.2, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleX", "index": 10 }, { "value": 0.9, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleX", "index": 13 }, { "value": 1, "tweenMethod": "linearNone", "tween": true, "target": 32, "key": "scaleX", "index": 16 }] } }], "name": "ani1", "id": 1, "frameRate": 24, "action": 1 }], "loadList": ["loading/shuzi2.png", "loading/jiazaizhong.png", "loading/loding.png"], "loadList3D": [] };
         ui.loadingUI = loadingUI;
         REG("ui.loadingUI", loadingUI);
         class mainuiUI extends Laya.View {
@@ -503,88 +579,6 @@
         ui.xuanguan2UI = xuanguan2UI;
         REG("ui.xuanguan2UI", xuanguan2UI);
     })(ui || (ui = {}));
-
-    class ViewManager {
-        constructor() {
-            this.allView = {};
-        }
-        showView(viewId) {
-            let curView = this.allView[viewId];
-            if (curView == null) {
-                let VIEW = Laya.ClassUtils.getClass(viewId + "");
-                if (VIEW) {
-                    this.allView[viewId] = new VIEW();
-                }
-            }
-            curView = this.allView[viewId];
-            Game.layerManager.viewLayer.removeChildren();
-            Game.layerManager.viewLayer.addChild(curView);
-        }
-    }
-
-    class ImageEffect {
-        constructor() {
-            this.arr = [];
-        }
-        start() {
-            Laya.timer.loop(300, this, this.onUpdate);
-        }
-        onUpdate() {
-            let vo;
-            let img;
-            let arr1;
-            let s1;
-            let s2;
-            for (let i = 0; i < this.arr.length; i++) {
-                vo = this.arr[i];
-                img = vo.spr;
-                arr1 = img.skin.split(".");
-                if (arr1.length == 2) {
-                    s1 = arr1[0];
-                    s2 = arr1[1];
-                    s1 = s1.substr(0, s1.length - 1);
-                    img.skin = s1 + vo.curTimes + "." + s2;
-                    vo.curTimes++;
-                    if (vo.curTimes > vo.times) {
-                        vo.curTimes = 1;
-                    }
-                }
-            }
-        }
-        addEffect(spr, times = 3) {
-            let vo = new EffectVO();
-            vo.spr = spr;
-            vo.times = times;
-            vo.curTimes = 1;
-            spr.on(Laya.Event.DISPLAY, this, this.onDis, [vo]);
-            spr.on(Laya.Event.UNDISPLAY, this, this.onUndis, [vo]);
-        }
-        onDis(vo) {
-            this.arr.push(vo);
-        }
-        onUndis(vo) {
-            for (let i = 0; i < this.arr.length; i++) {
-                let tvo = this.arr[i];
-                if (tvo && tvo == vo) {
-                    this.arr[i] = null;
-                    this.arr.splice(i, 1);
-                }
-            }
-        }
-    }
-    class EffectVO {
-    }
-
-    class GM {
-        static log(message, ...optionalParams) {
-            if (GM.isConsoleLog == 1) {
-                console.log(message, optionalParams);
-            }
-        }
-    }
-    GM.resVer = "0.0.1.1015";
-    GM.viewManager = new ViewManager();
-    GM.imgEffect = new ImageEffect();
 
     class GameEvent {
     }
@@ -789,7 +783,6 @@
             this.addChild(this._box);
             this._mainFace = new MainFace();
             this.addChild(this._mainFace);
-            this.showLevel(16);
             RightIcon.ins = new RightIcon();
             WrongIcon.ins = new WrongIcon();
             Game.eventManager.on(GameEvent.SHOW_RIGHT, this, this.showRight);
@@ -798,6 +791,7 @@
             Game.eventManager.on(GameEvent.SHOW_TIPS, this, this.showTips);
             this._monseIcon = new ui.mouseIconUI();
             Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);
+            this.showLevel(1);
         }
         onMouseDown() {
             this.addChild(this._monseIcon);
@@ -837,7 +831,9 @@
             this.curView = this._viewMap[lv];
             if (!this.curView) {
                 let VIEW = Laya.ClassUtils.getClass(lv + "");
-                this.curView = new VIEW();
+                if (VIEW) {
+                    this.curView = new VIEW();
+                }
                 this._viewMap[lv] = this.curView;
             }
             else {
@@ -847,11 +843,6 @@
             this._mainFace.setTitle(this.curView.sys);
         }
     }
-
-    var ViewID;
-    (function (ViewID) {
-        ViewID[ViewID["main"] = 1001] = "main";
-    })(ViewID || (ViewID = {}));
 
     class SysTitles {
         constructor() {
@@ -950,53 +941,6 @@
         { skin: "guanqia/1/pic_20_1.png", right: 0, ww: 215, hh: 256 },
         { skin: "guanqia/1/apple.png", right: 0, ww: 282, hh: 282 }
     ];
-
-    var Handler = Laya.Handler;
-    var Loader = Laya.Loader;
-    class ZipLoader {
-        constructor() {
-            this.handler = null;
-            this.fileNameArr = [];
-            this.resultArr = [];
-        }
-        static load(fileName, handler) {
-            this.instance.loadFile(fileName, handler);
-        }
-        loadFile(fileName, handler) {
-            this.handler = handler;
-            Laya.loader.load(fileName, new Handler(this, this.zipFun), null, Loader.BUFFER);
-        }
-        zipFun(ab, handler) {
-            this.handler = handler;
-            Laya.Browser.window.JSZip.loadAsync(ab).then((jszip) => {
-                this.analysisFun(jszip);
-            });
-        }
-        analysisFun(jszip) {
-            this.currentJSZip = jszip;
-            for (var fileName in jszip.files) {
-                this.fileNameArr.push(fileName + "");
-            }
-            this.exeOne();
-        }
-        exeOne() {
-            this.currentJSZip.file(this.fileNameArr[0]).async('text').then((content) => {
-                this.over(content);
-            });
-        }
-        over(content) {
-            var fileName = this.fileNameArr.shift();
-            this.resultArr.push(fileName);
-            this.resultArr.push(content);
-            if (this.fileNameArr.length != 0) {
-                this.exeOne();
-            }
-            else {
-                this.handler.runWith([this.resultArr]);
-            }
-        }
-    }
-    ZipLoader.instance = new ZipLoader();
 
     class Level_2 extends BaseLevel {
         constructor() { super(); }
@@ -1639,10 +1583,122 @@
         }
     }
 
-    class GameMain {
+    var Handler = Laya.Handler;
+    var Loader = Laya.Loader;
+    class ZipLoader {
         constructor() {
+            this.handler = null;
+            this.fileNameArr = [];
+            this.resultArr = [];
         }
-        static onInit() {
+        static load(fileName, handler) {
+            this.instance.loadFile(fileName, handler);
+        }
+        loadFile(fileName, handler) {
+            this.handler = handler;
+            Laya.loader.load(fileName, new Handler(this, this.zipFun), null, Loader.BUFFER);
+        }
+        zipFun(ab, handler) {
+            this.handler = handler;
+            Laya.Browser.window.JSZip.loadAsync(ab).then((jszip) => {
+                this.analysisFun(jszip);
+            });
+        }
+        analysisFun(jszip) {
+            this.currentJSZip = jszip;
+            for (var fileName in jszip.files) {
+                this.fileNameArr.push(fileName + "");
+            }
+            this.exeOne();
+        }
+        exeOne() {
+            this.currentJSZip.file(this.fileNameArr[0]).async('text').then((content) => {
+                this.over(content);
+            });
+        }
+        over(content) {
+            var fileName = this.fileNameArr.shift();
+            this.resultArr.push(fileName);
+            this.resultArr.push(content);
+            if (this.fileNameArr.length != 0) {
+                this.exeOne();
+            }
+            else {
+                this.handler.runWith([this.resultArr]);
+            }
+        }
+    }
+    ZipLoader.instance = new ZipLoader();
+
+    class HomeLoading extends ui.loadingUI {
+        constructor() {
+            super();
+            this.on(Laya.Event.DISPLAY, this, this.onDis);
+        }
+        onDis() {
+            this.off(Laya.Event.DISPLAY, this, this.onDis);
+            this.dengjishuzi.value = "0";
+            let arr = [{ url: "res/atlas/pubRes.atlas", type: Laya.Loader.ATLAS }, { url: "res/tables.zip", type: Laya.Loader.BUFFER }];
+            Laya.loader.load(arr, Laya.Handler.create(this, this.onCom), new Laya.Handler(this, this.onProgress));
+        }
+        onProgress(value) {
+            value = value * 100;
+            this.dengjishuzi.value = value + "%";
+        }
+        onCom() {
+            ZipLoader.instance.zipFun(Laya.loader.getRes("res/tables.zip"), new Laya.Handler(this, this.zipFun));
+            Laya.loader.clearRes("res/tables.zip");
+        }
+        zipFun(arr) {
+            GM.onReg();
+            Game.tableManager.onParse(arr);
+            GM.imgEffect.start();
+            GM.viewManager.showView(ViewID.main);
+            Game.soundManager.play("bg.mp3", true);
+            this.removeSelf();
+            Laya.loader.clearRes("loading/loding.png");
+            Laya.loader.clearRes("loading/jiazaizhong.png");
+            Laya.loader.clearRes("loading/shuzi2.png");
+        }
+    }
+
+    class InitView extends ui.initViewUI {
+        constructor() {
+            super();
+            this.on(Laya.Event.DISPLAY, this, this.onDis);
+        }
+        onDis() {
+            this.txt.text = "0%";
+            Laya.loader.load(["res/config.json"], Laya.Handler.create(this, this.onCom), new Laya.Handler(this, this.onProgress));
+        }
+        onProgress(value) {
+            value = value * 100;
+            this.txt.text = value + "%";
+        }
+        onCom() {
+            Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
+            let config = Laya.loader.getRes("res/config.json");
+            GM.isConsoleLog = config.isConsoleLog;
+            Laya.loader.clearRes("res/config.json");
+            if (!this._homeLoading) {
+                this._homeLoading = new HomeLoading();
+            }
+            Game.layerManager.addChild(this._homeLoading);
+            this.destroy(true);
+        }
+    }
+
+    class GM {
+        static startGame() {
+            Game.layerManager.addChild(new InitView());
+        }
+        static log(message, ...optionalParams) {
+            if (GM.isConsoleLog == 1) {
+                console.log(message, optionalParams);
+            }
+        }
+        static onReg() {
+            Game.tableManager.register(SysTitles.NAME, SysTitles);
             let REG = Laya.ClassUtils.regClass;
             REG(ViewID.main, MainView);
             let CLAS = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9, Level_10, Level_11, Level_12, Level_13, Level_14, Level_15, Level_16];
@@ -1651,25 +1707,19 @@
                 REG(index, CLAS[i]);
                 index++;
             }
-            let arr = [{ url: "res/atlas/pubRes.atlas", type: Laya.Loader.ATLAS }, { url: "res/tables.zip", type: Laya.Loader.BUFFER }];
-            Laya.loader.load(arr, Laya.Handler.create(this, GameMain.onCom));
-        }
-        static onCom() {
-            ZipLoader.instance.zipFun(Laya.loader.getRes("res/tables.zip"), new Laya.Handler(this, this.zipFun));
-        }
-        static zipFun(arr) {
-            Game.tableManager.register(SysTitles.NAME, SysTitles);
-            Game.tableManager.onParse(arr);
-            GM.viewManager.showView(ViewID.main);
-            Game.soundManager.play("bg.mp3", true);
-            Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
         }
     }
+    GM.codeVer = "0.0.1.1016";
+    GM.resVer = "0.0.1.1016";
+    GM.viewManager = new ViewManager();
+    GM.imgEffect = new ImageEffect();
+    GM.nativefiles = ["loading/loding.png", "loading/shuzi2.png", "loading/jiazaizhong.png"];
 
     class Main {
         constructor() {
             Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
             Laya.stage.scaleMode = GameConfig.scaleMode;
+            Laya.stage.screenMode = GameConfig.screenMode;
             Laya.stage.alignV = GameConfig.alignV;
             Laya.stage.alignH = GameConfig.alignH;
             Laya.stage.bgColor = "#ffffff";
@@ -1677,26 +1727,14 @@
             Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
             if (GameConfig.stat)
                 Laya.Stat.show();
+            console.log("代码版本", GM.codeVer);
+            console.log("资源版本", GM.resVer);
             if (Laya.Browser.window.wx) {
                 Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
+                Laya.MiniAdpter.nativefiles = GM.nativefiles;
             }
-            Game.init();
-            Game.soundManager.pre = "res/sounds/";
-            GM.imgEffect.start();
-            this._initView = new ui.initViewUI();
-            Game.layerManager.addChild(this._initView);
-            this._initView.txt.text = "0%";
-            Laya.loader.load(["res/config.json"], Laya.Handler.create(this, this.onCom), new Laya.Handler(this, this.onProgress));
-        }
-        onProgress(value) {
-            value = value * 100;
-            this._initView.txt.text = value + "%";
-        }
-        onCom() {
-            this._initView.removeSelf();
-            let config = Laya.loader.getRes("res/config.json");
-            GM.isConsoleLog = config.isConsoleLog;
-            GameMain.onInit();
+            Game.init("res/sounds/");
+            GM.startGame();
         }
     }
     new Main();

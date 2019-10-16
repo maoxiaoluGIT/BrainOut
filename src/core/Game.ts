@@ -14,11 +14,12 @@ export default class Game{
     static eventManager:Laya.EventDispatcher = new Laya.EventDispatcher();
     static dialogManager:DialogManager = new DialogManager();
 
-    static init():void{
+    static init(soundPre:string):void{
         Game.layerManager = new LayerManager();
         Laya.stage.addChild(Game.layerManager);
         Game.tableManager = new TableManager();
         Game.soundManager = new SoundManager();
+        Game.soundManager.pre = soundPre;
     }
     
     public static RandomByArray( arr:Array<any> , deleteArr:boolean = false ):any{
