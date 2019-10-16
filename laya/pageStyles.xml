@@ -28,4 +28,8 @@
    <item name="tishi2.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="shezhi.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="loading.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level17.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level18.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level19.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level20.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>
