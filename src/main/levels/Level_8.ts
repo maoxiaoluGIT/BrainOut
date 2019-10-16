@@ -31,7 +31,7 @@ export default class Level_8 extends BaseLevel{
 
     onDown(sprite: Laya.Sprite):void
     {
-        sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
+        sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width - 154,this.ui.box.height));
     }
 
     private onJian():void

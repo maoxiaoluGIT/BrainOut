@@ -20,13 +20,13 @@ export default class RightView extends ui.shengliUI{
 
     private onDis():void
     {
-        Laya.MouseManager.enabled = true;
         this.paishou.y = 1334;
         Laya.Tween.to(this.paishou,{y:857},500,null,Laya.Handler.create(this,this.onEff),600)
     }
 
     private onEff():void
     {
+        Laya.MouseManager.enabled = true;
         Game.soundManager.play("win.wav");
     }
 

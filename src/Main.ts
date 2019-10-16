@@ -9,13 +9,17 @@ class Main {
 		//根据IDE设置初始化引擎
 		 Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
 		Laya.stage.scaleMode = GameConfig.scaleMode;
-		Laya.stage.screenMode = GameConfig.screenMode;
+		// Laya.stage.screenMode = GameConfig.screenMode;
 		Laya.stage.alignV = GameConfig.alignV;
 		Laya.stage.alignH = GameConfig.alignH;
 		Laya.stage.bgColor = "#ffffff";
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 		if (GameConfig.stat) Laya.Stat.show();
+
+		if (Laya.Browser.window.wx) {
+			Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
+		}
 
 		Game.init();
 		Game.soundManager.pre = "res/sounds/"

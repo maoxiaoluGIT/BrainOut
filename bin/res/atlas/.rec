@@ -13,17 +13,25 @@ R 658ACC23 6.jpg
 R 2BFAB5A8 7.jpg
 R 4BDEDFE1 8.jpg
 R 2DDCAEB0 9.jpg
+R 4B1CA8B1 erer.jpg
+R 4FDAEA0E guan.jpg
 R 650F389 jiesuan.jpg
+R CED7DF52 shezhi.jpg
 R B000F091 tishi.jpg
 R 1355B1AC 未标题-3.jpg
 D guanqia
 D pubRes
+P ABD4ED86 bg_down_1.png
+P 2CBE4363 bg_down_2.png
+P 345F54F3 bg_top_1.png
+P A0281FEC bg_top_2.png
 P 677D1B35 btn_1.png
 P 6B20EFC3 btn_2.png
 P 7AE3B68C btn_3.png
 P DE938680 btn_4.png
 P E8E0DAD9 btn_5.png
 P F62CBA5B btn_6.png
+P B0A84A1C choice_frame_1.png
 P DC691549 dengji.png
 R 100CF07A fram_big.png
 P F62CBA5B hongyuan.png
@@ -117,8 +125,7 @@ P C9702350 pic_7_2.png
 P D481B5D9 pic_7_3.png
 P 071E2744 pic_7_4.png
 D guanqia/11
-P 962E6D80 deng.png
-P 16B5649E wen.png
+R D8D6388A shuxue.png
 D guanqia/12
 P 11620AC3 pic_.png
 P 906D26E1 pic_03_3.png

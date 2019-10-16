@@ -58,6 +58,8 @@ export default class GameMain{
         GM.viewManager.showView(ViewID.main);
 
         Game.soundManager.play("bg.mp3",true);
+
+        Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
     }
 		
 }
