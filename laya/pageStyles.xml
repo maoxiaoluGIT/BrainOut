@@ -23,4 +23,9 @@
    <item name="level15.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="level16.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="mouseIcon.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="xuanguan1.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="xuanguan2.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="tishi2.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="shezhi.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="loading.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

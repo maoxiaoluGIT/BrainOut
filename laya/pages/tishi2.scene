@@ -1,9 +1,8 @@
 {
     "x":0,
-    "type":"Scene",
+    "type":"View",
     "selectedBox":2,
-    "selecteID":3,
-    "searchKey":"Scene",
+    "searchKey":"View",
     "referenceLines":[
         {
             "value":105,
@@ -18,7 +17,7 @@
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
     "maxID":17,
-    "label":"Scene",
+    "label":"View",
     "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
