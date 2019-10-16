@@ -24,7 +24,7 @@ export default class MainView extends ui.mainViewUI {
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 
-        this.showLevel(14);
+        this.showLevel(16);
 
         RightIcon.ins = new RightIcon();
         WrongIcon.ins = new WrongIcon();
@@ -87,13 +87,16 @@ export default class MainView extends ui.mainViewUI {
     showLevel(lv:number):void
     {
         this._box.removeChildren();
-
+        Laya.MouseManager.multiTouchEnabled = false;
         this.curLv = lv;
         this.curView = this._viewMap[lv];
         if(!this.curView)
         {
             let VIEW:any = Laya.ClassUtils.getClass(lv + "");
-            this.curView = new VIEW();
+            if(VIEW)
+            {
+                this.curView = new VIEW(); 
+            }
             this._viewMap[lv] = this.curView;
         }
         else

@@ -13,7 +13,7 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "middle";
     GameConfig.alignH = "center";
-    GameConfig.startScene = "level13.scene";
+    GameConfig.startScene = "level16.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
     GameConfig.stat = false;
@@ -279,7 +279,7 @@
                 this.createView(level14UI.uiView);
             }
         }
-        level14UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 419, "x": 27, "width": 336, "var": "1", "texture": "guanqia/14/pic_42_1.png", "height": 336 }, "compId": 4 }, { "type": "Sprite", "props": { "y": 315, "x": 399, "width": 348, "var": "2", "texture": "guanqia/14/pic_42_1.png", "height": 348 }, "compId": 5 }, { "type": "Sprite", "props": { "y": 633, "x": 351, "width": 348, "var": "3", "texture": "guanqia/14/pic_42_1.png", "height": 348 }, "compId": 6 }], "loadList": ["guanqia/14/pic_42_1.png"], "loadList3D": [] };
+        level14UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 300, "x": 100, "width": 550, "visible": false, "var": "box", "height": 900, "bgColor": "#e37373" }, "compId": 13 }, { "type": "Box", "props": { "y": 667, "x": 218, "width": 250, "var": "item0", "height": 268, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 7, "child": [{ "type": "Image", "props": { "width": 336, "skin": "guanqia/14/pic_42_1.png", "height": 336, "centerY": -30, "centerX": 0 }, "compId": 4 }] }, { "type": "Box", "props": { "y": 527, "x": 570, "width": 250, "var": "item2", "height": 268, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 8, "child": [{ "type": "Image", "props": { "width": 336, "skin": "guanqia/14/pic_42_1.png", "height": 336, "centerY": -30, "centerX": 0 }, "compId": 9 }] }, { "type": "Box", "props": { "y": 898, "x": 508, "width": 250, "var": "item1", "height": 268, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 10, "child": [{ "type": "Image", "props": { "width": 336, "skin": "guanqia/14/pic_42_1.png", "height": 336, "centerY": -30, "centerX": 0 }, "compId": 11 }] }, { "type": "Image", "props": { "y": 402, "x": 300, "var": "item3", "skin": "guanqia/14/3_pic_21_1.png", "scaleY": 0.4, "scaleX": 0.4, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 12 }], "loadList": ["guanqia/14/pic_42_1.png", "guanqia/14/3_pic_21_1.png"], "loadList3D": [] };
         ui.level14UI = level14UI;
         REG("ui.level14UI", level14UI);
         class level15UI extends Laya.View {
@@ -289,7 +289,7 @@
                 this.createView(level15UI.uiView);
             }
         }
-        level15UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 459, "x": 127, "texture": "guanqia/15/pic_8_1.png" }, "compId": 3 }], "loadList": ["guanqia/15/pic_8_1.png"], "loadList3D": [] };
+        level15UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 459, "x": 127, "texture": "guanqia/15/pic_8_1.png" }, "compId": 3 }, { "type": "Box", "props": { "y": 249, "x": 212, "width": 332, "var": "targetBox", "height": 50 }, "compId": 5 }, { "type": "Box", "props": { "y": 534, "x": 174, "width": 422, "var": "colorBox", "height": 364 }, "compId": 8 }], "loadList": ["guanqia/15/pic_8_1.png"], "loadList3D": [] };
         ui.level15UI = level15UI;
         REG("ui.level15UI", level15UI);
         class level16UI extends Laya.View {
@@ -299,7 +299,7 @@
                 this.createView(level16UI.uiView);
             }
         }
-        level16UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 0, "x": 0, "texture": "16.jpg" }, "compId": 3 }, { "type": "Sprite", "props": { "y": 471, "x": 198, "width": 350, "texture": "guanqia/16/3_pic_24_1.png", "height": 369 }, "compId": 4 }, { "type": "Sprite", "props": { "y": 438, "x": 184, "width": 378, "texture": "guanqia/16/3_pic_24_2.png", "height": 190 }, "compId": 5 }, { "type": "Image", "props": { "y": 884, "x": 165, "width": 420, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,181,0,173", "height": 74 }, "compId": 6 }, { "type": "Button", "props": { "y": 1020, "x": 144, "width": 468, "var": "shi", "stateNum": 1, "skin": "pubRes/btn_2.png", "sizeGrid": "0,122,0,123", "labelStrokeColor": "‘", "labelSize": 40, "labelColors": "#000000", "label": "确定", "height": 125 }, "compId": 7 }, { "type": "TextInput", "props": { "y": 894, "x": 217, "width": 318, "var": "shuru", "text": "输入答案", "prompt": "输入答案", "height": 55, "fontSize": 40, "align": "center" }, "compId": 8 }], "loadList": ["16.jpg", "guanqia/16/3_pic_24_1.png", "guanqia/16/3_pic_24_2.png", "pubRes/top_yellow.png", "pubRes/btn_2.png"], "loadList3D": [] };
+        level16UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 310, "x": 0, "width": 374, "visible": false, "var": "box", "height": 900, "bgColor": "#e37373" }, "compId": 9 }, { "type": "Image", "props": { "y": 471, "x": 198, "width": 350, "skin": "guanqia/16/3_pic_24_1.png", "height": 369 }, "compId": 4 }, { "type": "Image", "props": { "y": 436, "x": 186, "width": 378, "var": "hairImg", "skin": "guanqia/16/3_pic_24_2.png", "height": 190 }, "compId": 5 }, { "type": "Image", "props": { "y": 884, "x": 165, "width": 420, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,181,0,173", "height": 74 }, "compId": 6 }, { "type": "Button", "props": { "y": 1020, "x": 144, "width": 468, "var": "sureBtn", "stateNum": 1, "skin": "pubRes/btn_2.png", "sizeGrid": "0,122,0,123", "labelStrokeColor": "‘", "labelSize": 40, "labelColors": "#000000", "label": "确定", "height": 125 }, "compId": 7 }, { "type": "TextInput", "props": { "y": 894, "x": 217, "width": 318, "var": "shuru", "text": "输入答案", "prompt": "输入答案", "height": 55, "fontSize": 40, "align": "center" }, "compId": 8 }, { "type": "Box", "props": { "y": 749, "x": 378, "width": 40, "var": "rightBox", "height": 40, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 10 }], "loadList": ["guanqia/16/3_pic_24_1.png", "guanqia/16/3_pic_24_2.png", "pubRes/top_yellow.png", "pubRes/btn_2.png"], "loadList3D": [] };
         ui.level16UI = level16UI;
         REG("ui.level16UI", level16UI);
         class level2UI extends Laya.View {
@@ -382,6 +382,16 @@
         level9UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 468, "x": 270, "width": 71, "var": "item0", "skin": "guanqia/9/choice_frame_while_1.png", "height": 72 }, "compId": 4 }, { "type": "Text", "props": { "y": 486, "x": 345, "width": 95, "var": "yaoshishu", "text": "10分", "height": 38, "fontSize": 40, "runtime": "laya.display.Text" }, "compId": 5 }, { "type": "Text", "props": { "y": 626, "x": 345, "width": 95, "text": "20分", "height": 38, "fontSize": 40, "runtime": "laya.display.Text" }, "compId": 6 }, { "type": "Text", "props": { "y": 766, "x": 345, "width": 95, "text": "50分", "height": 38, "fontSize": 40, "runtime": "laya.display.Text" }, "compId": 7 }, { "type": "Text", "props": { "y": 906, "x": 345, "width": 95, "text": "80分", "height": 38, "fontSize": 40, "runtime": "laya.display.Text" }, "compId": 8 }, { "type": "Text", "props": { "y": 1046, "x": 345, "width": 95, "text": "满分", "height": 38, "fontSize": 40, "runtime": "laya.display.Text" }, "compId": 9 }, { "type": "Image", "props": { "y": 609, "x": 270, "width": 71, "var": "item1", "skin": "guanqia/9/choice_frame_while_1.png", "height": 72 }, "compId": 10 }, { "type": "Image", "props": { "y": 749, "x": 270, "width": 71, "var": "item2", "skin": "guanqia/9/choice_frame_while_1.png", "height": 72 }, "compId": 11 }, { "type": "Image", "props": { "y": 889, "x": 270, "width": 71, "var": "item3", "skin": "guanqia/9/choice_frame_while_1.png", "height": 72 }, "compId": 12 }, { "type": "Sprite", "props": { "y": 1029, "x": 270, "width": 71, "var": "item4", "texture": "guanqia/9/choice_frame_while_1.png", "height": 72 }, "compId": 13 }], "loadList": ["guanqia/9/choice_frame_while_1.png"], "loadList3D": [] };
         ui.level9UI = level9UI;
         REG("ui.level9UI", level9UI);
+        class loadingUI extends Laya.View {
+            constructor() { super(); }
+            createChildren() {
+                super.createChildren();
+                this.createView(loadingUI.uiView);
+            }
+        }
+        loadingUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Sprite", "props": { "y": 0, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 3 }, { "type": "Sprite", "props": { "y": 70, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 4 }, { "type": "Sprite", "props": { "y": 140, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 5 }, { "type": "Sprite", "props": { "y": 210, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 6 }, { "type": "Sprite", "props": { "y": 280, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 7 }, { "type": "Sprite", "props": { "y": 350, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 8 }, { "type": "Sprite", "props": { "y": 420, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 9 }, { "type": "Sprite", "props": { "y": 490, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 10 }, { "type": "Sprite", "props": { "y": 560, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 15 }, { "type": "Sprite", "props": { "y": 630, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 16 }, { "type": "Sprite", "props": { "y": 700, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 17 }, { "type": "Sprite", "props": { "y": 770, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 18 }, { "type": "Sprite", "props": { "y": 840, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 19 }, { "type": "Sprite", "props": { "y": 910, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 20 }, { "type": "Sprite", "props": { "y": 980, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 21 }, { "type": "Sprite", "props": { "y": 1050, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 22 }, { "type": "Sprite", "props": { "y": 1120, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 23 }, { "type": "Sprite", "props": { "y": 1190, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 24 }, { "type": "Sprite", "props": { "y": 1260, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 25 }, { "type": "Sprite", "props": { "y": 1330, "x": 0, "width": 750, "texture": "loading/bg.jpg", "height": 70 }, "compId": 26 }, { "type": "Sprite", "props": { "y": 490, "x": 193, "texture": "loading/loding.png" }, "compId": 27 }, { "type": "Sprite", "props": { "y": 1278, "x": 236, "texture": "loading/jiazaizhong.png" }, "compId": 28 }, { "type": "Sprite", "props": { "y": 1281, "x": 440, "texture": "loading/baifenhao.png" }, "compId": 29 }, { "type": "FontClip", "props": { "y": 1275, "x": 377, "width": 118, "var": "dengjishuzi", "value": "1", "skin": "loading/shuzijia.png", "sheet": "-+09 8765 4321", "scaleY": 0.5, "scaleX": 0.5, "height": 79, "align": "right" }, "compId": 30 }], "loadList": ["loading/bg.jpg", "loading/loding.png", "loading/jiazaizhong.png", "loading/baifenhao.png", "loading/shuzijia.png"], "loadList3D": [] };
+        ui.loadingUI = loadingUI;
+        REG("ui.loadingUI", loadingUI);
         class mainuiUI extends Laya.View {
             constructor() { super(); }
             createChildren() {
@@ -432,6 +442,16 @@
         shengliUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0, "width": 750, "height": 1334, "bgColor": "#ffffff", "alpha": 0.75 }, "compId": 20 }, { "type": "Image", "props": { "y": 328, "x": 47, "width": 656, "skin": "pubRes/fram_big.png", "height": 297 }, "compId": 3 }, { "type": "Image", "props": { "y": 375, "x": 192, "width": 366, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,216,0,121", "height": 87 }, "compId": 5 }, { "type": "Button", "props": { "y": 667, "x": 398, "width": 305, "var": "nextAdBtn", "stateNum": 1, "skin": "pubRes/btn_3.png", "labelStrokeColor": "‘", "labelSize": 40, "labelPadding": "10,10,10,40", "labelColors": "#000000", "label": "下一关", "height": 125 }, "compId": 15, "child": [{ "type": "Sprite", "props": { "y": 25, "x": 48, "width": 69, "var": "ads", "texture": "pubRes/ic_ad_1.png", "height": 74 }, "compId": 10 }, { "type": "Sprite", "props": { "y": -24, "x": 180, "width": 134, "texture": "pubRes/hongyuan.png", "height": 69 }, "compId": 17, "child": [{ "type": "Text", "props": { "y": 16, "x": 6, "width": 127, "text": "+提示", "height": 50, "fontSize": 40, "align": "center", "runtime": "laya.display.Text" }, "compId": 18 }] }] }, { "type": "Text", "props": { "y": 393.5, "x": 248, "width": 254, "var": "zi1", "text": "恭喜你呀！", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 6 }, { "type": "Text", "props": { "y": 483, "x": 99, "wordWrap": true, "width": 539, "var": "zi2", "text": "恭喜你呀！", "height": 118, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 7 }, { "type": "Button", "props": { "y": 667, "x": 53, "width": 305, "var": "nextBtn", "stateNum": 1, "skin": "pubRes/btn_1.png", "labelStrokeColor": "‘", "labelSize": 40, "labelColors": "#000000", "label": "下一关", "height": 125 }, "compId": 9 }, { "type": "Image", "props": { "y": 857, "x": 0, "width": 752, "var": "paishou", "skin": "pubRes/pic_hand_1.png", "height": 477 }, "compId": 19 }], "loadList": ["pubRes/fram_big.png", "pubRes/top_yellow.png", "pubRes/btn_3.png", "pubRes/ic_ad_1.png", "pubRes/hongyuan.png", "pubRes/btn_1.png", "pubRes/pic_hand_1.png"], "loadList3D": [] };
         ui.shengliUI = shengliUI;
         REG("ui.shengliUI", shengliUI);
+        class shezhiUI extends Laya.View {
+            constructor() { super(); }
+            createChildren() {
+                super.createChildren();
+                this.createView(shezhiUI.uiView);
+            }
+        }
+        shezhiUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 749, "skin": "pubRes/bg_top_1.png", "height": 308 }, "compId": 12 }, { "type": "Image", "props": { "y": 974, "x": 0, "width": 750, "skin": "pubRes/bg_down_1.png", "height": 360 }, "compId": 19 }, { "type": "Image", "props": { "y": 65, "x": 67, "var": "fanhui", "skin": "pubRes/ic_back_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 4 }, { "type": "Image", "props": { "y": 824, "x": 363, "var": "meiri", "skin": "pubRes/ic_daily_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 5, "child": [{ "type": "Text", "props": { "y": 116, "x": -21, "width": 143, "text": "每日奖励", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 17 }] }, { "type": "Image", "props": { "y": 829, "x": 177, "var": "fankui", "skin": "pubRes/ic_feedback_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 6, "child": [{ "type": "Text", "props": { "y": 104, "x": -8, "width": 107, "text": "反馈", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 16 }] }, { "type": "Image", "props": { "y": 501, "x": 165, "var": "yinyue", "skin": "pubRes/ic_muisc_1_yes.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 7, "child": [{ "type": "Text", "props": { "y": 109, "x": -15, "width": 107, "var": "zi1", "text": "音乐", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 13 }] }, { "type": "Image", "props": { "y": 824, "x": 551, "var": "qiuzhu", "skin": "pubRes/ic_share_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 8, "child": [{ "type": "Text", "props": { "y": 111, "x": -9, "width": 107, "text": "求助", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 18 }] }, { "type": "Image", "props": { "y": 502, "x": 552, "var": "zhendong", "skin": "pubRes/ic_shock_1_yes.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 9, "child": [{ "type": "Text", "props": { "y": 109, "x": -9, "width": 107, "text": "震动", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 15 }] }, { "type": "Image", "props": { "y": 501, "x": 362, "var": "yinxiao", "skin": "pubRes/ic_sound_1_yes.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 10, "child": [{ "type": "Text", "props": { "y": 109, "x": 0, "width": 107, "text": "音效", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 14 }] }], "loadList": ["pubRes/bg_top_1.png", "pubRes/bg_down_1.png", "pubRes/ic_back_1.png", "pubRes/ic_daily_1.png", "pubRes/ic_feedback_1.png", "pubRes/ic_muisc_1_yes.png", "pubRes/ic_share_1.png", "pubRes/ic_shock_1_yes.png", "pubRes/ic_sound_1_yes.png"], "loadList3D": [] };
+        ui.shezhiUI = shezhiUI;
+        REG("ui.shezhiUI", shezhiUI);
         class tishiUI extends Laya.View {
             constructor() { super(); }
             createChildren() {
@@ -442,6 +462,16 @@
         tishiUI.uiView = { "type": "View", "props": { "y": 667, "x": 375, "width": 750, "height": 1334, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0, "width": 750, "height": 1334, "bgColor": "#ffffff", "alpha": 0.75 }, "compId": 7 }, { "type": "Image", "props": { "y": 352, "x": 47, "width": 656, "skin": "pubRes/fram_big.png", "height": 316 }, "compId": 3 }, { "type": "Image", "props": { "y": 432, "x": 278, "width": 201, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,86,0,87", "height": 87 }, "compId": 4 }, { "type": "Text", "props": { "y": 450.5, "x": 321.5, "width": 107, "var": "zi1", "text": "提示", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 5 }, { "type": "Text", "props": { "y": 553, "x": 109, "width": 539, "var": "zi2", "text": "恭喜你呀！", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 6 }, { "type": "Image", "props": { "y": 314, "x": 638, "var": "cha", "skin": "pubRes/ic_colse_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 8 }], "loadList": ["pubRes/fram_big.png", "pubRes/top_yellow.png", "pubRes/ic_colse_1.png"], "loadList3D": [] };
         ui.tishiUI = tishiUI;
         REG("ui.tishiUI", tishiUI);
+        class tishi2UI extends Laya.View {
+            constructor() { super(); }
+            createChildren() {
+                super.createChildren();
+                this.createView(tishi2UI.uiView);
+            }
+        }
+        tishi2UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0, "width": 750, "height": 1334, "bgColor": "#ffffff", "alpha": 0.75 }, "compId": 4 }, { "type": "Image", "props": { "y": 333, "x": 47, "width": 656, "skin": "pubRes/fram_big.png", "height": 504 }, "compId": 5 }, { "type": "Image", "props": { "y": 545, "x": 269, "width": 201, "skin": "pubRes/top_yellow.png", "sizeGrid": "0,86,0,87", "height": 87 }, "compId": 6 }, { "type": "Text", "props": { "y": 564, "x": 317, "width": 107, "var": "zi1", "text": "跳过", "height": 50, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 7 }, { "type": "Text", "props": { "y": 667, "x": 106, "wordWrap": true, "width": 539, "var": "zi2", "text": "跳过此关需要5个钥匙，是否跳过？", "height": 110, "fontSize": 46, "align": "center", "runtime": "laya.display.Text" }, "compId": 8 }, { "type": "Image", "props": { "y": 295, "x": 638, "var": "cha", "skin": "pubRes/ic_colse_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 9 }, { "type": "Image", "props": { "y": 394, "x": 250, "width": 113, "var": "jinyaoshi", "skin": "pubRes/ic_key_1.png", "height": 119 }, "compId": 10 }, { "type": "FontClip", "props": { "y": 414.5, "x": 342, "width": 164, "var": "shuzi", "value": "-2", "skin": "pubRes/shuzi2.png", "sheet": "-+09 8765 4321", "height": 78, "align": "center" }, "compId": 12 }, { "type": "Button", "props": { "y": 877, "x": 210.5, "width": 305, "var": "nextAdBtn", "stateNum": 1, "skin": "pubRes/btn_3.png", "labelStrokeColor": "‘", "labelSize": 40, "labelPadding": "10,10,10,40", "labelColors": "#000000", "label": "下一关", "height": 125 }, "compId": 13, "child": [{ "type": "Sprite", "props": { "y": 25, "x": 48, "width": 69, "var": "ads", "texture": "pubRes/ic_ad_1.png", "height": 74 }, "compId": 14 }, { "type": "Sprite", "props": { "y": -24, "x": 180, "width": 134, "texture": "pubRes/hongyuan.png", "height": 69 }, "compId": 15, "child": [{ "type": "Text", "props": { "y": 16, "x": 6, "width": 127, "text": "+提示", "height": 50, "fontSize": 40, "align": "center", "runtime": "laya.display.Text" }, "compId": 16 }] }] }], "loadList": ["pubRes/fram_big.png", "pubRes/top_yellow.png", "pubRes/ic_colse_1.png", "pubRes/ic_key_1.png", "pubRes/shuzi2.png", "pubRes/btn_3.png", "pubRes/ic_ad_1.png", "pubRes/hongyuan.png"], "loadList3D": [] };
+        ui.tishi2UI = tishi2UI;
+        REG("ui.tishi2UI", tishi2UI);
         class wrongIconUI extends Laya.View {
             constructor() { super(); }
             createChildren() {
@@ -452,6 +482,26 @@
         wrongIconUI.uiView = { "type": "View", "props": {}, "compId": 2, "child": [{ "type": "Image", "props": { "y": 10, "x": 10, "var": "icon", "skin": "pubRes/ic_wrong.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 3 }], "loadList": ["pubRes/ic_wrong.png"], "loadList3D": [] };
         ui.wrongIconUI = wrongIconUI;
         REG("ui.wrongIconUI", wrongIconUI);
+        class xuanguan1UI extends Laya.View {
+            constructor() { super(); }
+            createChildren() {
+                super.createChildren();
+                this.createView(xuanguan1UI.uiView);
+            }
+        }
+        xuanguan1UI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 749, "skin": "pubRes/bg_top_1.png", "height": 308 }, "compId": 3 }, { "type": "Image", "props": { "y": 974, "x": 0, "width": 750, "skin": "pubRes/bg_down_1.png", "height": 360 }, "compId": 4 }, { "type": "Image", "props": { "y": 65, "x": 67, "var": "fanhui", "skin": "pubRes/ic_back_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 5 }], "loadList": ["pubRes/bg_top_1.png", "pubRes/bg_down_1.png", "pubRes/ic_back_1.png"], "loadList3D": [] };
+        ui.xuanguan1UI = xuanguan1UI;
+        REG("ui.xuanguan1UI", xuanguan1UI);
+        class xuanguan2UI extends Laya.View {
+            constructor() { super(); }
+            createChildren() {
+                super.createChildren();
+                this.createView(xuanguan2UI.uiView);
+            }
+        }
+        xuanguan2UI.uiView = { "type": "View", "props": { "width": 336, "height": 348 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 336, "skin": "pubRes/fram_big.png", "height": 348 }, "compId": 3 }, { "type": "FontClip", "props": { "y": 63, "x": 26, "width": 164, "var": "shuzi", "value": "01", "skin": "pubRes/shuzi.png", "sheet": "01234 56789", "height": 63, "align": "center" }, "compId": 5 }, { "type": "Sprite", "props": { "y": 209, "x": 190, "texture": "pubRes/choice_frame_1.png" }, "compId": 6 }, { "type": "Sprite", "props": { "y": 185, "x": 168, "texture": "pubRes/ic_choice.png" }, "compId": 7 }], "loadList": ["pubRes/fram_big.png", "pubRes/shuzi.png", "pubRes/choice_frame_1.png", "pubRes/ic_choice.png"], "loadList3D": [] };
+        ui.xuanguan2UI = xuanguan2UI;
+        REG("ui.xuanguan2UI", xuanguan2UI);
     })(ui || (ui = {}));
 
     class ViewManager {
@@ -739,7 +789,7 @@
             this.addChild(this._box);
             this._mainFace = new MainFace();
             this.addChild(this._mainFace);
-            this.showLevel(13);
+            this.showLevel(16);
             RightIcon.ins = new RightIcon();
             WrongIcon.ins = new WrongIcon();
             Game.eventManager.on(GameEvent.SHOW_RIGHT, this, this.showRight);
@@ -782,6 +832,7 @@
         }
         showLevel(lv) {
             this._box.removeChildren();
+            Laya.MouseManager.multiTouchEnabled = false;
             this.curLv = lv;
             this.curView = this._viewMap[lv];
             if (!this.curView) {
@@ -1472,7 +1523,14 @@
     }
 
     class Level_14 extends BaseLevel {
-        constructor() { super(); }
+        constructor() {
+            super();
+            this.posList = [];
+            this._lastX = 0;
+            this._lastY = 0;
+            this._count = 0;
+            this._downPos = new Laya.Point();
+        }
         onInit() {
             if (this.isInit) {
                 return;
@@ -1480,6 +1538,58 @@
             this.ui = new ui.level14UI();
             this.addChild(this.ui);
             this.isInit = true;
+            this.addEvent(this.ui.item0, null, true);
+            this.addEvent(this.ui.item1, null, true);
+            this.addEvent(this.ui.item2, null, true);
+            this.addEvent(this.ui.item3, this.onClick);
+            this.posList = [[this.ui.item0.x, this.ui.item0.y], [this.ui.item1.x, this.ui.item1.y], [this.ui.item2.x, this.ui.item2.y]];
+            this.refresh();
+        }
+        onDown(sprite) {
+            this._downPos.x = Laya.stage.mouseX;
+            this._downPos.y = Laya.stage.mouseY;
+            this._lastX = this._lastY = this._count = 0;
+            if (sprite == this.targetItem && !this.ui.item3.visible) {
+                Laya.timer.frameLoop(1, this, this.onLoop);
+            }
+            sprite.startDrag(new Laya.Rectangle(this.ui.box.x, this.ui.box.y, this.ui.box.width, this.ui.box.height));
+        }
+        onUp(sprite) {
+            Laya.timer.clear(this, this.onLoop);
+            if (Laya.stage.mouseX == this._downPos.x && Laya.stage.mouseY == this._downPos.y) {
+                this.onClick(sprite);
+            }
+            else {
+                super.onUp(sprite);
+            }
+        }
+        onLoop() {
+            if (this._lastX != this.targetItem.x && this._lastY != this.targetItem.y) {
+                this._count++;
+                console.log("=============", this._count);
+            }
+            this._lastX = this.targetItem.x;
+            this._lastY = this.targetItem.y;
+            if (this._count >= 30) {
+                Laya.timer.clear(this, this.onLoop);
+                this.ui.item3.visible = true;
+                this.ui.item3.pos(this.targetItem.x, this.targetItem.y);
+                Laya.Tween.to(this.ui.item3, { x: this.ui.item3.x - 100, y: this.ui.item3.y + 150 }, 100, Laya.Ease.backOut);
+            }
+        }
+        refresh() {
+            Laya.MouseManager.enabled = true;
+            this._count = 0;
+            super.refresh();
+            this.ui.item3.visible = false;
+            this.ui.item0.pos(this.posList[0][0], this.posList[0][1]);
+            this.ui.item1.pos(this.posList[1][0], this.posList[1][1]);
+            this.ui.item2.pos(this.posList[2][0], this.posList[2][1]);
+            let targetIndex = Math.floor(3 * Math.random());
+            this.targetItem = this.ui["item" + targetIndex];
+        }
+        onClick(img) {
+            this.setAnswer(img, img == this.ui.item3);
         }
     }
 
@@ -1492,6 +1602,11 @@
             this.ui = new ui.level15UI();
             this.addChild(this.ui);
             this.isInit = true;
+            this.addEvent(this.ui.targetBox, this.onClick);
+            this.addEvent(this.ui.colorBox, this.onClick);
+        }
+        onClick(box) {
+            this.setAnswer(box, box == this.ui.targetBox);
         }
     }
 
@@ -1501,9 +1616,26 @@
             if (this.isInit) {
                 return;
             }
-            this.ui = new ui.level6UI();
+            this.ui = new ui.level16UI();
             this.addChild(this.ui);
             this.isInit = true;
+            this.addEvent(this.ui.hairImg, null, true);
+            this.ui.sureBtn.clickHandler = new Laya.Handler(this, this.onSure);
+            this.refresh();
+        }
+        refresh() {
+            super.refresh();
+            this.ui.shuru.text = "";
+            this.ui.hairImg.pos(186, 436);
+        }
+        onSure() {
+            this.setAnswer(this.ui.rightBox, this.ui.shuru.text == "3");
+        }
+        onDown(sprite) {
+            sprite.startDrag(new Laya.Rectangle(this.ui.box.x, this.ui.box.y, this.ui.box.width, this.ui.box.height));
+        }
+        onUp(sprite) {
+            sprite.stopDrag();
         }
     }
 
@@ -1541,6 +1673,7 @@
             Laya.stage.alignV = GameConfig.alignV;
             Laya.stage.alignH = GameConfig.alignH;
             Laya.stage.bgColor = "#ffffff";
+            Laya.stage.frameRate = Laya.Stage.FRAME_SLOW;
             Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
             if (GameConfig.stat)
                 Laya.Stat.show();

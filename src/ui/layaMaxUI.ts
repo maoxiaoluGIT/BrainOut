@@ -106,10 +106,12 @@ export module ui {
     }
     REG("ui.level13UI",level13UI);
     export class level14UI extends Laya.View {
-		public 1:Laya.Sprite;
-		public 2:Laya.Sprite;
-		public 3:Laya.Sprite;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":419,"x":27,"width":336,"var":"1","texture":"guanqia/14/pic_42_1.png","height":336},"compId":4},{"type":"Sprite","props":{"y":315,"x":399,"width":348,"var":"2","texture":"guanqia/14/pic_42_1.png","height":348},"compId":5},{"type":"Sprite","props":{"y":633,"x":351,"width":348,"var":"3","texture":"guanqia/14/pic_42_1.png","height":348},"compId":6}],"loadList":["guanqia/14/pic_42_1.png"],"loadList3D":[]};
+		public box:Laya.Box;
+		public item0:Laya.Box;
+		public item2:Laya.Box;
+		public item1:Laya.Box;
+		public item3:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":300,"x":100,"width":550,"visible":false,"var":"box","height":900,"bgColor":"#e37373"},"compId":13},{"type":"Box","props":{"y":667,"x":218,"width":250,"var":"item0","height":268,"anchorY":0.5,"anchorX":0.5},"compId":7,"child":[{"type":"Image","props":{"width":336,"skin":"guanqia/14/pic_42_1.png","height":336,"centerY":-30,"centerX":0},"compId":4}]},{"type":"Box","props":{"y":527,"x":570,"width":250,"var":"item2","height":268,"anchorY":0.5,"anchorX":0.5},"compId":8,"child":[{"type":"Image","props":{"width":336,"skin":"guanqia/14/pic_42_1.png","height":336,"centerY":-30,"centerX":0},"compId":9}]},{"type":"Box","props":{"y":898,"x":508,"width":250,"var":"item1","height":268,"anchorY":0.5,"anchorX":0.5},"compId":10,"child":[{"type":"Image","props":{"width":336,"skin":"guanqia/14/pic_42_1.png","height":336,"centerY":-30,"centerX":0},"compId":11}]},{"type":"Image","props":{"y":402,"x":300,"var":"item3","skin":"guanqia/14/3_pic_21_1.png","scaleY":0.4,"scaleX":0.4,"anchorY":0.5,"anchorX":0.5},"compId":12}],"loadList":["guanqia/14/pic_42_1.png","guanqia/14/3_pic_21_1.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -118,7 +120,9 @@ export module ui {
     }
     REG("ui.level14UI",level14UI);
     export class level15UI extends Laya.View {
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":459,"x":127,"texture":"guanqia/15/pic_8_1.png"},"compId":3}],"loadList":["guanqia/15/pic_8_1.png"],"loadList3D":[]};
+		public targetBox:Laya.Box;
+		public colorBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":459,"x":127,"texture":"guanqia/15/pic_8_1.png"},"compId":3},{"type":"Box","props":{"y":249,"x":212,"width":332,"var":"targetBox","height":50},"compId":5},{"type":"Box","props":{"y":534,"x":174,"width":422,"var":"colorBox","height":364},"compId":8}],"loadList":["guanqia/15/pic_8_1.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -127,9 +131,12 @@ export module ui {
     }
     REG("ui.level15UI",level15UI);
     export class level16UI extends Laya.View {
-		public shi:Laya.Button;
+		public box:Laya.Box;
+		public hairImg:Laya.Image;
+		public sureBtn:Laya.Button;
 		public shuru:Laya.TextInput;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Sprite","props":{"y":0,"x":0,"texture":"16.jpg"},"compId":3},{"type":"Sprite","props":{"y":471,"x":198,"width":350,"texture":"guanqia/16/3_pic_24_1.png","height":369},"compId":4},{"type":"Sprite","props":{"y":438,"x":184,"width":378,"texture":"guanqia/16/3_pic_24_2.png","height":190},"compId":5},{"type":"Image","props":{"y":884,"x":165,"width":420,"skin":"pubRes/top_yellow.png","sizeGrid":"0,181,0,173","height":74},"compId":6},{"type":"Button","props":{"y":1020,"x":144,"width":468,"var":"shi","stateNum":1,"skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},"compId":7},{"type":"TextInput","props":{"y":894,"x":217,"width":318,"var":"shuru","text":"输入答案","prompt":"输入答案","height":55,"fontSize":40,"align":"center"},"compId":8}],"loadList":["16.jpg","guanqia/16/3_pic_24_1.png","guanqia/16/3_pic_24_2.png","pubRes/top_yellow.png","pubRes/btn_2.png"],"loadList3D":[]};
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":310,"x":0,"width":374,"visible":false,"var":"box","height":900,"bgColor":"#e37373"},"compId":9},{"type":"Image","props":{"y":471,"x":198,"width":350,"skin":"guanqia/16/3_pic_24_1.png","height":369},"compId":4},{"type":"Image","props":{"y":436,"x":186,"width":378,"var":"hairImg","skin":"guanqia/16/3_pic_24_2.png","height":190},"compId":5},{"type":"Image","props":{"y":884,"x":165,"width":420,"skin":"pubRes/top_yellow.png","sizeGrid":"0,181,0,173","height":74},"compId":6},{"type":"Button","props":{"y":1020,"x":144,"width":468,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},"compId":7},{"type":"TextInput","props":{"y":894,"x":217,"width":318,"var":"shuru","text":"输入答案","prompt":"输入答案","height":55,"fontSize":40,"align":"center"},"compId":8},{"type":"Box","props":{"y":749,"x":378,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":10}],"loadList":["guanqia/16/3_pic_24_1.png","guanqia/16/3_pic_24_2.png","pubRes/top_yellow.png","pubRes/btn_2.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

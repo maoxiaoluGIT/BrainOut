@@ -13,5 +13,13 @@ export default class Level_15 extends BaseLevel{
         this.ui = new ui.level15UI();
         this.addChild(this.ui);
         this.isInit = true;
+
+        this.addEvent(this.ui.targetBox,this.onClick);
+        this.addEvent(this.ui.colorBox,this.onClick);
+    }
+
+    private onClick(box:Laya.Sprite):void
+    {
+        this.setAnswer(box,box == this.ui.targetBox);
     }
 }
