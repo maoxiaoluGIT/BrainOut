@@ -6,17 +6,10 @@ export default class Level_12 extends BaseLevel {
     private clickCount: number = 0;
 
     private fontArr: Laya.FontClip[] = [];
-    private answerArr:string[] = [];
     private myAnswerArr:string[] = [];
 
-    static itemskins: any[] = [
-        { skin: "guanqia/12/pic_03_3.png", type: 2, ww: 175, hh: 175,name:"圆形" },
-        { skin: "guanqia/12/pic_.png", type: 2,ww: 176, hh: 176 ,name:"矩形"},
-        { skin: "guanqia/12/pic_20_1.png", type: 1, ww: 193, hh: 193 ,name:"草莓"},
-        { skin: "guanqia/12/pic_20_2.png", type: 1, ww: 256, hh: 128,name:"香蕉" },
-        { skin: "guanqia/12/pic_20_3_1.png", type: 3, ww: 227, hh: 227,name:"南瓜" },
-        { skin: "guanqia/12/pic_20_4.png", type: 2, ww: 175, hh: 175 ,name:"六边形"}
-    ];
+    private posList:number[][]= [];
+    private boxList:Laya.Box[] = [];
 
     constructor() { super(); }
 
@@ -29,9 +22,12 @@ export default class Level_12 extends BaseLevel {
         this.isInit = true;
 
         for (let i = 0; i < 6; i++) {
-            let itemImg: Laya.Image = this.ui["item" + i];
+            let itemImg: Laya.Box = this.ui["box" + i];
             this.addEvent(itemImg, this.onClick);
             this.fontArr.push(this.ui["font" + i]);
+
+            this.posList.push([itemImg.x,itemImg.bottom]);
+            this.boxList.push(itemImg);
         }
 
         this.refresh();
@@ -41,57 +37,43 @@ export default class Level_12 extends BaseLevel {
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.clickCount = 0;
-        let skins: any[] = Level_12.itemskins;
-        skins.sort((a: any, b: any) => {
+        this.boxList.sort((a: any, b: any) => {
             return Math.random() > 0.5 ? 1 : -1;
         })
-        this.answerArr.length = 0;
         this.myAnswerArr.length = 0;
-        for (let i = 0; i < skins.length; i++) {
-            let obj: any = skins[i];
-            let itemImg: Laya.Image = this.ui["item" + i];
-            itemImg.skin = obj.skin;
-            itemImg.size(obj.ww, obj.hh);
-
+        for (let i = 0; i < this.boxList.length; i++) {
+            this.boxList[i].x = this.posList[i][0];
+            this.boxList[i].bottom = this.posList[i][1];
             this.fontArr[i].removeSelf();
             this.fontArr[i].pos(-100, -100);
-
-            if(obj.type == 1)
-            {
-                this.answerArr.push(obj.skin);
-            }
         }
-        this.answerArr.push("guanqia/12/pic_20_4.png","guanqia/12/pic_03_3.png","guanqia/12/pic_.png");
     }
 
-    private onClick(img: Laya.Image): void {
+    private onClick(img: Laya.Box): void {
         this.clickCount++;
         let fc: Laya.FontClip = this.fontArr[this.clickCount - 1];
         fc.value = "" + this.clickCount;
         img.addChild(fc);
-        fc.pos(20 + 80 * Math.random(), 20 + 80 * Math.random());
-        this.myAnswerArr.push(img.skin);
+        fc.pos(0,0);
+        this.myAnswerArr.push(img.name);
         if (this.clickCount == 5)  {
-            Laya.MouseManager.enabled = false;
-            let isRight:boolean = true;
-            for (let i = 0; i < 5; i++) {
-                if(this.answerArr[i] != this.myAnswerArr[i])
-                {
-                    isRight = false;
-                    break;
-                }
-            }
-            this.setAnswer(this.ui.rightBox,isRight);
-            if(!isRight)
+            let bool1:boolean = this.myAnswerArr[0] == "caomei" || this.myAnswerArr[0] == "xiangjiao";
+            let bool2:boolean = this.myAnswerArr[1] == "caomei" || this.myAnswerArr[1] == "xiangjiao";
+            let bool3:boolean = this.myAnswerArr[2] == "liubianxing";
+            let bool4:boolean = this.myAnswerArr[3] == "yuanxing"
+            let bool5:boolean = this.myAnswerArr[4] == "juxing"
+            if(bool1 && bool2 && bool3 && bool4 && bool5)
             {
-                setTimeout(() => {
-                    this.refresh();
-                }, 800);
+                this.setAnswer(this.ui.rightBox,true);
             }
         }
         else if(this.clickCount == 6)
         {
+            Laya.MouseManager.enabled = false;
             this.setAnswer(this.ui.rightBox,false);
+            setTimeout(() => {
+                this.refresh();
+            }, 800);
         }
     }
 }

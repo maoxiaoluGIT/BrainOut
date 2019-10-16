@@ -16,13 +16,15 @@ export default class MainView extends ui.mainViewUI {
     private _tipsView:TipsView;
     private _box:Laya.Box = new Laya.Box();
     private _viewMap:any = {};
+
+    private _monseIcon:ui.mouseIconUI;
     constructor() { 
         super(); 
         this.addChild(this._box);
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 
-        this.showLevel(12);
+        this.showLevel(14);
 
         RightIcon.ins = new RightIcon();
         WrongIcon.ins = new WrongIcon();
@@ -31,6 +33,17 @@ export default class MainView extends ui.mainViewUI {
         Game.eventManager.on(GameEvent.ON_NEXT,this,this.onNext);
         Game.eventManager.on(GameEvent.ON_REFRESH,this,this.onRefresh);
         Game.eventManager.on(GameEvent.SHOW_TIPS,this,this.showTips);
+
+        this._monseIcon = new ui.mouseIconUI();
+
+        Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
+    }
+
+    private onMouseDown():void
+    {
+        this.addChild(this._monseIcon);
+        this._monseIcon.pos(Laya.stage.mouseX,Laya.stage.mouseY);
+        MyEffect.smallBig(this._monseIcon,1.4,0);
     }
 
     private showTips():void

@@ -56,7 +56,7 @@ export default class Level_5 extends BaseLevel{
 
         if(sprite.tag == 1)
         {
-            if(sprite.x < 131 || sprite.x > 619)
+            if(sprite.x < 50 || sprite.x > 700)
             {
                 this.setAnswer(this.ui.rightBox,true);
             }

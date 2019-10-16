@@ -44,6 +44,7 @@ export default class Level_1 extends BaseLevel {
     }
 
     private onClick(img: Laya.Image): void {
+        console.log("===================");
         this.setAnswer(img,img.tag == 1);
     }
 }

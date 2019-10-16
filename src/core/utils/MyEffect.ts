@@ -87,6 +87,15 @@ export default class MyEffect{
         t.play();
     }
 
+    public static smallBig( sp:Laya.Sprite , big:number ,small:number ):void{
+        let t = new Laya.TimeLine();
+        sp.scale(small,small);
+        sp.alpha = 0.8;
+        t.to( sp , { scaleX:big , scaleY:big } , 300  );
+        t.to( sp , { alpha:0}  , 100 );
+        t.play();
+    }
+
     /**
      * 先缩小 再弹出
      * @param v 
