@@ -3,6 +3,7 @@ import GM from "../../GM";
 import SysTitles from "../../sys/SysTitles";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
+import { ViewID } from "../ViewID";
 
 export default class MainFace extends ui.mainuiUI {
     constructor() { 
@@ -38,19 +39,19 @@ export default class MainFace extends ui.mainuiUI {
     {
         if(type == 1)
         {
-
+            GM.viewManager.showView(ViewID.setting);//满意
         }
         else if(type == 2)
         {
-            
+            GM.viewManager.showView(ViewID.cells);//选关
         }
         else if(type == 3)
         {
-            Game.eventManager.event(GameEvent.ON_REFRESH);
+            Game.eventManager.event(GameEvent.ON_REFRESH);//刷新
         }
         else if(type == 4)
         {
-            
+            //快进
         }
     }
 }

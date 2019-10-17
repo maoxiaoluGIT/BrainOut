@@ -1,5 +1,6 @@
 import { ui } from "../../ui/layaMaxUI";
 import Game from "../../core/Game";
+import GM from "../GM";
 
 export default class RightIcon extends ui.rightIconUI{
     static ins:RightIcon;
@@ -17,6 +18,6 @@ export default class RightIcon extends ui.rightIconUI{
         t.to( this.icon , { scaleX:1 , scaleY:1 } , 800 , Laya.Ease.backOut );
         t.play();
 
-        Game.soundManager.play("right.wav");
+        GM.playSound("right.mp3");
     }
 }

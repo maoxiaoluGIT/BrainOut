@@ -55,7 +55,7 @@ export default class BaseLevel extends Laya.Box{
             WrongIcon.ins.add(sprite);
             setTimeout(() => {
                 Laya.MouseManager.enabled = true;
-            }, 1200);
+            }, 1300);
         }
     }
 

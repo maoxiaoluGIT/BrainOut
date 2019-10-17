@@ -1,10 +1,12 @@
 import Game from "../Game";
+import GameSoundManager from "./GameSoundManager";
 
 /*
 * name;
 */
 export default class SoundManager{
     public pre:string = "";
+    private _sm:GameSoundManager = new GameSoundManager();
     constructor(){
     }
 
@@ -28,14 +30,19 @@ export default class SoundManager{
         this.soundName = soundName;
         this.isMusic = isMusic;
         var url:string = this.pre + soundName;
-        if(Laya.loader.getRes(url))
-        {
-            this.onLoadCom(url,isMusic);
+        if( isMusic ){
+            this._sm.playBgm( url );
+        }else{
+            this._sm.playEffect( url );
         }
-        else
-        {
-            Laya.loader.load(url,new Laya.Handler(this,this.onLoadCom,[url,isMusic]));
-        }
+        // if(Laya.loader.getRes(url))
+        // {
+        //     this.onLoadCom(url,isMusic);
+        // }
+        // else
+        // {
+        //     Laya.loader.load(url,new Laya.Handler(this,this.onLoadCom,[url,isMusic]));
+        // }
     }
 
     private onLoadCom(url,isMusic):void

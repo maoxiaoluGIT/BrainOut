@@ -13,7 +13,7 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "middle";
     GameConfig.alignH = "center";
-    GameConfig.startScene = "initView.scene";
+    GameConfig.startScene = "level12.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
     GameConfig.stat = false;
@@ -105,9 +105,141 @@
         }
     }
 
+    class GameEvent {
+    }
+    GameEvent.WX_ON_SHOW = "WX_ON_SHOW";
+    GameEvent.WX_ON_HIDE = "WX_ON_HIDE";
+    GameEvent.AD_OVER = "AD_OVER";
+    GameEvent.SHOW_RIGHT = "SHOW_RIGHT";
+    GameEvent.ON_NEXT = "ON_NEXT";
+    GameEvent.ON_REFRESH = "ON_REFRESH";
+    GameEvent.SHOW_TIPS = "SHOW_TIPS";
+
+    class GameSoundManager {
+        constructor() {
+            this.bgmMap = {};
+            this.currentWxSound = null;
+            this.bgmUrl = null;
+            this.noBgm = false;
+            this.noEff = false;
+            Laya.timer.callLater(this, this.initEvent);
+        }
+        onWX_ON_SHOW() {
+            if (Laya.Browser.onMiniGame && this.currentWxSound) {
+                this.currentWxSound.play();
+            }
+        }
+        onWX_ON_HIDE() {
+            if (Laya.Browser.onMiniGame && this.currentWxSound) {
+                this.currentWxSound.pause();
+            }
+        }
+        initEvent() {
+            Laya.stage.once(GameEvent.WX_ON_SHOW, this, this.onWX_ON_SHOW);
+            Laya.stage.once(GameEvent.WX_ON_HIDE, this, this.onWX_ON_HIDE);
+            Laya.stage.once(GameEvent.AD_OVER, this, this.onWX_ON_SHOW);
+        }
+        openSceneFun(url) {
+            if (this.bgmMap[url]) {
+                this.playBgm(this.bgmMap[url]);
+            }
+        }
+        reg(url, bgm) {
+            this.bgmMap[url] = bgm;
+            if (url == GameSoundManager.BTN) {
+                Laya.stage.on(Laya.Event.CLICK, this, this.clickFun);
+            }
+        }
+        clickFun(e) {
+            if (e.target instanceof Laya.Button) {
+                this.playEffect(this.bgmMap[GameSoundManager.BTN]);
+            }
+        }
+        playBgm(url) {
+            this.bgmUrl = url;
+            if (Laya.Browser.onMiniGame) {
+                if (this.currentWxSound) {
+                    this.currentWxSound.stop();
+                    this.currentWxSound.destroy();
+                    this.currentWxSound = null;
+                }
+                let wxSound = Laya.Browser.window.wx.createInnerAudioContext();
+                wxSound.autoplay = true;
+                wxSound.loop = true;
+                wxSound.src = Laya.URL.basePath + url;
+                this.currentWxSound = wxSound;
+                this.setBgmMuted(this.noBgm);
+            }
+            else {
+                Laya.SoundManager.playMusic(url);
+            }
+        }
+        setBgmMuted(v) {
+            this.noBgm = v;
+            if (Laya.Browser.onMiniGame && this.currentWxSound) {
+                if (v) {
+                    this.currentWxSound.volume = 0;
+                }
+                else {
+                    this.currentWxSound.volume = 1;
+                }
+            }
+            else {
+                Laya.SoundManager.musicMuted = v;
+            }
+        }
+        setEffMuted(v) {
+            this.noEff = v;
+        }
+        stopBgm() {
+            if (Laya.Browser.onMiniGame) {
+                if (this.currentWxSound) {
+                    this.currentWxSound.stop();
+                    this.currentWxSound.destroy();
+                    this.currentWxSound = null;
+                    console.log("音频已经销毁");
+                }
+            }
+            else {
+                Laya.SoundManager.stopMusic();
+            }
+        }
+        playEffect(url) {
+            if (this.noEff) {
+                return;
+            }
+            if (Laya.Browser.onMiniGame) {
+                let b = Laya.Pool.getItem(url);
+                if (b == null) {
+                    new WXSound(url);
+                }
+                else {
+                    b.play();
+                }
+            }
+            else {
+                Laya.SoundManager.playSound(url);
+            }
+        }
+    }
+    GameSoundManager.BTN = "BTN";
+    class WXSound {
+        constructor(url) {
+            this.url = url;
+            this.wxSound = Laya.Browser.window.wx.createInnerAudioContext();
+            this.wxSound.autoplay = true;
+            this.wxSound.loop = false;
+            this.wxSound.src = Laya.URL.basePath + url;
+            this.wxSound.onEnded(() => {
+                Laya.Pool.recover(this.url, this.wxSound);
+            });
+        }
+    }
+
     class SoundManager {
         constructor() {
             this.pre = "";
+            this._sm = new GameSoundManager();
         }
         setMusicVolume(value) {
             Laya.SoundManager.setMusicVolume(value);
@@ -121,11 +253,11 @@
             this.soundName = soundName;
             this.isMusic = isMusic;
             var url = this.pre + soundName;
-            if (Laya.loader.getRes(url)) {
-                this.onLoadCom(url, isMusic);
+            if (isMusic) {
+                this._sm.playBgm(url);
             }
             else {
-                Laya.loader.load(url, new Laya.Handler(this, this.onLoadCom, [url, isMusic]));
+                this._sm.playEffect(url);
             }
         }
         onLoadCom(url, isMusic) {
@@ -283,6 +415,8 @@
     var ViewID;
     (function (ViewID) {
         ViewID[ViewID["main"] = 1001] = "main";
+        ViewID[ViewID["setting"] = 1002] = "setting";
+        ViewID[ViewID["cells"] = 1003] = "cells";
     })(ViewID || (ViewID = {}));
 
     var REG = Laya.ClassUtils.regClass;
@@ -525,7 +659,7 @@
                 this.createView(shezhiUI.uiView);
             }
         }
-        shezhiUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 749, "skin": "pubRes/bg_top_1.png", "height": 308 }, "compId": 12 }, { "type": "Image", "props": { "y": 974, "x": 0, "width": 750, "skin": "pubRes/bg_down_1.png", "height": 360 }, "compId": 19 }, { "type": "Image", "props": { "y": 65, "x": 67, "var": "fanhui", "skin": "pubRes/ic_back_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 4 }, { "type": "Image", "props": { "y": 824, "x": 363, "var": "meiri", "skin": "pubRes/ic_daily_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 5, "child": [{ "type": "Text", "props": { "y": 116, "x": -21, "width": 143, "text": "每日奖励", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 17 }] }, { "type": "Image", "props": { "y": 829, "x": 177, "var": "fankui", "skin": "pubRes/ic_feedback_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 6, "child": [{ "type": "Text", "props": { "y": 104, "x": -8, "width": 107, "text": "反馈", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 16 }] }, { "type": "Image", "props": { "y": 501, "x": 165, "var": "yinyue", "skin": "pubRes/ic_muisc_1_yes.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 7, "child": [{ "type": "Text", "props": { "y": 109, "x": -15, "width": 107, "var": "zi1", "text": "音乐", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 13 }] }, { "type": "Image", "props": { "y": 824, "x": 551, "var": "qiuzhu", "skin": "pubRes/ic_share_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 8, "child": [{ "type": "Text", "props": { "y": 111, "x": -9, "width": 107, "text": "求助", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 18 }] }, { "type": "Image", "props": { "y": 502, "x": 552, "var": "zhendong", "skin": "pubRes/ic_shock_1_yes.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 9, "child": [{ "type": "Text", "props": { "y": 109, "x": -9, "width": 107, "text": "震动", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 15 }] }, { "type": "Image", "props": { "y": 501, "x": 362, "var": "yinxiao", "skin": "pubRes/ic_sound_1_yes.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 10, "child": [{ "type": "Text", "props": { "y": 109, "x": 0, "width": 107, "text": "音效", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 14 }] }], "loadList": ["pubRes/bg_top_1.png", "pubRes/bg_down_1.png", "pubRes/ic_back_1.png", "pubRes/ic_daily_1.png", "pubRes/ic_feedback_1.png", "pubRes/ic_muisc_1_yes.png", "pubRes/ic_share_1.png", "pubRes/ic_shock_1_yes.png", "pubRes/ic_sound_1_yes.png"], "loadList3D": [] };
+        shezhiUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "Image", "props": { "y": 0, "x": 0, "width": 749, "var": "topImg", "skin": "pubRes/bg_top_1.png", "height": 308 }, "compId": 12 }, { "type": "Image", "props": { "y": 974, "x": 0, "width": 750, "var": "bottomImg", "skin": "pubRes/bg_down_1.png", "height": 360 }, "compId": 19 }, { "type": "Image", "props": { "y": 65, "x": 67, "var": "fanhui", "skin": "pubRes/ic_back_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 4 }, { "type": "Image", "props": { "y": 824, "x": 363, "var": "meiri", "skin": "pubRes/ic_daily_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 5 }, { "type": "Image", "props": { "y": 501, "x": 165, "var": "yinyue", "skin": "pubRes/ic_muisc_yes_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 7 }, { "type": "Image", "props": { "y": 824, "x": 551, "var": "qiuzhu", "skin": "pubRes/ic_share_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 8 }, { "type": "Image", "props": { "y": 502, "x": 552, "var": "zhendong", "skin": "pubRes/ic_shock_yes_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 9 }, { "type": "Image", "props": { "y": 501, "x": 362, "var": "yinxiao", "skin": "pubRes/ic_sound_yes_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 10 }, { "type": "Image", "props": { "y": 829, "x": 177, "var": "fankui", "skin": "pubRes/ic_feedback_1.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 6 }, { "type": "Text", "props": { "y": 888, "x": 294, "width": 143, "text": "每日奖励", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 17 }, { "type": "Text", "props": { "y": 562, "x": 112, "width": 107, "var": "zi1", "text": "音乐", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 13 }, { "type": "Text", "props": { "y": 888, "x": 498, "width": 107, "text": "求助", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 18 }, { "type": "Text", "props": { "y": 562, "x": 498, "width": 107, "text": "震动", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 15 }, { "type": "Text", "props": { "y": 888, "x": 119, "width": 107, "text": "反馈", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 16 }, { "type": "Text", "props": { "y": 562, "x": 312, "width": 107, "text": "音效", "height": 50, "fontSize": 36, "align": "center", "runtime": "laya.display.Text" }, "compId": 14 }], "loadList": ["pubRes/bg_top_1.png", "pubRes/bg_down_1.png", "pubRes/ic_back_1.png", "pubRes/ic_daily_1.png", "pubRes/ic_muisc_yes_1.png", "pubRes/ic_share_1.png", "pubRes/ic_shock_yes_1.png", "pubRes/ic_sound_yes_1.png", "pubRes/ic_feedback_1.png"], "loadList3D": [] };
         ui.shezhiUI = shezhiUI;
         REG("ui.shezhiUI", shezhiUI);
         class tishiUI extends Laya.View {
@@ -580,13 +714,6 @@
         REG("ui.xuanguan2UI", xuanguan2UI);
     })(ui || (ui = {}));
 
-    class GameEvent {
-    }
-    GameEvent.SHOW_RIGHT = "SHOW_RIGHT";
-    GameEvent.ON_NEXT = "ON_NEXT";
-    GameEvent.ON_REFRESH = "ON_REFRESH";
-    GameEvent.SHOW_TIPS = "SHOW_TIPS";
-
     class MainFace extends ui.mainuiUI {
         constructor() {
             super();
@@ -610,8 +737,12 @@
             this.dengjishuzi.value = "" + sys.id;
         }
         onClick(type) {
-            if (type == 1) ;
-            else if (type == 2) ;
+            if (type == 1) {
+                GM.viewManager.showView(ViewID.setting);
+            }
+            else if (type == 2) {
+                GM.viewManager.showView(ViewID.cells);
+            }
             else if (type == 3) {
                 Game.eventManager.event(GameEvent.ON_REFRESH);
             }
@@ -630,7 +761,7 @@
             t.to(this.icon, { scaleX: 0.4, scaleY: 0.4 }, 100);
             t.to(this.icon, { scaleX: 1, scaleY: 1 }, 800, Laya.Ease.backOut);
             t.play();
-            Game.soundManager.play("right.wav");
+            GM.playSound("right.mp3");
         }
     }
 
@@ -645,7 +776,7 @@
             t.to(this.icon, { scaleX: 1, scaleY: 1 }, 800, Laya.Ease.backOut);
             t.to(this.icon, { scaleX: 0, scaleY: 0 }, 400);
             t.play();
-            Game.soundManager.play("wrong.wav");
+            GM.playSound("wrong.mp3");
         }
     }
 
@@ -666,7 +797,7 @@
         }
         onEff() {
             Laya.MouseManager.enabled = true;
-            Game.soundManager.play("win.wav");
+            GM.playSound("win.mp3");
         }
         setWin(sys) {
             this.zi2.text = sys.stageWin;
@@ -791,11 +922,11 @@
             Game.eventManager.on(GameEvent.SHOW_TIPS, this, this.showTips);
             this._monseIcon = new ui.mouseIconUI();
             Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);
-            this.showLevel(1);
+            this.showLevel(12);
         }
         onMouseDown() {
             this.addChild(this._monseIcon);
-            this._monseIcon.pos(Laya.stage.mouseX, Laya.stage.mouseY);
+            this._monseIcon.pos(Laya.stage.mouseX, Laya.stage.mouseY - Game.layerManager.y);
             MyEffect.smallBig(this._monseIcon, 1.4, 0);
         }
         showTips() {
@@ -888,7 +1019,7 @@
                 WrongIcon.ins.add(sprite);
                 setTimeout(() => {
                     Laya.MouseManager.enabled = true;
-                }, 1200);
+                }, 1300);
             }
         }
         onRight() {
@@ -931,7 +1062,6 @@
             }
         }
         onClick(img) {
-            console.log("===================");
             this.setAnswer(img, img.tag == 1);
         }
     }
@@ -1180,7 +1310,7 @@
                 super.onUp(sprite);
                 for (let i = 0; i < 4; i++) {
                     let img = this.ui["item" + i];
-                    if (img != sprite) {
+                    if (img.visible && img != sprite) {
                         if (this.hit(sprite, img)) {
                             if (img.width > sprite.width) {
                                 sprite.visible = false;
@@ -1347,9 +1477,10 @@
             this.isInit = true;
             for (let i = 0; i < 6; i++) {
                 let itemImg = this.ui["box" + i];
+                itemImg.tag = [];
                 this.addEvent(itemImg, this.onClick);
                 this.fontArr.push(this.ui["font" + i]);
-                this.posList.push([itemImg.x, itemImg.bottom]);
+                this.posList.push([itemImg.x, i < 3 ? 700 : 400]);
                 this.boxList.push(itemImg);
             }
             this.refresh();
@@ -1363,6 +1494,7 @@
             });
             this.myAnswerArr.length = 0;
             for (let i = 0; i < this.boxList.length; i++) {
+                this.boxList[i].tag.length = 0;
                 this.boxList[i].x = this.posList[i][0];
                 this.boxList[i].bottom = this.posList[i][1];
                 this.fontArr[i].removeSelf();
@@ -1374,7 +1506,16 @@
             let fc = this.fontArr[this.clickCount - 1];
             fc.value = "" + this.clickCount;
             img.addChild(fc);
-            fc.pos(0, 0);
+            img.tag.push(fc);
+            let arr = img.tag;
+            for (let i = 0; i < arr.length; i++) {
+                if (i < 3) {
+                    arr[i].pos(0, i * img.height / 3);
+                }
+                else {
+                    arr[i].pos(img.width - 40, (i - 3) * img.height / 3);
+                }
+            }
             this.myAnswerArr.push(img.name);
             if (this.clickCount == 5) {
                 let bool1 = this.myAnswerArr[0] == "caomei" || this.myAnswerArr[0] == "xiangjiao";
@@ -1654,11 +1795,8 @@
             Game.tableManager.onParse(arr);
             GM.imgEffect.start();
             GM.viewManager.showView(ViewID.main);
-            Game.soundManager.play("bg.mp3", true);
-            this.removeSelf();
-            Laya.loader.clearRes("loading/loding.png");
-            Laya.loader.clearRes("loading/jiazaizhong.png");
-            Laya.loader.clearRes("loading/shuzi2.png");
+            GM.playMusic("bg.mp3");
+            this.destroy(true);
         }
     }
 
@@ -1678,7 +1816,7 @@
         onCom() {
             Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
             let config = Laya.loader.getRes("res/config.json");
-            GM.isConsoleLog = config.isConsoleLog;
+            GM.setConfig(config);
             Laya.loader.clearRes("res/config.json");
             if (!this._homeLoading) {
                 this._homeLoading = new HomeLoading();
@@ -1688,7 +1826,382 @@
         }
     }
 
+    class CellsView extends ui.xuanguan1UI {
+        constructor() { super(); }
+    }
+
+    class CookieKey {
+    }
+    CookieKey.MUSIC_SWITCH = "MUSIC_SWITCH";
+    CookieKey.SOUND_SWITCH = "SOUND_SWITCH";
+    CookieKey.SHAKE_SWITCH = "SHAKE_SWITCH";
+
+    class SettingView extends ui.shezhiUI {
+        constructor() {
+            super();
+            let arr = [this.fanhui, this.yinyue, this.yinxiao, this.zhendong, this.fankui, this.meiri, this.qiuzhu];
+            for (let i = 0; i < arr.length; i++) {
+                this.addEvent(arr[i], this.onClick);
+                GM.imgEffect.addEffect(arr[i]);
+            }
+            GM.imgEffect.addEffect(this.topImg, 2);
+            GM.imgEffect.addEffect(this.bottomImg, 2);
+            this.on(Laya.Event.DISPLAY, this, this.onDis);
+        }
+        onDis() {
+            this.yinyue.skin = GM.musicState == 1 ? "pubRes/ic_muisc_yes_1.png" : "pubRes/ic_muisc_no_1.png";
+            this.yinxiao.skin = GM.soundState == 1 ? "pubRes/ic_sound_yes_1.png" : "pubRes/ic_sound_no_1.png";
+            this.zhendong.skin = GM.shakeState == 1 ? "pubRes/ic_shock_yes_1.png" : "pubRes/ic_shock_no_1.png";
+        }
+        addEvent(sprite, func) {
+            func && sprite.on(Laya.Event.CLICK, this, func, [sprite]);
+        }
+        onClick(sprite) {
+            switch (sprite) {
+                case this.fanhui:
+                    GM.viewManager.showView(ViewID.main);
+                    break;
+                case this.yinyue:
+                    if (GM.musicState == 1) {
+                        GM.musicState = 0;
+                        GM.cookie.setCookie(CookieKey.MUSIC_SWITCH, { "state": 0 });
+                        Game.soundManager.setMusicVolume(0);
+                        this.yinyue.skin = "pubRes/ic_muisc_no_1.png";
+                    }
+                    else {
+                        GM.musicState = 1;
+                        GM.cookie.setCookie(CookieKey.MUSIC_SWITCH, { "state": 1 });
+                        Game.soundManager.setMusicVolume(1);
+                        GM.playMusic("bg.mp3");
+                        this.yinyue.skin = "pubRes/ic_muisc_yes_1.png";
+                    }
+                    break;
+                case this.yinxiao:
+                    if (GM.soundState == 1) {
+                        GM.soundState = 0;
+                        GM.cookie.setCookie(CookieKey.SOUND_SWITCH, { "state": 0 });
+                        Game.soundManager.setSoundVolume(0);
+                        this.yinxiao.skin = "pubRes/ic_sound_no_1.png";
+                    }
+                    else {
+                        GM.soundState = 1;
+                        GM.cookie.setCookie(CookieKey.SOUND_SWITCH, { "state": 1 });
+                        Game.soundManager.setSoundVolume(1);
+                        this.yinxiao.skin = "pubRes/ic_sound_yes_1.png";
+                    }
+                    break;
+                case this.zhendong:
+                    if (GM.shakeState == 1) {
+                        GM.shakeState = 0;
+                        GM.cookie.setCookie(CookieKey.SHAKE_SWITCH, { "state": 0 });
+                        this.zhendong.skin = "pubRes/ic_shock_no_1.png";
+                    }
+                    else {
+                        GM.shakeState = 1;
+                        GM.cookie.setCookie(CookieKey.SHAKE_SWITCH, { "state": 1 });
+                        this.zhendong.skin = "pubRes/ic_shock_yes_1.png";
+                    }
+                    break;
+                case this.fankui:
+                    break;
+                case this.meiri:
+                    break;
+                case this.qiuzhu:
+                    break;
+            }
+        }
+    }
+
+    class PlatformID {
+    }
+    PlatformID.TEST = 0;
+    PlatformID.WX = 1;
+
+    class BaseCookie {
+    }
+
+    class TestCookie extends BaseCookie {
+        constructor() {
+            super();
+        }
+        setCookie(code, data) {
+            Laya.LocalStorage.setJSON(code, data);
+        }
+        getCookie(code, callback) {
+            let data = Laya.LocalStorage.getJSON(code);
+            callback && callback(data);
+        }
+        removeCookie(code) {
+            Laya.LocalStorage.removeItem(code);
+        }
+        clearAll() {
+            Laya.LocalStorage.clear();
+        }
+    }
+
+    class BasePlatform {
+    }
+
+    class TestPlatform extends BasePlatform {
+        checkUpdate() {
+        }
+        login(callback) {
+            callback && callback("shfdsaomghjgai123fdafda456");
+        }
+        getUserInfo(callback) {
+            this.cb = callback;
+        }
+        clickFun(e) {
+        }
+        onShare(callback) {
+            callback && callback();
+        }
+    }
+
+    class WXCookie extends BaseCookie {
+        constructor() {
+            super();
+            this.wx = Laya.Browser.window.wx;
+        }
+        setCookie(code, data1) {
+            this.wx.setStorage({
+                key: code,
+                data: data1,
+                success(res) {
+                }
+            });
+        }
+        getCookie(code, callback) {
+            this.wx.getStorage({
+                key: code,
+                success(res) {
+                    callback && callback(res.data);
+                },
+                fail(res) {
+                    callback && callback(null);
+                },
+                complete(res) {
+                }
+            });
+        }
+        removeCookie(code) {
+            this.wx.removeStorage({
+                key: code,
+                success(res) {
+                }
+            });
+        }
+        clearAll() {
+            this.wx.clearStorage();
+        }
+    }
+
+    class WXPlatform extends BasePlatform {
+        constructor() {
+            super();
+            this.tag = 0;
+        }
+        checkUpdate() {
+            Laya.Browser.window.wx.setKeepScreenOn({
+                keepScreenOn: true
+            });
+            if (Laya.Browser.window.wx.getUpdateManager) {
+                console.log("基础库 1.9.90 开始支持，低版本需做兼容处理");
+                const updateManager = Laya.Browser.window.wx.getUpdateManager();
+                updateManager.onCheckForUpdate(function (result) {
+                    if (result.hasUpdate) {
+                        console.log("有新版本");
+                        updateManager.onUpdateReady(function () {
+                            console.log("新的版本已经下载好");
+                            Laya.Browser.window.wx.showModal({
+                                title: '更新提示',
+                                content: '新版本已经下载，是否重启？',
+                                success: function (result) {
+                                    if (result.confirm) {
+                                        updateManager.applyUpdate();
+                                    }
+                                }
+                            });
+                        });
+                        updateManager.onUpdateFailed(function () {
+                            console.log("新的版本下载失败");
+                            Laya.Browser.window.wx.showModal({
+                                title: '已经有新版本了',
+                                content: '新版本已经上线啦，请您删除当前小游戏，重新搜索打开'
+                            });
+                        });
+                    }
+                    else {
+                        console.log("没有新版本");
+                    }
+                });
+            }
+            else {
+                console.log("有更新肯定要用户使用新版本，对不支持的低版本客户端提示");
+                Laya.Browser.window.wx.showModal({
+                    title: '温馨提示',
+                    content: '当前微信版本过低，无法使用该应用，请升级到最新微信版本后重试。'
+                });
+            }
+        }
+        login(callback) {
+            Laya.Browser.window.wx.login({
+                success: (res) => {
+                    if (res.code) {
+                        callback && callback(res.code);
+                    }
+                }
+            });
+        }
+        getUserInfo(callback) {
+            if (this.userBtn) {
+                return;
+            }
+            this.userBtn = Laya.Browser.window.wx.createUserInfoButton({
+                type: 'text',
+                text: '',
+                style: {
+                    width: Laya.Browser.window.wx.getSystemInfoSync().windowWidth,
+                    height: Laya.Browser.window.wx.getSystemInfoSync().windowHeight
+                }
+            });
+            this.userBtn.onTap((resButton) => {
+                if (resButton.errMsg == "getUserInfo:ok") {
+                    GM.userHeadUrl = resButton.userInfo.avatarUrl;
+                    GM.userName = resButton.userInfo.nickName;
+                    this.filterEmoji();
+                    this.userBtn.destroy();
+                    callback && callback();
+                }
+                else {
+                    console.log("授权失败");
+                }
+            });
+        }
+        wxAuthSetting() {
+            console.log("wx.getSetting");
+            Laya.Browser.window.wx.getSetting({
+                success: (res) => {
+                    console.log(res.authSetting);
+                    var authSetting = res.authSetting;
+                    if (authSetting["scope.userInfo"]) {
+                        console.log("已经授权");
+                    }
+                    else {
+                        console.log("未授权");
+                    }
+                }
+            });
+        }
+        filterEmoji() {
+            var strArr = GM.userName.split(""), result = "", totalLen = 0;
+            for (var idx = 0; idx < strArr.length; idx++) {
+                if (totalLen >= 16)
+                    break;
+                var val = strArr[idx];
+                if (/[a-zA-Z]/.test(val)) {
+                    totalLen = 1 + (+totalLen);
+                    result += val;
+                }
+                else if (/[\u4e00-\u9fa5]/.test(val)) {
+                    totalLen = 2 + (+totalLen);
+                    result += val;
+                }
+                else if (/[\ud800-\udfff]/.test(val)) {
+                    if (/[\ud800-\udfff]/.test(strArr[idx + 1])) {
+                        idx++;
+                    }
+                    result += "?";
+                }
+            }
+            GM.userName = result;
+            console.log("过滤之后", GM.userName);
+        }
+        onShare(callback) {
+            Laya.Browser.window.wx.shareAppMessage({
+                title: "来吧，pk一下吧！",
+                imageUrl: "https://img.kuwan511.com/arrowLegend/share.jpg",
+                destWidth: 500,
+                destHeight: 400
+            });
+            Laya.Browser.window.wx.onShow(res => {
+                console.log("onShow", this.tag);
+                if (this.tag == 1000) {
+                    Laya.Browser.window.wx.offShow();
+                    Laya.Browser.window.wx.offHide();
+                    this.tag = -1;
+                }
+            });
+            Laya.Browser.window.wx.onHide(res => {
+                this.tag = 1000;
+                console.log("onHide");
+            });
+        }
+    }
+
     class GM {
+        static setConfig(config) {
+            GM.isConsoleLog = config.isConsoleLog;
+            GM.platformId = config.platformId;
+            if (config.platformId == PlatformID.TEST) {
+                GM.cookie = new TestCookie();
+                GM.platform = new TestPlatform();
+            }
+            else if (config.platformId == PlatformID.WX) {
+                GM.cookie = new WXCookie();
+                GM.platform = new WXPlatform();
+            }
+            this.setMusic();
+            this.setSound();
+            this.setShake();
+        }
+        static setMusic() {
+            GM.cookie.getCookie(CookieKey.MUSIC_SWITCH, (res) => {
+                if (res == null) {
+                    GM.cookie.setCookie(CookieKey.MUSIC_SWITCH, { "state": 1 });
+                    Game.soundManager.setMusicVolume(1);
+                    GM.musicState = 1;
+                }
+                else {
+                    Game.soundManager.setMusicVolume(res.state);
+                    GM.musicState = res.state;
+                }
+            });
+        }
+        static setSound() {
+            GM.cookie.getCookie(CookieKey.SOUND_SWITCH, (res) => {
+                if (res == null) {
+                    GM.cookie.setCookie(CookieKey.SOUND_SWITCH, { "state": 1 });
+                    Game.soundManager.setSoundVolume(1);
+                    GM.soundState = 1;
+                }
+                else {
+                    Game.soundManager.setSoundVolume(res.state);
+                    GM.soundState = res.state;
+                }
+            });
+        }
+        static setShake() {
+            GM.cookie.getCookie(CookieKey.SHAKE_SWITCH, (res) => {
+                if (res == null) {
+                    GM.cookie.setCookie(CookieKey.SHAKE_SWITCH, { "state": 1 });
+                    GM.shakeState = 1;
+                }
+                else {
+                    GM.shakeState = res.state;
+                }
+            });
+        }
+        static playMusic(musicUrl) {
+            if (GM.musicState == 1) {
+                Game.soundManager.play(musicUrl, true);
+            }
+        }
+        static playSound(soundUrl) {
+            if (GM.soundState == 1) {
+                Game.soundManager.play(soundUrl);
+            }
+        }
         static startGame() {
             Game.layerManager.addChild(new InitView());
         }
@@ -1701,6 +2214,8 @@
             Game.tableManager.register(SysTitles.NAME, SysTitles);
             let REG = Laya.ClassUtils.regClass;
             REG(ViewID.main, MainView);
+            REG(ViewID.setting, SettingView);
+            REG(ViewID.cells, CellsView);
             let CLAS = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9, Level_10, Level_11, Level_12, Level_13, Level_14, Level_15, Level_16];
             let index = 1;
             for (let i = 0; i < CLAS.length; i++) {
@@ -1709,10 +2224,13 @@
             }
         }
     }
-    GM.codeVer = "0.0.1.1016";
-    GM.resVer = "0.0.1.1016";
+    GM.codeVer = "0.0.1.1839";
+    GM.resVer = "0.0.1.1839";
     GM.viewManager = new ViewManager();
     GM.imgEffect = new ImageEffect();
+    GM.musicState = 1;
+    GM.soundState = 1;
+    GM.shakeState = 1;
     GM.nativefiles = ["loading/loding.png", "loading/shuzi2.png", "loading/jiazaizhong.png"];
 
     class Main {

@@ -36,13 +36,13 @@ export default class MainView extends ui.mainViewUI {
 
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
 
-        this.showLevel(1);
+        this.showLevel(12);
     }
 
     private onMouseDown():void
     {
         this.addChild(this._monseIcon);
-        this._monseIcon.pos(Laya.stage.mouseX,Laya.stage.mouseY + Game.layerManager.y);
+        this._monseIcon.pos(Laya.stage.mouseX,Laya.stage.mouseY - Game.layerManager.y);
         MyEffect.smallBig(this._monseIcon,1.4,0);
     }
 

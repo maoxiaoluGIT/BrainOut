@@ -2,6 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
+    "selecteID":9,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
@@ -16,10 +17,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":0,"x":0,"width":749,"skin":"pubRes/bg_top_1.png","height":308},
+            "searchKey":"Image,topImg",
+            "props":{"y":0,"x":0,"width":749,"var":"topImg","skin":"pubRes/bg_top_1.png","height":308},
             "nodeParent":2,
-            "label":"Image",
+            "label":"topImg",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -32,10 +33,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":974,"x":0,"width":750,"skin":"pubRes/bg_down_1.png","height":360},
+            "searchKey":"Image,bottomImg",
+            "props":{"y":974,"x":0,"width":750,"var":"bottomImg","skin":"pubRes/bg_down_1.png","height":360},
             "nodeParent":2,
-            "label":"Image",
+            "label":"bottomImg",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -67,83 +68,28 @@
             "nodeParent":2,
             "label":"meiri",
             "isOpen":true,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
+            "hasChild":false,
             "compId":5,
             "child":[
-                {
-                    "x":30,
-                    "type":"Text",
-                    "searchKey":"Text",
-                    "props":{"y":116,"x":-21,"width":143,"text":"每日奖励","height":50,"fontSize":36,"align":"center"},
-                    "nodeParent":5,
-                    "label":"Text",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":17,
-                    "child":[
-                        ]
-                }],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,fankui",
-            "props":{"y":829,"x":177,"var":"fankui","skin":"pubRes/ic_feedback_1.png","anchorY":0.5,"anchorX":0.5},
-            "nodeParent":2,
-            "label":"fankui",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":6,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Text",
-                    "searchKey":"Text",
-                    "props":{"y":104,"x":-8,"width":107,"text":"反馈","height":50,"fontSize":36,"align":"center"},
-                    "nodeParent":6,
-                    "label":"Text",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":16,
-                    "child":[
-                        ]
-                }],
+                ],
             "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
             "searchKey":"Image,yinyue",
-            "props":{"y":501,"x":165,"var":"yinyue","skin":"pubRes/ic_muisc_1_yes.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":501,"x":165,"var":"yinyue","skin":"pubRes/ic_muisc_yes_1.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"yinyue",
             "isOpen":true,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
+            "hasChild":false,
             "compId":7,
             "child":[
-                {
-                    "x":30,
-                    "type":"Text",
-                    "searchKey":"Text,zi1",
-                    "props":{"y":109,"x":-15,"width":107,"var":"zi1","text":"音乐","height":50,"fontSize":36,"align":"center"},
-                    "nodeParent":7,
-                    "label":"zi1",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":13,
-                    "child":[
-                        ]
-                }],
+                ],
             "$HIDDEN":false
         },
         {
@@ -154,84 +100,145 @@
             "nodeParent":2,
             "label":"qiuzhu",
             "isOpen":true,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
+            "hasChild":false,
             "compId":8,
             "child":[
-                {
-                    "x":30,
-                    "type":"Text",
-                    "searchKey":"Text",
-                    "props":{"y":111,"x":-9,"width":107,"text":"求助","height":50,"fontSize":36,"align":"center"},
-                    "nodeParent":8,
-                    "label":"Text",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":18,
-                    "child":[
-                        ]
-                }],
+                ],
             "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
             "searchKey":"Image,zhendong",
-            "props":{"y":502,"x":552,"var":"zhendong","skin":"pubRes/ic_shock_1_yes.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":502,"x":552,"var":"zhendong","skin":"pubRes/ic_shock_yes_1.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"zhendong",
             "isOpen":true,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
+            "hasChild":false,
             "compId":9,
             "child":[
-                {
-                    "x":30,
-                    "type":"Text",
-                    "searchKey":"Text",
-                    "props":{"y":109,"x":-9,"width":107,"text":"震动","height":50,"fontSize":36,"align":"center"},
-                    "nodeParent":9,
-                    "label":"Text",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":15,
-                    "child":[
-                        ]
-                }],
+                ],
             "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
             "searchKey":"Image,yinxiao",
-            "props":{"y":501,"x":362,"var":"yinxiao","skin":"pubRes/ic_sound_1_yes.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":501,"x":362,"var":"yinxiao","skin":"pubRes/ic_sound_yes_1.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"yinxiao",
             "isOpen":true,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
+            "hasChild":false,
             "compId":10,
             "child":[
-                {
-                    "x":30,
-                    "type":"Text",
-                    "searchKey":"Text",
-                    "props":{"y":109,"x":0,"width":107,"text":"音效","height":50,"fontSize":36,"align":"center"},
-                    "nodeParent":10,
-                    "label":"Text",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":14,
-                    "child":[
-                        ]
-                }],
+                ],
             "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,fankui",
+            "props":{"y":829,"x":177,"var":"fankui","skin":"pubRes/ic_feedback_1.png","anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"fankui",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":6,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text",
+            "props":{"y":888,"x":294,"width":143,"text":"每日奖励","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":17,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text,zi1",
+            "props":{"y":562,"x":112,"width":107,"var":"zi1","text":"音乐","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"zi1",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":13,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text",
+            "props":{"y":888,"x":498,"width":107,"text":"求助","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":18,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text",
+            "props":{"y":562,"x":498,"width":107,"text":"震动","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":15,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text",
+            "props":{"y":888,"x":119,"width":107,"text":"反馈","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":16,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text",
+            "props":{"y":562,"x":312,"width":107,"text":"音效","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":14,
+            "child":[
+                ]
         }],
     "animations":[
         {

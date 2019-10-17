@@ -27,7 +27,7 @@ export default class RightView extends ui.shengliUI{
     private onEff():void
     {
         Laya.MouseManager.enabled = true;
-        Game.soundManager.play("win.wav");
+        GM.playSound("win.mp3");
     }
 
     setWin(sys:SysTitles):void

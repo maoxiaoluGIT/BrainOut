@@ -21,17 +21,114 @@ import Level_16 from "./levels/Level_16";
 import Game from "../core/Game";
 import SysTitles from "./sys/SysTitles";
 import InitView from "./InitView";
+import CellsView from "./views/cells/CellsView";
+import SettingView from "./views/setting/SettingView";
+import { BaseCookie } from "./gameCookie/BaseCookie";
+import { BasePlatform } from "./platforms/BasePlatform";
+import PlatformID from "./platforms/PlatformID";
+import TestCookie from "./gameCookie/TestCookie";
+import TestPlatform from "./platforms/TestPlatform";
+import WXCookie from "./gameCookie/WXCookie";
+import WXPlatform from "./platforms/WXPlatform";
+import CookieKey from "./gameCookie/CookieKey";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.1016";
-    static resVer:string = "0.0.1.1016";
+    static codeVer:string = "0.0.1.1839";
+    static resVer:string = "0.0.1.1839";
+    static userName:string;
+    static platformId:number;
+    static userHeadUrl:string;
     static isConsoleLog:number;
     static viewManager:ViewManager = new ViewManager();
     static imgEffect:ImageEffect = new ImageEffect();
+    static cookie:BaseCookie;
+    static platform:BasePlatform;
+    static musicState:number = 1;
+    static soundState:number = 1;
+    static shakeState:number = 1;
 
     /**本地资源 */
     static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png"];
+
+    static setConfig(config):void
+    {
+        GM.isConsoleLog = config.isConsoleLog;
+        GM.platformId = config.platformId;
+
+        if(config.platformId == PlatformID.TEST)
+        {
+            GM.cookie = new TestCookie();
+            GM.platform = new TestPlatform();
+        }
+        else if(config.platformId == PlatformID.WX)
+        {
+            GM.cookie = new WXCookie();
+            GM.platform = new WXPlatform();
+        }
+        this.setMusic();
+        this.setSound();
+        this.setShake();
+    }
+
+    static setMusic():void
+    {
+        GM.cookie.getCookie(CookieKey.MUSIC_SWITCH, (res) => {
+			if (res == null) {
+				GM.cookie.setCookie(CookieKey.MUSIC_SWITCH, { "state": 1 });
+                Game.soundManager.setMusicVolume(1);
+                GM.musicState = 1;
+			}
+			else {
+                Game.soundManager.setMusicVolume(res.state);
+                GM.musicState = res.state;
+			}
+		});
+    }
+
+    static setSound():void
+    {
+        GM.cookie.getCookie(CookieKey.SOUND_SWITCH, (res) => {
+			if (res == null) {
+				GM.cookie.setCookie(CookieKey.SOUND_SWITCH, { "state": 1 });
+                Game.soundManager.setSoundVolume(1);
+                GM.soundState = 1;
+			}
+			else {
+                Game.soundManager.setSoundVolume(res.state);
+                GM.soundState = res.state;
+			}
+		});
+    }
+
+    static setShake():void
+    {
+        GM.cookie.getCookie(CookieKey.SHAKE_SWITCH, (res) => {
+			if (res == null) {
+                GM.cookie.setCookie(CookieKey.SHAKE_SWITCH, { "state": 1 });
+                GM.shakeState = 1;
+			}
+			else {
+                GM.shakeState = res.state;
+			}
+		});
+    }
+
+    static playMusic(musicUrl):void
+    {
+        if(GM.musicState == 1)
+        {
+            Game.soundManager.play(musicUrl,true);
+        }
+    }
+
+    static playSound(soundUrl:string):void
+    {
+        if(GM.soundState == 1)
+        {
+            Game.soundManager.play(soundUrl);
+        }
+    }
     
     static startGame():void
     {
@@ -53,6 +150,8 @@ export default class GM{
         let REG: Function = Laya.ClassUtils.regClass;
 		//界面
         REG(ViewID.main, MainView);
+        REG(ViewID.setting, SettingView);
+        REG(ViewID.cells, CellsView);
         //关卡
         let CLAS:any[] = [Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,Level_11,Level_12,Level_13,Level_14,Level_15,Level_16];
         let index:number = 1;

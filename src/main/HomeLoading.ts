@@ -39,15 +39,7 @@ export default class HomeLoading extends ui.loadingUI {
 
         GM.imgEffect.start();
         GM.viewManager.showView(ViewID.main);
-
-        Game.soundManager.play("bg.mp3",true);
-
-        // this.destroy(true);
-        this.removeSelf();
-        Laya.loader.clearRes("loading/loding.png");
-        Laya.loader.clearRes("loading/jiazaizhong.png");
-        Laya.loader.clearRes("loading/shuzi2.png");
+        GM.playMusic("bg.mp3");
+        this.destroy(true);
     }
-
-    
 }

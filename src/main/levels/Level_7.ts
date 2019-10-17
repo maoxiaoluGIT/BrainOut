@@ -72,7 +72,7 @@ export default class Level_7 extends BaseLevel{
             for(let i = 0; i < 4;i++)
             {
                 let img:Laya.Image = this.ui["item" + i];
-                if(img != sprite)
+                if(img.visible && img != sprite)
                 {
                     if(this.hit(sprite,img))
                     {

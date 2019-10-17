@@ -23,10 +23,11 @@ export default class Level_12 extends BaseLevel {
 
         for (let i = 0; i < 6; i++) {
             let itemImg: Laya.Box = this.ui["box" + i];
+            itemImg.tag = [];
             this.addEvent(itemImg, this.onClick);
             this.fontArr.push(this.ui["font" + i]);
 
-            this.posList.push([itemImg.x,itemImg.bottom]);
+            this.posList.push([itemImg.x,i < 3 ? 700 : 400]);
             this.boxList.push(itemImg);
         }
 
@@ -42,6 +43,7 @@ export default class Level_12 extends BaseLevel {
         })
         this.myAnswerArr.length = 0;
         for (let i = 0; i < this.boxList.length; i++) {
+            this.boxList[i].tag.length = 0;
             this.boxList[i].x = this.posList[i][0];
             this.boxList[i].bottom = this.posList[i][1];
             this.fontArr[i].removeSelf();
@@ -54,7 +56,20 @@ export default class Level_12 extends BaseLevel {
         let fc: Laya.FontClip = this.fontArr[this.clickCount - 1];
         fc.value = "" + this.clickCount;
         img.addChild(fc);
-        fc.pos(0,0);
+        img.tag.push(fc);
+        let arr:Laya.FontClip[] = img.tag;
+        for(let i = 0; i < arr.length; i++)
+        {
+            if(i < 3)
+            {
+                arr[i].pos(0,i * img.height / 3);
+            }
+            else
+            {
+                arr[i].pos(img.width - 40,(i - 3) * img.height / 3);
+            }
+        }
+        
         this.myAnswerArr.push(img.name);
         if (this.clickCount == 5)  {
             let bool1:boolean = this.myAnswerArr[0] == "caomei" || this.myAnswerArr[0] == "xiangjiao";

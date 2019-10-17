@@ -27,9 +27,8 @@ export default class InitView extends ui.initViewUI {
 	private onCom():void
 	{
 		Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
-		let config = Laya.loader.getRes("res/config.json");
-        GM.isConsoleLog = config.isConsoleLog;
-        
+        let config = Laya.loader.getRes("res/config.json");
+        GM.setConfig(config);
 		Laya.loader.clearRes("res/config.json");
 
 		if(!this._homeLoading)
