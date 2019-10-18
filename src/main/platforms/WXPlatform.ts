@@ -165,12 +165,15 @@ export default class WXPlatform extends BasePlatform {
     }
 
     shake(isRight: boolean): void  {
+        console.log("要震屏了");
         if (GM.shakeState == 1) {
             if (isRight)  {
                 Laya.Browser.window.wx.vibrateShort();
+                console.log("短的震屏");
             }
             else  {
                 Laya.Browser.window.wx.vibrateLong();
+                console.log("长的震屏");
             }
         }
     }
