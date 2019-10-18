@@ -33,6 +33,14 @@ export default class MainFace extends ui.mainuiUI {
     {
         this.titleTxt.text = sys.stageQuestion;
         this.dengjishuzi.value = "" + sys.id;
+        if(this.titleTxt.lines.length > 1)
+        {
+            this.titleTxt.align = "left";
+        }
+        else
+        {
+            this.titleTxt.align = "center";
+        }
     }
 
     private onClick(type:number):void

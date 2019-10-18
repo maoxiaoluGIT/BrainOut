@@ -1,7 +1,0 @@
-{
-  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport GM from \"../../GM\";\r\nexport default class RightView extends ui.shengliUI {\r\n    constructor() {\r\n        super();\r\n        this.on(Laya.Event.DISPLAY, this, this.onDis);\r\n        GM.imgEffect.addEffect(this.paishou, 2);\r\n    }\r\n    onDis() {\r\n    }\r\n}\r\n",
-  "references": [
-    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
-    "D:/BrainOutGame/BrainOut/src/main/GM.ts"
-  ]
-}

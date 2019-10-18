@@ -2,6 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
+    "selecteID":8,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -16,7 +17,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":17,
+    "maxID":19,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -47,62 +48,33 @@
             "props":{"y":333,"x":47,"width":656,"skin":"pubRes/fram_big.png","height":504},
             "nodeParent":2,
             "label":"Image",
-            "isDirectory":false,
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
+            "hasChild":true,
             "compId":5,
             "child":[
-                ],
+                {
+                    "x":30,
+                    "type":"Text",
+                    "searchKey":"Text,zi2",
+                    "props":{"y":334,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":"跳过此关需要5个钥匙，是否跳过？","height":118,"fontSize":46,"align":"center"},
+                    "nodeParent":5,
+                    "label":"zi2",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":8,
+                    "child":[
+                        ]
+                }],
             "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":545,"x":269,"width":201,"skin":"pubRes/top_yellow.png","sizeGrid":"0,86,0,87","height":87},
-            "nodeParent":2,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":6,
-            "child":[
-                ],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Text",
-            "searchKey":"Text,zi1",
-            "props":{"y":564,"x":317,"width":107,"var":"zi1","text":"跳过","height":50,"fontSize":46,"align":"center"},
-            "nodeParent":2,
-            "label":"zi1",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":7,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Text",
-            "searchKey":"Text,zi2",
-            "props":{"y":667,"x":106,"wordWrap":true,"width":539,"var":"zi2","text":"跳过此关需要5个钥匙，是否跳过？","height":110,"fontSize":46,"align":"center"},
-            "nodeParent":2,
-            "label":"zi2",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":8,
-            "child":[
-                ]
         },
         {
             "x":15,
             "type":"Image",
             "searchKey":"Image,cha",
-            "props":{"y":295,"x":638,"var":"cha","skin":"pubRes/ic_colse_1.png","anchorY":0.5,"anchorX":0.5},
+            "props":{"y":289,"x":638,"width":75,"var":"cha","skin":"pubRes/ic_colse_1.png","height":75,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"cha",
             "isDirectory":false,
@@ -195,6 +167,35 @@
                         }],
                     "$HIDDEN":false
                 }]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":541.5,"x":269,"width":214,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},
+            "nodeParent":2,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":17,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Text",
+                    "searchKey":"Text",
+                    "props":{"y":18,"x":53,"width":107,"text":"跳过","height":50,"fontSize":46,"align":"center"},
+                    "nodeParent":17,
+                    "label":"Text",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":18,
+                    "child":[
+                        ]
+                }],
+            "$HIDDEN":false
         }],
     "animations":[
         {

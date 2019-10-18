@@ -1,5 +1,6 @@
 import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
+import GM from "../GM";
 
 export default class Level_7 extends BaseLevel{
     private ui: ui.level7UI;
@@ -74,7 +75,7 @@ export default class Level_7 extends BaseLevel{
                 let img:Laya.Image = this.ui["item" + i];
                 if(img.visible && img != sprite)
                 {
-                    if(this.hit(sprite,img))
+                    if(GM.hit(sprite,img))
                     {
                         if(img.width > sprite.width)
                         {
@@ -90,12 +91,5 @@ export default class Level_7 extends BaseLevel{
                 }
             }
         }
-    }
-
-    private hit(b0:Laya.Sprite , b1:Laya.Sprite):boolean{
-        return b0.x < b1.x + b1.width &&
-        b0.x + b0.width > b1.x &&
-        b0.y < b1.y + b1.height &&
-        b0.y + b0.height > b1.y
     }
 }

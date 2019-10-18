@@ -31,17 +31,23 @@ import TestPlatform from "./platforms/TestPlatform";
 import WXCookie from "./gameCookie/WXCookie";
 import WXPlatform from "./platforms/WXPlatform";
 import CookieKey from "./gameCookie/CookieKey";
+import Level_17 from "./levels/Level_17";
+import Level_18 from "./levels/Level_18";
+import Level_19 from "./levels/Level_19";
+import Level_20 from "./levels/Level_20";
+import ImageEffect2 from "../core/utils/ImageEffect2";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.1839";
-    static resVer:string = "0.0.1.1839";
+    static codeVer:string = "0.0.1.101701";
+    static resVer:string = "0.0.1.101701";
     static userName:string;
     static platformId:number;
     static userHeadUrl:string;
     static isConsoleLog:number;
     static viewManager:ViewManager = new ViewManager();
     static imgEffect:ImageEffect = new ImageEffect();
+    static imgEffect2:ImageEffect2 = new ImageEffect2();
     static cookie:BaseCookie;
     static platform:BasePlatform;
     static musicState:number = 1;
@@ -126,6 +132,7 @@ export default class GM{
     {
         if(GM.soundState == 1)
         {
+            Laya.SoundManager.setSoundVolume( 1 );
             Game.soundManager.play(soundUrl);
         }
     }
@@ -153,12 +160,21 @@ export default class GM{
         REG(ViewID.setting, SettingView);
         REG(ViewID.cells, CellsView);
         //关卡
-        let CLAS:any[] = [Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,Level_11,Level_12,Level_13,Level_14,Level_15,Level_16];
+        let CLAS:any[] = [
+            Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,
+            Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
         {
             REG(index, CLAS[i]);
             index++;
         }
+    }
+
+    static hit(b0:Laya.Sprite , b1:Laya.Sprite):boolean{
+        return b0.x < b1.x + b1.width &&
+        b0.x + b0.width > b1.x &&
+        b0.y < b1.y + b1.height &&
+        b0.y + b0.height > b1.y
     }
 }

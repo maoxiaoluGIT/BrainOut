@@ -18,5 +18,13 @@ export default class TipsView extends ui.tishiUI{
     setTips(sys:SysTitles):void
     {
         this.zi2.text = sys.stageTips;
+        if(this.zi2.lines.length > 1)
+        {
+            this.zi2.align = "left";
+        }
+        else
+        {
+            this.zi2.align = "center";
+        }
     }
 }

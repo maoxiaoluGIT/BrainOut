@@ -8,9 +8,9 @@ export default class GameConfig{
     static height:number=1334;
     static scaleMode:string="fixedwidth";
     static screenMode:string="none";
-    static alignV:string="middle";
-    static alignH:string="center";
-    static startScene:any="level12.scene";
+    static alignV:string="top";
+    static alignH:string="left";
+    static startScene:any="initView.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=false;

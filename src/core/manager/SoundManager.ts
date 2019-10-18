@@ -6,7 +6,7 @@ import GameSoundManager from "./GameSoundManager";
 */
 export default class SoundManager{
     public pre:string = "";
-    private _sm:GameSoundManager = new GameSoundManager();
+    // private _sm:GameSoundManager = new GameSoundManager();
     constructor(){
     }
 
@@ -30,19 +30,19 @@ export default class SoundManager{
         this.soundName = soundName;
         this.isMusic = isMusic;
         var url:string = this.pre + soundName;
-        if( isMusic ){
-            this._sm.playBgm( url );
-        }else{
-            this._sm.playEffect( url );
+        // if( isMusic ){
+        //     this._sm.playBgm( url );
+        // }else{
+        //     this._sm.playEffect( url );
+        // }
+        if(Laya.loader.getRes(url))
+        {
+            this.onLoadCom(url,isMusic);
         }
-        // if(Laya.loader.getRes(url))
-        // {
-        //     this.onLoadCom(url,isMusic);
-        // }
-        // else
-        // {
-        //     Laya.loader.load(url,new Laya.Handler(this,this.onLoadCom,[url,isMusic]));
-        // }
+        else
+        {
+            Laya.loader.load(url,new Laya.Handler(this,this.onLoadCom,[url,isMusic]));
+        }
     }
 
     private onLoadCom(url,isMusic):void

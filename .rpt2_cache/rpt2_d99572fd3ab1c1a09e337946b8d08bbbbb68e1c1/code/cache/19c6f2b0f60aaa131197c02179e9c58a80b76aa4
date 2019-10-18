@@ -1,9 +1,0 @@
-{
-  "code": "import GameConfig from \"./GameConfig\";\r\nimport GameMain from \"./main/GameMain\";\r\nimport Game from \"./core/Game\";\r\nimport { ui } from \"./ui/layaMaxUI\";\r\nclass Main {\r\n    constructor() {\r\n        Laya.init(GameConfig.width, GameConfig.height, Laya[\"WebGL\"]);\r\n        Laya.stage.scaleMode = GameConfig.scaleMode;\r\n        Laya.stage.screenMode = GameConfig.screenMode;\r\n        Laya.stage.alignV = GameConfig.alignV;\r\n        Laya.stage.alignH = GameConfig.alignH;\r\n        Laya.stage.bgColor = \"#ffffff\";\r\n        Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;\r\n        if (GameConfig.stat)\r\n            Laya.Stat.show();\r\n        Game.init();\r\n        Game.layerManager.graphics.drawRect(0, 0, GameConfig.width, GameConfig.height, \"#fff000\");\r\n        this._initView = new ui.initViewUI();\r\n        Game.layerManager.addChild(this._initView);\r\n        this._initView.txt.text = \"0%\";\r\n        Laya.loader.load([\"res/config.json\"], Laya.Handler.create(this, this.onCom), new Laya.Handler(this, this.onProgress));\r\n    }\r\n    onProgress(value) {\r\n        value = value * 100;\r\n        this._initView.txt.text = value + \"%\";\r\n    }\r\n    onCom() {\r\n        let config = Laya.loader.getRes(\"res/config.json\");\r\n        Game.isConsoleLog = config.isConsoleLog;\r\n        GameMain.onStart();\r\n    }\r\n}\r\nnew Main();\r\n",
-  "references": [
-    "D:/BrainOutGame/BrainOut/src/GameConfig.ts",
-    "D:/BrainOutGame/BrainOut/src/main/GameMain.ts",
-    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
-    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts"
-  ]
-}

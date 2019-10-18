@@ -36,7 +36,7 @@ export default class MainView extends ui.mainViewUI {
 
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
 
-        this.showLevel(12);
+        this.showLevel(1);
     }
 
     private onMouseDown():void
@@ -105,7 +105,6 @@ export default class MainView extends ui.mainViewUI {
         }
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
-
-        
+        Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");
     }
 }

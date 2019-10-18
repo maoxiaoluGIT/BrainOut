@@ -20,6 +20,6 @@ export default class Level_15 extends BaseLevel{
 
     private onClick(box:Laya.Sprite):void
     {
-        this.setAnswer(box,box == this.ui.targetBox);
+        this.setAnswer(this.ui.rightBox,box == this.ui.targetBox);
     }
 }

@@ -1,4 +1,4 @@
-export default class ImageEffect{
+export default class ImageEffect2{
 
     private arr:EffectVO[] = [];
     constructor() {
@@ -7,7 +7,13 @@ export default class ImageEffect{
 
     start():void
     {
-        Laya.timer.loop(300,this,this.onUpdate);
+        Laya.timer.loop(200,this,this.onUpdate);
+        this.onUpdate();
+    }
+
+    clear():void
+    {
+        Laya.timer.clear(this,this.onUpdate);
     }
 
     private onUpdate():void
@@ -21,6 +27,10 @@ export default class ImageEffect{
         {
             vo = this.arr[i];
             img = vo.spr;
+            if(img.tag && img.tag == 1)
+            {
+                continue;
+            }
             arr1 = img.skin.split(".");//pubRes/ic_setting_1.png
             if(arr1.length == 2)
             {

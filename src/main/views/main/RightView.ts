@@ -28,11 +28,24 @@ export default class RightView extends ui.shengliUI{
     {
         Laya.MouseManager.enabled = true;
         GM.playSound("win.mp3");
+        let max:number = 1500;
+        Laya.timer.loop(1,this,()=>{
+            max--;
+            Laya.SoundManager.setSoundVolume(max/1500);
+        });
     }
 
     setWin(sys:SysTitles):void
     {
         this.zi2.text = sys.stageWin;
+        if(this.zi2.lines.length > 1)
+        {
+            this.zi2.align = "left";
+        }
+        else
+        {
+            this.zi2.align = "center";
+        }
     }
 
 

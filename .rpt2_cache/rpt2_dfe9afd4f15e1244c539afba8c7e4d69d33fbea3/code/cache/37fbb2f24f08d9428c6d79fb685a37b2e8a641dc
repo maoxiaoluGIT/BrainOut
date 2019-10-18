@@ -1,8 +1,0 @@
-{
-  "code": "import Game from \"../../core/Game\";\r\nimport GameEvent from \"../GameEvent\";\r\nimport SysTitles from \"../sys/SysTitles\";\r\nexport default class BaseLevel extends Laya.Box {\r\n    constructor() {\r\n        super();\r\n    }\r\n    onInit() {\r\n    }\r\n    refresh() {\r\n    }\r\n    onRight() {\r\n        Game.eventManager.event(GameEvent.SHOW_RIGHT, this.sys);\r\n    }\r\n    onShow(level, parentBox) {\r\n        this.sys = Game.tableManager.getDataByNameAndId(SysTitles.NAME, level);\r\n        parentBox && parentBox.addChild(this);\r\n        Laya.loader.load(\"res/atlas/guanqia/\" + level + \".atlas\", Laya.Handler.create(this, this.onInit));\r\n    }\r\n}\r\n",
-  "references": [
-    "D:/BrainOutGame/BrainOut/src/core/Game.ts",
-    "D:/BrainOutGame/BrainOut/src/main/GameEvent.ts",
-    "D:/BrainOutGame/BrainOut/src/main/sys/SysTitles.ts"
-  ]
-}

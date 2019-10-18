@@ -1,9 +1,0 @@
-{
-  "code": "import BaseLevel from \"./BaseLevel\";\r\nimport { ui } from \"../../ui/layaMaxUI\";\r\nimport RightIcon from \"./RightIcon\";\r\nimport WrongIcon from \"./WrongIcon\";\r\nexport default class Level_1 extends BaseLevel {\r\n    constructor() { super(); }\r\n    onInit() {\r\n        if (this.isInit) {\r\n            return;\r\n        }\r\n        this.ui = new ui.level1UI();\r\n        this.addChild(this.ui);\r\n        this.addEvent(this.ui.big, this.onClickBig);\r\n        this.addEvent(this.ui.small0, this.onClickSmall);\r\n        this.addEvent(this.ui.small1, this.onClickSmall);\r\n        this.addEvent(this.ui.small2, this.onClickSmall);\r\n        this.isInit = true;\r\n    }\r\n    addEvent(img, func) {\r\n        img.on(Laya.Event.CLICK, this, func, [img]);\r\n    }\r\n    onClickBig(img) {\r\n        RightIcon.ins.add(img);\r\n        Laya.MouseManager.enabled = false;\r\n        Laya.timer.once(500, this, this.onRight);\r\n    }\r\n    onClickSmall(img) {\r\n        WrongIcon.ins.add(img);\r\n    }\r\n}\r\n",
-  "references": [
-    "D:/BrainOutGame/BrainOut/src/main/levels/BaseLevel.ts",
-    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
-    "D:/BrainOutGame/BrainOut/src/main/levels/RightIcon.ts",
-    "D:/BrainOutGame/BrainOut/src/main/levels/WrongIcon.ts"
-  ]
-}

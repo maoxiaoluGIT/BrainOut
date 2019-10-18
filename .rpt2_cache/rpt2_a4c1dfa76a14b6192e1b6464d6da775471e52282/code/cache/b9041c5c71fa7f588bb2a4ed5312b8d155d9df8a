@@ -1,8 +1,0 @@
-{
-  "code": "import { ui } from \"../../../ui/layaMaxUI\";\r\nimport GM from \"../../GM\";\r\nexport default class TipsView extends ui.tishiUI {\r\n    constructor() {\r\n        super();\r\n        GM.imgEffect.addEffect(this.cha);\r\n        this.cha.on(Laya.Event.CLICK, this, this.onClose);\r\n    }\r\n    onClose() {\r\n        this.removeSelf();\r\n    }\r\n    setTips(sys) {\r\n        this.zi2.text = sys.stageTips;\r\n    }\r\n}\r\n",
-  "references": [
-    "D:/BrainOutGame/BrainOut/src/ui/layaMaxUI.ts",
-    "D:/BrainOutGame/BrainOut/src/main/sys/SysTitles.ts",
-    "D:/BrainOutGame/BrainOut/src/main/GM.ts"
-  ]
-}
