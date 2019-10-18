@@ -33,6 +33,8 @@ export default class Level_19 extends BaseLevel{
             let img = this.ui["item" + i];
             img.pos(img.tag[0],img.tag[1]);
         }
+        this.ui.meatImg.visible = false;
+        this.ui.item4.visible = true;
     }
 
     onDown(sprite: Laya.Sprite):void
@@ -51,7 +53,9 @@ export default class Level_19 extends BaseLevel{
         }
         if(GM.hit(sprite,this.ui.item0))
         {
-            this.setAnswer(sprite,true);
+            this.setAnswer(this.ui.item0,true);
+            sprite.visible = false;
+            this.ui.meatImg.visible = true;
             return;
         }
         this.setAnswer(sprite,false);
