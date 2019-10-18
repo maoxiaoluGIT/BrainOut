@@ -1,23 +1,24 @@
 import { BasePlatform } from "./BasePlatform";
 import GM from "../GM";
+import Game from "../../core/Game";
+import GameEvent from "../GameEvent";
 
 export default class WXPlatform extends BasePlatform {
     constructor() { super(); }
 
-    private tag: number = 0;
     checkUpdate(): void {
         Laya.Browser.window.wx.setKeepScreenOn({
             keepScreenOn: true
         });
 
         if (Laya.Browser.window.wx.getUpdateManager) {
-            console.log("基础库 1.9.90 开始支持，低版本需做兼容处理");
+            GM.log("基础库 1.9.90 开始支持，低版本需做兼容处理");
             const updateManager = Laya.Browser.window.wx.getUpdateManager();
             updateManager.onCheckForUpdate(function (result) {
                 if (result.hasUpdate) {
-                    console.log("有新版本");
+                    GM.log("有新版本");
                     updateManager.onUpdateReady(function () {
-                        console.log("新的版本已经下载好");
+                        GM.log("新的版本已经下载好");
                         Laya.Browser.window.wx.showModal({
                             title: '更新提示',
                             content: '新版本已经下载，是否重启？',
@@ -29,7 +30,7 @@ export default class WXPlatform extends BasePlatform {
                         });
                     });
                     updateManager.onUpdateFailed(function () {
-                        console.log("新的版本下载失败");
+                        GM.log("新的版本下载失败");
                         Laya.Browser.window.wx.showModal({
                             title: '已经有新版本了',
                             content: '新版本已经上线啦，请您删除当前小游戏，重新搜索打开'
@@ -37,17 +38,29 @@ export default class WXPlatform extends BasePlatform {
                     });
                 }
                 else {
-                    console.log("没有新版本");
+                    GM.log("没有新版本");
                 }
             });
         }
         else {
-            console.log("有更新肯定要用户使用新版本，对不支持的低版本客户端提示");
+            GM.log("有更新肯定要用户使用新版本，对不支持的低版本客户端提示");
             Laya.Browser.window.wx.showModal({
                 title: '温馨提示',
                 content: '当前微信版本过低，无法使用该应用，请升级到最新微信版本后重试。'
             });
         }
+
+        Laya.Browser.window.wx.onShow(res => {
+            Game.eventManager.event(GameEvent.WX_ON_SHOW);
+        });
+
+        Laya.Browser.window.wx.onHide(res => {
+            Game.eventManager.event(GameEvent.WX_ON_HIDE);
+        });
+
+        Laya.Browser.window.wx.onError(res => {
+            res.message, res.stack
+        });
     }
 
     login(callback): void {
@@ -62,10 +75,9 @@ export default class WXPlatform extends BasePlatform {
     }
 
     private userBtn;
-    getUserInfo(callback): void  {
-        if(this.userBtn)
-        {
-           return; 
+    getUserInfo(callback): void {
+        if (this.userBtn)  {
+            return;
         }
         this.userBtn = Laya.Browser.window.wx.createUserInfoButton(
             {
@@ -150,19 +162,16 @@ export default class WXPlatform extends BasePlatform {
             destWidth: 500,
             destHeight: 400
         });
+    }
 
-        Laya.Browser.window.wx.onShow(res => {
-            console.log("onShow", this.tag);
-            if (this.tag == 1000) {
-                Laya.Browser.window.wx.offShow();
-                Laya.Browser.window.wx.offHide();
-                this.tag = -1;
+    shake(isRight: boolean): void  {
+        if (GM.shakeState == 1) {
+            if (isRight)  {
+                Laya.Browser.window.wx.vibrateShort();
             }
-        });
-
-        Laya.Browser.window.wx.onHide(res => {
-            this.tag = 1000;
-            console.log("onHide");
-        });
+            else  {
+                Laya.Browser.window.wx.vibrateLong();
+            }
+        }
     }
 }

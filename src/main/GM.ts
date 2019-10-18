@@ -39,12 +39,14 @@ import ImageEffect2 from "../core/utils/ImageEffect2";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.101701";
-    static resVer:string = "0.0.1.101701";
-    static userName:string;
-    static platformId:number;
-    static userHeadUrl:string;
+    static codeVer:string = "0.0.1.101801";
+    static resVer:string = "0.0.1.101801";
     static isConsoleLog:number;
+    static platformId:number;
+    static serverIP:string;
+
+    static userName:string;
+    static userHeadUrl:string;
     static viewManager:ViewManager = new ViewManager();
     static imgEffect:ImageEffect = new ImageEffect();
     static imgEffect2:ImageEffect2 = new ImageEffect2();
@@ -59,8 +61,8 @@ export default class GM{
 
     static setConfig(config):void
     {
-        GM.isConsoleLog = config.isConsoleLog;
         GM.platformId = config.platformId;
+        GM.serverIP = config.platforms[GM.platformId];
 
         if(config.platformId == PlatformID.TEST)
         {
@@ -142,12 +144,9 @@ export default class GM{
         Game.layerManager.addChild(new InitView());
     }
 
-    static log(message?: any, ...optionalParams: any[]):void
+    static log(message):void
     {
-        if(GM.isConsoleLog == 1)
-        {
-            console.log(message,optionalParams);
-        }
+        console.log("%c" + message, "color:green");
     }
 
     static onReg():void

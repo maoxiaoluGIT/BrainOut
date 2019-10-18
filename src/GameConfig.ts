@@ -10,7 +10,7 @@ export default class GameConfig{
     static screenMode:string="none";
     static alignV:string="top";
     static alignH:string="left";
-    static startScene:any="level19.scene";
+    static startScene:any="xuanguan2.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=false;

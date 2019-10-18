@@ -4,6 +4,7 @@ import SysTitles from "../../sys/SysTitles";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import { ViewID } from "../ViewID";
+import Session from "../../sessions/Session";
 
 export default class MainFace extends ui.mainuiUI {
     constructor() { 
@@ -22,11 +23,23 @@ export default class MainFace extends ui.mainuiUI {
         this.jinyaoshi.on(Laya.Event.CLICK,this,this.onTips);
 
         this.mouseThrough = true;
+
+        this.updateKeyNum();
+
+        Game.eventManager.on(GameEvent.UPDATE_KEY_NUM,this,this.updateKeyNum);
+    }
+
+    private updateKeyNum():void
+    {
+        this.yaoshishu.text = "" + Session.gameData.keyNum;
     }
 
     private onTips():void
     {
-        Game.eventManager.event(GameEvent.SHOW_TIPS);
+        if(Session.gameData.keyNum > 0)
+        {
+            Game.eventManager.event(GameEvent.SHOW_TIPS);
+        }
     }
 
     setTitle(sys:SysTitles):void
@@ -59,7 +72,7 @@ export default class MainFace extends ui.mainuiUI {
         }
         else if(type == 4)
         {
-            //快进
+            Game.eventManager.event(GameEvent.SKIP_CUR);//快进
         }
     }
 }

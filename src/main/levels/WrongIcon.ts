@@ -20,5 +20,7 @@ export default class WrongIcon extends ui.wrongIconUI{
         t.play();
 
         GM.playSound("wrong.mp3");
+
+        GM.platform.shake(false);
     }
 }

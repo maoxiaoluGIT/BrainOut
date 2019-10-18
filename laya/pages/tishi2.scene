@@ -15,7 +15,7 @@
             "type":1,
             "id":2
         }],
-    "props":{"width":750,"sceneColor":"#ffffff","height":1334},
+    "props":{"y":667,"x":375,"width":750,"sceneColor":"#ffffff","height":1334,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "maxID":19,
     "label":"View",
@@ -58,7 +58,7 @@
                     "x":30,
                     "type":"Text",
                     "searchKey":"Text,zi2",
-                    "props":{"y":334,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":"跳过此关需要5个钥匙，是否跳过？","height":118,"fontSize":46,"align":"center"},
+                    "props":{"y":334,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":"跳过此关需要2个钥匙，是否跳过？","height":118,"fontSize":46,"align":"center"},
                     "nodeParent":5,
                     "label":"zi2",
                     "isDirectory":false,

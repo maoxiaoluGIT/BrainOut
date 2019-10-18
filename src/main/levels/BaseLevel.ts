@@ -8,6 +8,7 @@ import GameConfig from "../../GameConfig";
 export default class BaseLevel extends Laya.Box{
     isInit:boolean;
     sys:SysTitles;
+    curLevel:number;
     constructor(){
         super();
     }
@@ -66,8 +67,18 @@ export default class BaseLevel extends Laya.Box{
 
     onShow(level:number,parentBox:Laya.Sprite):void
     {
+        this.curLevel = level;
         this.sys = Game.tableManager.getDataByNameAndId(SysTitles.NAME,level);
         parentBox && parentBox.addChild(this);
         Laya.loader.load("res/atlas/guanqia/" + level + ".atlas",Laya.Handler.create(this,this.onInit));
+    }
+
+    onClear():void
+    {
+        if(this.curLevel > 0)
+        {
+            Laya.loader.clearRes("res/atlas/guanqia/" + this.curLevel + ".atlas");
+            Laya.loader.clearTextureRes("res/atlas/guanqia/" + this.curLevel + ".atlas");
+        }
     }
 }

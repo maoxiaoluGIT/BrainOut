@@ -3,4 +3,5 @@ export abstract  class BasePlatform{
     abstract getUserInfo(callback):void;
     abstract login(callback):void;
     abstract onShare(callback):void;
+    abstract shake(isRight:boolean):void;
 }

@@ -1,5 +1,6 @@
 import { BasePlatform } from "./BasePlatform";
 import CookieKey from "../gameCookie/CookieKey";
+import Session from "../sessions/Session";
 
 export default class TestPlatform extends BasePlatform{
     checkUpdate():void
@@ -10,7 +11,7 @@ export default class TestPlatform extends BasePlatform{
     login(callback):void
     {
         // callback && callback("" + Date.now());
-        callback && callback("shfdsaomghjgai123fdafda456");
+        callback && callback(Session.SKEY);
     }
 
     private cb;
@@ -35,5 +36,9 @@ export default class TestPlatform extends BasePlatform{
     onShare(callback):void
     {
         callback && callback();
+    }
+
+    shake(isRight:boolean):void
+    {
     }
 }

@@ -19,5 +19,10 @@ export default class ViewManager{
         curView = this.allView[viewId];
         Game.layerManager.viewLayer.removeChildren();
         Game.layerManager.viewLayer.addChild(curView);
+        if(viewId == ViewID.setting)
+        {
+            curView.x = -750;
+            Laya.Tween.to(curView,{x : 0},300);
+        }
     }
 }

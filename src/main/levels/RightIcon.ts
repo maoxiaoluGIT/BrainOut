@@ -19,5 +19,7 @@ export default class RightIcon extends ui.rightIconUI{
         t.play();
 
         GM.playSound("right.mp3");
+
+        GM.platform.shake(true);
     }
 }

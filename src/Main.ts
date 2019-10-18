@@ -18,9 +18,8 @@ class Main {
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 		if (GameConfig.stat) Laya.Stat.show();
 
-
-		console.log("代码版本",GM.codeVer);
-		console.log("资源版本",GM.resVer);
+		GM.log("code version:" + GM.codeVer);
+		GM.log("res version:" + GM.resVer);
 		if (Laya.Browser.window.wx) {
 			Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
 			Laya.MiniAdpter.nativefiles = GM.nativefiles;
