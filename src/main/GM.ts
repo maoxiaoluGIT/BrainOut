@@ -37,6 +37,15 @@ import Level_19 from "./levels/Level_19";
 import Level_20 from "./levels/Level_20";
 import ImageEffect2 from "../core/utils/ImageEffect2";
 import Level_21 from "./levels/Level_21";
+import Level_22 from "./levels/Level_22";
+import Level_23 from "./levels/Level_23";
+import Level_24 from "./levels/Level_24";
+import Level_25 from "./levels/Level_25";
+import Level_26 from "./levels/Level_28";
+import Level_27 from "./levels/Level_27";
+import Level_28 from "./levels/Level_28";
+import Level_29 from "./levels/Level_29";
+import Level_30 from "./levels/Level_30";
 
 /**游戏总管理 */
 export default class GM{
@@ -163,7 +172,7 @@ export default class GM{
         let CLAS:any[] = [
             Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,
             Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20,
-            Level_21,
+            Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)

@@ -2,10 +2,8 @@ import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
 import GM from "../GM";
 
-export default class Level_23 extends BaseLevel {
-    private ui: ui.level23UI;
-    static startStr: string = "开始";
-    static moveStr: string = "前进";
+export default class Level_30 extends BaseLevel {
+    private ui: ui.level30UI;
 
     constructor() { super(); }
 
@@ -13,16 +11,14 @@ export default class Level_23 extends BaseLevel {
         if (this.isInit) {
             return;
         }
-        this.ui = new ui.level23UI();
+        this.ui = new ui.level30UI();
         this.addChild(this.ui);
         this.isInit = true;
-
 
         this.refresh();
     }
 
     refresh(): void {
-        Laya.MouseManager.multiTouchEnabled = true;
         Laya.MouseManager.enabled = true;
         super.refresh();
     }

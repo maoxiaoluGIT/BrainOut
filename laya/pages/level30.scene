@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":72,
+    "selecteID":76,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":75,
+    "maxID":77,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -16,15 +16,43 @@
     "child":[
         {
             "x":15,
-            "type":"Sprite",
-            "searchKey":"Sprite",
-            "props":{"y":364,"x":20,"width":707,"texture":"guanqia/30/meidian.png","height":715,"alpha":1},
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":364,"x":20,"width":707,"skin":"guanqia/30/meidian.png","height":715,"alpha":1},
             "nodeParent":2,
-            "label":"Sprite",
+            "label":"Image",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":74,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item0",
+            "props":{"y":721.5,"x":358,"width":50,"var":"item0","height":50},
+            "nodeParent":2,
+            "label":"item0",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":75,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item1",
+            "props":{"y":923,"x":587,"width":50,"var":"item1","height":50},
+            "nodeParent":2,
+            "label":"item1",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":76,
             "child":[
                 ]
         }],

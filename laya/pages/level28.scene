@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":62,
+    "selecteID":67,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":67,
+    "maxID":68,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -17,10 +17,10 @@
         {
             "x":15,
             "type":"Button",
-            "searchKey":"Button,nextBtn",
-            "props":{"y":1021,"x":137.5,"width":475,"var":"nextBtn","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"0,120,0,118","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},
+            "searchKey":"Button,sureBtn",
+            "props":{"y":1021,"x":137.5,"width":475,"var":"sureBtn","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"0,120,0,118","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},
             "nodeParent":2,
-            "label":"nextBtn",
+            "label":"sureBtn",
             "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
@@ -68,6 +68,20 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":66,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,rightBox",
+            "props":{"y":928,"x":380,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"rightBox",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":67,
             "child":[
                 ]
         }],

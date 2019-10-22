@@ -28,7 +28,6 @@ export default class Level_21 extends BaseLevel {
     }
 
     refresh(): void {
-        Laya.MouseManager.multiTouchEnabled = true;
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.ui.closeImg.visible = true;

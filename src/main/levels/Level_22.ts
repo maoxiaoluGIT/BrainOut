@@ -4,8 +4,6 @@ import GM from "../GM";
 
 export default class Level_22 extends BaseLevel {
     private ui: ui.level22UI;
-    static startStr: string = "开始";
-    static moveStr: string = "前进";
 
     constructor() { super(); }
 
@@ -17,13 +15,19 @@ export default class Level_22 extends BaseLevel {
         this.addChild(this.ui);
         this.isInit = true;
 
-
+        this.ui.sureBtn.clickHandler = new Laya.Handler(this,this.onSure);
         this.refresh();
     }
 
-    refresh(): void {
-        Laya.MouseManager.multiTouchEnabled = true;
+    refresh():void
+    {
         Laya.MouseManager.enabled = true;
         super.refresh();
+        this.ui.shuru.text = "";
+    }
+
+    private onSure():void
+    {
+        this.setAnswer(this.ui.rightBox,this.ui.shuru.text.toLowerCase() == "cd");
     }
 }

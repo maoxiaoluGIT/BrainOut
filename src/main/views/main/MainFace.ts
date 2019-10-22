@@ -54,6 +54,8 @@ export default class MainFace extends ui.mainuiUI {
         {
             this.titleTxt.align = "center";
         }
+
+        this.titleTxt.visible = sys.id != 29;
     }
 
     private onClick(type:number):void
