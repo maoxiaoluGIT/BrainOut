@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":138,
+    "selecteID":139,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -192,7 +192,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,nextBtn",
-            "props":{"y":1040,"x":484,"width":254,"var":"nextBtn","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"0,123,0,127","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"跳","height":95},
+            "props":{"y":1087,"x":611,"width":254,"var":"nextBtn","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"0,123,0,127","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"跳","height":95,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"nextBtn",
             "isOpen":true,
