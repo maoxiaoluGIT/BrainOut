@@ -1,4 +1,5 @@
 <page>
    <item name="test/TestScene.scene" props="" ifExport="分离模式" aName=""/>
    <item name="KeyIcon.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="level21.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

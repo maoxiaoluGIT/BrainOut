@@ -2,7 +2,7 @@ import GM from "../GM";
 import SenderHttp from "../net/SenderHttp";
 
 export default class Session{
-    static SKEY:string = "ntx03";
+    static SKEY:string = "ntx04";
     static gameData:any = {};
 
     static userData:any = {};
