@@ -237,6 +237,25 @@ export module ui {
         }
     }
     REG("ui.level20UI",level20UI);
+    export class level21UI extends View {
+		public box:Laya.Box;
+		public ren:Laya.Image;
+		public closeImg:Laya.Image;
+		public btn:Laya.Box;
+		public openImg:Laya.Box;
+		public eatImg:Laya.Image;
+		public gou:Laya.Image;
+		public headBox:Laya.Box;
+		public shitImg:Laya.Image;
+		public ringImg:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":340,"x":0,"width":750,"visible":false,"var":"box","height":1000,"bgColor":"#e37373"},"compId":17},{"type":"Image","props":{"y":305,"x":41,"width":666,"var":"ren","skin":"guanqia/21/pic_12_1.png","height":658},"compId":14},{"type":"Image","props":{"y":886,"x":526,"width":180,"var":"closeImg","skin":"guanqia/21/pic_12_2.png","height":180},"compId":15,"child":[{"type":"Box","props":{"y":56,"x":36,"width":54,"var":"btn","height":44},"compId":18}]},{"type":"Box","props":{"y":921.5,"x":566.5,"width":99,"var":"openImg","height":64},"compId":24,"child":[{"type":"Image","props":{"y":-74,"x":-30,"width":180,"skin":"guanqia/21/pic_12_3.png","height":180},"compId":19}]},{"type":"Image","props":{"y":907,"x":180,"width":246,"var":"eatImg","skin":"guanqia/21/pic_12_5.png","height":233},"compId":23},{"type":"Image","props":{"y":933,"x":190,"width":180,"var":"gou","skin":"guanqia/21/pic_12_6.png","height":180},"compId":16},{"type":"Box","props":{"y":963,"x":316,"width":55,"var":"headBox","height":45},"compId":20},{"type":"Image","props":{"y":1066,"x":65,"var":"shitImg","skin":"guanqia/21/pic_shit.png"},"compId":22,"child":[{"type":"Image","props":{"y":-64,"x":44,"var":"ringImg","skin":"guanqia/21/pic_12_4.png"},"compId":21}]}],"loadList":["guanqia/21/pic_12_1.png","guanqia/21/pic_12_2.png","guanqia/21/pic_12_3.png","guanqia/21/pic_12_5.png","guanqia/21/pic_12_6.png","guanqia/21/pic_shit.png","guanqia/21/pic_12_4.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level21UI.uiView);
+        }
+    }
+    REG("ui.level21UI",level21UI);
     export class level3UI extends View {
 		public item4:Laya.Image;
 		public item3:Laya.Image;
