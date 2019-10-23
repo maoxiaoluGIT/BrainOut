@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":124,
+    "selecteID":133,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":126,
+    "maxID":134,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -16,45 +16,87 @@
     "child":[
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":226,"x":329,"width":109,"skin":"guanqia/34/pic_7_4.png","height":101},
+            "type":"Box",
+            "searchKey":"Box,box",
+            "props":{"y":133,"width":750,"visible":false,"var":"box","height":466,"bgColor":"#e37373"},
             "nodeParent":2,
-            "label":"Image",
+            "label":"box",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":125,
+            "compId":129,
             "child":[
                 ]
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,yun1",
-            "props":{"y":164,"x":271,"width":225,"var":"yun1","skin":"guanqia/34/3_pic_20_5.png","height":225},
+            "type":"Box",
+            "searchKey":"Box,sunImg",
+            "props":{"y":249,"x":347,"width":66,"var":"sunImg","height":69},
             "nodeParent":2,
-            "label":"yun1",
-            "isDirectory":false,
+            "label":"sunImg",
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":119,
+            "hasChild":true,
+            "compId":133,
             "child":[
-                ]
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-16,"x":-22,"width":109,"skin":"guanqia/34/pic_7_4.png","height":101},
+                    "nodeParent":133,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":125,
+                    "child":[
+                        ]
+                }]
         },
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,yun2",
-            "props":{"y":216,"x":93,"width":152,"var":"yun2","skin":"guanqia/34/3_pic_20_5.png","height":152},
+            "searchKey":"Image,item1",
+            "props":{"y":216,"x":93,"width":152,"var":"item1","skin":"guanqia/34/3_pic_20_5.png","height":152},
             "nodeParent":2,
-            "label":"yun2",
+            "label":"item1",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":120,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item0",
+            "props":{"y":214.5,"x":277.5,"width":195,"var":"item0","height":138},
+            "nodeParent":2,
+            "label":"item0",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":128,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-44,"x":-15,"width":225,"skin":"guanqia/34/3_pic_20_5.png","height":225},
+                    "nodeParent":128,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":119,
+                    "child":[
+                        ]
+                }]
         },
         {
             "x":15,
@@ -75,7 +117,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,che",
-            "props":{"y":701,"x":3,"width":205,"var":"che","skin":"guanqia/34/3_pic_14_3.png","height":102},
+            "props":{"y":701,"x":208,"width":205,"var":"che","skin":"guanqia/34/3_pic_14_3.png","height":102,"anchorX":1},
             "nodeParent":2,
             "label":"che",
             "isDirectory":false,
@@ -88,28 +130,88 @@
         {
             "x":15,
             "type":"Image",
+            "searchKey":"Image,bing2",
+            "props":{"y":711,"x":312,"width":256,"var":"bing2","skin":"guanqia/34/3_pic_20_3.png","height":128},
+            "nodeParent":2,
+            "label":"bing2",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":132,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
             "searchKey":"Image,bing",
-            "props":{"y":673,"x":247,"width":353,"var":"bing","skin":"guanqia/34/3_pic_20_2.png","height":176},
+            "props":{"y":703,"x":312,"width":256,"var":"bing","skin":"guanqia/34/3_pic_20_2.png","height":128},
             "nodeParent":2,
             "label":"bing",
+            "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":123,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":617,"x":568,"width":179,"skin":"guanqia/34/3_pic_20_4.png","height":179},
+            "searchKey":"Image,pai",
+            "props":{"y":617,"x":657,"width":179,"var":"pai","skin":"guanqia/34/3_pic_20_4.png","height":179,"anchorX":0.5},
             "nodeParent":2,
-            "label":"Image",
+            "label":"pai",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":124,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item2",
+            "props":{"y":259,"x":383,"width":678,"var":"item2","rotation":0,"height":49,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item2",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":126,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Text",
+                    "searchKey":"Text",
+                    "props":{"wordWrap":true,"width":678,"text":"把车开到路标旁","height":96,"fontSize":46,"align":"center"},
+                    "nodeParent":126,
+                    "label":"Text",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":127,
+                    "child":[
+                        ]
+                }],
+            "$LOCKED":false
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,rightBox",
+            "props":{"y":671,"x":383.5,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"rightBox",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":130,
             "child":[
                 ]
         }],

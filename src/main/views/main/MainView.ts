@@ -12,6 +12,7 @@ import TipsView from "./TipsView";
 import Session from "../../sessions/Session";
 import SkipView from "./SkipView";
 import KeyIcon from "./KeyIcon";
+import GM from "../../GM";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
@@ -122,6 +123,10 @@ export default class MainView extends ui.mainViewUI {
         }
         
         this.curLv = lv;
+        if(this.curLv > GM.indexNum)
+        {
+            this.curLv = 1;
+        }
         // this.curView = this._viewMap[lv];
         // if(!this.curView)
         // {

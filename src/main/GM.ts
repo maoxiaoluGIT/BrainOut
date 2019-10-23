@@ -46,11 +46,16 @@ import Level_27 from "./levels/Level_27";
 import Level_28 from "./levels/Level_28";
 import Level_29 from "./levels/Level_29";
 import Level_30 from "./levels/Level_30";
+import Level_31 from "./levels/Level_31";
+import Level_32 from "./levels/Level_32";
+import Level_33 from "./levels/Level_33";
+import Level_34 from "./levels/Level_34";
+import Level_35 from "./levels/Level_35";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.102301";
-    static resVer:string = "0.0.1.102301";
+    static codeVer:string = "0.0.1.10231800";
+    static resVer:string = "0.0.1.10231800";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -74,7 +79,7 @@ export default class GM{
         GM.platformId = config.platformId;
         GM.serverIP = config.platforms[GM.platformId];
 
-        if(config.platformId == PlatformID.TEST)
+        if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
             GM.cookie = new TestCookie();
             GM.platform = new TestPlatform();
@@ -159,6 +164,8 @@ export default class GM{
         console.log("%c" + message, "color:green");
     }
 
+    static indexNum;
+
     static onReg():void
     {
         Game.tableManager.register(SysTitles.NAME , SysTitles );
@@ -172,13 +179,16 @@ export default class GM{
         let CLAS:any[] = [
             Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,
             Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20,
-            Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30
+            Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30,
+            Level_31,Level_32,Level_33,Level_34,Level_35
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
         {
             REG(index, CLAS[i]);
+            GM.indexNum = index;
             index++;
+
         }
     }
 

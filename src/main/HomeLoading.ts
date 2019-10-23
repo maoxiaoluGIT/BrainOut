@@ -23,7 +23,7 @@ export default class HomeLoading extends ui.loadingUI {
     private onProgress(value:number):void
 	{
 		value = value * 100;
-		this.dengjishuzi.value = value +"%";
+		this.dengjishuzi.value = value.toFixed(0) +"%";
 	}
 
     private onCom():void
