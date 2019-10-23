@@ -16,7 +16,6 @@ export default class Level_28 extends BaseLevel {
         this.isInit = true;
 
         this.ui.sureBtn.clickHandler = new Laya.Handler(this,this.onSure);
-        this.ui.sureBtn.clickHandler = new Laya.Handler(this,this.onSure);
         this.refresh();
     }
 

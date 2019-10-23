@@ -41,7 +41,7 @@ import Level_22 from "./levels/Level_22";
 import Level_23 from "./levels/Level_23";
 import Level_24 from "./levels/Level_24";
 import Level_25 from "./levels/Level_25";
-import Level_26 from "./levels/Level_28";
+import Level_26 from "./levels/Level_26";
 import Level_27 from "./levels/Level_27";
 import Level_28 from "./levels/Level_28";
 import Level_29 from "./levels/Level_29";
@@ -49,8 +49,8 @@ import Level_30 from "./levels/Level_30";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.101801";
-    static resVer:string = "0.0.1.101801";
+    static codeVer:string = "0.0.1.102301";
+    static resVer:string = "0.0.1.102301";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;

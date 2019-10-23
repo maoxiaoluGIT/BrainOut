@@ -28,7 +28,7 @@ export default class BaseLevel extends Laya.Box{
         if(isDrag)
         {
             sprite.on(Laya.Event.MOUSE_DOWN,this,this.onDown,[sprite]);
-            sprite.on(Laya.Event.MOUSE_UP,this,this.onUp,[sprite])
+            sprite.on(Laya.Event.MOUSE_UP,this,this.onUp,[sprite]);
         }
     }
 

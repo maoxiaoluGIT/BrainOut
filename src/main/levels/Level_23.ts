@@ -58,12 +58,13 @@ export default class Level_23 extends BaseLevel {
     {
         sprite.stopDrag();
         this.ui.rightBox.pos(sprite.x,sprite.y);
+        this.ui.addChild(this.ui.rightBox)
         this.setAnswer(this.ui.rightBox,false);
         this.gotoStartPos(sprite);
     }
 
     private gotoStartPos(sprite):void
     {
-        Laya.Tween.to(sprite,{x:sprite.tag[0],y:sprite.tag[1]},200);
+        Laya.Tween.to(sprite,{x:sprite.tag[0],y:sprite.tag[1]},100);
     }
 }

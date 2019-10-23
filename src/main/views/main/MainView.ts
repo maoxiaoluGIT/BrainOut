@@ -42,7 +42,7 @@ export default class MainView extends ui.mainViewUI {
 
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
         Game.eventManager.on(GameEvent.SELECT_CELL,this,this.showLevel);
-        this.showLevel(29);
+        this.showLevel(1);
     }
 
     private showSkip():void

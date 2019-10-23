@@ -24,15 +24,19 @@ export default class Level_26 extends BaseLevel {
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.ui.shuru.text = "";
+        this.ui.yuan.visible = true;
+        this.ui.resultImg.visible = false;
     }
 
     private onSure():void
     {
         if(this.ui.shuru.text == "1")
         {
+            this.ui.yuan.visible = false;
+            this.ui.resultImg.visible = true;
             setTimeout(() => {
                 this.setAnswer(this.ui.rightBox,true);
-            }, 1000);
+            }, 500);
         }
         else
         {

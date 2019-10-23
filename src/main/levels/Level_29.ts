@@ -20,10 +20,10 @@ export default class Level_29 extends BaseLevel {
         {
             let sprite = this.ui["item" + i];
             this.posList.push([sprite.x,sprite.y]);
-            this.addEvent(sprite,this.onClick,true);
+            this.addEvent(sprite,null,true);
         }
 
-        this.addEvent(this.ui.item4,this.onClick,true);
+        this.addEvent(this.ui.item4,null,true);
         this.ui.item4.tag = [this.ui.item4.x,this.ui.item4.y];
 
         this.refresh();
@@ -33,7 +33,7 @@ export default class Level_29 extends BaseLevel {
     {
         if(sprite == this.ui.item0)
         {
-            if(this.ui.item4.y > this.ui.item0.y +this.ui.item0.height)
+            if(this.ui.item4.y > this.ui.item0.y +this.ui.item0.height * 0.5)
             {
                 this.setAnswer(sprite,true);
             }
@@ -64,8 +64,11 @@ export default class Level_29 extends BaseLevel {
         this.ui.item4.pos(this.ui.item4.tag[0],this.ui.item4.tag[1]);
     }
 
+    private _downPos:Laya.Point = new Laya.Point();
     onDown(sprite: Laya.Sprite):void
     {
+        this._downPos.x = Laya.stage.mouseX;
+        this._downPos.y = Laya.stage.mouseY;
         this.ui.addChild(sprite);
         sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
     }
@@ -73,6 +76,13 @@ export default class Level_29 extends BaseLevel {
 
     onUp(sprite):void
     {
-        sprite.stopDrag();
+        if(Laya.stage.mouseX == this._downPos.x && Laya.stage.mouseY == this._downPos.y)
+        {
+            this.onClick(sprite);
+        }
+        else
+        {
+            sprite.stopDrag();
+        }
     }
 }
