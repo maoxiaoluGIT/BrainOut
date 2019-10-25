@@ -3,27 +3,19 @@ import GM from "../../GM";
 import SysTitles from "../../sys/SysTitles";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
-import AdType from "./AdType";
-export default class RightView extends ui.shengliUI{
+export default class PassView extends ui.passGameUI{
     
     constructor() { 
         super(); 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
         GM.imgEffect.addEffect(this.paishou,2);
-        this.nextBtn.clickHandler = new Laya.Handler(this,this.onNext);
-        this.nextAdBtn.clickHandler = new Laya.Handler(this,this.playAd);
+        this.nextBtn.clickHandler = new Laya.Handler(this,this.goHome);
     }
 
-    private playAd():void
+    private goHome():void
     {
         this.removeSelf();
-        GM.platform.playAd("",AdType.answerRight);
-    }
-
-    private onNext():void
-    {
-        this.removeSelf();
-        Game.eventManager.event(GameEvent.ON_NEXT);
+        Game.eventManager.event(GameEvent.ON_FIRST);
     }
 
     private onDis():void

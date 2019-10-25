@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":8,
+    "selecteID":19,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -17,7 +17,7 @@
         }],
     "props":{"y":667,"x":375,"width":750,"sceneColor":"#ffffff","height":1334,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
-    "maxID":19,
+    "maxID":20,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -117,16 +117,17 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,nextAdBtn",
-            "props":{"y":877,"x":210.5,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"下一关","height":125},
+            "props":{"y":877,"x":222,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   观看视频","height":125},
             "nodeParent":2,
             "label":"nextAdBtn",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":13,
             "child":[
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,ads",
                     "props":{"y":25,"x":48,"width":69,"var":"ads","texture":"pubRes/ic_ad_1.png","height":74},
@@ -141,6 +142,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"y":-24,"x":180,"width":134,"texture":"pubRes/hongyuan.png","height":69},
@@ -153,6 +155,7 @@
                     "compId":15,
                     "child":[
                         {
+                            "x":45,
                             "type":"Text",
                             "searchKey":"Text",
                             "props":{"y":16,"x":6,"width":127,"text":"+提示","height":50,"fontSize":40,"align":"center"},
@@ -195,6 +198,22 @@
                     "child":[
                         ]
                 }],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,nextBtn",
+            "props":{"y":877,"x":222,"width":305,"var":"nextBtn","stateNum":"1","skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"跳过","height":125},
+            "nodeParent":2,
+            "label":"nextBtn",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":19,
+            "child":[
+                ],
             "$HIDDEN":false
         }],
     "animations":[

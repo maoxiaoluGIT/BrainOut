@@ -90,6 +90,7 @@ export default class SettingView extends ui.shezhiUI {
             case this.meiri:
             break;
             case this.qiuzhu:
+            GM.platform.onShare(0,true);
             break;
         }
     }

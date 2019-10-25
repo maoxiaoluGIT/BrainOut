@@ -30,8 +30,9 @@ export default class CellsView extends ui.xuanguan1UI{
         this.list.renderHandler = new Laya.Handler(this, this.updateItem);
         this.addChild(this.list);
         this.list.pos(30,150);
-
+        
         this._dataList = Game.tableManager.getTable(SysTitles.NAME);
+        this._dataList.length = GM.indexNum;
         this._dataList.push(null);
 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
@@ -39,6 +40,7 @@ export default class CellsView extends ui.xuanguan1UI{
 
     private onDis():void
     {
+        
         this.list.array = this._dataList;
     }
 

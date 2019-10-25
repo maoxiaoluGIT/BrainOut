@@ -70,15 +70,15 @@ export default class BaseLevel extends Laya.Box{
         this.curLevel = level;
         this.sys = Game.tableManager.getDataByNameAndId(SysTitles.NAME,level);
         parentBox && parentBox.addChild(this);
-        Laya.loader.load("res/atlas/guanqia/" + level + ".atlas",Laya.Handler.create(this,this.onInit));
+        Laya.loader.load("atlas/guanqia/" + level + ".atlas",Laya.Handler.create(this,this.onInit));
     }
 
     onClear():void
     {
         if(this.curLevel > 0)
         {
-            Laya.loader.clearRes("res/atlas/guanqia/" + this.curLevel + ".atlas");
-            Laya.loader.clearTextureRes("res/atlas/guanqia/" + this.curLevel + ".atlas");
+            Laya.loader.clearRes("atlas/guanqia/" + this.curLevel + ".atlas");
+            Laya.loader.clearTextureRes("atlas/guanqia/" + this.curLevel + ".atlas");
         }
     }
 }

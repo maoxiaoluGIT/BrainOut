@@ -1,6 +1,8 @@
 import { BasePlatform } from "./BasePlatform";
 import CookieKey from "../gameCookie/CookieKey";
 import Session from "../sessions/Session";
+import Game from "../../core/Game";
+import GameEvent from "../GameEvent";
 
 export default class TestPlatform extends BasePlatform{
     checkUpdate():void
@@ -33,12 +35,25 @@ export default class TestPlatform extends BasePlatform{
         // }
     }
 
-    onShare(callback):void
+    onShare(type,isMain):void
     {
-        callback && callback();
+        if(Session.gameData.shareTimes > 0)
+        {
+            Session.gameData.shareTimes--;
+        }
+        Game.eventManager.event(GameEvent.SHARE_SUCCESS,type);
     }
 
     shake(isRight:boolean):void
     {
+    }
+
+    playAd(codeId:string,type:number):void
+    {
+        this.onShare(type,false);
+    }
+
+    showBanner(codeId:string):void{
+
     }
 }

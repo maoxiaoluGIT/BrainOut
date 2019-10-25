@@ -7,16 +7,16 @@ export default class KeyIcon extends ui.KeyIconUI {
     static ins:KeyIcon;
     constructor() { super(); }
 
-    static fly(num:number = 1):void
+    static fly(numstr:string):void
     {
         if(!KeyIcon.ins)
         {
             KeyIcon.ins = new KeyIcon();
         }
-        KeyIcon.ins.yaoshishu.text = "" + num;
+        KeyIcon.ins.yaoshishu.text = numstr;
         Game.layerManager.addChild(KeyIcon.ins);
-        KeyIcon.ins.pos(GameConfig.width * 0.5,GameConfig.height - 300);
-        Laya.Tween.to(KeyIcon.ins,{y:GameConfig.height - 600},500,null,new Laya.Handler(this,()=>{
+        KeyIcon.ins.pos(GameConfig.width * 0.5,GameConfig.height - 400);
+        Laya.Tween.to(KeyIcon.ins,{y:GameConfig.height - 600},1000,null,new Laya.Handler(this,()=>{
             Game.eventManager.event(GameEvent.UPDATE_KEY_NUM);
             KeyIcon.ins.removeSelf();
         }),500);

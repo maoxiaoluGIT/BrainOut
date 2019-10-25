@@ -13,6 +13,8 @@ import Session from "../../sessions/Session";
 import SkipView from "./SkipView";
 import KeyIcon from "./KeyIcon";
 import GM from "../../GM";
+import PassView from "./PassView";
+import AdType from "./AdType";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
@@ -35,15 +37,46 @@ export default class MainView extends ui.mainViewUI {
 
         Game.eventManager.on(GameEvent.SHOW_RIGHT,this,this.showRight);
         Game.eventManager.on(GameEvent.ON_NEXT,this,this.onNext);
+        Game.eventManager.on(GameEvent.ON_FIRST,this,this.goFirst);
         Game.eventManager.on(GameEvent.ON_REFRESH,this,this.onRefresh);
         Game.eventManager.on(GameEvent.SHOW_TIPS,this,this.showTips);
         Game.eventManager.on(GameEvent.SKIP_CUR,this,this.showSkip);
+        Game.eventManager.on(GameEvent.AD_SUCCESS_CLOSE,this,this.onAddKey);
+        Game.eventManager.on(GameEvent.SHARE_SUCCESS,this,this.onAddKey)
+        Game.eventManager.on(GameEvent.WX_ON_SHOW,this,this.showWx);
+        Game.eventManager.on(GameEvent.WX_ON_HIDE,this,this.hideWx);
 
         this._monseIcon = new ui.mouseIconUI();
 
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
         Game.eventManager.on(GameEvent.SELECT_CELL,this,this.showLevel);
-        this.showLevel(1);
+        this.goFirst();
+    }
+
+    private showWx():void
+    {
+        Game.soundManager.setMusicVolume(1);
+    }
+
+    private hideWx():void
+    {
+        Game.soundManager.setMusicVolume(0);
+    }
+
+    private onAddKey(type:number):void
+    {
+        Session.gameData.keyNum += 1;
+        Session.onSave();
+        KeyIcon.fly("+1");
+        
+        if(type == AdType.answerRight)
+        {
+            this.onNext();
+        }
+        else if(type == AdType.skip)
+        {
+
+        }
     }
 
     private showSkip():void
@@ -77,7 +110,7 @@ export default class MainView extends ui.mainViewUI {
 
         Session.gameData.keyNum--;
         Session.onSave();
-        KeyIcon.fly(1);
+        KeyIcon.fly("-1");
     }
 
     private onRefresh():void
@@ -97,14 +130,40 @@ export default class MainView extends ui.mainViewUI {
         MyEffect.popup(this._rightView,1,500,250);
         this._rightView.setWin(this.curView.sys);
         
-        Session.gameData.maxIndex = this.curLv;
-        Session.onSave();
+        if(this.curLv > Session.gameData.maxIndex)
+        {
+            Session.gameData.maxIndex = this.curLv;
+            Session.onSave();
+        }
+    }
+
+    private goFirst():void
+    {
+        this.showLevel(1);
     }
 
     private onNext():void
     {
         this.curLv++;
-        this.showLevel(this.curLv);
+        if(this.curLv <= GM.indexNum)
+        {
+            this.showLevel(this.curLv);
+            return;
+        }
+        this.showPassGame();
+    }
+
+    private _passView:PassView;
+    private showPassGame():void
+    {
+        if(!this._passView)
+        {
+            this._passView = new PassView();
+        }
+        this.addChild(this._passView);
+        this._passView.anchorX = this._passView.anchorY = 0.5;
+        this._passView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+        MyEffect.popup(this._passView,1,500,250);
     }
 
     private curView:BaseLevel;

@@ -54,8 +54,8 @@ import Level_35 from "./levels/Level_35";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.10231800";
-    static resVer:string = "0.0.1.10231800";
+    static codeVer:string = "0.0.1.102401";
+    static resVer:string = "0.0.1.102401";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -72,7 +72,7 @@ export default class GM{
     static shakeState:number = 1;
 
     /**本地资源 */
-    static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png"];
+    static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png","atlas/pubRes.atlas","atlas/pubRes.png"];
 
     static setConfig(config):void
     {

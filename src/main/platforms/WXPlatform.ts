@@ -2,6 +2,7 @@ import { BasePlatform } from "./BasePlatform";
 import GM from "../GM";
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
+import Session from "../sessions/Session";
 
 export default class WXPlatform extends BasePlatform {
     constructor() { super(); }
@@ -51,16 +52,24 @@ export default class WXPlatform extends BasePlatform {
         }
 
         Laya.Browser.window.wx.onShow(res => {
+            console.log("显示微信");
             Game.eventManager.event(GameEvent.WX_ON_SHOW);
         });
 
         Laya.Browser.window.wx.onHide(res => {
+            console.log("隐藏微信");
             Game.eventManager.event(GameEvent.WX_ON_HIDE);
         });
 
         Laya.Browser.window.wx.onError(res => {
             res.message, res.stack
         });
+
+        Laya.Browser.window.wx.updateShareMenu({});
+        Laya.Browser.window.wx.showShareMenu({});
+        Laya.Browser.window.wx.onShareAppMessage( ()=>{
+            return this.getShareObj();
+        } );
     }
 
     login(callback): void {
@@ -155,14 +164,37 @@ export default class WXPlatform extends BasePlatform {
         console.log("过滤之后", GM.userName);
     }
 
-    onShare(callback): void {
-        Laya.Browser.window.wx.shareAppMessage({
-            title: "来吧，pk一下吧！",
-            imageUrl: "https://img.kuwan511.com/arrowLegend/share.jpg",
-            destWidth: 500,
-            destHeight: 400
-        });
+    onShare(type:number,isMain): void {
+        if(isMain)
+        {
+            Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
+            GM.log("主动分享");
+        }
+        else
+        {
+            this.shareTime = Date.now();
+            Game.eventManager.once( GameEvent.WX_ON_SHOW ,this,this.shareSuccess,[type]);
+            Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
+            GM.log("视频失败分享");
+        }
     }
+
+    private shareTime:number;
+
+    private shareSuccess(type:number):void
+    {
+        console.log("再次显示微信的时候",Session.gameData.shareTimes);
+        if(Session.gameData.shareTimes > 0)
+        {
+            // if(Date.now() - this.shareTime >= 2500)
+            // {
+                Session.gameData.shareTimes--;
+                Game.eventManager.event(GameEvent.SHARE_SUCCESS,type);
+                return;
+            // }
+        }
+    }
+
 
     shake(isRight: boolean): void  {
         if (GM.shakeState == 1) {
@@ -173,5 +205,58 @@ export default class WXPlatform extends BasePlatform {
                 Laya.Browser.window.wx.vibrateLong();
             }
         }
+    }
+
+    private getShareObj():any
+    {
+        let arr:string[] = ["万万没想到，还有这种骚操作！","脑洞是个什么洞？","哎呀！妈呀！脑瓜疼！"];
+        let obj:any = {};
+        let index:number = Math.floor(arr.length * Math.random());
+        obj.title = arr[index];
+        obj.imageUrl = "https://img.kuwan511.com/brainOut/share.jpg";
+        obj.destWidth = 500;
+        obj.destHeight = 400;
+        return obj;
+    }
+
+    private ad;
+    playAd(codeId:string,type:number):void
+    {
+        if(this.ad)
+        {
+            this.ad.destroy();
+            this.ad = null;
+        }
+        this.ad = Laya.Browser.window.wx.createRewardedVideoAd({adUnitId:codeId});
+        this.ad.onClose( (res)=>{
+            if ( res && res.isEnded || res===undefined ){
+                GM.log("关闭广告");
+                Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE,type);
+            }
+        });
+
+        this.ad.show().catch(() => {
+            // 失败重试
+            this.ad.load()
+              .then(() => this.ad.show())
+              .catch(err => {
+                GM.log("广告拉取失败");
+                this.onShare(type,false);
+              })
+          })
+        
+    }
+
+    showBanner(codeId:string):void{
+        let obj:any = {};
+        obj.adUnitId = codeId;
+        let l = (Laya.Browser.clientWidth - 300)/2;
+        obj.style = {left:l,top:0,width:300,height:125};
+        
+        let b = Laya.Browser.window.wx.createBannerAd( obj );
+        b.onResize( res=>{
+            b.style.top = Laya.Browser.clientHeight - res.height - 20;
+        } );
+        b.show();
     }
 }

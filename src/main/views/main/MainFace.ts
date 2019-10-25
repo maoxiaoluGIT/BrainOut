@@ -20,7 +20,7 @@ export default class MainFace extends ui.mainuiUI {
         GM.imgEffect.addEffect(this.kuaijin);
         GM.imgEffect.addEffect(this.jinyaoshi);
 
-        this.jinyaoshi.on(Laya.Event.CLICK,this,this.onTips);
+        this.keyBtn.on(Laya.Event.CLICK,this,this.onTips);
 
         this.mouseThrough = true;
 

@@ -14,7 +14,7 @@ P E8E0DAD9 btn_5.png
 P F62CBA5B btn_6.png
 P B0A84A1C choice_frame_1.png
 P DC691549 dengji.png
-R 100CF07A fram_big.png
+P 100CF07A fram_big.png
 P F62CBA5B hongyuan.png
 P 2D2F398E ic_ad_1.png
 P FE2419BB ic_ad_2.png
@@ -135,7 +135,7 @@ P 5FE32C97 3_pic_13_3.png
 P C36174BC 3_pic_13_4.png
 D guanqia/18
 P 2F93F0CC heng.png
-R BA026F4C tua.jpg
+P BA026F4C tua.jpg
 D guanqia/19
 P EB7370BA pic_16_1.png
 P BDDA8FAB pic_16_2.png
@@ -172,7 +172,7 @@ P 237B8611 pic_smoke.png
 P 119747EF pic_smoke_2.png
 D guanqia/24
 P 09BC36DA 3_pic_8_1.png
-R F45E89F8 3_pic_8_2.png
+P F45E89F8 3_pic_8_2.png
 P 9853E7C1 3_pic_8_3.png
 D guanqia/25
 P 80F434A7 4_10_1.png
@@ -231,7 +231,7 @@ D guanqia/33
 P ABA533A8 pic_40_1.png
 P C0B0185E pic_40_2.png
 D guanqia/34
-R C3C10F85 3_pic_14_2.png
+P C3C10F85 3_pic_14_2.png
 P 1F80A1BD 3_pic_14_3.png
 P 598BB329 3_pic_20_2.png
 P E2A84149 3_pic_20_3.png
@@ -247,7 +247,7 @@ P 24C8FB4D pic_35_5.png
 P E5AFD23B pic_clock.png
 P A475F055 zuo.png
 D guanqia/36
-R 1F473BD6 3_pic_30_1.png
+P 1F473BD6 3_pic_30_1.png
 P A20B47C7 3_pic_30_2.png
 P 1725D328 3_pic_30_3.png
 P B9E90370 3_pic_30_4.png
@@ -299,10 +299,10 @@ P DF390B7A 4_3_3.png
 P 3337D21F 4_3_4.png
 P 46DD5A12 4_3_5.png
 P C14495B5 pic_12_6.png
-R F8F2E245 pic_34_3.png
+P F8F2E245 pic_34_3.png
 P F1919C86 pic_4_1.png
 D guanqia/45
-R 62CFD52F 3_pic_27_1.png
+P 62CFD52F 3_pic_27_1.png
 P 8106C27D 3_pic_27_2.png
 D guanqia/46
 P 9E2E27CE pic_huocai.png
@@ -314,8 +314,8 @@ P 9F0573FB pic_ice.png
 P 40496906 pic_watermelon_1.png
 D guanqia/48
 P 078C9DB0 pic_34_10.png
-R D669430C pic_34_2.png
-R F8F2E245 pic_34_3.png
+P D669430C pic_34_2.png
+P F8F2E245 pic_34_3.png
 P 847529E8 pic_34_4.png
 P 653B3038 pic_34_5.png
 P E35BE686 pic_34_6.png

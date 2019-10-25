@@ -60,7 +60,6 @@ export default class Level_14 extends BaseLevel{
         if(this._lastX != this.targetItem.x && this._lastY != this.targetItem.y)
         {
             this._count++;
-            console.log("=============",this._count);
         }
         this._lastX = this.targetItem.x;
         this._lastY = this.targetItem.y;

@@ -21,6 +21,11 @@ class Main {
 		GM.log("code version:" + GM.codeVer);
 		GM.log("res version:" + GM.resVer);
 		if (Laya.Browser.window.wx) {
+			for(let i = 1; i < 52;i++)
+			{
+				GM.nativefiles.push("atlas/guanqia/" + i + ".atlas");
+				GM.nativefiles.push("atlas/guanqia/" + i + ".png");
+			}
 			Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
 			Laya.MiniAdpter.nativefiles = GM.nativefiles;
 		}
