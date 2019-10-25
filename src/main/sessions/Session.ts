@@ -4,7 +4,7 @@ import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
 
 export default class Session{
-    static SKEY:string = "ntx09";
+    static SKEY:string = "ntxntxntx";
     static gameData:any = {};
 
     static userData:any = {};

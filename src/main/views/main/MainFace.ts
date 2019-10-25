@@ -59,7 +59,7 @@ export default class MainFace extends ui.mainuiUI {
             this.titleTxt.align = "center";
         }
 
-        this.titleTxt.visible = !(sys.id == 29 || sys.id == 34);
+        this.titleTxt.visible = !(sys.id == 29 || sys.id == 34 || sys.id == 38);
     }
 
     private onClick(type:number):void

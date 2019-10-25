@@ -54,6 +54,9 @@ import Level_35 from "./levels/Level_35";
 import Level_36 from "./levels/Level_36";
 import Level_37 from "./levels/Level_37";
 import SigninView from "./views/signin/SigninView";
+import Level_38 from "./levels/Level_38";
+import Level_39 from "./levels/Level_39";
+import Level_40 from "./levels/Level_40";
 
 /**游戏总管理 */
 export default class GM{
@@ -184,7 +187,7 @@ export default class GM{
             Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,
             Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20,
             Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30,
-            Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37
+            Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37,Level_38,Level_39,Level_40
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
@@ -201,5 +204,9 @@ export default class GM{
         b0.x + b0.width > b1.x &&
         b0.y < b1.y + b1.height &&
         b0.y + b0.height > b1.y
+    }
+
+    static hitPoint(tt:Laya.Sprite , box:Laya.Sprite):boolean{
+        return tt.x >= box.x && tt.x <= box.x + box.width && tt.y >= box.y &&tt.y <= box.y + box.height;
     }
 }
