@@ -4,6 +4,7 @@ import Game from "../core/Game";
 import SysTitles from "./sys/SysTitles";
 import GM from "./GM";
 import { ViewID } from "./views/ViewID";
+import Session from "./sessions/Session";
 
 export default class HomeLoading extends ui.loadingUI {
     constructor() { 
@@ -38,7 +39,7 @@ export default class HomeLoading extends ui.loadingUI {
         Game.tableManager.onParse(arr);
 
         GM.imgEffect.start();
-        GM.viewManager.showView(ViewID.main);
+        GM.viewManager.showView(Session.gameData.signinState == 0 ? ViewID.signin : ViewID.main,false);
         GM.playMusic("bg.mp3");
         this.destroy(true);
     }

@@ -5,7 +5,7 @@ import Game from "../../core/Game";
 export default class ViewManager{
 
     allView:any = {};
-    showView(viewId:ViewID):void
+    showView(viewId:ViewID,isTween:boolean = true):void
     {
         let curView = this.allView[viewId];
         if(curView == null)
@@ -19,10 +19,13 @@ export default class ViewManager{
         curView = this.allView[viewId];
         Game.layerManager.viewLayer.removeChildren();
         Game.layerManager.viewLayer.addChild(curView);
-        if(viewId == ViewID.setting)
+        if(isTween)
         {
-            curView.x = -750;
-            Laya.Tween.to(curView,{x : 0},300);
+            if(viewId == ViewID.setting || viewId == ViewID.signin)
+            {
+                curView.x = -750;
+                Laya.Tween.to(curView,{x : 0},300);
+            }
         }
     }
 }

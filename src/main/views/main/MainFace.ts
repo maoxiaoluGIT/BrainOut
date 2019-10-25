@@ -40,6 +40,10 @@ export default class MainFace extends ui.mainuiUI {
         {
             Game.eventManager.event(GameEvent.SHOW_TIPS);
         }
+        else
+        {
+            Game.eventManager.event(GameEvent.SHOW_TIPS_NULL)
+        }
     }
 
     setTitle(sys:SysTitles):void

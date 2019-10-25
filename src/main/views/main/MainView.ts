@@ -15,6 +15,7 @@ import KeyIcon from "./KeyIcon";
 import GM from "../../GM";
 import PassView from "./PassView";
 import AdType from "./AdType";
+import KeyNullTips from "./KeyNullTips";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
@@ -37,7 +38,7 @@ export default class MainView extends ui.mainViewUI {
 
         Game.eventManager.on(GameEvent.SHOW_RIGHT,this,this.showRight);
         Game.eventManager.on(GameEvent.ON_NEXT,this,this.onNext);
-        Game.eventManager.on(GameEvent.ON_FIRST,this,this.goFirst);
+        Game.eventManager.on(GameEvent.ON_FIRST,this,this.goLastIndex);
         Game.eventManager.on(GameEvent.ON_REFRESH,this,this.onRefresh);
         Game.eventManager.on(GameEvent.SHOW_TIPS,this,this.showTips);
         Game.eventManager.on(GameEvent.SKIP_CUR,this,this.showSkip);
@@ -45,12 +46,25 @@ export default class MainView extends ui.mainViewUI {
         Game.eventManager.on(GameEvent.SHARE_SUCCESS,this,this.onAddKey)
         Game.eventManager.on(GameEvent.WX_ON_SHOW,this,this.showWx);
         Game.eventManager.on(GameEvent.WX_ON_HIDE,this,this.hideWx);
+        Game.eventManager.on(GameEvent.SHOW_TIPS_NULL,this,this.showTipsNull);
 
         this._monseIcon = new ui.mouseIconUI();
 
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
         Game.eventManager.on(GameEvent.SELECT_CELL,this,this.showLevel);
-        this.goFirst();
+        this.goLastIndex();
+    }
+
+    private _nullTipsView:KeyNullTips;
+    private showTipsNull():void
+    {
+        if(!this._nullTipsView)
+        {
+            this._nullTipsView = new KeyNullTips();
+        }
+        this.addChild(this._nullTipsView);
+        this._nullTipsView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+        MyEffect.popup(this._nullTipsView,1,500,100);
     }
 
     private showWx():void
@@ -129,22 +143,24 @@ export default class MainView extends ui.mainViewUI {
         this._rightView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
         MyEffect.popup(this._rightView,1,500,250);
         this._rightView.setWin(this.curView.sys);
+
+        this.curLv++;
+        Session.gameData.lastIndex = this.curLv;
         
         if(this.curLv > Session.gameData.maxIndex)
         {
             Session.gameData.maxIndex = this.curLv;
-            Session.onSave();
         }
+        Session.onSave();
     }
 
-    private goFirst():void
+    private goLastIndex():void
     {
-        this.showLevel(1);
+        this.showLevel(Session.gameData.lastIndex);
     }
 
     private onNext():void
     {
-        this.curLv++;
         if(this.curLv <= GM.indexNum)
         {
             this.showLevel(this.curLv);
@@ -182,24 +198,11 @@ export default class MainView extends ui.mainViewUI {
         }
         
         this.curLv = lv;
-        if(this.curLv > GM.indexNum)
+        let VIEW:any = Laya.ClassUtils.getClass(lv + "");
+        if(VIEW)
         {
-            this.curLv = 1;
+            this.curView = new VIEW(); 
         }
-        // this.curView = this._viewMap[lv];
-        // if(!this.curView)
-        // {
-            let VIEW:any = Laya.ClassUtils.getClass(lv + "");
-            if(VIEW)
-            {
-                this.curView = new VIEW(); 
-            }
-            // this._viewMap[lv] = this.curView;
-        // }
-        // else
-        // {
-        //     this.curView.refresh();
-        // }
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
         Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");

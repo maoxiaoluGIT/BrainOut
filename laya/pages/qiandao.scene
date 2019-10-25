@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":27,
+    "selecteID":28,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":28,
+    "maxID":33,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -88,81 +88,6 @@
                         ]
                 }],
             "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"UIView",
-            "source":"qiandao1.scene",
-            "searchKey":"UIView,yitian",
-            "props":{"y":463,"x":32,"var":"yitian","scaleY":0.6,"scaleX":0.6},
-            "nodeParent":2,
-            "label":"yitian",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":22,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"UIView",
-            "source":"qiandao1.scene",
-            "searchKey":"UIView,ertian",
-            "props":{"y":463,"x":268,"var":"ertian","scaleY":0.6,"scaleX":0.6},
-            "nodeParent":2,
-            "label":"ertian",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":24,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"UIView",
-            "source":"qiandao1.scene",
-            "searchKey":"UIView,santian",
-            "props":{"y":463,"x":500,"var":"santian","scaleY":0.6,"scaleX":0.6},
-            "nodeParent":2,
-            "label":"santian",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":25,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"UIView",
-            "source":"qiandao1.scene",
-            "searchKey":"UIView,sitian",
-            "props":{"y":745,"x":147,"var":"sitian","scaleY":0.6,"scaleX":0.6},
-            "nodeParent":2,
-            "label":"sitian",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":26,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"UIView",
-            "source":"qiandao1.scene",
-            "searchKey":"UIView,wutian",
-            "props":{"y":745,"x":380,"var":"wutian","scaleY":0.6,"scaleX":0.6},
-            "nodeParent":2,
-            "label":"wutian",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":27,
-            "child":[
-                ]
         }],
     "animations":[
         {

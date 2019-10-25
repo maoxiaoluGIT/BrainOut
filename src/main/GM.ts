@@ -51,6 +51,9 @@ import Level_32 from "./levels/Level_32";
 import Level_33 from "./levels/Level_33";
 import Level_34 from "./levels/Level_34";
 import Level_35 from "./levels/Level_35";
+import Level_36 from "./levels/Level_36";
+import Level_37 from "./levels/Level_37";
+import SigninView from "./views/signin/SigninView";
 
 /**游戏总管理 */
 export default class GM{
@@ -175,12 +178,13 @@ export default class GM{
         REG(ViewID.main, MainView);
         REG(ViewID.setting, SettingView);
         REG(ViewID.cells, CellsView);
+        REG(ViewID.signin,SigninView);
         //关卡
         let CLAS:any[] = [
             Level_1,Level_2,Level_3,Level_4,Level_5,Level_6,Level_7,Level_8,Level_9,Level_10,
             Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20,
             Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30,
-            Level_31,Level_32,Level_33,Level_34,Level_35
+            Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)

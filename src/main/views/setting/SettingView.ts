@@ -88,6 +88,7 @@ export default class SettingView extends ui.shezhiUI {
             case this.fankui:
             break;
             case this.meiri:
+            GM.viewManager.showView(ViewID.signin);
             break;
             case this.qiuzhu:
             GM.platform.onShare(0,true);

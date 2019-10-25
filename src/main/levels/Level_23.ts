@@ -24,7 +24,7 @@ export default class Level_23 extends BaseLevel {
         this.ui.cha.tag = [this.ui.cha.x,this.ui.cha.y];
         this.ui.heng.tag = [this.ui.heng.x,this.ui.heng.y];
 
-        this.addEvent(this.ui.yan,this.onClick);
+        this.addEvent(this.ui.yanBox,this.onClick);
 
         this.refresh();
     }
@@ -32,8 +32,8 @@ export default class Level_23 extends BaseLevel {
     private onClick(sprite:Laya.Sprite)
     {
         this.clickNum++;
-        this.ui.yan.alpha = 1 - this.clickNum * 1/3;
-        if(this.ui.yan.alpha <= 0)
+        this.ui.item0.alpha = 1 - this.clickNum * 1/3;
+        if(this.ui.item0.alpha <= 0)
         {
             this.ui.rightBox.pos(sprite.x,sprite.y);
             this.setAnswer(this.ui.rightBox,true);
@@ -44,7 +44,7 @@ export default class Level_23 extends BaseLevel {
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.clickNum = 0;
-        this.ui.yan.alpha = 1 - this.clickNum * 1/3;
+        this.ui.item0.alpha = 1 - this.clickNum * 1/3;
     }
 
     onDown(sprite: Laya.Sprite):void

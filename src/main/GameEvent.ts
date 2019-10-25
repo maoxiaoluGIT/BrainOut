@@ -9,6 +9,7 @@ export default class GameEvent{
     static ON_FIRST:string = "ON_FIRST";
     static ON_REFRESH:string = "ON_REFRESH";
     static SHOW_TIPS:string = "SHOW_TIPS";
+    static SHOW_TIPS_NULL:string = "SHOW_TIPS_NULL";
     static SKIP_CUR:string = "SKIP_CUR";
     static SELECT_CELL:string = "SELECT_CELL";
     static UPDATE_KEY_NUM:string = "UPDATE_KEY_NUM";
