@@ -10,7 +10,7 @@ export default class BaseLevel extends Laya.Box{
     sys:SysTitles;
     curLevel:number;
 
-    static noRes:string = "22,41,44,";
+    static noRes:number[] = [22,41,44];
     constructor(){
         super();
     }
@@ -72,7 +72,7 @@ export default class BaseLevel extends Laya.Box{
         this.curLevel = level;
         this.sys = Game.tableManager.getDataByNameAndId(SysTitles.NAME,level);
         parentBox && parentBox.addChild(this);
-        if(BaseLevel.noRes.indexOf(level + ",") == -1)
+        if(BaseLevel.noRes.indexOf(level) == -1)
         {
             Laya.loader.load("atlas/guanqia/" + level + ".atlas",Laya.Handler.create(this,this.onInit));
         }
@@ -86,7 +86,7 @@ export default class BaseLevel extends Laya.Box{
     {
         if(this.curLevel > 0)
         {
-            if(BaseLevel.noRes.indexOf(this.curLevel + ",") != -1)
+            if(BaseLevel.noRes.indexOf(this.curLevel) != -1)
             {
                 Laya.loader.clearRes("atlas/guanqia/" + this.curLevel + ".atlas");
                 Laya.loader.clearTextureRes("atlas/guanqia/" + this.curLevel + ".atlas");
