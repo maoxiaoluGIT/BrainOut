@@ -67,6 +67,7 @@ import Level_47 from "./levels/Level_47";
 import Level_48 from "./levels/Level_48";
 import Level_49 from "./levels/Level_49";
 import Level_50 from "./levels/Level_50";
+import Log from "../Log";
 
 /**游戏总管理 */
 export default class GM{
@@ -86,6 +87,8 @@ export default class GM{
     static musicState:number = 1;
     static soundState:number = 1;
     static shakeState:number = 1;
+
+    static sysLog:Function = Log.syslog;
 
     /**本地资源 */
     static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png","atlas/pubRes.atlas","atlas/pubRes.png"];

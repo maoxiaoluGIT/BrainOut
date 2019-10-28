@@ -9,7 +9,7 @@ export default class RightView extends ui.shengliUI{
     constructor() { 
         super(); 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
-        GM.imgEffect.addEffect(this.paishou,2);
+        this.on(Laya.Event.UNDISPLAY,this,this.onunDis);
         this.nextBtn.clickHandler = new Laya.Handler(this,this.onNext);
         this.nextAdBtn.clickHandler = new Laya.Handler(this,this.playAd);
     }
@@ -29,11 +29,17 @@ export default class RightView extends ui.shengliUI{
     private onDis():void
     {
         this.paishou.y = 1334;
-        Laya.Tween.to(this.paishou,{y:857},500,null,Laya.Handler.create(this,this.onEff),600)
+        Laya.Tween.to(this.paishou,{y:857},500,null,new Laya.Handler(this,this.onEff),600);
+    }
+
+    private onunDis():void
+    {
+        GM.imgEffect.removeEffect2(this.paishou);
     }
 
     private onEff():void
     {
+        GM.imgEffect.addEffect2(this.paishou,2);
         Laya.MouseManager.enabled = true;
         GM.playSound("win.mp3");
         let max:number = 1500;
