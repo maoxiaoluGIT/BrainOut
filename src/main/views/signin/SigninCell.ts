@@ -2,6 +2,7 @@ import { ui } from "../../../ui/layaMaxUI";
 import GM from "../../GM";
 import Session from "../../sessions/Session";
 import KeyIcon from "../main/KeyIcon";
+import { DataKey } from "../../sessions/DataKey";
 
 export default class SigninCell extends ui.qiandao1UI{
     private state:number = 0;
@@ -17,8 +18,8 @@ export default class SigninCell extends ui.qiandao1UI{
     {
         if(this.state == 1)
         {
-            Session.gameData.signinState = 1;
-            Session.gameData.keyNum += this._keyNum;
+            Session.gameData[DataKey.signinState] = 1;
+            Session.gameData[DataKey.keyNum] += this._keyNum;
             Session.onSave();
             KeyIcon.fly("+" + this._keyNum);
             this.update(this._index,this._keyNum);
@@ -36,14 +37,14 @@ export default class SigninCell extends ui.qiandao1UI{
         this.gouImg.visible = false;
         this.lockImg.visible = false;
         this.state = -1;
-        if(index <= Session.gameData.signinDay)
+        if(index <= Session.gameData[DataKey.signinDay])
         {
             this.jinyaoshi.skin = "pubRes/ic_key_1.png";
             this.bg.skin = "pubRes/fram_big_yellow.png";
-            if(index == Session.gameData.signinDay)
+            if(index == Session.gameData[DataKey.signinDay])
             {
-                this.lan.visible = Session.gameData.signinState == 0;
-                this.gouImg.visible = Session.gameData.signinState == 1;
+                this.lan.visible = Session.gameData[DataKey.signinState] == 0;
+                this.gouImg.visible = Session.gameData[DataKey.signinState] == 1;
                 if(this.lan.visible)
                 {
                     this.state = 1;

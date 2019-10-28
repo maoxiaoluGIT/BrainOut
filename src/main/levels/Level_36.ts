@@ -17,6 +17,8 @@ export default class Level_36 extends BaseLevel {
 
         this.ui.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);
         this.ui.on(Laya.Event.MOUSE_UP, this, this.onMouseUp);
+
+        this.refresh();
     }
 
     private _lastDistance: number = 0;

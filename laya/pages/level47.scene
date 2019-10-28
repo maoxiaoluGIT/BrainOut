@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":268,
+    "selecteID":271,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -12,7 +12,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":274,
+    "maxID":276,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -20,6 +20,20 @@
     "hasChild":true,
     "compId":2,
     "child":[
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,box",
+            "props":{"x":25,"width":700,"visible":false,"var":"box","height":1100,"bottom":137,"bgColor":"#eadfdf"},
+            "nodeParent":2,
+            "label":"box",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":274,
+            "child":[
+                ]
+        },
         {
             "x":15,
             "type":"Image",
@@ -37,10 +51,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,item2",
-            "props":{"y":599,"x":406,"width":314,"var":"item2","skin":"guanqia/47/pic_hen_2.png","height":148},
+            "searchKey":"Image,item",
+            "props":{"y":599,"x":406,"width":314,"var":"item","skin":"guanqia/47/pic_hen_2.png","height":148},
             "nodeParent":2,
-            "label":"item2",
+            "label":"item",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -50,25 +64,39 @@
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,item1",
-            "props":{"y":463,"x":459,"width":240,"var":"item1","skin":"guanqia/47/pic_hen_1.png","height":220},
+            "type":"Box",
+            "searchKey":"Box,item1",
+            "props":{"y":452,"x":415,"width":311,"var":"item1","height":300},
             "nodeParent":2,
             "label":"item1",
-            "isDirectory":false,
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":270,
+            "hasChild":true,
+            "compId":275,
             "child":[
-                ]
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":8,"x":47,"width":240,"skin":"guanqia/47/pic_hen_1.png","height":220},
+                    "nodeParent":275,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":270,
+                    "child":[
+                        ]
+                }]
         },
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,item4",
-            "props":{"y":805,"x":439,"width":200,"var":"item4","skin":"guanqia/47/pic_ice.png","height":309},
+            "searchKey":"Image,item3",
+            "props":{"y":805,"x":439,"width":200,"var":"item3","skin":"guanqia/47/pic_ice.png","height":309},
             "nodeParent":2,
-            "label":"item4",
+            "label":"item3",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -79,10 +107,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,item3",
-            "props":{"y":866,"x":64,"width":273,"var":"item3","skin":"guanqia/47/pic_watermelon_1.png","height":218},
+            "searchKey":"Image,item2",
+            "props":{"y":866,"x":64,"width":273,"var":"item2","skin":"guanqia/47/pic_watermelon_1.png","height":218},
             "nodeParent":2,
-            "label":"item3",
+            "label":"item2",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,

@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":180,
+    "selecteID":202,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -12,7 +12,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":200,
+    "maxID":203,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -22,43 +22,68 @@
     "child":[
         {
             "x":15,
-            "type":"Text",
-            "searchKey":"Text,zi1",
-            "props":{"y":353,"x":273,"width":200,"var":"zi1","text":"1+2+3+1","height":50,"fontSize":50,"align":"left"},
+            "type":"Box",
+            "searchKey":"Box,timuBox",
+            "props":{"y":353,"x":246,"var":"timuBox"},
             "nodeParent":2,
-            "label":"zi1",
-            "isDirectory":false,
+            "label":"timuBox",
+            "isOpen":null,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":181,
+            "hasChild":true,
+            "compId":201,
             "child":[
-                ]
+                {
+                    "type":"Text",
+                    "searchKey":"Text,zi1",
+                    "props":{"x":27,"width":200,"var":"zi1","text":"1+2+3+1","height":50,"fontSize":50,"align":"left"},
+                    "nodeParent":201,
+                    "label":"zi1",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":181,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Text",
+                    "searchKey":"Text",
+                    "props":{"y":57,"x":28,"width":200,"text":"1+2+3+1","height":50,"fontSize":50,"align":"left"},
+                    "nodeParent":201,
+                    "label":"Text",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":182,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Text",
+                    "searchKey":"Text",
+                    "props":{"y":113,"width":262,"text":"1+2+3+1=?","height":50,"fontSize":50,"align":"left"},
+                    "nodeParent":201,
+                    "label":"Text",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":183,
+                    "child":[
+                        ]
+                }]
         },
         {
             "x":15,
             "type":"Text",
-            "searchKey":"Text",
-            "props":{"y":410,"x":274,"width":200,"text":"1+2+3+1","height":50,"fontSize":50,"align":"left"},
+            "searchKey":"Text,daanTxt",
+            "props":{"y":411,"x":46,"width":657,"var":"daanTxt","text":"1+2+3+11+2+3+11+2+3+1=？","height":50,"fontSize":50,"align":"left"},
             "nodeParent":2,
-            "label":"Text",
+            "label":"daanTxt",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":182,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Text",
-            "searchKey":"Text",
-            "props":{"y":466,"x":246,"width":262,"text":"1+2+3+1=?","height":50,"fontSize":50,"align":"left"},
-            "nodeParent":2,
-            "label":"Text",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":183,
+            "compId":200,
             "child":[
                 ]
         },
@@ -79,7 +104,7 @@
                     "x":30,
                     "type":"Text",
                     "searchKey":"Text,shuzi",
-                    "props":{"y":23,"x":165,"width":278,"var":"shuzi","text":"123456","height":50,"fontSize":46,"align":"center"},
+                    "props":{"y":23,"x":165,"width":278,"var":"shuzi","text":"0","height":50,"fontSize":46,"align":"center"},
                     "nodeParent":184,
                     "label":"shuzi",
                     "isDirectory":false,
@@ -282,6 +307,20 @@
             "child":[
                 ],
             "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,rightBox",
+            "props":{"y":815,"x":375,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"rightBox",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":202,
+            "child":[
+                ]
         }],
     "animations":[
         {

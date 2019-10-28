@@ -3,6 +3,7 @@ import CookieKey from "../gameCookie/CookieKey";
 import Session from "../sessions/Session";
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
+import { DataKey } from "../sessions/DataKey";
 
 export default class TestPlatform extends BasePlatform{
     checkUpdate():void
@@ -37,9 +38,9 @@ export default class TestPlatform extends BasePlatform{
 
     onShare(type,isMain):void
     {
-        if(Session.gameData.shareTimes > 0)
+        if(Session.gameData[DataKey.shareTimes] > 0)
         {
-            Session.gameData.shareTimes--;
+            Session.gameData[DataKey.shareTimes]--;
         }
         Game.eventManager.event(GameEvent.SHARE_SUCCESS,type);
     }

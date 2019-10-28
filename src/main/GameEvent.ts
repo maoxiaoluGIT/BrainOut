@@ -1,4 +1,5 @@
 export default class GameEvent{
+    static WX_ROTATE:string = "WX_ROTATE";
     static WX_ON_SHOW:string = "WX_ON_SHOW";
     static WX_ON_HIDE:string = "WX_ON_HIDE";
     static AD_OVER:string = "AD_OVER";

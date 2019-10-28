@@ -6,6 +6,7 @@ import GameEvent from "../../GameEvent";
 import GM from "../../GM";
 import { ViewID } from "../ViewID";
 import MyEffect from "../../../core/utils/MyEffect";
+import { DataKey } from "../../sessions/DataKey";
 
 export default class CellItem extends ui.xuanguan2UI {
     private sys:SysTitles;
@@ -42,11 +43,11 @@ export default class CellItem extends ui.xuanguan2UI {
         this._state = 4;
         if(this.sys)
         {
-            if(sys.id <= Session.gameData.maxIndex)
+            if(sys.id <= Session.gameData[DataKey.maxIndex])
             {
                 this._state = 1;
             }
-            else if(sys.id <= Session.gameData.maxIndex + 1)
+            else if(sys.id <= Session.gameData[DataKey.maxIndex] + 1)
             {
                 this._state = 2;
             }

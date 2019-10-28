@@ -3,6 +3,7 @@ import GM from "../GM";
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
 import Session from "../sessions/Session";
+import { DataKey } from "../sessions/DataKey";
 
 export default class WXPlatform extends BasePlatform {
     constructor() { super(); }
@@ -183,12 +184,12 @@ export default class WXPlatform extends BasePlatform {
 
     private shareSuccess(type:number):void
     {
-        console.log("再次显示微信的时候",Session.gameData.shareTimes);
-        if(Session.gameData.shareTimes > 0)
+        console.log("再次显示微信的时候",Session.gameData[DataKey.shareTimes]);
+        if(Session.gameData[DataKey.shareTimes] > 0)
         {
             // if(Date.now() - this.shareTime >= 2500)
             // {
-                Session.gameData.shareTimes--;
+                Session.gameData[DataKey.shareTimes]--;
                 Game.eventManager.event(GameEvent.SHARE_SUCCESS,type);
                 return;
             // }

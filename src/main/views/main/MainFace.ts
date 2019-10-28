@@ -5,6 +5,7 @@ import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import { ViewID } from "../ViewID";
 import Session from "../../sessions/Session";
+import { DataKey } from "../../sessions/DataKey";
 
 export default class MainFace extends ui.mainuiUI {
     constructor() { 
@@ -31,12 +32,12 @@ export default class MainFace extends ui.mainuiUI {
 
     private updateKeyNum():void
     {
-        this.yaoshishu.text = "" + Session.gameData.keyNum;
+        this.yaoshishu.text = "" + Session.gameData[DataKey.keyNum];
     }
 
     private onTips():void
     {
-        if(Session.gameData.keyNum > 0)
+        if(Session.gameData[DataKey.keyNum] > 0)
         {
             Game.eventManager.event(GameEvent.SHOW_TIPS);
         }

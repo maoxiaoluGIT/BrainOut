@@ -2,10 +2,11 @@ import GM from "../GM";
 import SenderHttp from "../net/SenderHttp";
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
+import { DataKey } from "./DataKey";
 
 export default class Session{
-    static SKEY:string = "ntxntxntx";
-    static gameData:any = {};
+    static SKEY:string = "ntxntxntx123";
+    static gameData:number[] = [];
 
     static userData:any = {};
     constructor() {}
@@ -15,57 +16,57 @@ export default class Session{
         GM.log("player Data:" + data);
         if(data == null || data == "" || data == "0")
         {
-            Session.gameData.maxIndex = 0;
-            Session.gameData.keyNum = 0;
-            Session.gameData.shareTimes = 3;
-            Session.gameData.lastTime = new Date().setHours(24,0,0,0);
-            Session.gameData.signinDay = 0;//该签哪一天
-            Session.gameData.signinState = 0;//是否签过
-            Session.gameData.lastIndex = 1;
+            Session.gameData[DataKey.maxIndex] = 0;
+            Session.gameData[DataKey.keyNum] = 0;
+            Session.gameData[DataKey.shareTimes] = 3;
+            Session.gameData[DataKey.lastTime] = new Date().setHours(24,0,0,0);
+            Session.gameData[DataKey.signinDay] = 0;//该签哪一天
+            Session.gameData[DataKey.signinState] = 0;//是否签过
+            Session.gameData[DataKey.lastIndex] = 1;
             GM.log("new player");
         }
         else
         {
             Session.gameData = JSON.parse(data);
-            if(Date.now() > Session.gameData.lastTime)
+            if(Date.now() > Session.gameData[DataKey.lastTime])
             {
-                Session.gameData.shareTimes = 3;
-                Session.gameData.lastTime = new Date().setHours(24,0,0,0);
+                Session.gameData[DataKey.shareTimes] = 3;
+                Session.gameData[DataKey.lastTime] = new Date().setHours(24,0,0,0);
             }
 
-            if(Session.gameData.lastTime == null)
+            if(Session.gameData[DataKey.lastTime] == null)
             {
-                Session.gameData.lastTime = new Date().setHours(24,0,0,0);
+                Session.gameData[DataKey.lastTime] = new Date().setHours(24,0,0,0);
             }
-            if(Session.gameData.shareTimes == null)
+            if(Session.gameData[DataKey.shareTimes] == null)
             {
-                Session.gameData.shareTimes = 3;
+                Session.gameData[DataKey.shareTimes] = 3;
             }
-            if(Session.gameData.signinDay == null)
+            if(Session.gameData[DataKey.signinDay] == null)
             {
-                Session.gameData.signinDay = 0;
+                Session.gameData[DataKey.signinDay] = 0;
             }
-            if(Session.gameData.signinState == null)
+            if(Session.gameData[DataKey.signinState] == null)
             {
-                Session.gameData.signinState = 0;
+                Session.gameData[DataKey.signinState] = 0;
             }
 
-            if(Date.now() > Session.gameData.lastTime)
+            if(Date.now() > Session.gameData[DataKey.lastTime])
             {
-                if(Session.gameData.signinState == 1)
+                if(Session.gameData[DataKey.signinState] == 1)
                 {
-                    Session.gameData.signinDay++;
-                    if(Session.gameData.signinDay > 4)
+                    Session.gameData[DataKey.signinDay]++;
+                    if(Session.gameData[DataKey.signinDay] > 4)
                     {
-                        Session.gameData.signinDay = 0;
+                        Session.gameData[DataKey.signinDay] = 0;
                     }
-                    Session.gameData.signinState = 0;
+                    Session.gameData[DataKey.signinState] = 0;
                 }
             }
 
-            if(Session.gameData.lastIndex == null)
+            if(Session.gameData[DataKey.lastIndex] == null)
             {
-                Session.gameData.lastIndex = 1;
+                Session.gameData[DataKey.lastIndex] = 1;
             }
         }
         Session.onSave();

@@ -1,11 +1,31 @@
 import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
 import GM from "../GM";
+import Game from "../../core/Game";
+import GameEvent from "../GameEvent";
 
 export default class Level_40 extends BaseLevel {
     private ui: ui.level40UI;
 
-    constructor() { super(); }
+    private weixin;
+
+    constructor() { 
+        super(); 
+        this.weixin = Laya.Browser.window.wx;
+        this.on(Laya.Event.DISPLAY,this,this.onDis);
+        this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+    }
+
+    private onRotate():void
+    {
+        if(this.weixin)
+        {
+            this.weixin.stopAccelerometer();
+        }
+        this.ui.keyImg.visible = true;
+        Laya.Tween.to(this.ui.keyImg,{y:800},500);
+    }
+
 
     onInit(): void {
         if (this.isInit) {
@@ -22,6 +42,7 @@ export default class Level_40 extends BaseLevel {
             this.addEvent(sp,null,true);
         }
 
+        this.addEvent(this.ui.keyImg,null,true);
 
         this.refresh();
     }
@@ -32,10 +53,22 @@ export default class Level_40 extends BaseLevel {
 
 
     onUp(sprite: Laya.Sprite): void  {
-        this.ui.rightBox.pos(sprite.x,sprite.y);
-        this.ui.addChild(this.ui.rightBox)
-        this.setAnswer(this.ui.rightBox,false);
-        this.gotoStartPos(sprite);
+        if(sprite == this.ui.keyImg)
+        {
+            if(GM.hit(this.ui.keyImg,this.ui.kongBox))
+            {
+                this.ui.rightBox.pos(sprite.x,sprite.y);
+                this.ui.addChild(this.ui.rightBox)
+                this.setAnswer(this.ui.rightBox,true);
+            }
+        }
+        else
+        {
+            this.ui.rightBox.pos(sprite.x,sprite.y);
+            this.ui.addChild(this.ui.rightBox)
+            this.setAnswer(this.ui.rightBox,false);
+            this.gotoStartPos(sprite);
+        }
     }
 
     private gotoStartPos(sprite):void
@@ -43,9 +76,35 @@ export default class Level_40 extends BaseLevel {
         Laya.Tween.to(sprite,{x:sprite.tag[0],y:sprite.tag[1]},100);
     }
 
-    private _num:number = 0;
     refresh(): void  {
         Laya.MouseManager.enabled = true;
         super.refresh();
+        this.ui.keyImg.visible = false;
+        this.ui.keyImg.pos(620,1040);
+    }
+
+    private onUndis():void
+    {
+        if(this.weixin)
+        {
+            this.weixin.stopAccelerometer();
+        }
+    }
+
+    private onDis():void
+    {
+        Game.eventManager.once(GameEvent.WX_ROTATE,this,this.onRotate);
+        if(this.weixin)
+        {
+            this.weixin.onAccelerometerChange((res)=>{
+                if(res.y > 0.9)
+                {
+                    Game.eventManager.event(GameEvent.WX_ROTATE);
+                }
+            });
+            this.weixin.startAccelerometer({
+                interval: 'normal'
+              });
+        }
     }
 }

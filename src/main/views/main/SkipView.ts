@@ -5,6 +5,7 @@ import KeyIcon from "./KeyIcon";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import AdType from "./AdType";
+import { DataKey } from "../../sessions/DataKey";
 
 export default class SkipView extends ui.tishi2UI {
     constructor() { 
@@ -21,7 +22,7 @@ export default class SkipView extends ui.tishi2UI {
 
     private onDis():void
     {
-        this.nextBtn.visible = Session.gameData.keyNum >= 2;
+        this.nextBtn.visible = Session.gameData[DataKey.keyNum] >= 2;
         this.nextAdBtn.visible = !this.nextBtn.visible;
     }
 
@@ -32,9 +33,9 @@ export default class SkipView extends ui.tishi2UI {
 
     private onNext():void
     {
-        if(Session.gameData.keyNum >= 2)
+        if(Session.gameData[DataKey.keyNum] >= 2)
         {
-            Session.gameData.keyNum -= 2;
+            Session.gameData[DataKey.keyNum] -= 2;
             Session.onSave();
             this.onClose();
             KeyIcon.fly("-2");

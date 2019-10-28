@@ -16,11 +16,14 @@ import GM from "../../GM";
 import PassView from "./PassView";
 import AdType from "./AdType";
 import KeyNullTips from "./KeyNullTips";
+import { DataKey } from "../../sessions/DataKey";
+import TipsView42 from "./TipsView42";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
     private _rightView:RightView;
     private _tipsView:TipsView;
+    private _tipsView42:TipsView42;
     private _skipView:SkipView;
     private _box:Laya.Box = new Laya.Box();
     // private _viewMap:any = {};
@@ -79,7 +82,7 @@ export default class MainView extends ui.mainViewUI {
 
     private onAddKey(type:number):void
     {
-        Session.gameData.keyNum += 1;
+        Session.gameData[DataKey.keyNum] += 1;
         Session.onSave();
         KeyIcon.fly("+1");
         
@@ -113,16 +116,30 @@ export default class MainView extends ui.mainViewUI {
 
     private showTips():void
     {
-        if(!this._tipsView)
+        if(this.curView.sys.id == 42)
         {
-            this._tipsView = new TipsView();
+            if(!this._tipsView42)
+            {
+                this._tipsView42 = new TipsView42();
+            }
+            this.addChild(this._tipsView42);
+            this._tipsView42.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+            MyEffect.popup(this._tipsView42,1,500,100);
+            this._tipsView42.setTips(this.curView.sys);
         }
-        this.addChild(this._tipsView);
-        this._tipsView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
-        MyEffect.popup(this._tipsView,1,500,100);
-        this._tipsView.setTips(this.curView.sys);
+        else
+        {
+            if(!this._tipsView)
+            {
+                this._tipsView = new TipsView();
+            }
+            this.addChild(this._tipsView);
+            this._tipsView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+            MyEffect.popup(this._tipsView,1,500,100);
+            this._tipsView.setTips(this.curView.sys);
+        }
 
-        Session.gameData.keyNum--;
+        Session.gameData[DataKey.keyNum]--;
         Session.onSave();
         KeyIcon.fly("-1");
     }
@@ -144,19 +161,20 @@ export default class MainView extends ui.mainViewUI {
         MyEffect.popup(this._rightView,1,500,250);
         this._rightView.setWin(this.curView.sys);
 
-        this.curLv++;
-        Session.gameData.lastIndex = this.curLv;
-        
-        if(this.curLv > Session.gameData.maxIndex)
+        if(this.curLv > Session.gameData[DataKey.maxIndex])
         {
-            Session.gameData.maxIndex = this.curLv;
+            Session.gameData[DataKey.maxIndex] = this.curLv;
         }
+
+        this.curLv++;
+        Session.gameData[DataKey.lastIndex] = this.curLv;
         Session.onSave();
     }
 
     private goLastIndex():void
     {
-        this.showLevel(Session.gameData.lastIndex);
+        // Session.gameData[DataKey.lastIndex] = 32;
+        this.showLevel(Session.gameData[DataKey.lastIndex]);
     }
 
     private onNext():void

@@ -9,6 +9,8 @@ export default class BaseLevel extends Laya.Box{
     isInit:boolean;
     sys:SysTitles;
     curLevel:number;
+
+    static noRes:string = "22,41,44,";
     constructor(){
         super();
     }
@@ -70,15 +72,25 @@ export default class BaseLevel extends Laya.Box{
         this.curLevel = level;
         this.sys = Game.tableManager.getDataByNameAndId(SysTitles.NAME,level);
         parentBox && parentBox.addChild(this);
-        Laya.loader.load("atlas/guanqia/" + level + ".atlas",Laya.Handler.create(this,this.onInit));
+        if(BaseLevel.noRes.indexOf(level + ",") == -1)
+        {
+            Laya.loader.load("atlas/guanqia/" + level + ".atlas",Laya.Handler.create(this,this.onInit));
+        }
+        else
+        {
+            this.onInit();
+        }
     }
 
     onClear():void
     {
         if(this.curLevel > 0)
         {
-            Laya.loader.clearRes("atlas/guanqia/" + this.curLevel + ".atlas");
-            Laya.loader.clearTextureRes("atlas/guanqia/" + this.curLevel + ".atlas");
+            if(BaseLevel.noRes.indexOf(this.curLevel + ",") != -1)
+            {
+                Laya.loader.clearRes("atlas/guanqia/" + this.curLevel + ".atlas");
+                Laya.loader.clearTextureRes("atlas/guanqia/" + this.curLevel + ".atlas");
+            }
         }
     }
 }
