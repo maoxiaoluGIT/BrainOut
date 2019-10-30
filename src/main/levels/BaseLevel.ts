@@ -47,6 +47,8 @@ export default class BaseLevel extends Laya.Box{
 
     setAnswer(sprite:Laya.Sprite,isRight:boolean):void
     {
+        RightIcon.ins.removeSelf();
+        WrongIcon.ins.removeSelf();
         Laya.MouseManager.enabled = false;
         if(isRight)
         {

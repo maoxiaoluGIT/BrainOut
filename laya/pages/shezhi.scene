@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":9,
+    "selecteID":20,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":20,
+    "maxID":21,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -237,6 +237,20 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":14,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text",
+            "props":{"y":929,"x":102,"width":139,"text":"暂未开启","height":50,"fontSize":36,"align":"center"},
+            "nodeParent":2,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":20,
             "child":[
                 ]
         }],

@@ -37,7 +37,7 @@ export default class Level_49 extends BaseLevel {
             if(GM.hit(this.ui.tuiBox,this.ui.item2))
             {
                 this.ui.item2.x = 50;
-                Laya.Tween.to(this.ui.item2,{y:this.ui.item2.y - 240},500,null,new Laya.Handler(this,()=>{
+                Laya.Tween.to(this.ui.item2,{y:735},500,null,new Laya.Handler(this,()=>{
                     this.ui.gui.visible = true;
                     this.setAnswer(this.ui.gui,true);
                 }));

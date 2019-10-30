@@ -1,6 +1,8 @@
-import Game from "./core/Game";
-import GM from "./main/GM";
-import Session from "./main/sessions/Session";
+import GM from "./GM";
+import Session from "./sessions/Session";
+import Game from "../core/Game";
+import { LogType } from "./LogType";
+
 
 export default class Log{
     public static onlyid = Math.random();
@@ -12,7 +14,7 @@ export default class Log{
         
     }
 
-    public static syslog( type:LOG_TYPE , content:string = "" ):void {
+    public static syslog( type:LogType , content:string = "" ):void {
         var arr:Array<any> = [];
         arr.push( Date.now() );
         arr.push( GM.codeVer );
@@ -24,9 +26,4 @@ export default class Log{
         let str = arr.join( "\t" );
         Game.http( GM.serverIP + "gamex3/gamelog" ,"log=" + str ,"post" );
     }
-}
-
-export enum LOG_TYPE{
-    REG = 0,
-    LOGIN = 1
 }

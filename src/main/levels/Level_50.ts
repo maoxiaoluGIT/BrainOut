@@ -14,6 +14,16 @@ export default class Level_50 extends BaseLevel {
         this.weixin = Laya.Browser.window.wx;
         this.on(Laya.Event.DISPLAY,this,this.onDis);
         this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+
+        this.on(Laya.Event.CLICK,this,this.onClick);
+    }
+
+    private onClick():void
+    {
+        if(GM.platformId == 0 || GM.platformId == 1)
+        {
+            this.setAnswer(this.ui.rightBox,true);
+        }
     }
 
     private onRotate():void

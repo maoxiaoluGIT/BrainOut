@@ -164,7 +164,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,menBox",
-            "props":{"y":593,"x":150,"width":60,"var":"menBox","height":60,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":593,"x":150,"width":77,"var":"menBox","height":85,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"menBox",
             "isDirectory":false,

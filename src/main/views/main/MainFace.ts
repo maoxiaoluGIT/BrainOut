@@ -14,11 +14,13 @@ export default class MainFace extends ui.mainuiUI {
         this.xuanguan.on(Laya.Event.CLICK,this,this.onClick,[2]);
         this.shuaxin.on(Laya.Event.CLICK,this,this.onClick,[3]);
         this.kuaijin.on(Laya.Event.CLICK,this,this.onClick,[4]);
+        this.qiuzhu.on(Laya.Event.CLICK,this,this.onClick,[5]);
 
         GM.imgEffect.addEffect(this.shezhi);
         GM.imgEffect.addEffect(this.xuanguan);
         GM.imgEffect.addEffect(this.shuaxin);
         GM.imgEffect.addEffect(this.kuaijin);
+        GM.imgEffect.addEffect(this.qiuzhu);
         GM.imgEffect.addEffect(this.jinyaoshi);
 
         this.keyBtn.on(Laya.Event.CLICK,this,this.onTips);
@@ -80,6 +82,10 @@ export default class MainFace extends ui.mainuiUI {
         else if(type == 4)
         {
             Game.eventManager.event(GameEvent.SKIP_CUR);//快进
+        }
+        else if(type == 5)
+        {
+            GM.platform.onShare(0,true);//求助
         }
     }
 }

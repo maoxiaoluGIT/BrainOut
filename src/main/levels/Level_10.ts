@@ -47,6 +47,9 @@ export default class Level_10 extends BaseLevel{
             this.ui.blankBox.visible = true;
             this.ui.birdImg0.visible = false;
             this.ui.birdImg1.visible = true;
+            setTimeout(() => {
+                this.ui.blankBox.visible = false;
+            }, 1000);
         }
     }
 

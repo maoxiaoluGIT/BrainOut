@@ -42,7 +42,7 @@ export default class Level_32 extends BaseLevel {
             if(GM.hit(this.ui.monthBox,this.ui.item2))
             {
                 this._num++;
-                this.ui.item2.pos(318,498);
+                this.ui.item2.pos(310,578);
             }
             else
             {
@@ -56,7 +56,7 @@ export default class Level_32 extends BaseLevel {
             if(GM.hit(this.ui.headBox,this.ui.item0))
             {
                 this._num++;
-                this.ui.item0.pos(200,216);
+                this.ui.item0.pos(212,268);
             }
             else
             {

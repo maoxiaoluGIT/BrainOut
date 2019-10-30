@@ -51,7 +51,7 @@ export default class Level_19 extends BaseLevel{
             this.setAnswer(sprite,false);
             return;
         }
-        if(GM.hit(sprite,this.ui.item0))
+        if(GM.hitPoint(sprite,this.ui.item0))
         {
             this.setAnswer(this.ui.item0,true);
             sprite.visible = false;

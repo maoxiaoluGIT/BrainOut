@@ -41,7 +41,7 @@ export default class MainView extends ui.mainViewUI {
 
         Game.eventManager.on(GameEvent.SHOW_RIGHT,this,this.showRight);
         Game.eventManager.on(GameEvent.ON_NEXT,this,this.onNext);
-        Game.eventManager.on(GameEvent.ON_FIRST,this,this.goLastIndex);
+        Game.eventManager.on(GameEvent.ON_FIRST,this,this.goFirst);
         Game.eventManager.on(GameEvent.ON_REFRESH,this,this.onRefresh);
         Game.eventManager.on(GameEvent.SHOW_TIPS,this,this.showTips);
         Game.eventManager.on(GameEvent.SKIP_CUR,this,this.showSkip);
@@ -56,6 +56,11 @@ export default class MainView extends ui.mainViewUI {
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
         Game.eventManager.on(GameEvent.SELECT_CELL,this,this.showLevel);
         this.goLastIndex();
+    }
+
+    private goFirst():void
+    {
+        this.showLevel(Session.gameData[DataKey.lastIndex]);
     }
 
     private _nullTipsView:KeyNullTips;
@@ -168,6 +173,11 @@ export default class MainView extends ui.mainViewUI {
 
         this.curLv++;
         Session.gameData[DataKey.lastIndex] = this.curLv;
+        if(Session.gameData[DataKey.lastIndex] > GM.indexNum)
+        {
+            Session.gameData[DataKey.lastIndex] = 1;
+        }
+
         Session.onSave();
     }
 
@@ -224,7 +234,5 @@ export default class MainView extends ui.mainViewUI {
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
         Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");
-
-
     }
 }

@@ -67,7 +67,7 @@ import Level_47 from "./levels/Level_47";
 import Level_48 from "./levels/Level_48";
 import Level_49 from "./levels/Level_49";
 import Level_50 from "./levels/Level_50";
-import Log from "../Log";
+import Log from "./Log";
 
 /**游戏总管理 */
 export default class GM{
@@ -221,6 +221,7 @@ export default class GM{
     }
 
     static hitPoint(tt:Laya.Sprite , box:Laya.Sprite):boolean{
-        return tt.x >= box.x && tt.x <= box.x + box.width && tt.y >= box.y &&tt.y <= box.y + box.height;
+        return tt.x >= box.x && tt.x <= box.x + box.width 
+        && tt.y >= box.y && tt.y <= box.y + box.height;
     }
 }

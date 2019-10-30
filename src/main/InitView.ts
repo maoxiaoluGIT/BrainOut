@@ -52,6 +52,8 @@ export default class InitView extends ui.initViewUI {
 		}
 		Game.layerManager.addChild(this._homeLoading);
 		this.destroy(true);
+
+		// GM.sysLog(1,"hehe");
 	}
     
 }

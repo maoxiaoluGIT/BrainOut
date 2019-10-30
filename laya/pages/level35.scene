@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":137,
+    "selecteID":127,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -24,7 +24,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,zhong",
-            "props":{"y":233,"x":600,"width":116,"var":"zhong","skin":"guanqia/35/pic_clock.png","height":113},
+            "props":{"y":289,"x":600,"width":116,"var":"zhong","skin":"guanqia/35/pic_clock.png","height":113},
             "nodeParent":2,
             "label":"zhong",
             "isDirectory":false,

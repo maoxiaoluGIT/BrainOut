@@ -30,6 +30,10 @@ export default class RightView extends ui.shengliUI{
     {
         this.paishou.y = 1334;
         Laya.Tween.to(this.paishou,{y:857},500,null,new Laya.Handler(this,this.onEff),600);
+        this.nextBtn.alpha = 0;
+        setTimeout(() => {
+            Laya.Tween.to(this.nextBtn,{alpha:1},500);
+        }, 1500);
     }
 
     private onunDis():void
@@ -39,6 +43,7 @@ export default class RightView extends ui.shengliUI{
 
     private onEff():void
     {
+        this.nextBtn.visible = true;
         GM.imgEffect.addEffect2(this.paishou,2);
         Laya.MouseManager.enabled = true;
         GM.playSound("win.mp3");

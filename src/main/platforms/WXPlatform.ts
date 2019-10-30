@@ -208,9 +208,11 @@ export default class WXPlatform extends BasePlatform {
         }
     }
 
+    static shareMsgs:string[] = ["万万没想到，还有这种骚操作！","脑洞是个什么洞？","哎呀！妈呀！脑瓜疼！","有人@你 进来和我一起玩！"];
+
     private getShareObj():any
     {
-        let arr:string[] = ["万万没想到，还有这种骚操作！","脑洞是个什么洞？","哎呀！妈呀！脑瓜疼！"];
+        let arr:string[] = WXPlatform.shareMsgs;
         let obj:any = {};
         let index:number = Math.floor(arr.length * Math.random());
         obj.title = arr[index];

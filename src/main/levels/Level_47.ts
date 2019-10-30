@@ -26,26 +26,14 @@ export default class Level_47 extends BaseLevel{
         this.refresh();
     }
 
-    private _downPos:Laya.Point = new Laya.Point();
     onDown(sprite: Laya.Sprite):void
     {
-        this._downPos.x = Laya.stage.mouseX;
-        this._downPos.y = Laya.stage.mouseY;
-
-        sprite.off(Laya.Event.CLICK,this,this.onClick);
         sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
     }
 
     onUp(sprite: Laya.Sprite):void
     {
-        if(Laya.stage.mouseX == this._downPos.x && Laya.stage.mouseY == this._downPos.y)
-        {
-            this.onClick(sprite);
-        }
-        else
-        {
-            super.onUp(sprite);
-        }
+        super.onUp(sprite);
     }
 
     refresh(): void {

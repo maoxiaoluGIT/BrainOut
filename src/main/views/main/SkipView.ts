@@ -24,6 +24,11 @@ export default class SkipView extends ui.tishi2UI {
     {
         this.nextBtn.visible = Session.gameData[DataKey.keyNum] >= 2;
         this.nextAdBtn.visible = !this.nextBtn.visible;
+
+        this.cha.alpha = 0;
+        setTimeout(() => {
+            Laya.Tween.to(this.cha,{alpha:1},500);
+        }, 600);
     }
 
     private onClose():void

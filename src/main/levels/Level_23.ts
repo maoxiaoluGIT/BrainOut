@@ -35,6 +35,7 @@ export default class Level_23 extends BaseLevel {
         this.ui.item0.alpha = 1 - this.clickNum * 1/3;
         if(this.ui.item0.alpha <= 0)
         {
+            this.ui.yan.visible = false;
             this.ui.rightBox.pos(sprite.x,sprite.y);
             this.setAnswer(this.ui.rightBox,true);
         }
@@ -45,6 +46,7 @@ export default class Level_23 extends BaseLevel {
         super.refresh();
         this.clickNum = 0;
         this.ui.item0.alpha = 1 - this.clickNum * 1/3;
+        this.ui.yan.visible = true;
     }
 
     onDown(sprite: Laya.Sprite):void
