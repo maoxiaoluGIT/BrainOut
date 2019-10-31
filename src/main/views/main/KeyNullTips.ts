@@ -1,6 +1,7 @@
 import { ui } from "../../../ui/layaMaxUI";
 import GM from "../../GM";
 import AdType from "./AdType";
+import LogType from "../../LogType";
 
 export default class KeyNullTips extends ui.keyTipsUI {
     
@@ -18,16 +19,20 @@ export default class KeyNullTips extends ui.keyTipsUI {
         setTimeout(() => {
             Laya.Tween.to(this.cha,{alpha:1},500);
         }, 600);
+
+        GM.sysLog(LogType.open_key_null);
     }
 
     private onPlay():void
     {
         GM.platform.playAd("",AdType.nullKey);
         this.removeSelf();
+        GM.sysLog(LogType.key_null_ad_play);
     }
 
     private onClose():void
     {
+        GM.sysLog(LogType.close_key_null);
         this.removeSelf();
     }
 }

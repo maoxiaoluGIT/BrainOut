@@ -5,7 +5,7 @@ import GameEvent from "../GameEvent";
 import { DataKey } from "./DataKey";
 
 export default class Session{
-    static SKEY:string = "ntxntxntx123456789";
+    static SKEY:string = "Session01";
     static gameData:number[] = [];
 
     static userData:any = {};

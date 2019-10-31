@@ -4,6 +4,7 @@ import SysTitles from "../../sys/SysTitles";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import AdType from "./AdType";
+import LogType from "../../LogType";
 export default class RightView extends ui.shengliUI{
     
     constructor() { 
@@ -18,6 +19,7 @@ export default class RightView extends ui.shengliUI{
     {
         this.removeSelf();
         GM.platform.playAd("",AdType.answerRight);
+        GM.sysLog(LogType.shengli_ad_play);
     }
 
     private onNext():void

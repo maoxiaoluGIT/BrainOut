@@ -6,6 +6,7 @@ import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import AdType from "./AdType";
 import { DataKey } from "../../sessions/DataKey";
+import LogType from "../../LogType";
 
 export default class SkipView extends ui.tishi2UI {
     constructor() { 
@@ -29,11 +30,14 @@ export default class SkipView extends ui.tishi2UI {
         setTimeout(() => {
             Laya.Tween.to(this.cha,{alpha:1},500);
         }, 600);
+
+        GM.sysLog(LogType.open_skip);
     }
 
     private onClose():void
     {
         this.removeSelf();
+        GM.sysLog(LogType.close_skip);
     }
 
     private onNext():void
@@ -42,14 +46,17 @@ export default class SkipView extends ui.tishi2UI {
         {
             Session.gameData[DataKey.keyNum] -= 2;
             Session.onSave();
-            this.onClose();
+            this.removeSelf();
             KeyIcon.fly("-2");
-            Game.eventManager.event(GameEvent.ON_NEXT);
+            GM.sysLog(LogType.resume_key);
+            GM.sysLog(LogType.resume_key);
+            Game.eventManager.event(GameEvent.ON_SKIP);
         }
     }
 
     private playAd():void
     {
+        GM.sysLog(LogType.skip_ad_play);
         GM.platform.playAd("",AdType.skip);
     }
 }

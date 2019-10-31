@@ -18,6 +18,7 @@ import AdType from "./AdType";
 import KeyNullTips from "./KeyNullTips";
 import { DataKey } from "../../sessions/DataKey";
 import TipsView42 from "./TipsView42";
+import LogType from "../../LogType";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
@@ -41,6 +42,7 @@ export default class MainView extends ui.mainViewUI {
 
         Game.eventManager.on(GameEvent.SHOW_RIGHT,this,this.showRight);
         Game.eventManager.on(GameEvent.ON_NEXT,this,this.onNext);
+        Game.eventManager.on(GameEvent.ON_SKIP,this,this.onSkip);
         Game.eventManager.on(GameEvent.ON_FIRST,this,this.goFirst);
         Game.eventManager.on(GameEvent.ON_REFRESH,this,this.onRefresh);
         Game.eventManager.on(GameEvent.SHOW_TIPS,this,this.showTips);
@@ -90,14 +92,20 @@ export default class MainView extends ui.mainViewUI {
         Session.gameData[DataKey.keyNum] += 1;
         Session.onSave();
         KeyIcon.fly("+1");
+        GM.sysLog(LogType.get_key);
         
         if(type == AdType.answerRight)
         {
             this.onNext();
+            GM.sysLog(LogType.shengli_ad_com);
         }
         else if(type == AdType.skip)
         {
-
+            GM.sysLog(LogType.skip_ad_com);
+        }
+        else if(type == AdType.nullKey)
+        {
+            GM.sysLog(LogType.key_null_ad_com);
         }
     }
 
@@ -147,6 +155,7 @@ export default class MainView extends ui.mainViewUI {
         Session.gameData[DataKey.keyNum]--;
         Session.onSave();
         KeyIcon.fly("-1");
+        GM.sysLog(LogType.resume_key);
     }
 
     private onRefresh():void
@@ -170,6 +179,7 @@ export default class MainView extends ui.mainViewUI {
         {
             Session.gameData[DataKey.maxIndex] = this.curLv;
         }
+        GM.sysLog(3000 + this.curLv);
 
         this.curLv++;
         Session.gameData[DataKey.lastIndex] = this.curLv;
@@ -185,6 +195,17 @@ export default class MainView extends ui.mainViewUI {
     {
         // Session.gameData[DataKey.lastIndex] = 32;
         this.showLevel(Session.gameData[DataKey.lastIndex]);
+    }
+
+    private onSkip():void
+    {
+        this.curLv++;
+        if(this.curLv <= GM.indexNum)
+        {
+            this.showLevel(this.curLv);
+            return;
+        }
+        this.showPassGame();
     }
 
     private onNext():void
@@ -234,5 +255,6 @@ export default class MainView extends ui.mainViewUI {
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
         Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");
+        GM.sysLog(2000 + lv);
     }
 }

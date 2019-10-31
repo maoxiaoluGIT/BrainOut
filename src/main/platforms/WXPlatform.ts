@@ -4,6 +4,7 @@ import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
 import Session from "../sessions/Session";
 import { DataKey } from "../sessions/DataKey";
+import LogType from "../LogType";
 
 export default class WXPlatform extends BasePlatform {
     constructor() { super(); }
@@ -178,13 +179,13 @@ export default class WXPlatform extends BasePlatform {
             Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
             GM.log("视频失败分享");
         }
+        GM.sysLog(LogType.share_msg);
     }
 
     private shareTime:number;
 
     private shareSuccess(type:number):void
     {
-        console.log("再次显示微信的时候",Session.gameData[DataKey.shareTimes]);
         if(Session.gameData[DataKey.shareTimes] > 0)
         {
             // if(Date.now() - this.shareTime >= 2500)
@@ -234,6 +235,7 @@ export default class WXPlatform extends BasePlatform {
         this.ad.onClose( (res)=>{
             if ( res && res.isEnded || res===undefined ){
                 GM.log("关闭广告");
+                GM.sysLog(LogType.play_ad_com_total);
                 Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE,type);
             }
         });
@@ -247,7 +249,7 @@ export default class WXPlatform extends BasePlatform {
                 this.onShare(type,false);
               })
           })
-        
+          GM.sysLog(LogType.play_ad_total);
     }
 
     showBanner(codeId:string):void{

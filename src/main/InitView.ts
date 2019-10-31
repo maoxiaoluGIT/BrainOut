@@ -5,6 +5,7 @@ import GM from "./GM";
 import LoginHttp from "./net/LoginHttp";
 import ReceiverHttp from "./net/ReceiverHttp";
 import Session from "./sessions/Session";
+import LogType from "./LogType";
 
 export default class InitView extends ui.initViewUI {
     
@@ -52,7 +53,7 @@ export default class InitView extends ui.initViewUI {
 		}
 		Game.layerManager.addChild(this._homeLoading);
 		this.destroy(true);
-
+		GM.sysLog(LogType.open_game);
 		// GM.sysLog(1,"hehe");
 	}
     
