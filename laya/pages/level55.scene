@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":334,
+    "selecteID":333,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -12,7 +12,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":335,
+    "maxID":341,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -37,10 +37,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,biao",
-            "props":{"y":368,"x":96,"width":175,"var":"biao","skin":"guanqia/55/1_31_1.png","height":175},
+            "searchKey":"Image,item0",
+            "props":{"y":368,"x":96,"width":175,"var":"item0","skin":"guanqia/55/1_31_1.png","height":175},
             "nodeParent":2,
-            "label":"biao",
+            "label":"item0",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -51,10 +51,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,deng",
-            "props":{"y":537,"x":242.5,"width":259,"var":"deng","skin":"guanqia/55/pic_161_2.png","height":207},
+            "searchKey":"Image,item2",
+            "props":{"y":537,"x":242.5,"width":259,"var":"item2","skin":"guanqia/55/pic_161_2.png","height":207},
             "nodeParent":2,
-            "label":"deng",
+            "label":"item2",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -65,10 +65,10 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,jia",
-            "props":{"y":329,"x":332,"width":357,"var":"jia","skin":"guanqia/55/pic_161_3.png","height":179},
+            "searchKey":"Image,item1",
+            "props":{"y":329,"x":332,"width":357,"var":"item1","skin":"guanqia/55/pic_161_3.png","height":179},
             "nodeParent":2,
-            "label":"jia",
+            "label":"item1",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -94,7 +94,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,shen",
-            "props":{"y":628,"x":466,"width":235,"var":"shen","skin":"guanqia/55/pic_161_5.png","height":346,"anchorY":1,"anchorX":0},
+            "props":{"y":628,"x":466,"width":235,"var":"shen","skin":"guanqia/55/pic_161_5.png","mouseEnabled":false,"height":346,"anchorY":1,"anchorX":0},
             "nodeParent":2,
             "label":"shen",
             "isDirectory":false,
@@ -103,6 +103,59 @@
             "compId":333,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,btnBox",
+            "props":{"y":815,"x":130,"var":"btnBox"},
+            "nodeParent":2,
+            "label":"btnBox",
+            "isOpen":null,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":340,
+            "child":[
+                {
+                    "type":"Button",
+                    "searchKey":"Button,item3",
+                    "props":{"width":532,"var":"item3","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"66,123,63,124","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"环游世界","height":125},
+                    "nodeParent":340,
+                    "label":"item3",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":335,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Button",
+                    "searchKey":"Button,item4",
+                    "props":{"y":149,"width":532,"var":"item4","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"66,123,63,124","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"有一套湖边小屋","height":125},
+                    "nodeParent":340,
+                    "label":"item4",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":338,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Button",
+                    "searchKey":"Button,item5",
+                    "props":{"y":295,"width":532,"var":"item5","stateNum":"1","skin":"pubRes/btn_1.png","sizeGrid":"66,123,63,124","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"精通所有语言","height":125},
+                    "nodeParent":340,
+                    "label":"item5",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":339,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

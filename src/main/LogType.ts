@@ -1,4 +1,5 @@
 export default class LogType {
+    static new_player:number = 1000;
     static open_game:number = 1001;
     static open_key_null:number = 1002;
     static close_key_null:number = 1003;

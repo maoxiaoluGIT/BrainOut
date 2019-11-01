@@ -6,7 +6,7 @@ var REG: Function = Laya.ClassUtils.regClass;
 export module ui {
     export class initViewUI extends View {
 		public txt:Laya.Label;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Label","props":{"x":225,"width":300,"var":"txt","text":"0%","fontSize":36,"color":"#000000","centerY":0,"bold":true,"align":"center"},"compId":3}],"loadList":[],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Label","props":{"y":649,"x":225,"width":300,"var":"txt","text":"0%","fontSize":36,"color":"#000000","bold":true,"align":"center"},"compId":3}],"loadList":[],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -868,6 +868,91 @@ export module ui {
         }
     }
     REG("ui.level50UI",level50UI);
+    export class level51UI extends View {
+		public box:Laya.Box;
+		public img0:Laya.Image;
+		public img1:Laya.Image;
+		public img2:Laya.Image;
+		public img3:Laya.Image;
+		public item0:Laya.Image;
+		public item1:Laya.Image;
+		public item2:Laya.Image;
+		public item3:Laya.Image;
+		public item4:Laya.Image;
+		public item5:Laya.Image;
+		public jia:Laya.Image;
+		public jian:Laya.Image;
+		public clearBtn:Laya.Button;
+		public sureBtn:Laya.Button;
+		public shuzi:Laya.FontClip;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"x":25,"width":700,"visible":false,"var":"box","height":1100,"bottom":272,"bgColor":"#eadfdf"},"compId":322},{"type":"Image","props":{"y":377,"x":78,"width":166,"var":"img0","skin":"guanqia/51/pic_fries.png","height":241},"compId":318},{"type":"Image","props":{"y":367,"x":279,"width":166,"var":"img1","skin":"guanqia/51/pic_fries.png","height":241},"compId":319},{"type":"Image","props":{"y":377,"x":503,"width":166,"var":"img2","skin":"guanqia/51/pic_fries.png","height":241},"compId":320},{"type":"Image","props":{"y":649,"x":78,"width":166,"var":"img3","skin":"guanqia/51/pic_fries.png","height":241},"compId":321},{"type":"Image","props":{"y":377,"x":78,"width":166,"var":"item0","skin":"guanqia/51/pic_fries.png","height":241},"compId":312},{"type":"Image","props":{"y":367,"x":279,"width":166,"var":"item1","skin":"guanqia/51/pic_fries.png","height":241},"compId":313},{"type":"Image","props":{"y":377,"x":503,"width":166,"var":"item2","skin":"guanqia/51/pic_fries.png","height":241},"compId":314},{"type":"Image","props":{"y":649,"x":78,"width":166,"var":"item3","skin":"guanqia/51/pic_fries.png","height":241},"compId":315},{"type":"Image","props":{"y":649,"x":292,"width":166,"var":"item4","skin":"guanqia/51/pic_fries.png","height":241},"compId":316},{"type":"Image","props":{"y":640,"x":517,"width":166,"var":"item5","skin":"guanqia/51/pic_fries.png","height":241},"compId":317},{"type":"Image","props":{"y":956,"x":508,"width":87,"var":"jia","skin":"pubRes/pic_color_add.png","height":106,"anchorY":0.5,"anchorX":0.5},"compId":306},{"type":"Image","props":{"y":956,"x":244,"width":87,"var":"jian","skin":"pubRes/pic_color_reduce.png","scaleX":-1,"height":106,"anchorY":0.5,"anchorX":0.5},"compId":307},{"type":"Button","props":{"y":1125,"x":221,"width":282,"var":"clearBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"清除","height":125,"anchorY":0.5,"anchorX":0.5},"compId":308},{"type":"Button","props":{"y":1125,"x":542,"width":282,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125,"anchorY":0.5,"anchorX":0.5},"compId":309},{"type":"FontClip","props":{"y":911,"x":316,"width":112,"var":"shuzi","value":"1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":79,"align":"center"},"compId":310},{"type":"Box","props":{"y":841,"x":375,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":323}],"loadList":["guanqia/51/pic_fries.png","pubRes/pic_color_add.png","pubRes/pic_color_reduce.png","pubRes/btn_1.png","pubRes/btn_2.png","pubRes/shuzi2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level51UI.uiView);
+        }
+    }
+    REG("ui.level51UI",level51UI);
+    export class level52UI extends View {
+		public img:Laya.Image;
+		public maoBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":391,"x":22,"width":710,"var":"img","skin":"guanqia/52/5_2_1.png","height":713},"compId":319},{"type":"Box","props":{"y":547,"x":601,"width":60,"var":"maoBox","height":60},"compId":320}],"loadList":["guanqia/52/5_2_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level52UI.uiView);
+        }
+    }
+    REG("ui.level52UI",level52UI);
+    export class level53UI extends View {
+		public jing:Laya.Image;
+		public tong:Laya.Image;
+		public bi:Laya.Image;
+		public hua:Laya.Image;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":400,"x":137,"width":477,"var":"jing","skin":"guanqia/53/pic_30_1.png","height":509},"compId":321},{"type":"Image","props":{"y":947,"x":94,"width":209,"var":"tong","skin":"guanqia/53/pic_30_2.png","height":225},"compId":322},{"type":"Image","props":{"y":987,"x":457,"width":185,"var":"bi","skin":"guanqia/53/pic_30_3.png","height":185},"compId":323},{"type":"Image","props":{"y":822,"x":323,"width":105,"var":"hua","skin":"guanqia/53/pic_30_4.png","height":67},"compId":324},{"type":"Box","props":{"y":802,"x":375,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":325}],"loadList":["guanqia/53/pic_30_1.png","guanqia/53/pic_30_2.png","guanqia/53/pic_30_3.png","guanqia/53/pic_30_4.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level53UI.uiView);
+        }
+    }
+    REG("ui.level53UI",level53UI);
+    export class level54UI extends View {
+		public huang:Laya.Image;
+		public lv:Laya.Image;
+		public huang2:Laya.Image;
+		public fc1:Laya.FontClip;
+		public fc2:Laya.FontClip;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":488,"x":219,"width":311,"var":"huang","skin":"guanqia/54/pic_36_1.png","height":176},"compId":326},{"type":"Image","props":{"y":722,"x":219,"width":311,"var":"lv","skin":"guanqia/54/pic_36_2.png","height":176},"compId":327},{"type":"Image","props":{"y":722,"x":219.5,"width":311,"var":"huang2","skin":"guanqia/54/pic_36_1.png","height":176},"compId":328},{"type":"FontClip","props":{"y":497,"x":149,"var":"fc1","value":"10","skin":"pubRes/shuzi3.png","sheet":"-+09 8765 4321","scaleY":0.5,"scaleX":0.5,"align":"right"},"compId":329},{"type":"FontClip","props":{"y":731,"x":149,"var":"fc2","value":"10","skin":"pubRes/shuzi3.png","sheet":"-+09 8765 4321","scaleY":0.5,"scaleX":0.5,"align":"right"},"compId":330},{"type":"Box","props":{"y":810,"x":375,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":331}],"loadList":["guanqia/54/pic_36_1.png","guanqia/54/pic_36_2.png","pubRes/shuzi3.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level54UI.uiView);
+        }
+    }
+    REG("ui.level54UI",level54UI);
+    export class level55UI extends View {
+		public zhuo:Laya.Image;
+		public item0:Laya.Image;
+		public item2:Laya.Image;
+		public item1:Laya.Image;
+		public hong:Laya.Image;
+		public shen:Laya.Image;
+		public btnBox:Laya.Box;
+		public item3:Laya.Button;
+		public item4:Laya.Button;
+		public item5:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":659,"x":43,"width":683,"var":"zhuo","skin":"guanqia/55/pic_161_1.png","height":171},"compId":334},{"type":"Image","props":{"y":368,"x":96,"width":175,"var":"item0","skin":"guanqia/55/1_31_1.png","height":175},"compId":329},{"type":"Image","props":{"y":537,"x":242.5,"width":259,"var":"item2","skin":"guanqia/55/pic_161_2.png","height":207},"compId":330},{"type":"Image","props":{"y":329,"x":332,"width":357,"var":"item1","skin":"guanqia/55/pic_161_3.png","height":179},"compId":331},{"type":"Image","props":{"y":367,"x":418,"width":20,"var":"hong","skin":"guanqia/55/pic_161_4.png","height":75},"compId":332},{"type":"Image","props":{"y":628,"x":466,"width":235,"var":"shen","skin":"guanqia/55/pic_161_5.png","mouseEnabled":false,"height":346,"anchorY":1,"anchorX":0},"compId":333},{"type":"Box","props":{"y":815,"x":130,"var":"btnBox"},"compId":340,"child":[{"type":"Button","props":{"width":532,"var":"item3","stateNum":1,"skin":"pubRes/btn_1.png","sizeGrid":"66,123,63,124","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"环游世界","height":125},"compId":335},{"type":"Button","props":{"y":149,"width":532,"var":"item4","stateNum":1,"skin":"pubRes/btn_1.png","sizeGrid":"66,123,63,124","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"有一套湖边小屋","height":125},"compId":338},{"type":"Button","props":{"y":295,"width":532,"var":"item5","stateNum":1,"skin":"pubRes/btn_1.png","sizeGrid":"66,123,63,124","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"精通所有语言","height":125},"compId":339}]}],"loadList":["guanqia/55/pic_161_1.png","guanqia/55/1_31_1.png","guanqia/55/pic_161_2.png","guanqia/55/pic_161_3.png","guanqia/55/pic_161_4.png","guanqia/55/pic_161_5.png","pubRes/btn_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level55UI.uiView);
+        }
+    }
+    REG("ui.level55UI",level55UI);
     export class level6UI extends View {
 		public jia:Laya.Image;
 		public jian:Laya.Image;

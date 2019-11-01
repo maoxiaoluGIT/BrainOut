@@ -68,11 +68,18 @@ import Level_48 from "./levels/Level_48";
 import Level_49 from "./levels/Level_49";
 import Level_50 from "./levels/Level_50";
 import Log from "./Log";
+import TTCookie from "./gameCookie/TTCookie";
+import TTPlatform from "./platforms/TTPlatform";
+import Level_51 from "./levels/Level_51";
+import Level_52 from "./levels/Level_52";
+import Level_53 from "./levels/Level_53";
+import Level_54 from "./levels/Level_54";
+import Level_55 from "./levels/Level_55";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "0.0.1.102801";
-    static resVer:string = "0.0.1.102801";
+    static codeVer:string = "0.0.1.1031";
+    static resVer:string = "0.0.1.1031";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -91,7 +98,7 @@ export default class GM{
     static sysLog:Function = Log.syslog;
 
     /**本地资源 */
-    static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png","atlas/pubRes.atlas","atlas/pubRes.png"];
+    static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png","atlas/pubRes.atlas","atlas/pubRes.png","config.json","sys_titles.txt"];
 
     static setConfig(config):void
     {
@@ -108,6 +115,23 @@ export default class GM{
             GM.cookie = new WXCookie();
             GM.platform = new WXPlatform();
         }
+        else if(config.platformId == PlatformID.TT)
+        {
+            GM.cookie = new TTCookie();
+            GM.platform = new TTPlatform();
+        }
+
+        if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT)
+        {
+            for(let i = 1; i < 11;i++)
+			{
+				GM.nativefiles.push("atlas/guanqia/" + i + ".atlas");
+				GM.nativefiles.push("atlas/guanqia/" + i + ".png");
+			}
+            Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
+			Laya.MiniAdpter.nativefiles = GM.nativefiles;
+        }
+        
         this.setMusic();
         this.setSound();
         this.setShake();
@@ -180,7 +204,8 @@ export default class GM{
 
     static log(message):void
     {
-        console.log("%c" + message, "color:green");
+        // console.log("%c" + message, "color:green");
+        console.log(message);
     }
 
     static indexNum;
@@ -201,7 +226,8 @@ export default class GM{
             Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20,
             Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30,
             Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37,Level_38,Level_39,Level_40,
-            Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50
+            Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50,
+            Level_51,Level_52,Level_53,Level_54,Level_55
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)

@@ -3,6 +3,7 @@ import SenderHttp from "../net/SenderHttp";
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
 import { DataKey } from "./DataKey";
+import LogType from "../LogType";
 
 export default class Session{
     static SKEY:string = "Session01";
@@ -23,7 +24,7 @@ export default class Session{
             Session.gameData[DataKey.signinDay] = 0;//该签哪一天
             Session.gameData[DataKey.signinState] = 0;//是否签过
             Session.gameData[DataKey.lastIndex] = 1;
-            GM.log("new player");
+            GM.sysLog(LogType.new_player);
         }
         else
         {

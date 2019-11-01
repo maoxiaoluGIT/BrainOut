@@ -6,6 +6,7 @@ import LoginHttp from "./net/LoginHttp";
 import ReceiverHttp from "./net/ReceiverHttp";
 import Session from "./sessions/Session";
 import LogType from "./LogType";
+import PlatformID from "./platforms/PlatformID";
 
 export default class InitView extends ui.initViewUI {
     
@@ -17,7 +18,7 @@ export default class InitView extends ui.initViewUI {
     private onDis():void
     {
         this.txt.text = "0%";
-        Laya.loader.load(["res/config.json"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
+        Laya.loader.load(["config.json","sys_titles.txt"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
     }
     
     private onProgress(value:number):void
@@ -30,11 +31,16 @@ export default class InitView extends ui.initViewUI {
 
 	private onCom():void
 	{
-		Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
-        let config = Laya.loader.getRes("res/config.json");
-        GM.setConfig(config);
-		Laya.loader.clearRes("res/config.json");
+		GM.onReg();
+        let config = Laya.loader.getRes("config.json");
+		GM.setConfig(config);
+		
+		Game.tableManager.onParse(["sys_titles.txt",Laya.loader.getRes("sys_titles.txt")]);
+		Laya.loader.clearRes("config.json");
+		Laya.loader.clearRes("sys_titles.txt");
 
+		Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
+		// console.log("================",Laya.stage.height,Laya.stage.designHeight,Game.layerManager.y);
 		GM.platform.checkUpdate();
 		new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
 	}
@@ -54,7 +60,6 @@ export default class InitView extends ui.initViewUI {
 		Game.layerManager.addChild(this._homeLoading);
 		this.destroy(true);
 		GM.sysLog(LogType.open_game);
-		// GM.sysLog(1,"hehe");
 	}
     
 }
