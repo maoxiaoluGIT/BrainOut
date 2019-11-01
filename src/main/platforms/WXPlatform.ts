@@ -8,7 +8,7 @@ import LogType from "../LogType";
 
 export default class WXPlatform extends BasePlatform {
     constructor() { super(); }
-
+    gameBtn;
     checkUpdate(): void {
         Laya.Browser.window.wx.setKeepScreenOn({
             keepScreenOn: true
@@ -53,13 +53,25 @@ export default class WXPlatform extends BasePlatform {
             });
         }
 
+        // this.gameBtn = Laya.Browser.window.wx.createGameClubButton({
+        //     icon: 'light',
+        //     style: {
+        //       left: 10,
+        //       top: Laya.Browser.window.wx.getSystemInfoSync().windowHeight * 0.5,
+        //       width: 40,
+        //       height: 40
+        //     }
+        //   });
+
         Laya.Browser.window.wx.onShow(res => {
             console.log("显示微信");
+            // this.gameBtn.show();
             Game.eventManager.event(GameEvent.WX_ON_SHOW);
         });
 
         Laya.Browser.window.wx.onHide(res => {
             console.log("隐藏微信");
+            // this.gameBtn.hide();
             Game.eventManager.event(GameEvent.WX_ON_HIDE);
         });
 

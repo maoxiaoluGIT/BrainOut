@@ -193,7 +193,7 @@ export default class MainView extends ui.mainViewUI {
 
     private goLastIndex():void
     {
-        Session.gameData[DataKey.lastIndex] = 54;
+        // Session.gameData[DataKey.lastIndex] = 55;
         this.showLevel(Session.gameData[DataKey.lastIndex]);
     }
 

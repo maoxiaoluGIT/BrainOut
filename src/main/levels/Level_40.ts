@@ -3,15 +3,13 @@ import BaseLevel from "./BaseLevel";
 import GM from "../GM";
 import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
+import PlatformID from "../platforms/PlatformID";
 
 export default class Level_40 extends BaseLevel {
     private ui: ui.level40UI;
 
-    private weixin;
-
     constructor() { 
         super(); 
-        this.weixin = Laya.Browser.window.wx;
         this.on(Laya.Event.DISPLAY,this,this.onDis);
         this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
     }

@@ -953,6 +953,61 @@ export module ui {
         }
     }
     REG("ui.level55UI",level55UI);
+    export class level56UI extends View {
+		public item1:Laya.Image;
+		public item2:Laya.Image;
+		public item3:Laya.Image;
+		public item0:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":475,"x":416,"width":253,"var":"item1","skin":"guanqia/56/hong.png","height":263},"compId":337},{"type":"Image","props":{"y":823,"x":88,"width":270,"var":"item2","skin":"guanqia/56/ti.png","height":256},"compId":338},{"type":"Image","props":{"y":519,"x":86.5,"width":273,"var":"item3","skin":"guanqia/56/yuan.png","height":272},"compId":339},{"type":"Image","props":{"y":823,"x":406,"width":273,"var":"item0","skin":"guanqia/56/ao.png","height":272},"compId":340}],"loadList":["guanqia/56/hong.png","guanqia/56/ti.png","guanqia/56/yuan.png","guanqia/56/ao.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level56UI.uiView);
+        }
+    }
+    REG("ui.level56UI",level56UI);
+    export class level57UI extends View {
+		public item0:Laya.Image;
+		public sureBtn:Laya.Button;
+		public shuru:Laya.TextInput;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":367,"x":96,"width":539,"var":"item0","skin":"guanqia/57/pic_37_1.png","height":536},"compId":340},{"type":"Image","props":{"y":948,"x":165,"width":420,"skin":"pubRes/top_yellow.png","sizeGrid":"0,181,0,173","height":74},"compId":342},{"type":"Button","props":{"y":1084,"x":143,"width":468,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},"compId":343},{"type":"TextInput","props":{"y":958,"x":216,"width":318,"var":"shuru","text":"输入答案","prompt":"输入答案","height":55,"fontSize":40,"align":"center"},"compId":344},{"type":"Box","props":{"y":985.5,"x":377,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},"compId":345}],"loadList":["guanqia/57/pic_37_1.png","pubRes/top_yellow.png","pubRes/btn_2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level57UI.uiView);
+        }
+    }
+    REG("ui.level57UI",level57UI);
+    export class level58UI extends View {
+		public img:Laya.Image;
+		public feng:Laya.Image;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":542,"x":65,"width":202,"var":"img","skin":"guanqia/58/pic_2_2.png","height":169},"compId":347},{"type":"Image","props":{"y":536,"x":33,"width":331,"var":"feng","skin":"guanqia/58/pic_2_1.png","height":180},"compId":346},{"type":"Box","props":{"y":711,"x":375,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},"compId":348}],"loadList":["guanqia/58/pic_2_2.png","guanqia/58/pic_2_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level58UI.uiView);
+        }
+    }
+    REG("ui.level58UI",level58UI);
+    export class level59UI extends View {
+		public pig:Laya.Box;
+		public item0:Laya.Image;
+		public item2:Laya.Image;
+		public item1:Laya.Image;
+		public item3:Laya.Image;
+		public hudie:Laya.Image;
+		public bizi:Laya.Box;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":590,"x":90,"width":579,"var":"pig","height":375},"compId":356,"child":[{"type":"Image","props":{"y":65,"x":197,"width":385,"var":"item0","skin":"guanqia/59/pic_56_1.png","height":298},"compId":348},{"type":"Image","props":{"y":1,"x":17,"width":344,"var":"item2","skin":"guanqia/59/honglian.png","height":349},"compId":350},{"type":"Image","props":{"y":1,"x":17,"width":344,"var":"item1","skin":"guanqia/59/pic_56_4.png","height":349},"compId":353},{"type":"Image","props":{"y":27,"x":-10,"width":381,"var":"item3","skin":"guanqia/59/pic_56_2.png","height":349},"compId":354}]},{"type":"Image","props":{"y":387,"x":515,"width":132,"var":"hudie","skin":"guanqia/59/pic_56_3.png","height":172},"compId":355},{"type":"Box","props":{"y":854,"x":158,"width":104,"var":"bizi","height":89},"compId":357},{"type":"Box","props":{"y":878.5,"x":396,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},"compId":358}],"loadList":["guanqia/59/pic_56_1.png","guanqia/59/honglian.png","guanqia/59/pic_56_4.png","guanqia/59/pic_56_2.png","guanqia/59/pic_56_3.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level59UI.uiView);
+        }
+    }
+    REG("ui.level59UI",level59UI);
     export class level6UI extends View {
 		public jia:Laya.Image;
 		public jian:Laya.Image;
@@ -968,6 +1023,21 @@ export module ui {
         }
     }
     REG("ui.level6UI",level6UI);
+    export class level60UI extends View {
+		public dog:Laya.Image;
+		public dog2:Laya.Image;
+		public item0:Laya.Image;
+		public item1:Laya.Image;
+		public item2:Laya.Image;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":426,"x":123,"width":377,"skin":"guanqia/60/5_7_1.png","height":377},"compId":354},{"type":"Image","props":{"y":440,"x":527,"width":175,"skin":"guanqia/60/5_7_2.png","height":349},"compId":355},{"type":"Image","props":{"y":628,"x":61,"width":124,"var":"dog","skin":"guanqia/60/5_7_3.png","height":208},"compId":357},{"type":"Image","props":{"y":641,"x":37,"width":200,"var":"dog2","skin":"guanqia/60/5_7_4.png","height":207},"compId":358},{"type":"Image","props":{"y":932,"x":93,"width":136,"var":"item0","skin":"guanqia/60/pic_34_10.png","height":133},"compId":359},{"type":"Image","props":{"y":873,"x":283,"width":225,"var":"item1","skin":"guanqia/60/pic_34_9.png","height":175},"compId":360},{"type":"Image","props":{"y":905,"x":527,"width":160,"var":"item2","skin":"guanqia/60/pic_cate.png","height":143},"compId":361},{"type":"Box","props":{"y":816,"x":375,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},"compId":362}],"loadList":["guanqia/60/5_7_1.png","guanqia/60/5_7_2.png","guanqia/60/5_7_3.png","guanqia/60/5_7_4.png","guanqia/60/pic_34_10.png","guanqia/60/pic_34_9.png","guanqia/60/pic_cate.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level60UI.uiView);
+        }
+    }
+    REG("ui.level60UI",level60UI);
     export class level7UI extends View {
 		public box:Laya.Box;
 		public item3:Laya.Image;

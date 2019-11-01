@@ -18,8 +18,7 @@ export default class HomeLoading extends ui.loadingUI {
         this.off(Laya.Event.DISPLAY,this,this.onDis);
         this.dengjishuzi.value = "0";
 
-        // let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/tables.zip", type: Laya.Loader.BUFFER }];
-        let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS }];
+        let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/tables.zip", type: Laya.Loader.BUFFER }];
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
     }
 
@@ -31,19 +30,13 @@ export default class HomeLoading extends ui.loadingUI {
 
     private onCom():void
     {
-        GM.imgEffect.start();
-        GM.viewManager.showView(Session.gameData[DataKey.signinState] == 0 ? ViewID.signin : ViewID.main,false);
-        GM.playMusic("bg.mp3");
-        this.destroy(true);
-
-        // ZipLoader.instance.zipFun(Laya.loader.getRes("res/tables.zip"), new Laya.Handler(this, this.zipFun));
-        // Laya.loader.clearRes("res/tables.zip");
+        ZipLoader.instance.zipFun(Laya.loader.getRes("res/tables.zip"), new Laya.Handler(this, this.zipFun));
+        Laya.loader.clearRes("res/tables.zip");
     }
 
     private zipFun(arr: any[]):void
     {
-        
-        // Game.tableManager.onParse(arr);
+        Game.tableManager.onParse(arr);
 
         GM.imgEffect.start();
         GM.viewManager.showView(Session.gameData[DataKey.signinState] == 0 ? ViewID.signin : ViewID.main,false);

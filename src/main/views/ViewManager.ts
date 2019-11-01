@@ -27,5 +27,7 @@ export default class ViewManager{
                 Laya.Tween.to(curView,{x : 0},300);
             }
         }
+
+        Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
     }
 }

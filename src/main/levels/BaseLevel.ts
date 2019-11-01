@@ -4,15 +4,26 @@ import SysTitles from "../sys/SysTitles";
 import RightIcon from "./RightIcon";
 import WrongIcon from "./WrongIcon";
 import GameConfig from "../../GameConfig";
+import GM from "../GM";
+import PlatformID from "../platforms/PlatformID";
 
 export default class BaseLevel extends Laya.Box{
     isInit:boolean;
     sys:SysTitles;
     curLevel:number;
+    weixin;
 
     static noRes:number[] = [22,41,44];
     constructor(){
         super();
+        if(GM.platformId == PlatformID.WX)
+        {
+            this.weixin = Laya.Browser.window.wx;
+        }
+        else if(GM.platformId == PlatformID.TT)
+        {
+            this.weixin = Laya.Browser.window.tt;
+        }
     }
 
     onInit():void

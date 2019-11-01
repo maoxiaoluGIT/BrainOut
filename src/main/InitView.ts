@@ -18,7 +18,7 @@ export default class InitView extends ui.initViewUI {
     private onDis():void
     {
         this.txt.text = "0%";
-        Laya.loader.load(["config.json","sys_titles.txt"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
+        Laya.loader.load(["config.json"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
     }
     
     private onProgress(value:number):void
@@ -34,10 +34,10 @@ export default class InitView extends ui.initViewUI {
 		GM.onReg();
         let config = Laya.loader.getRes("config.json");
 		GM.setConfig(config);
-		
-		Game.tableManager.onParse(["sys_titles.txt",Laya.loader.getRes("sys_titles.txt")]);
 		Laya.loader.clearRes("config.json");
-		Laya.loader.clearRes("sys_titles.txt");
+
+		// Game.tableManager.onParse(["sys_titles.txt",Laya.loader.getRes("sys_titles.txt")]);
+		// Laya.loader.clearRes("sys_titles.txt");
 
 		Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
 		// console.log("================",Laya.stage.height,Laya.stage.designHeight,Game.layerManager.y);

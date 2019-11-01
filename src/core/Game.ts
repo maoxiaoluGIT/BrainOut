@@ -21,7 +21,7 @@ export default class Game{
         Game.soundManager = new SoundManager();
         Game.soundManager.pre = soundPre;
 
-        Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
+        // Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
     }
     
     public static RandomByArray( arr:Array<any> , deleteArr:boolean = false ):any{
