@@ -33,6 +33,16 @@ export default class Session{
             {
                 Session.gameData[DataKey.shareTimes] = 3;
                 Session.gameData[DataKey.lastTime] = new Date().setHours(24,0,0,0);
+
+                if(Session.gameData[DataKey.signinState] == 1)
+                {
+                    Session.gameData[DataKey.signinDay]++;
+                    if(Session.gameData[DataKey.signinDay] > 4)
+                    {
+                        Session.gameData[DataKey.signinDay] = 0;
+                    }
+                    Session.gameData[DataKey.signinState] = 0;
+                }
             }
 
             if(Session.gameData[DataKey.lastTime] == null)
@@ -50,19 +60,6 @@ export default class Session{
             if(Session.gameData[DataKey.signinState] == null)
             {
                 Session.gameData[DataKey.signinState] = 0;
-            }
-
-            if(Date.now() > Session.gameData[DataKey.lastTime])
-            {
-                if(Session.gameData[DataKey.signinState] == 1)
-                {
-                    Session.gameData[DataKey.signinDay]++;
-                    if(Session.gameData[DataKey.signinDay] > 4)
-                    {
-                        Session.gameData[DataKey.signinDay] = 0;
-                    }
-                    Session.gameData[DataKey.signinState] = 0;
-                }
             }
 
             if(Session.gameData[DataKey.lastIndex] == null)
