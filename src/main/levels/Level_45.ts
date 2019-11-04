@@ -31,6 +31,11 @@ export default class Level_45 extends BaseLevel {
         this.setAnswer(btn,btn == this.ui.box4);
     }
 
+    onDown(sprite: Laya.Sprite):void
+    {
+        sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
+    }
+
     refresh(): void  {
         Laya.MouseManager.enabled = true;
         super.refresh();

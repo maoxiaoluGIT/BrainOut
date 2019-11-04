@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":232,
+    "selecteID":241,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -12,7 +12,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":241,
+    "maxID":242,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -20,6 +20,20 @@
     "hasChild":true,
     "compId":2,
     "child":[
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,box",
+            "props":{"y":339,"x":0,"width":750,"visible":false,"var":"box","height":729,"bgColor":"#e37373"},
+            "nodeParent":2,
+            "label":"box",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":241,
+            "child":[
+                ]
+        },
         {
             "x":15,
             "type":"Image",

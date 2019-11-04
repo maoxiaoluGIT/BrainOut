@@ -49,7 +49,7 @@ export default class Level_60 extends BaseLevel {
 
     onDown(sprite: Laya.Sprite):void
     {
-        sprite.startDrag();
+        sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
     }
     
 

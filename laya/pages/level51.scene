@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":323,
+    "selecteID":322,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -24,7 +24,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,box",
-            "props":{"x":25,"width":700,"visible":false,"var":"box","height":1100,"bottom":272,"bgColor":"#eadfdf"},
+            "props":{"y":197,"x":35,"width":700,"visible":false,"var":"box","height":759,"bgColor":"#eadfdf"},
             "nodeParent":2,
             "label":"box",
             "isDirectory":false,
