@@ -85,6 +85,8 @@ import Level_61 from "./levels/Level_61";
 import Level_63 from "./levels/Level_63";
 import Level_64 from "./levels/Level_64";
 import Level_65 from "./levels/Level_65";
+import QQCookie from "./gameCookie/QQCookie";
+import QQPlatform from "./platforms/QQPlatform";
 
 /**游戏总管理 */
 export default class GM{
@@ -130,8 +132,13 @@ export default class GM{
             GM.cookie = new TTCookie();
             GM.platform = new TTPlatform();
         }
+        else if(config.platformId == PlatformID.QQ)
+        {
+            GM.cookie = new QQCookie();
+            GM.platform = new QQPlatform();
+        }
 
-        if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT)
+        if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT || config.platformId == PlatformID.QQ)
         {
             for(let i = 1; i < 11;i++)
 			{

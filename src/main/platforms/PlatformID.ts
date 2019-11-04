@@ -3,4 +3,5 @@ export default class PlatformID{
     static H5:number = 1;
     static WX:number = 41;
     static TT:number = 2;
+    static QQ:number = 3;
 }
