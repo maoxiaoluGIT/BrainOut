@@ -19,12 +19,14 @@ import KeyNullTips from "./KeyNullTips";
 import { DataKey } from "../../sessions/DataKey";
 import TipsView42 from "./TipsView42";
 import LogType from "../../LogType";
+import TipsView61 from "./TipsView61";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
     private _rightView:RightView;
     private _tipsView:TipsView;
     private _tipsView42:TipsView42;
+    private _tipsView61:TipsView61;
     private _skipView:SkipView;
     private _box:Laya.Box = new Laya.Box();
     // private _viewMap:any = {};
@@ -142,14 +144,14 @@ export default class MainView extends ui.mainViewUI {
         }
         else if(this.curView.sys.id == 61)
         {
-            if(!this._tipsView42)
+            if(!this._tipsView61)
             {
-                this._tipsView42 = new TipsView42();
+                this._tipsView61 = new TipsView61();
             }
-            this.addChild(this._tipsView42);
-            this._tipsView42.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
-            MyEffect.popup(this._tipsView42,1,500,100);
-            this._tipsView42.setTips(this.curView.sys);
+            this.addChild(this._tipsView61);
+            this._tipsView61.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+            MyEffect.popup(this._tipsView61,1,500,100);
+            this._tipsView61.setTips(this.curView.sys);
         }
         else
         {

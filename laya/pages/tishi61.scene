@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":15,
-    "selecteID":16,
+    "selecteID":17,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -136,7 +136,7 @@
                             "x":45,
                             "type":"Image",
                             "searchKey":"Image",
-                            "props":{"y":107,"x":330,"width":40,"skin":"guanqia/42/pic_37_2.png","height":43},
+                            "props":{"y":107,"x":330,"width":40,"skin":"guanqia/61/pic_37_2.png","height":43},
                             "nodeParent":15,
                             "label":"Image",
                             "isDirectory":false,

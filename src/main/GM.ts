@@ -88,8 +88,8 @@ import Level_65 from "./levels/Level_65";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.2.191104";
-    static resVer:string = "1.1.2.191104";
+    static codeVer:string = "1.1.2.1911041";
+    static resVer:string = "1.1.2.1911041";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
