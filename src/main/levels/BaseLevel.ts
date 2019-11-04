@@ -13,7 +13,7 @@ export default class BaseLevel extends Laya.Box{
     curLevel:number;
     weixin;
 
-    static noRes:number[] = [22,41,44];
+    static noRes:number[] = [22,41,44,64];
     constructor(){
         super();
         if(GM.platformId == PlatformID.WX)

@@ -17,6 +17,8 @@ export default class SettingView extends ui.shezhiUI {
         GM.imgEffect.addEffect(this.bottomImg,2);
 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+
+        this.verTxt.text = "version:" + GM.codeVer;
     }
 
     private onDis():void

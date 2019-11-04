@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":20,
+    "selecteID":21,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":21,
+    "maxID":22,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -251,6 +251,20 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":20,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "searchKey":"Text,verTxt",
+            "props":{"y":0,"x":457,"width":289,"var":"verTxt","height":31,"fontSize":18,"align":"right"},
+            "nodeParent":2,
+            "label":"verTxt",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":21,
             "child":[
                 ]
         }],

@@ -140,6 +140,17 @@ export default class MainView extends ui.mainViewUI {
             MyEffect.popup(this._tipsView42,1,500,100);
             this._tipsView42.setTips(this.curView.sys);
         }
+        else if(this.curView.sys.id == 61)
+        {
+            if(!this._tipsView42)
+            {
+                this._tipsView42 = new TipsView42();
+            }
+            this.addChild(this._tipsView42);
+            this._tipsView42.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
+            MyEffect.popup(this._tipsView42,1,500,100);
+            this._tipsView42.setTips(this.curView.sys);
+        }
         else
         {
             if(!this._tipsView)
