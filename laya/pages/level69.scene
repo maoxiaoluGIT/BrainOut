@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":409,
+    "selecteID":417,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -12,7 +12,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":416,
+    "maxID":419,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -22,86 +22,126 @@
     "child":[
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji",
-            "props":{"y":853,"x":412,"width":282,"var":"ji","skin":"guanqia/69/pic_42_1.png","height":287},
+            "type":"Box",
+            "searchKey":"Box,item0",
+            "props":{"y":389,"x":43,"var":"item0"},
             "nodeParent":2,
-            "label":"ji",
-            "isDirectory":false,
+            "label":"item0",
+            "isOpen":null,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":410,
+            "hasChild":true,
+            "compId":418,
             "child":[
-                ]
+                {
+                    "type":"Image",
+                    "searchKey":"Image,ji",
+                    "props":{"y":464,"x":369.5,"width":282,"var":"ji","skin":"guanqia/69/pic_42_1.png","height":287},
+                    "nodeParent":418,
+                    "label":"ji",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":410,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Image",
+                    "searchKey":"Image,tu",
+                    "props":{"x":218.5,"width":227,"var":"tu","skin":"guanqia/69/pic_42_3.png","height":337},
+                    "nodeParent":418,
+                    "label":"tu",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":412,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Image",
+                    "searchKey":"Image,hu",
+                    "props":{"y":480,"x":-0.5,"width":313,"var":"hu","skin":"guanqia/69/pic_42_5.png","height":271},
+                    "nodeParent":418,
+                    "label":"hu",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":414,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                }]
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,jiyun",
-            "props":{"y":772,"x":412,"width":282,"var":"jiyun","skin":"guanqia/69/pic_42_2.png","height":368},
+            "type":"Box",
+            "searchKey":"Box,item1",
+            "props":{"y":426,"x":41,"var":"item1"},
             "nodeParent":2,
-            "label":"jiyun",
-            "isDirectory":false,
+            "label":"item1",
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":411,
+            "hasChild":true,
+            "compId":417,
             "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,tu",
-            "props":{"y":389,"x":261.5,"width":227,"var":"tu","skin":"guanqia/69/pic_42_3.png","height":337},
-            "nodeParent":2,
-            "label":"tu",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":412,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,tuyun",
-            "props":{"y":426,"x":199,"width":342,"var":"tuyun","skin":"guanqia/69/pic_42_4.png","height":301},
-            "nodeParent":2,
-            "label":"tuyun",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":413,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,hu",
-            "props":{"y":869,"x":42.5,"width":313,"var":"hu","skin":"guanqia/69/pic_42_5.png","height":271},
-            "nodeParent":2,
-            "label":"hu",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":414,
-            "child":[
-                ],
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":346,"x":371,"width":282,"skin":"guanqia/69/pic_42_2.png","height":368},
+                    "nodeParent":417,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":411,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"x":158,"width":342,"skin":"guanqia/69/pic_42_4.png","height":301},
+                    "nodeParent":417,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":413,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":374,"width":321,"skin":"guanqia/69/pic_42_6.png","height":343},
+                    "nodeParent":417,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":415,
+                    "child":[
+                        ]
+                }],
             "$HIDDEN":false
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,huyun",
-            "props":{"y":800,"x":41,"width":321,"var":"huyun","skin":"guanqia/69/pic_42_6.png","height":343},
+            "type":"Box",
+            "searchKey":"Box,rightBox",
+            "props":{"y":791,"x":385,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
-            "label":"huyun",
+            "label":"rightBox",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":415,
+            "compId":416,
             "child":[
                 ]
         }],

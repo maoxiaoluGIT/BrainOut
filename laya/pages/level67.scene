@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":406,
+    "selecteID":391,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -12,7 +12,7 @@
         }],
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":407,
+    "maxID":439,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -20,6 +20,187 @@
     "hasChild":true,
     "compId":2,
     "child":[
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,box",
+            "props":{"y":319,"x":25,"width":700,"visible":false,"var":"box","height":909,"bgColor":"#eadfdf"},
+            "nodeParent":2,
+            "label":"box",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":408,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item0",
+            "props":{"y":541.5,"x":224,"width":240,"var":"item0","height":251,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item0",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":409,
+            "child":[
+                {
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                    "nodeParent":409,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":396,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item1",
+            "props":{"y":541,"x":224,"width":240,"var":"item1","height":251,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item1",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":410,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                    "nodeParent":410,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":411,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item3",
+            "props":{"y":541,"x":546,"width":240,"var":"item3","height":251,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item3",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":414,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                    "nodeParent":414,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":415,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item4",
+            "props":{"y":825,"x":224,"width":240,"var":"item4","height":251,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item4",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":416,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                    "nodeParent":416,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":417,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item2",
+            "props":{"y":825,"x":546,"width":240,"var":"item2","height":251,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item2",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":412,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                    "nodeParent":412,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":413,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,item5",
+            "props":{"y":825,"x":546,"width":240,"var":"item5","height":251,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item5",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":418,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                    "nodeParent":418,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":419,
+                    "child":[
+                        ]
+                }]
+        },
         {
             "x":15,
             "type":"Image",
@@ -31,77 +212,6 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":387,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji6",
-            "props":{"y":1108,"x":156,"width":136,"var":"ji6","skin":"guanqia/67/pic_42_1.png","height":132},
-            "nodeParent":2,
-            "label":"ji6",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":402,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji7",
-            "props":{"y":1111,"x":156,"width":136,"var":"ji7","skin":"guanqia/67/pic_42_1.png","height":132},
-            "nodeParent":2,
-            "label":"ji7",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":403,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji8",
-            "props":{"y":1113,"x":156,"width":136,"var":"ji8","skin":"guanqia/67/pic_42_1.png","height":132},
-            "nodeParent":2,
-            "label":"ji8",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":404,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji9",
-            "props":{"y":1111,"x":156,"width":136,"var":"ji9","skin":"guanqia/67/pic_42_1.png","height":132},
-            "nodeParent":2,
-            "label":"ji9",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":405,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji10",
-            "props":{"y":1111,"x":156,"width":136,"var":"ji10","skin":"guanqia/67/pic_42_1.png","height":132},
-            "nodeParent":2,
-            "label":"ji10",
-            "isOpen":false,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":406,
             "child":[
                 ]
         },
@@ -121,29 +231,72 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "searchKey":"Button,clearBtn",
-            "props":{"y":1187,"x":224,"width":282,"var":"clearBtn","stateNum":"1","skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"清除","height":125,"anchorY":0.5,"anchorX":0.5},
+            "type":"Image",
+            "searchKey":"Image,item6",
+            "props":{"y":1145,"x":224,"width":136,"var":"item6","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
-            "label":"clearBtn",
+            "label":"item6",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":389,
+            "compId":402,
             "child":[
                 ]
         },
         {
             "x":15,
-            "type":"Button",
-            "searchKey":"Button,sureBtn",
-            "props":{"y":1188,"x":545,"width":282,"var":"sureBtn","stateNum":"1","skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125,"anchorY":0.5,"anchorX":0.5},
+            "type":"Image",
+            "searchKey":"Image,item7",
+            "props":{"y":1148,"x":224,"width":136,"var":"item7","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
-            "label":"sureBtn",
+            "label":"item7",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":390,
+            "compId":403,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,item8",
+            "props":{"y":1150,"x":224,"width":136,"var":"item8","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item8",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":404,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,item9",
+            "props":{"y":1148,"x":224,"width":136,"var":"item9","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item9",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":405,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,item10",
+            "props":{"y":1148,"x":224,"width":136,"var":"item10","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item10",
+            "isOpen":false,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":406,
             "child":[
                 ]
         },
@@ -163,87 +316,294 @@
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji0",
-            "props":{"y":608,"x":365,"width":344,"var":"ji0","skin":"guanqia/67/pic_42_1.png","height":335},
+            "type":"Button",
+            "searchKey":"Button,clearBtn",
+            "props":{"y":1165,"x":224,"width":282,"var":"clearBtn","stateNum":"1","skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"清除","height":125,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
-            "label":"ji0",
+            "label":"clearBtn",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":396,
+            "compId":389,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,sureBtn",
+            "props":{"y":1165,"x":545,"width":282,"var":"sureBtn","stateNum":"1","skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"sureBtn",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":390,
             "child":[
                 ]
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji1",
-            "props":{"y":608,"x":26,"width":344,"var":"ji1","skin":"guanqia/67/pic_42_1.png","height":335},
+            "type":"Box",
+            "searchKey":"Box,rightBox",
+            "props":{"y":809,"x":385,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
-            "label":"ji1",
+            "label":"rightBox",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":397,
+            "compId":407,
             "child":[
                 ]
         },
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji2",
-            "props":{"y":262,"x":21,"width":344,"var":"ji2","skin":"guanqia/67/pic_42_1.png","height":335},
+            "type":"Box",
+            "searchKey":"Box",
+            "props":{"visible":false,"mouseEnabled":false,"cacheAs":"bitmap"},
             "nodeParent":2,
-            "label":"ji2",
-            "isDirectory":false,
+            "label":"Box",
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":398,
+            "hasChild":true,
+            "compId":438,
             "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji3",
-            "props":{"y":262,"x":370,"width":344,"var":"ji3","skin":"guanqia/67/pic_42_1.png","height":335},
-            "nodeParent":2,
-            "label":"ji3",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":399,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji4",
-            "props":{"y":608,"x":26,"width":344,"var":"ji4","skin":"guanqia/67/pic_42_1.png","height":335},
-            "nodeParent":2,
-            "label":"ji4",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":400,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,ji5",
-            "props":{"y":261,"x":373,"width":344,"var":"ji5","skin":"guanqia/67/pic_42_1.png","height":335},
-            "nodeParent":2,
-            "label":"ji5",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":401,
-            "child":[
-                ]
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,pos10",
+                    "props":{"y":654,"x":601,"width":136,"var":"pos10","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos10",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":421,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,pos9",
+                    "props":{"y":654,"x":506,"width":136,"var":"pos9","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos9",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":422,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,pos8",
+                    "props":{"y":654,"x":405,"width":136,"var":"pos8","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos8",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":423,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,pos7",
+                    "props":{"y":654,"x":307,"width":136,"var":"pos7","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos7",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":424,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,pos6",
+                    "props":{"y":654,"x":209,"width":136,"var":"pos6","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos6",
+                    "isOpen":false,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":425,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,pos0",
+                    "props":{"y":479,"x":74,"width":240,"var":"pos0","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos0",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":426,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                            "nodeParent":426,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":432,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,pos2",
+                    "props":{"y":479,"x":374,"width":240,"var":"pos2","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos2",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":427,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                            "nodeParent":427,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":433,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,pos3",
+                    "props":{"y":479,"x":522,"width":240,"var":"pos3","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos3",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":428,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                            "nodeParent":428,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":434,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,pos4",
+                    "props":{"y":479,"x":669,"width":240,"var":"pos4","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos4",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":429,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                            "nodeParent":429,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":435,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,pos1",
+                    "props":{"y":479,"x":225,"width":240,"var":"pos1","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos1",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":430,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                            "nodeParent":430,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":436,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,pos5",
+                    "props":{"y":661,"x":74,"width":240,"var":"pos5","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":438,
+                    "label":"pos5",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":431,
+                    "child":[
+                        {
+                            "type":"Image",
+                            "searchKey":"Image",
+                            "props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},
+                            "nodeParent":431,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":437,
+                            "child":[
+                                ]
+                        }]
+                }],
+            "$HIDDEN":true
         }],
     "animations":[
         {

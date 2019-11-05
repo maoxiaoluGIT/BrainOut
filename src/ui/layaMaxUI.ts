@@ -1112,6 +1112,85 @@ export module ui {
         }
     }
     REG("ui.level65UI",level65UI);
+    export class level66UI extends View {
+		public jia:Laya.Image;
+		public jian:Laya.Image;
+		public clearBtn:Laya.Button;
+		public sureBtn:Laya.Button;
+		public shuzi:Laya.FontClip;
+		public biao:Laya.Image;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":910,"x":510,"width":87,"var":"jia","skin":"pubRes/pic_color_add.png","height":106,"anchorY":0.5,"anchorX":0.5},"compId":387},{"type":"Image","props":{"y":910,"x":246,"width":87,"var":"jian","skin":"pubRes/pic_color_reduce.png","scaleX":-1,"height":106,"anchorY":0.5,"anchorX":0.5},"compId":388},{"type":"Button","props":{"y":1110,"x":224,"width":282,"var":"clearBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"清除","height":125,"anchorY":0.5,"anchorX":0.5},"compId":389},{"type":"Button","props":{"y":1111,"x":545,"width":282,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125,"anchorY":0.5,"anchorX":0.5},"compId":390},{"type":"FontClip","props":{"y":870,"x":318,"width":112,"var":"shuzi","value":"1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":79,"align":"center"},"compId":391},{"type":"Image","props":{"y":423,"x":188,"width":372,"var":"biao","skin":"guanqia/66/1_31_1.png","height":354},"compId":393},{"type":"Box","props":{"y":799,"x":375,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":394}],"loadList":["pubRes/pic_color_add.png","pubRes/pic_color_reduce.png","pubRes/btn_1.png","pubRes/btn_2.png","pubRes/shuzi2.png","guanqia/66/1_31_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level66UI.uiView);
+        }
+    }
+    REG("ui.level66UI",level66UI);
+    export class level67UI extends View {
+		public box:Laya.Box;
+		public item0:Laya.Box;
+		public item1:Laya.Box;
+		public item3:Laya.Box;
+		public item4:Laya.Box;
+		public item2:Laya.Box;
+		public item5:Laya.Box;
+		public jia:Laya.Image;
+		public jian:Laya.Image;
+		public item6:Laya.Image;
+		public item7:Laya.Image;
+		public item8:Laya.Image;
+		public item9:Laya.Image;
+		public item10:Laya.Image;
+		public shuzi:Laya.FontClip;
+		public clearBtn:Laya.Button;
+		public sureBtn:Laya.Button;
+		public rightBox:Laya.Box;
+		public pos10:Laya.Image;
+		public pos9:Laya.Image;
+		public pos8:Laya.Image;
+		public pos7:Laya.Image;
+		public pos6:Laya.Image;
+		public pos0:Laya.Box;
+		public pos2:Laya.Box;
+		public pos3:Laya.Box;
+		public pos4:Laya.Box;
+		public pos1:Laya.Box;
+		public pos5:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":319,"x":25,"width":700,"visible":false,"var":"box","height":909,"bgColor":"#eadfdf"},"compId":408},{"type":"Box","props":{"y":541.5,"x":224,"width":240,"var":"item0","height":251,"anchorY":0.5,"anchorX":0.5},"compId":409,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":396}]},{"type":"Box","props":{"y":541,"x":224,"width":240,"var":"item1","height":251,"anchorY":0.5,"anchorX":0.5},"compId":410,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":411}]},{"type":"Box","props":{"y":541,"x":546,"width":240,"var":"item3","height":251,"anchorY":0.5,"anchorX":0.5},"compId":414,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":415}]},{"type":"Box","props":{"y":825,"x":224,"width":240,"var":"item4","height":251,"anchorY":0.5,"anchorX":0.5},"compId":416,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":417}]},{"type":"Box","props":{"y":825,"x":546,"width":240,"var":"item2","height":251,"anchorY":0.5,"anchorX":0.5},"compId":412,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":413}]},{"type":"Box","props":{"y":825,"x":546,"width":240,"var":"item5","height":251,"anchorY":0.5,"anchorX":0.5},"compId":418,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":419}]},{"type":"Image","props":{"y":1026,"x":506,"width":87,"var":"jia","skin":"pubRes/pic_color_add.png","height":106,"anchorY":0.5,"anchorX":0.5},"compId":387},{"type":"Image","props":{"y":1026,"x":242,"width":87,"var":"jian","skin":"pubRes/pic_color_reduce.png","scaleX":-1,"height":106,"anchorY":0.5,"anchorX":0.5},"compId":388},{"type":"Image","props":{"y":1145,"x":224,"width":136,"var":"item6","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":402},{"type":"Image","props":{"y":1148,"x":224,"width":136,"var":"item7","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":403},{"type":"Image","props":{"y":1150,"x":224,"width":136,"var":"item8","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":404},{"type":"Image","props":{"y":1148,"x":224,"width":136,"var":"item9","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":405},{"type":"Image","props":{"y":1148,"x":224,"width":136,"var":"item10","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":406},{"type":"FontClip","props":{"y":986,"x":314,"width":112,"var":"shuzi","value":"1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":79,"align":"center"},"compId":391},{"type":"Button","props":{"y":1165,"x":224,"width":282,"var":"clearBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"清除","height":125,"anchorY":0.5,"anchorX":0.5},"compId":389},{"type":"Button","props":{"y":1165,"x":545,"width":282,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125,"anchorY":0.5,"anchorX":0.5},"compId":390},{"type":"Box","props":{"y":809,"x":385,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":407},{"type":"Box","props":{"visible":false,"mouseEnabled":false,"cacheAs":"bitmap"},"compId":438,"child":[{"type":"Image","props":{"y":654,"x":601,"width":136,"var":"pos10","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":421},{"type":"Image","props":{"y":654,"x":506,"width":136,"var":"pos9","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":422},{"type":"Image","props":{"y":654,"x":405,"width":136,"var":"pos8","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":423},{"type":"Image","props":{"y":654,"x":307,"width":136,"var":"pos7","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":424},{"type":"Image","props":{"y":654,"x":209,"width":136,"var":"pos6","skin":"guanqia/67/pic_42_1.png","height":132,"anchorY":0.5,"anchorX":0.5},"compId":425},{"type":"Box","props":{"y":479,"x":74,"width":240,"var":"pos0","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},"compId":426,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":432}]},{"type":"Box","props":{"y":479,"x":374,"width":240,"var":"pos2","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},"compId":427,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":433}]},{"type":"Box","props":{"y":479,"x":522,"width":240,"var":"pos3","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},"compId":428,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":434}]},{"type":"Box","props":{"y":479,"x":669,"width":240,"var":"pos4","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},"compId":429,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":435}]},{"type":"Box","props":{"y":479,"x":225,"width":240,"var":"pos1","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},"compId":430,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":436}]},{"type":"Box","props":{"y":661,"x":74,"width":240,"var":"pos5","scaleY":0.6,"scaleX":0.6,"height":251,"anchorY":0.5,"anchorX":0.5},"compId":431,"child":[{"type":"Image","props":{"y":-84,"x":-52,"width":344,"skin":"guanqia/67/pic_42_1.png","height":335},"compId":437}]}]}],"loadList":["guanqia/67/pic_42_1.png","pubRes/pic_color_add.png","pubRes/pic_color_reduce.png","pubRes/shuzi2.png","pubRes/btn_1.png","pubRes/btn_2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level67UI.uiView);
+        }
+    }
+    REG("ui.level67UI",level67UI);
+    export class level68UI extends View {
+		public item0:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":445,"x":68,"width":614,"var":"item0","skin":"guanqia/68/pic_45_1.png","height":664},"compId":408}],"loadList":["guanqia/68/pic_45_1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level68UI.uiView);
+        }
+    }
+    REG("ui.level68UI",level68UI);
+    export class level69UI extends View {
+		public item0:Laya.Box;
+		public ji:Laya.Image;
+		public tu:Laya.Image;
+		public hu:Laya.Image;
+		public item1:Laya.Box;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":389,"x":43,"var":"item0"},"compId":418,"child":[{"type":"Image","props":{"y":464,"x":369.5,"width":282,"var":"ji","skin":"guanqia/69/pic_42_1.png","height":287},"compId":410},{"type":"Image","props":{"x":218.5,"width":227,"var":"tu","skin":"guanqia/69/pic_42_3.png","height":337},"compId":412},{"type":"Image","props":{"y":480,"x":-0.5,"width":313,"var":"hu","skin":"guanqia/69/pic_42_5.png","height":271},"compId":414}]},{"type":"Box","props":{"y":426,"x":41,"var":"item1"},"compId":417,"child":[{"type":"Image","props":{"y":346,"x":371,"width":282,"skin":"guanqia/69/pic_42_2.png","height":368},"compId":411},{"type":"Image","props":{"x":158,"width":342,"skin":"guanqia/69/pic_42_4.png","height":301},"compId":413},{"type":"Image","props":{"y":374,"width":321,"skin":"guanqia/69/pic_42_6.png","height":343},"compId":415}]},{"type":"Box","props":{"y":791,"x":385,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},"compId":416}],"loadList":["guanqia/69/pic_42_1.png","guanqia/69/pic_42_3.png","guanqia/69/pic_42_5.png","guanqia/69/pic_42_2.png","guanqia/69/pic_42_4.png","guanqia/69/pic_42_6.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level69UI.uiView);
+        }
+    }
+    REG("ui.level69UI",level69UI);
     export class level7UI extends View {
 		public box:Laya.Box;
 		public item3:Laya.Image;
@@ -1126,6 +1205,28 @@ export module ui {
         }
     }
     REG("ui.level7UI",level7UI);
+    export class level70UI extends View {
+		public box:Laya.Box;
+		public hitBox0:Laya.Box;
+		public hitBox1:Laya.Box;
+		public item0:Laya.Image;
+		public item1:Laya.Image;
+		public item2:Laya.Image;
+		public item3:Laya.Image;
+		public item4:Laya.Image;
+		public item5:Laya.Box;
+		public item6:Laya.Box;
+		public item7:Laya.Box;
+		public item8:Laya.Box;
+		public rightBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":117,"x":50,"width":650,"visible":false,"var":"box","height":1100,"bgColor":"#e37373"},"compId":460},{"type":"Box","props":{"y":590,"x":27,"width":148,"var":"hitBox0","mouseEnabled":false,"height":182},"compId":457},{"type":"Box","props":{"y":658,"x":214,"width":112,"var":"hitBox1","mouseEnabled":false,"height":51},"compId":458},{"type":"Image","props":{"y":721,"x":587,"width":110,"var":"item0","skin":"guanqia/70/pic_huocai.png","height":36,"anchorY":0.5,"anchorX":0.5},"compId":418},{"type":"Image","props":{"y":654,"x":587,"width":110,"var":"item1","skin":"guanqia/70/pic_huocai.png","height":36,"anchorY":0.5,"anchorX":0.5},"compId":425},{"type":"Image","props":{"y":789,"x":450,"width":110,"var":"item2","skin":"guanqia/70/pic_huocai.png","height":36,"anchorY":0.5,"anchorX":0.5},"compId":431},{"type":"Image","props":{"y":579.5,"x":442,"width":110,"var":"item3","skin":"guanqia/70/pic_huocai.png","height":36,"anchorY":0.5,"anchorX":0.5},"compId":432},{"type":"Image","props":{"y":684,"x":439,"width":110,"var":"item4","skin":"guanqia/70/pic_huocai.png","rotation":180,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":433},{"type":"Box","props":{"y":684,"x":326,"width":35,"var":"item5","height":195,"anchorY":0.5,"anchorX":0.5},"compId":453,"child":[{"type":"Image","props":{"y":47.50000036173117,"x":13.000001272757686,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":423},{"type":"Image","props":{"y":152.50000036173117,"x":14.000001272757686,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":424}]},{"type":"Box","props":{"y":683,"x":667,"width":34,"var":"item6","height":217,"anchorY":0.5,"anchorX":0.5},"compId":454,"child":[{"type":"Image","props":{"y":47.50000036173117,"x":13.500001272757686,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":-90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":421},{"type":"Image","props":{"y":157,"x":16,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":-90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":422}]},{"type":"Box","props":{"y":684,"x":511,"width":34,"var":"item7","height":208,"anchorY":0.5,"anchorX":0.5},"compId":455,"child":[{"type":"Image","props":{"y":47.50000036173117,"x":13.500001272757686,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":-90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":427},{"type":"Image","props":{"y":152,"x":15.5,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":-90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":428}]},{"type":"Box","props":{"y":686,"x":382,"width":34,"var":"item8","height":195,"anchorY":0.5,"anchorX":0.5},"compId":456,"child":[{"type":"Image","props":{"y":41.50000036173117,"x":13.500001272757686,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":429},{"type":"Image","props":{"y":150.50000036173117,"x":13.500001272757686,"width":110,"skin":"guanqia/70/pic_huocai.png","rotation":90,"height":36,"anchorY":0.5,"anchorX":0.5},"compId":430}]},{"type":"Box","props":{"y":825,"x":375,"width":40,"var":"rightBox","mouseEnabled":false,"height":40,"anchorY":0.5,"anchorX":0.5},"compId":459}],"loadList":["guanqia/70/pic_huocai.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(level70UI.uiView);
+        }
+    }
+    REG("ui.level70UI",level70UI);
     export class level8UI extends View {
 		public box:Laya.Box;
 		public jia:Laya.Image;

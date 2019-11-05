@@ -55,6 +55,7 @@ export default class Level_59 extends BaseLevel {
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.ui.item1.visible = true;
+        this.ui.item1.alpha = 1;
         this.ui.item2.visible = this.ui.item3.visible = false;
     }
 

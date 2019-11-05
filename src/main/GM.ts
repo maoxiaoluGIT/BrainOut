@@ -87,6 +87,11 @@ import Level_64 from "./levels/Level_64";
 import Level_65 from "./levels/Level_65";
 import QQCookie from "./gameCookie/QQCookie";
 import QQPlatform from "./platforms/QQPlatform";
+import Level_66 from "./levels/Level_66";
+import Level_67 from "./levels/Level_67";
+import Level_68 from "./levels/Level_68";
+import Level_69 from "./levels/Level_69";
+import Level_70 from "./levels/Level_70";
 
 /**游戏总管理 */
 export default class GM{
@@ -245,7 +250,7 @@ export default class GM{
             Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37,Level_38,Level_39,Level_40,
             Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50,
             Level_51,Level_52,Level_53,Level_54,Level_55,Level_56,Level_57,Level_58,Level_59,Level_60,
-            Level_61,Level_62,Level_63,Level_64,Level_65
+            Level_61,Level_62,Level_63,Level_64,Level_65,Level_66,Level_67,Level_68,Level_69,Level_70
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
@@ -267,5 +272,10 @@ export default class GM{
     static hitPoint(tt:Laya.Sprite , box:Laya.Sprite):boolean{
         return tt.x >= box.x && tt.x <= box.x + box.width 
         && tt.y >= box.y && tt.y <= box.y + box.height;
+    }
+
+    static hitPoint2(xx,yy , box:Laya.Sprite):boolean{
+        return xx >= box.x && xx <= box.x + box.width 
+        && yy >= box.y && yy <= box.y + box.height;
     }
 }

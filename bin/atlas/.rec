@@ -1,4 +1,9 @@
 D .
+R 214A8519 66.jpg
+R 2393B099 67.jpg
+R D9B8BEEE 68.jpg
+R 8580047E 69.jpg
+R C307F2DB 70.jpg
 D guanqia
 D loading
 D pubRes
@@ -413,8 +418,23 @@ D guanqia/65
 P 3629137A pic_13_1.png
 P B4DC501A pic_13_2.png
 P D46E5CC6 pic_13_3.png
+D guanqia/66
+P C4C16135 1_31_1.png
+D guanqia/67
+P 28D5D424 pic_42_1.png
+D guanqia/68
+P EE0233FF pic_45_1.png
+D guanqia/69
+P C241AA8D pic_42_1.png
+P 9DDB90AA pic_42_2.png
+P E9B58573 pic_42_3.png
+P 9B8C7DA3 pic_42_4.png
+P AE9207C6 pic_42_5.png
+P 90A318C5 pic_42_6.png
 D guanqia/7
 P BF9781B2 pic_22_1.png
+D guanqia/70
+P 9E2E27CE pic_huocai.png
 D guanqia/8
 P 98C34F1F pic_09_1.png
 P A6FAC4EB pic_09_2.png
