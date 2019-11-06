@@ -98,7 +98,6 @@ export default class MainView extends ui.mainViewUI {
         
         if(type == AdType.answerRight)
         {
-            this.onNext();
             GM.sysLog(LogType.shengli_ad_com);
         }
         else if(type == AdType.skip)

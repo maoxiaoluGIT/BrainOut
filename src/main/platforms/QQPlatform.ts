@@ -269,14 +269,25 @@ export default class QQPlatform extends BasePlatform {
     }
 
     showBanner():void{
+        let sysInfo = Laya.Browser.window.wx.getSystemInfoSync();
+        let delta = 0;
+        if(sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")
+        {
+            delta = 24;
+        }
+        // console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);
         let obj:any = {};
-        obj.adUnitId = "";
+        obj.adUnitId = "adunit-13a7c564acbbe142";
+        obj.adIntervals = 60;
         let l = (Laya.Browser.clientWidth - 300)/2;
-        obj.style = {left:l,top:0,width:300,height:125};
+        obj.style = {left:l,top:0,width:300,height:1};
         
-        let b = this.qq.createBannerAd( obj );
+        let b = Laya.Browser.window.wx.createBannerAd( obj );
+        b.onError(function(res){
+
+        });
         b.onResize( res=>{
-            b.style.top = Laya.Browser.clientHeight - res.height - 20;
+            b.style.top = Laya.Browser.clientHeight - res.height - delta;
         } );
         b.show();
     }

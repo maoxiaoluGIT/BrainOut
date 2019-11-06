@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":19,
+    "selecteID":13,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -17,7 +17,7 @@
         }],
     "props":{"y":667,"x":375,"width":750,"sceneColor":"#ffffff","height":1334,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
-    "maxID":20,
+    "maxID":23,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -117,7 +117,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,nextAdBtn",
-            "props":{"y":877,"x":222,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   观看视频","height":125},
+            "props":{"y":877,"x":222,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   免费获取","height":125},
             "nodeParent":2,
             "label":"nextAdBtn",
             "isOpen":true,
@@ -145,31 +145,46 @@
                     "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":-24,"x":180,"width":134,"texture":"pubRes/hongyuan.png","height":69},
+                    "props":{"y":-28,"x":212,"width":134,"texture":"pubRes/hongyuan.png","height":69},
                     "nodeParent":13,
                     "label":"Sprite",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":15,
+                    "compId":20,
                     "child":[
                         {
                             "x":45,
                             "type":"Text",
                             "searchKey":"Text",
-                            "props":{"y":16,"x":6,"width":127,"text":"+提示","height":50,"fontSize":40,"align":"center"},
-                            "nodeParent":15,
+                            "props":{"y":11,"x":-21,"width":127,"text":"+","height":50,"fontSize":40,"align":"center"},
+                            "nodeParent":20,
                             "label":"Text",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
-                            "compId":16,
+                            "compId":21,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Sprite",
+                            "searchKey":"Sprite",
+                            "props":{"y":6,"x":58,"width":57,"texture":"pubRes/ic_key_1.png","height":55},
+                            "nodeParent":20,
+                            "label":"Sprite",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":22,
                             "child":[
                                 ]
                         }],
                     "$HIDDEN":false
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,

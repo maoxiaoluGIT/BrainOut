@@ -37,7 +37,7 @@ export default class Level_46 extends BaseLevel {
     {
         if(this.ui.shuzi.text == "909")
         {
-            Laya.Tween.to(this.ui.item15,{x:200,y:440},800,null,new Laya.Handler(this,()=>{
+            Laya.Tween.to(this.ui.item15,{x:15,y:62},800,null,new Laya.Handler(this,()=>{
                 this.setAnswer(this.ui.rightBox,true);
             }));
         }

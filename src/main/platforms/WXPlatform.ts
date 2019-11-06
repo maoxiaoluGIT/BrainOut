@@ -81,9 +81,9 @@ export default class WXPlatform extends BasePlatform {
 
         Laya.Browser.window.wx.updateShareMenu({});
         Laya.Browser.window.wx.showShareMenu({});
-        Laya.Browser.window.wx.onShareAppMessage( ()=>{
+        Laya.Browser.window.wx.onShareAppMessage(() => {
             return this.getShareObj();
-        } );
+        });
     }
 
     login(callback): void {
@@ -99,7 +99,7 @@ export default class WXPlatform extends BasePlatform {
 
     private userBtn;
     getUserInfo(callback): void {
-        if (this.userBtn)  {
+        if (this.userBtn) {
             return;
         }
         this.userBtn = Laya.Browser.window.wx.createUserInfoButton(
@@ -178,56 +178,51 @@ export default class WXPlatform extends BasePlatform {
         console.log("过滤之后", GM.userName);
     }
 
-    onShare(type:number,isMain): void {
-        if(isMain)
-        {
+    onShare(type: number, isMain): void {
+        if (isMain)  {
             Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
             GM.log("主动分享");
         }
-        else
-        {
+        else  {
             this.shareTime = Date.now();
-            Game.eventManager.once( GameEvent.WX_ON_SHOW ,this,this.shareSuccess,[type]);
+            Game.eventManager.once(GameEvent.WX_ON_SHOW, this, this.shareSuccess, [type]);
             Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
             GM.log("视频失败分享");
         }
         GM.sysLog(LogType.share_msg);
     }
 
-    private shareTime:number;
+    private shareTime: number;
 
-    private shareSuccess(type:number):void
-    {
-        if(Session.gameData[DataKey.shareTimes] > 0)
-        {
+    private shareSuccess(type: number): void  {
+        if (Session.gameData[DataKey.shareTimes] > 0)  {
             // if(Date.now() - this.shareTime >= 2500)
             // {
-                Session.gameData[DataKey.shareTimes]--;
-                Game.eventManager.event(GameEvent.SHARE_SUCCESS,type);
-                return;
+            Session.gameData[DataKey.shareTimes]--;
+            Game.eventManager.event(GameEvent.SHARE_SUCCESS, type);
+            return;
             // }
         }
     }
 
 
-    shake(isRight: boolean): void  {
+    shake(isRight: boolean): void {
         if (GM.shakeState == 1) {
-            if (isRight)  {
+            if (isRight) {
                 Laya.Browser.window.wx.vibrateShort();
             }
-            else  {
+            else {
                 Laya.Browser.window.wx.vibrateLong();
             }
         }
     }
 
-    static shareMsgs:string[] = ["万万没想到，还有这种骚操作！","脑洞是个什么洞？","哎呀！妈呀！脑瓜疼！","有人@你 进来和我一起玩！"];
+    static shareMsgs: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！", "有人@你 进来和我一起玩！"];
 
-    private getShareObj():any
-    {
-        let arr:string[] = WXPlatform.shareMsgs;
-        let obj:any = {};
-        let index:number = Math.floor(arr.length * Math.random());
+    private getShareObj(): any  {
+        let arr: string[] = WXPlatform.shareMsgs;
+        let obj: any = {};
+        let index: number = Math.floor(arr.length * Math.random());
         obj.title = arr[index];
         obj.imageUrl = "https://img.kuwan511.com/brainOut/share.jpg";
         obj.destWidth = 500;
@@ -236,56 +231,57 @@ export default class WXPlatform extends BasePlatform {
     }
 
     private ad;
-    playAd(codeId:string,type:number):void
-    {
-        if(this.ad)
-        {
-            this.ad.destroy();
-            this.ad = null;
+    private _type:number;
+    playAd(codeId: string, type: number): void  {
+        // if(this.ad)
+        // {
+        //     this.ad.destroy();
+        //     this.ad = null;
+        // }
+        this._type = type;
+        if (!this.ad)  {
+            this.ad = Laya.Browser.window.wx.createRewardedVideoAd({ adUnitId: "adunit-3fd6aadde1de6f5a" });
+            this.ad.onError(function (res) { });
+            this.ad.onClose((res) => {
+                if (res && res.isEnded || res === undefined) {
+                    GM.log("关闭广告");
+                    GM.sysLog(LogType.play_ad_com_total);
+                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, this._type);
+                }
+            });
         }
-        this.ad = Laya.Browser.window.wx.createRewardedVideoAd({adUnitId:"adunit-3fd6aadde1de6f5a"});
-        this.ad.onError(function(res){});
-        this.ad.onClose( (res)=>{
-            if ( res && res.isEnded || res===undefined ){
-                GM.log("关闭广告");
-                GM.sysLog(LogType.play_ad_com_total);
-                Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE,type);
-            }
-        });
-
         this.ad.show().catch(() => {
             // 失败重试
             this.ad.load()
-              .then(() => this.ad.show())
-              .catch(err => {
-                GM.log("广告拉取失败");
-                this.onShare(type,false);
-              })
-          })
-          GM.sysLog(LogType.play_ad_total);
+                .then(() => this.ad.show())
+                .catch(err => {
+                    GM.log("广告拉取失败");
+                    this.onShare(type, false);
+                })
+        })
+        GM.sysLog(LogType.play_ad_total);
     }
 
-    showBanner():void{
-        let sysInfo = wx.getSystemInfoSync();
+    showBanner(): void {
+        let sysInfo = Laya.Browser.window.wx.getSystemInfoSync();
         let delta = 0;
-        if(sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")
-        {
+        if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")  {
             delta = 24;
         }
         // console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);
-        let obj:any = {};
+        let obj: any = {};
         obj.adUnitId = "adunit-13a7c564acbbe142";
         obj.adIntervals = 60;
-        let l = (Laya.Browser.clientWidth - 300)/2;
-        obj.style = {left:l,top:0,width:300,height:1};
-        
-        let b = Laya.Browser.window.wx.createBannerAd( obj );
-        b.onError(function(res){
+        let l = (Laya.Browser.clientWidth - 300) / 2;
+        obj.style = { left: l, top: 0, width: 300, height: 1 };
+
+        let b = Laya.Browser.window.wx.createBannerAd(obj);
+        b.onError(function (res) {
 
         });
-        b.onResize( res=>{
+        b.onResize(res => {
             b.style.top = Laya.Browser.clientHeight - res.height - delta;
-        } );
+        });
         b.show();
     }
 }

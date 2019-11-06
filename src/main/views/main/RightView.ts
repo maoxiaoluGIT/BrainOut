@@ -13,11 +13,16 @@ export default class RightView extends ui.shengliUI{
         this.on(Laya.Event.UNDISPLAY,this,this.onunDis);
         this.nextBtn.clickHandler = new Laya.Handler(this,this.onNext);
         this.nextAdBtn.clickHandler = new Laya.Handler(this,this.playAd);
+        this.shareBtn.clickHandler = new Laya.Handler(this,this.onShare);
+    }
+
+    private onShare():void
+    {
+        GM.platform.onShare(0,true);//求助
     }
 
     private playAd():void
     {
-        this.removeSelf();
         GM.platform.playAd("",AdType.answerRight);
         GM.sysLog(LogType.shengli_ad_play);
     }

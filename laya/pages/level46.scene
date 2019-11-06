@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":269,
+    "selectedBox":270,
+    "selecteID":262,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -262,13 +262,14 @@
             "props":{"y":337,"x":230,"scaleY":0.6,"scaleX":0.6},
             "nodeParent":2,
             "label":"Box",
-            "isOpen":null,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":270,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item02",
                     "props":{"y":113.5,"x":64.0000007234622,"width":95,"var":"item02","skin":"guanqia/46/pic_huocai.png","rotation":0,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -282,6 +283,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item01",
                     "props":{"y":64.5,"x":95.0000007234622,"width":95,"var":"item01","skin":"guanqia/46/pic_huocai.png","rotation":-90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -296,6 +298,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item00",
                     "props":{"y":13.5,"x":63.00000072346219,"width":95,"var":"item00","skin":"guanqia/46/pic_huocai.png","height":27,"anchorY":0.5,"anchorX":0.5},
@@ -309,6 +312,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item04",
                     "props":{"y":218.5,"x":47.00000072346219,"width":95,"var":"item04","skin":"guanqia/46/pic_huocai.png","rotation":180,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -322,6 +326,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item03",
                     "props":{"y":175.5,"x":97.0000007234622,"width":95,"var":"item03","skin":"guanqia/46/pic_huocai.png","rotation":90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -336,6 +341,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item06",
                     "props":{"y":64.5,"x":142.0000007234622,"width":95,"var":"item06","skin":"guanqia/46/pic_huocai.png","rotation":-90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -350,6 +356,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item08",
                     "props":{"y":161.5,"x":142.0000007234622,"width":95,"var":"item08","skin":"guanqia/46/pic_huocai.png","rotation":-90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -364,6 +371,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item07",
                     "props":{"y":72.5,"x":239.0000007234622,"width":95,"var":"item07","skin":"guanqia/46/pic_huocai.png","rotation":90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -378,6 +386,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item09",
                     "props":{"y":172.5,"x":239.0000007234622,"width":95,"var":"item09","skin":"guanqia/46/pic_huocai.png","rotation":90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -392,6 +401,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item05",
                     "props":{"y":13.5,"x":197.0000007234622,"width":95,"var":"item05","skin":"guanqia/46/pic_huocai.png","height":27,"anchorY":0.5,"anchorX":0.5},
@@ -405,6 +415,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item10",
                     "props":{"y":218.5,"x":190.0000007234622,"width":95,"var":"item10","skin":"guanqia/46/pic_huocai.png","rotation":180,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -418,6 +429,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item12",
                     "props":{"y":64.5,"x":289.0000007234622,"width":95,"var":"item12","skin":"guanqia/46/pic_huocai.png","rotation":-90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -432,6 +444,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item15",
                     "props":{"y":172.5,"x":296.0000007234622,"width":95,"var":"item15","skin":"guanqia/46/pic_huocai.png","rotation":-90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -446,6 +459,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item13",
                     "props":{"y":72.5,"x":386.0000007234622,"width":95,"var":"item13","skin":"guanqia/46/pic_huocai.png","rotation":90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -460,6 +474,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,ite16",
                     "props":{"y":172.5,"x":386.0000007234622,"width":95,"var":"ite16","skin":"guanqia/46/pic_huocai.png","rotation":90,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -474,6 +489,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item11",
                     "props":{"y":13.5,"x":344.0000007234622,"width":95,"var":"item11","skin":"guanqia/46/pic_huocai.png","height":27,"anchorY":0.5,"anchorX":0.5},
@@ -487,6 +503,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item17",
                     "props":{"y":218.5,"x":337.0000007234622,"width":95,"var":"item17","skin":"guanqia/46/pic_huocai.png","rotation":180,"height":27,"anchorY":0.5,"anchorX":0.5},
@@ -500,6 +517,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,item14",
                     "props":{"y":117.5,"x":337.0000007234622,"width":95,"var":"item14","skin":"guanqia/46/pic_huocai.png","rotation":180,"height":27,"anchorY":0.5,"anchorX":0.5},
