@@ -20,6 +20,8 @@ export default class HomeLoading extends ui.loadingUI {
 
         let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/tables.zip", type: Laya.Loader.BUFFER }];
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
+
+        GM.platform && GM.platform.showBanner();
     }
 
     private onProgress(value:number):void

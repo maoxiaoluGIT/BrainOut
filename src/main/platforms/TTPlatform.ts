@@ -267,9 +267,9 @@ export default class TTPlatform extends BasePlatform {
         GM.sysLog(LogType.play_ad_total);
     }
 
-    showBanner(codeId:string):void{
+    showBanner():void{
         let obj:any = {};
-        obj.adUnitId = codeId;
+        obj.adUnitId = "";
         let l = (Laya.Browser.clientWidth - 300)/2;
         obj.style = {left:l,top:0,width:300,height:125};
         

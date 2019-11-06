@@ -243,7 +243,8 @@ export default class WXPlatform extends BasePlatform {
             this.ad.destroy();
             this.ad = null;
         }
-        this.ad = Laya.Browser.window.wx.createRewardedVideoAd({adUnitId:codeId});
+        this.ad = Laya.Browser.window.wx.createRewardedVideoAd({adUnitId:"adunit-3fd6aadde1de6f5a"});
+        this.ad.onError(function(res){});
         this.ad.onClose( (res)=>{
             if ( res && res.isEnded || res===undefined ){
                 GM.log("关闭广告");
@@ -264,15 +265,26 @@ export default class WXPlatform extends BasePlatform {
           GM.sysLog(LogType.play_ad_total);
     }
 
-    showBanner(codeId:string):void{
+    showBanner():void{
+        let sysInfo = wx.getSystemInfoSync();
+        let delta = 0;
+        if(sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")
+        {
+            delta = 24;
+        }
+        // console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);
         let obj:any = {};
-        obj.adUnitId = codeId;
+        obj.adUnitId = "adunit-13a7c564acbbe142";
+        obj.adIntervals = 60;
         let l = (Laya.Browser.clientWidth - 300)/2;
-        obj.style = {left:l,top:0,width:300,height:125};
+        obj.style = {left:l,top:0,width:300,height:1};
         
         let b = Laya.Browser.window.wx.createBannerAd( obj );
+        b.onError(function(res){
+
+        });
         b.onResize( res=>{
-            b.style.top = Laya.Browser.clientHeight - res.height - 20;
+            b.style.top = Laya.Browser.clientHeight - res.height - delta;
         } );
         b.show();
     }

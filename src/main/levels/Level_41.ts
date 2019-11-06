@@ -22,6 +22,8 @@ export default class Level_41 extends BaseLevel {
             this.addEvent(btn,this.onClick);
         }
 
+        this.ui.shuzi
+
         this.ui.qingchu.clickHandler = new Laya.Handler(this,this.onClear2);
         this.ui.queding.clickHandler = new Laya.Handler(this,this.onSure);
 
@@ -59,7 +61,10 @@ export default class Level_41 extends BaseLevel {
         {
             this.ui.shuzi.text = "";
         }
-        this.ui.shuzi.text += btn.tag + "";
+        if(this.ui.shuzi.text.length < 4)
+        {
+            this.ui.shuzi.text += btn.tag + "";
+        }
     }
 
     onDown(sprite: Laya.Sprite): void  {
