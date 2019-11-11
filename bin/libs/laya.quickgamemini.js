@@ -184,8 +184,10 @@ var MiniFileMgr$3=(function(){
 		(isAutoClear===void 0)&& (isAutoClear=true);
 		MiniFileMgr.wxdown({url:fileUrl,success:function (data){
 				if (data.statusCode===200){
-					if((QGMiniAdapter.autoCacheFile || isSaveFile)&& readyUrl.indexOf("qlogo.cn")==-1 && readyUrl.indexOf(".php")==-1)
-						MiniFileMgr.copyFile(data.tempFilePath,readyUrl,callBack,"",isAutoClear);
+					if((QGMiniAdapter.autoCacheFile || isSaveFile)&& readyUrl.indexOf("qlogo.cn")==-1 && readyUrl.indexOf(".php")==-1){
+						callBack !=null && callBack.runWith([0,data.tempFilePath]);
+						MiniFileMgr.copyFile(data.tempFilePath,readyUrl,null,"",isAutoClear);
+					}
 					else
 					callBack !=null && callBack.runWith([0,data.tempFilePath]);
 					}else{
@@ -266,7 +268,8 @@ var MiniFileMgr$3=(function(){
 		var memSize=QGMiniAdapter.minClearSize;
 		var tempFileListArr=[];
 		for(var key in MiniFileMgr.filesListObj){
-			tempFileListArr.push(MiniFileMgr.filesListObj[key]);
+			if(key!="fileUsedSize")
+				tempFileListArr.push(MiniFileMgr.filesListObj[key]);
 		}
 		MiniFileMgr.sortOn(tempFileListArr,"times",16);
 		var clearSize=0;
@@ -315,7 +318,8 @@ var MiniFileMgr$3=(function(){
 	MiniFileMgr.deleteAll=function(){
 		var tempFileListArr=[];
 		for(var key in MiniFileMgr.filesListObj){
-			tempFileListArr.push(MiniFileMgr.filesListObj[key]);
+			if(key!="fileUsedSize")
+				tempFileListArr.push(MiniFileMgr.filesListObj[key]);
 		}
 		for(var i=1,sz=tempFileListArr.length;i<sz;i++){
 			var fileObj=tempFileListArr[i];
@@ -1253,11 +1257,22 @@ var MiniInput$3=(function(){
 		if (_inputTarget && !_inputTarget.editable){
 			return;
 		}
-		QGMiniAdapter.window.qg.offKeyboardConfirm();
-		QGMiniAdapter.window.qg.offKeyboardInput();
 		QGMiniAdapter.window.qg.showKeyboard({defaultValue:_inputTarget.text,maxLength:_inputTarget.maxChars,multiple:_inputTarget.multiline,confirmHold:true,confirmType:_inputTarget["confirmType"]||'done',success:function (res){
 				},fail:function (res){
 		}});
+		QGMiniAdapter.window.qg.onKeyboardComplete(function(res){
+			QGMiniAdapter.window.qg.offKeyboardComplete();
+			var str=res ? res.value :"";
+			if (_inputTarget._restrictPattern){
+				str=str.replace(/\u2006|\x27/g,"");
+				if (_inputTarget._restrictPattern.test(str)){
+					str=str.replace(_inputTarget._restrictPattern,"");
+				}
+			}
+			_inputTarget.text=str;
+			_inputTarget.event(/*laya.events.Event.INPUT*/"input");
+			laya.qg.mini.MiniInput.inputEnter(true);
+		});
 		QGMiniAdapter.window.qg.onKeyboardConfirm(function(res){
 			var str=res ? res.value :"";
 			if (_inputTarget._restrictPattern){
@@ -1407,26 +1422,30 @@ var MiniSound$3=(function(_super){
 	}
 
 	/**@private **/
-	__proto.onDownLoadCallBack=function(sourceUrl,errorCode){
+	__proto.onDownLoadCallBack=function(sourceUrl,errorCode,tempFilePath){
 		if (!errorCode){
 			var fileNativeUrl;
 			if(QGMiniAdapter.autoCacheFile){
-				if (MiniFileMgr$3.isLocalNativeFile(sourceUrl)){
-					var tempStr=URL.rootPath !="" ? URL.rootPath :URL.basePath;
-					var tempUrl=sourceUrl;
-					if(tempStr !="" && (sourceUrl.indexOf("http://")!=-1 || sourceUrl.indexOf("https://")!=-1))
-						fileNativeUrl=sourceUrl.split(tempStr)[1];
-					if(!fileNativeUrl){
-						fileNativeUrl=tempUrl;
+				if(!tempFilePath){
+					if (MiniFileMgr$3.isLocalNativeFile(sourceUrl)){
+						var tempStr=URL.rootPath !="" ? URL.rootPath :URL._basePath;
+						var tempUrl=sourceUrl;
+						if(tempStr !="" && (sourceUrl.indexOf("http://")!=-1 || sourceUrl.indexOf("https://")!=-1))
+							fileNativeUrl=sourceUrl.split(tempStr)[1];
+						if(!fileNativeUrl){
+							fileNativeUrl=tempUrl;
+						}
+						}else{
+						var fileObj=MiniFileMgr$3.getFileInfo(sourceUrl);
+						if(fileObj && fileObj.md5){
+							var fileMd5Name=fileObj.md5;
+							fileNativeUrl=MiniFileMgr$3.getFileNativePath(fileMd5Name);
+							}else{
+							fileNativeUrl=sourceUrl;
+						}
 					}
 					}else{
-					var fileObj=MiniFileMgr$3.getFileInfo(sourceUrl);
-					if(fileObj && fileObj.md5){
-						var fileMd5Name=fileObj.md5;
-						fileNativeUrl=MiniFileMgr$3.getFileNativePath(fileMd5Name);
-						}else{
-						fileNativeUrl=sourceUrl;
-					}
+					fileNativeUrl=tempFilePath;
 				}
 				this._sound=MiniSound._createSound();
 				this._sound.src=this.url=fileNativeUrl;
@@ -1833,8 +1852,8 @@ var MiniSoundChannel$3=(function(_super){
 		this._audio.stop();
 		this._audio.offEnded(null);
 		this._miniSound.dispose();
-		this._audio=null;
 		this._miniSound=null;
+		this._audio=null;
 		this._onEnd=null;
 	}
 

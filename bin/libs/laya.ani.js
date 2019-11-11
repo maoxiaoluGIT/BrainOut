@@ -5,9 +5,9 @@
 	var Bezier=laya.maths.Bezier,Browser=laya.utils.Browser,Byte=laya.utils.Byte,Const=laya.Const,Event=laya.events.Event;
 	var EventDispatcher=laya.events.EventDispatcher,Graphics=laya.display.Graphics,Handler=laya.utils.Handler;
 	var Loader=laya.net.Loader,MathUtil=laya.maths.MathUtil,Matrix=laya.maths.Matrix,Node=laya.display.Node,Rectangle=laya.maths.Rectangle;
-	var Render=laya.renders.Render,Resource=laya.resource.Resource,Sprite=laya.display.Sprite,Stat=laya.utils.Stat;
-	var Texture=laya.resource.Texture,Texture2D=laya.resource.Texture2D,Timer=laya.utils.Timer,URL=laya.net.URL;
-	var Utils=laya.utils.Utils;
+	var Render=laya.renders.Render,Resource=laya.resource.Resource,SoundChannel=laya.media.SoundChannel,SoundManager=laya.media.SoundManager;
+	var Sprite=laya.display.Sprite,Stat=laya.utils.Stat,Texture=laya.resource.Texture,Texture2D=laya.resource.Texture2D;
+	var Timer=laya.utils.Timer,URL=laya.net.URL,Utils=laya.utils.Utils;
 /**
 *@private
 */
@@ -2396,6 +2396,7 @@ var EventData=(function(){
 		this.intValue=0;
 		this.floatValue=NaN;
 		this.stringValue=null;
+		this.audioValue=null;
 		this.time=NaN;
 	}
 
@@ -3836,6 +3837,8 @@ var Skeleton=(function(_super){
 		this._drawOrder=null;
 		this._lastAniClipIndex=-1;
 		this._lastUpdateAniClipIndex=-1;
+		this._playAudio=true;
+		this._soundChannelArr=[];
 		Skeleton.__super.call(this);
 		(aniMode===void 0)&& (aniMode=0);
 		if (templet)this.init(templet,aniMode);
@@ -4098,13 +4101,24 @@ var Skeleton=(function(_super){
 			this._eventIndex=0;
 		};
 		var tEventArr=this._templet.eventAniArr[this._aniClipIndex];
+		var _soundChannel;
 		if (tEventArr && this._eventIndex < tEventArr.length){
 			var tEventData=tEventArr[this._eventIndex];
 			if (tEventData.time >=this._player.playStart && tEventData.time <=this._player.playEnd){
 				if (this._player.currentPlayTime >=tEventData.time){
 					this.event(/*laya.events.Event.LABEL*/"label",tEventData);
 					this._eventIndex++;
+					if (this._playAudio && tEventData.audioValue && tEventData.audioValue!=="null"){
+						_soundChannel=SoundManager.playSound(this._player.templet._path+tEventData.audioValue,1,Handler.create(this,this._onAniSoundStoped));
+						SoundManager.playbackRate=this._player.playbackRate;
+						_soundChannel && this._soundChannelArr.push(_soundChannel);
+					}
 				}
+				}else if (tEventData.time < this._player.playStart && this._playAudio && tEventData.audioValue && tEventData.audioValue!=="null" && (this._player.playEnd-this._player.currentPlayTime)> 0.1){
+				this._eventIndex++;
+				_soundChannel=SoundManager.playSound(this._player.templet._path+tEventData.audioValue,1,Handler.create(this,this._onAniSoundStoped),null,(this._player.currentPlayTime-tEventData.time)/ 1000);
+				SoundManager.playbackRate=this._player.playbackRate;
+				_soundChannel && this._soundChannelArr.push(_soundChannel);
 				}else {
 				this._eventIndex++;
 			}
@@ -4122,6 +4136,23 @@ var Skeleton=(function(_super){
 			}
 			}else{
 			this._createGraphics();
+		}
+	}
+
+	/**
+	*@private
+	*清掉播放完成的音频
+	*@param force 是否强制删掉所有的声音channel
+	*/
+	__proto._onAniSoundStoped=function(force){
+		var _channel;
+		for (var len=this._soundChannelArr.length,i=0;i < len;i++){
+			_channel=this._soundChannelArr[i];
+			if (_channel.isStopped || force){
+				!_channel.isStopped && _channel.stop();
+				this._soundChannelArr.splice(i,1);
+				len--;i--;
+			}
 		}
 	}
 
@@ -4558,12 +4589,15 @@ var Skeleton=(function(_super){
 	*@param start 起始时间
 	*@param end 结束时间
 	*@param freshSkin 是否刷新皮肤数据
+	*@param playAudio 是否播放音频
 	*/
-	__proto.play=function(nameOrIndex,loop,force,start,end,freshSkin){
+	__proto.play=function(nameOrIndex,loop,force,start,end,freshSkin,playAudio){
 		(force===void 0)&& (force=true);
 		(start===void 0)&& (start=0);
 		(end===void 0)&& (end=0);
 		(freshSkin===void 0)&& (freshSkin=true);
+		(playAudio===void 0)&& (playAudio=true);
+		this._playAudio=playAudio;
 		this._indexControl=false;
 		var index=-1;
 		var duration=NaN;
@@ -4612,6 +4646,9 @@ var Skeleton=(function(_super){
 			if (this._player){
 				this._player.stop(true);
 			}
+			if (this._soundChannelArr.length > 0){
+				this._onAniSoundStoped(true);
+			}
 			this.timer.clear(this,this._update);
 		}
 	}
@@ -4635,6 +4672,15 @@ var Skeleton=(function(_super){
 			if (this._player){
 				this._player.paused=true;
 			}
+			if (this._soundChannelArr.length > 0){
+				var _soundChannel;
+				for (var len=this._soundChannelArr.length,i=0;i < len;i++){
+					_soundChannel=this._soundChannelArr[i];
+					if (!_soundChannel.isStopped){
+						_soundChannel.pause();
+					}
+				}
+			}
 			this.timer.clear(this,this._update);
 		}
 	}
@@ -4648,6 +4694,15 @@ var Skeleton=(function(_super){
 			this._pause=false;
 			if (this._player){
 				this._player.paused=false;
+			}
+			if (this._soundChannelArr.length > 0){
+				var _soundChannel;
+				for (var len=this._soundChannelArr.length,i=0;i < len;i++){
+					_soundChannel=this._soundChannelArr[i];
+					if (_soundChannel.audioBuffer){
+						_soundChannel.resume();
+					}
+				}
 			}
 			this._lastTime=Browser.now();
 			this.timer.frameLoop(1,this,this._update,null,true);
@@ -4690,6 +4745,9 @@ var Skeleton=(function(_super){
 		this._boneMatrixArray.length=0;
 		this._lastTime=0;
 		this.timer.clear(this,this._update);
+		if (this._soundChannelArr.length > 0){
+			this._onAniSoundStoped(true);
+		}
 	}
 
 	/**
@@ -4796,6 +4854,8 @@ var Templet=(function(_super){
 		this.attachmentNames=null;
 		/**顶点动画数据 */
 		this.deformAniArr=[];
+		/**是否需要解析audio数据 */
+		this._isParseAudio=false;
 		this._isDestroyed=false;
 		this._rate=30;
 		this.isParserComplete=false;
@@ -4880,7 +4940,9 @@ var Templet=(function(_super){
 	__proto.parse=function(data){
 		_super.prototype.parse.call(this,data);
 		this.event(/*laya.events.Event.LOADED*/"loaded",this);
-		if (this._aniVersion !=Templet.LAYA_ANIMATION_VISION){
+		if (this._aniVersion===Templet.LAYA_ANIMATION_VISION){
+			this._isParseAudio=true;
+			}else if (this._aniVersion !=Templet.LAYA_ANIMATION_160_VISION){
 			console.log("[Error] 版本不一致，请使用IDE版本配套的重新导出"+this._aniVersion+"->"+Templet.LAYA_ANIMATION_VISION);
 		}
 		if (this._mainTexture){
@@ -5197,6 +5259,7 @@ var Templet=(function(_super){
 			for (j=0;j < tEventLen;j++){
 				tEventData=new EventData();
 				tEventData.name=tByte.getUTFString();
+				if (this._isParseAudio)tEventData.audioValue=tByte.getUTFString();
 				tEventData.intValue=tByte.getInt32();
 				tEventData.floatValue=tByte.getFloat32();
 				tEventData.stringValue=tByte.getUTFString();
@@ -5479,7 +5542,8 @@ var Templet=(function(_super){
 		this._rate=v;
 	});
 
-	Templet.LAYA_ANIMATION_VISION="LAYAANIMATION:1.6.0";
+	Templet.LAYA_ANIMATION_160_VISION="LAYAANIMATION:1.6.0";
+	Templet.LAYA_ANIMATION_VISION="LAYAANIMATION:1.7.0";
 	Templet.TEMPLET_DICTIONARY=null;
 	return Templet;
 })(AnimationTemplet)

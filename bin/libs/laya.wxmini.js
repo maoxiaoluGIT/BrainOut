@@ -104,7 +104,7 @@ var MiniFileMgr=(function(){
 
 	MiniFileMgr.getFileInfo=function(fileUrl){
 		var fileNativePath=fileUrl;
-		var fileObj=MiniFileMgr.filesListObj[fileNativePath];
+		var fileObj=MiniFileMgr.fakeObj[fileNativePath];
 		if (fileObj==null)
 			return null;
 		else
@@ -113,7 +113,7 @@ var MiniFileMgr=(function(){
 	}
 
 	MiniFileMgr.read=function(filePath,encoding,callBack,readyUrl,isSaveFile,fileType){
-		(encoding===void 0)&& (encoding="ascill");
+		(encoding===void 0)&& (encoding="utf8");
 		(readyUrl===void 0)&& (readyUrl="");
 		(isSaveFile===void 0)&& (isSaveFile=false);
 		(fileType===void 0)&& (fileType="");
@@ -158,7 +158,7 @@ var MiniFileMgr=(function(){
 	}
 
 	MiniFileMgr.readFile=function(filePath,encoding,callBack,readyUrl,isSaveFile,fileType,isAutoClear){
-		(encoding===void 0)&& (encoding="ascill");
+		(encoding===void 0)&& (encoding="utf8");
 		(readyUrl===void 0)&& (readyUrl="");
 		(isSaveFile===void 0)&& (isSaveFile=false);
 		(fileType===void 0)&& (fileType="");
@@ -167,8 +167,11 @@ var MiniFileMgr=(function(){
 		MiniFileMgr.fs.readFile({filePath:filePath,encoding:encoding,success:function (data){
 				if (filePath.indexOf("http://")!=-1 || filePath.indexOf("https://")!=-1){
 					if(MiniAdpter.autoCacheFile || isSaveFile){
-						MiniFileMgr.copyFile(filePath,readyUrl,callBack,encoding,isAutoClear);
+						callBack !=null && callBack.runWith([0,data]);
+						MiniFileMgr.copyFile(filePath,readyUrl,null,encoding,isAutoClear);
 					}
+					else
+					callBack !=null && callBack.runWith([0,data]);
 				}
 				else
 				callBack !=null && callBack.runWith([0,data]);
@@ -184,8 +187,10 @@ var MiniFileMgr=(function(){
 		(isAutoClear===void 0)&& (isAutoClear=true);
 		MiniFileMgr.wxdown({url:fileUrl,success:function (data){
 				if (data.statusCode===200){
-					if((MiniAdpter.autoCacheFile || isSaveFile)&& readyUrl.indexOf("qlogo.cn")==-1 && readyUrl.indexOf(".php")==-1)
-						MiniFileMgr.copyFile(data.tempFilePath,readyUrl,callBack,"",isAutoClear);
+					if ((MiniAdpter.autoCacheFile || isSaveFile)&& readyUrl.indexOf("qlogo.cn")==-1 && readyUrl.indexOf(".php")==-1){
+						callBack !=null && callBack.runWith([0,data.tempFilePath]);
+						MiniFileMgr.copyFile(data.tempFilePath,readyUrl,null,"",isAutoClear);
+					}
 					else
 					callBack !=null && callBack.runWith([0,data.tempFilePath]);
 					}else{
@@ -199,7 +204,7 @@ var MiniFileMgr=(function(){
 	MiniFileMgr.downLoadFile=function(fileUrl,fileType,callBack,encoding){
 		(fileType===void 0)&& (fileType="");
 		(encoding===void 0)&& (encoding="ascii");
-		if(/*__JS__ */window.navigator.userAgent.indexOf('MiniGame')<0){
+		if(MiniAdpter.window.navigator.userAgent.indexOf('MiniGame')<0){
 			Laya.loader.load(fileUrl,callBack);
 			}else{
 			if(fileType==/*laya.net.Loader.IMAGE*/"image" || fileType==/*laya.net.Loader.SOUND*/"sound")
@@ -217,6 +222,7 @@ var MiniFileMgr=(function(){
 		var fileurlkey=readyUrl;
 		var fileObj=MiniFileMgr.getFileInfo(readyUrl);
 		var saveFilePath=MiniFileMgr.getFileNativePath(tempFileName);
+		MiniFileMgr.fakeObj[fileurlkey]={md5:tempFileName,readyUrl:readyUrl,size:0,times:Browser.now(),encoding:encoding};
 		var totalSize=50 *1024 *1024;
 		var chaSize=4 *1024 *1024;
 		var fileUseSize=MiniFileMgr.getCacheUseSize();
@@ -355,8 +361,8 @@ var MiniFileMgr=(function(){
 		MiniFileMgr.fs.writeFile({filePath:listFilesPath,encoding:'utf8',data:filesListStr,success:function (data){
 				},fail:function (data){
 		}});
-		if(!MiniAdpter.isZiYu &&MiniAdpter.isPosMsgYu){
-			/*__JS__ */wx.postMessage({url:fileurlkey,data:MiniFileMgr.filesListObj[fileurlkey],isLoad:"filenative",isAdd:isAdd});
+		if(!MiniAdpter.isZiYu &&MiniAdpter.isPosMsgYu && MiniAdpter.window.wx.postMessage){
+			MiniAdpter.window.wx.postMessage({url:fileurlkey,data:MiniFileMgr.filesListObj[fileurlkey],isLoad:"filenative",isAdd:isAdd});
 		}
 	}
 
@@ -378,7 +384,7 @@ var MiniFileMgr=(function(){
 	}
 
 	MiniFileMgr.readSync=function(filePath,encoding,callBack,readyUrl){
-		(encoding===void 0)&& (encoding="ascill");
+		(encoding===void 0)&& (encoding="utf8");
 		(readyUrl===void 0)&& (readyUrl="");
 		var fileUrl=MiniFileMgr.getFileNativePath(filePath);
 		var filesListStr
@@ -392,10 +398,11 @@ var MiniFileMgr=(function(){
 	}
 
 	MiniFileMgr.setNativeFileDir=function(value){
-		MiniFileMgr.fileNativeDir=/*__JS__ */wx.env.USER_DATA_PATH+value;
+		MiniFileMgr.fileNativeDir=MiniAdpter.window.wx.env.USER_DATA_PATH+value;
 	}
 
 	MiniFileMgr.filesListObj={};
+	MiniFileMgr.fakeObj={};
 	MiniFileMgr.fileNativeDir=null;
 	MiniFileMgr.fileListName="layaairfiles.txt";
 	MiniFileMgr.ziyuFileData={};
@@ -404,7 +411,7 @@ var MiniFileMgr=(function(){
 	MiniFileMgr.DESCENDING=2;
 	MiniFileMgr.NUMERIC=16;
 	__static(MiniFileMgr,
-	['fs',function(){return this.fs=/*__JS__ */wx.getFileSystemManager();},'wxdown',function(){return this.wxdown=/*__JS__ */wx.downloadFile;}
+	['fs',function(){return this.fs=MiniAdpter.window.wx.getFileSystemManager();},'wxdown',function(){return this.wxdown=MiniAdpter.window.wx.downloadFile;}
 	]);
 	return MiniFileMgr;
 })()
@@ -841,6 +848,8 @@ var MiniImage=(function(){
 		};
 		var onerror=function (){
 			clear();
+			delete MiniFileMgr.fakeObj[sourceUrl];
+			delete MiniFileMgr.filesListObj[sourceUrl];
 			thisLoader.event(/*laya.events.Event.ERROR*/"error","Load image failed");
 		}
 		if (thisLoader._type=="nativeimage"){
@@ -1110,8 +1119,10 @@ var MiniAdpter=(function(){
 	}
 
 	MiniAdpter.onMkdirCallBack=function(errorCode,data){
-		if (!errorCode)
+		if (!errorCode){
 			MiniFileMgr.filesListObj=JSON.parse(data.data);
+			MiniFileMgr.fakeObj=MiniFileMgr.filesListObj;
+		}
 	}
 
 	MiniAdpter.pixelRatio=function(){
@@ -1403,7 +1414,21 @@ var MiniLoader=(function(_super){
 				if (tempurl.indexOf("http://usr/")==-1&& (tempurl.indexOf("http://")!=-1 || tempurl.indexOf("https://")!=-1)&& !MiniAdpter.AutoCacheDownFile){
 					MiniAdpter.EnvConfig.load.call(thisLoader,url,type,cache,group,ignoreCache);
 					}else {
-					MiniFileMgr.readFile(url,encoding,new Handler(MiniLoader,MiniLoader.onReadNativeCallBack,[encoding,url,type,cache,group,ignoreCache,thisLoader]),url);
+					fileObj=MiniFileMgr.getFileInfo(url);
+					if(fileObj){
+						fileObj.encoding=fileObj.encoding==null ? "utf8" :fileObj.encoding;
+						MiniFileMgr.readFile(fileObj.url,encoding,new Handler(MiniLoader,MiniLoader.onReadNativeCallBack,[encoding,url,type,cache,group,ignoreCache,thisLoader]),url);
+						}else if (thisLoader.type=="image" || thisLoader.type=="htmlimage"){
+						MiniAdpter.EnvConfig.load.call(thisLoader,url,type,cache,group,ignoreCache);
+					}
+					else{
+						url=URL.formatURL(url);
+						if((url.indexOf("http://")==-1 && url.indexOf("https://")==-1)|| MiniFileMgr.isLocalNativeFile(url)){
+							MiniFileMgr.readFile(url,encoding,new Handler(MiniLoader,MiniLoader.onReadNativeCallBack,[encoding,url,type,cache,group,ignoreCache,thisLoader]),url);
+							}else{
+							MiniFileMgr.downFiles(url,encoding,new Handler(MiniLoader,MiniLoader.onReadNativeCallBack,[encoding,url,type,cache,group,ignoreCache,thisLoader]),url,cache);
+						}
+					}
 				}
 				}else {
 				var fileObj=MiniFileMgr.getFileInfo(url);
@@ -1534,26 +1559,30 @@ var MiniSound=(function(_super){
 	}
 
 	/**@private **/
-	__proto.onDownLoadCallBack=function(sourceUrl,errorCode){
+	__proto.onDownLoadCallBack=function(sourceUrl,errorCode,tempFilePath){
 		if (!errorCode){
 			var fileNativeUrl;
 			if(MiniAdpter.autoCacheFile){
-				if (MiniFileMgr.isLocalNativeFile(sourceUrl)){
-					var tempStr=URL.rootPath !="" ? URL.rootPath :URL._basePath;
-					var tempUrl=sourceUrl;
-					if(tempStr !="" && (sourceUrl.indexOf("http://")!=-1 || sourceUrl.indexOf("https://")!=-1))
-						fileNativeUrl=sourceUrl.split(tempStr)[1];
-					if(!fileNativeUrl){
-						fileNativeUrl=tempUrl;
+				if(!tempFilePath){
+					if (MiniFileMgr.isLocalNativeFile(sourceUrl)){
+						var tempStr=URL.rootPath !="" ? URL.rootPath :URL._basePath;
+						var tempUrl=sourceUrl;
+						if(tempStr !="" && (sourceUrl.indexOf("http://")!=-1 || sourceUrl.indexOf("https://")!=-1))
+							fileNativeUrl=sourceUrl.split(tempStr)[1];
+						if(!fileNativeUrl){
+							fileNativeUrl=tempUrl;
+						}
+						}else{
+						var fileObj=MiniFileMgr.getFileInfo(sourceUrl);
+						if(fileObj && fileObj.md5){
+							var fileMd5Name=fileObj.md5;
+							fileNativeUrl=MiniFileMgr.getFileNativePath(fileMd5Name);
+							}else{
+							fileNativeUrl=sourceUrl;
+						}
 					}
 					}else{
-					var fileObj=MiniFileMgr.getFileInfo(sourceUrl);
-					if(fileObj && fileObj.md5){
-						var fileMd5Name=fileObj.md5;
-						fileNativeUrl=MiniFileMgr.getFileNativePath(fileMd5Name);
-						}else{
-						fileNativeUrl=sourceUrl;
-					}
+					fileNativeUrl=tempFilePath;
 				}
 				this._sound=MiniSound._createSound();
 				this._sound.src=this.url=fileNativeUrl;
@@ -1721,18 +1750,18 @@ var MiniAccelerator=(function(_super){
 		if (MiniAccelerator._isListening)return;
 		MiniAccelerator._isListening=true;
 		try{
-			/*__JS__ */wx.onAccelerometerChange(MiniAccelerator.onAccelerometerChange);
+			MiniAdpter.window.wx.onAccelerometerChange(laya.wx.mini.MiniAccelerator.onDeviceOrientationChange);
 		}catch(e){}
 	}
 
 	MiniAccelerator.stopListen=function(){
 		MiniAccelerator._isListening=false;
 		try{
-			/*__JS__ */wx.stopAccelerometer({});
+			MiniAdpter.window.wx.stopAccelerometer({});
 		}catch(e){}
 	}
 
-	MiniAccelerator.onAccelerometerChange=function(res){
+	MiniAccelerator.onDeviceOrientationChange=function(res){
 		var e;
 		e={};
 		e.acceleration=res;

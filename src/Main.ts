@@ -21,6 +21,8 @@ class Main {
 		GM.log("code version:" + GM.codeVer);
 		GM.log("res version:" + GM.resVer);
 
+		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/qq/" + GM.resVer + "/";
+
 		Game.init("res/sounds/");
 		GM.startGame();
 	}

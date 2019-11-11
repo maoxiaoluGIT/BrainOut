@@ -95,8 +95,8 @@ import Level_70 from "./levels/Level_70";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.2.1911041";
-    static resVer:string = "1.1.2.1911041";
+    static codeVer:string = "1.1.2.191107";
+    static resVer:string = "1.1.2.191107";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -142,21 +142,21 @@ export default class GM{
             GM.cookie = new QQCookie();
             GM.platform = new QQPlatform();
         }
-
-        if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT || config.platformId == PlatformID.QQ)
-        {
-            for(let i = 1; i < 11;i++)
-			{
-				GM.nativefiles.push("atlas/guanqia/" + i + ".atlas");
-				GM.nativefiles.push("atlas/guanqia/" + i + ".png");
-			}
-            Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
-			Laya.MiniAdpter.nativefiles = GM.nativefiles;
-        }
         
-        this.setMusic();
-        this.setSound();
-        this.setShake();
+        // if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT || config.platformId == PlatformID.QQ)
+        // {
+        //     // for(let i = 1; i < 11;i++)
+		// 	// {
+		// 	// 	GM.nativefiles.push("atlas/guanqia/" + i + ".atlas");
+		// 	// 	GM.nativefiles.push("atlas/guanqia/" + i + ".png");
+		// 	// }
+        //     // Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
+		// 	// Laya.MiniAdpter.nativefiles = GM.nativefiles;
+        // }
+        
+        // this.setMusic();
+        // this.setSound();
+        // this.setShake();
     }
 
     static setMusic():void
