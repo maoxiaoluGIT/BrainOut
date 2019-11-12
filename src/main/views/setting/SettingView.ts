@@ -3,6 +3,8 @@ import GM from "../../GM";
 import { ViewID } from "../ViewID";
 import Game from "../../../core/Game";
 import CookieKey from "../../gameCookie/CookieKey";
+import Session from "../../sessions/Session";
+import { DataKey } from "../../sessions/DataKey";
 
 export default class SettingView extends ui.shezhiUI {
     constructor() { 
@@ -44,48 +46,50 @@ export default class SettingView extends ui.shezhiUI {
             if(GM.musicState == 1)
             {
                 GM.musicState = 0;
-                GM.cookie.setCookie(CookieKey.MUSIC_SWITCH,{"state":0});
                 Game.soundManager.setMusicVolume(0);
                 this.yinyue.skin = "pubRes/ic_muisc_no_1.png";
+                
             }
             else
             {
                 GM.musicState = 1;
-                GM.cookie.setCookie(CookieKey.MUSIC_SWITCH,{"state":1});
                 Game.soundManager.setMusicVolume(1);
                 GM.playMusic("bg.mp3");
                 this.yinyue.skin = "pubRes/ic_muisc_yes_1.png";
             }
+            Session.gameData[DataKey.musicState] = GM.musicState;
+
+            Session.onSave();
             break;
             case this.yinxiao:
             if(GM.soundState == 1)
             {
                 GM.soundState = 0;
-                GM.cookie.setCookie(CookieKey.SOUND_SWITCH,{"state":0});
                 Game.soundManager.setSoundVolume(0);
                 this.yinxiao.skin = "pubRes/ic_sound_no_1.png";
             }
             else
             {
                 GM.soundState = 1;
-                GM.cookie.setCookie(CookieKey.SOUND_SWITCH,{"state":1});
                 Game.soundManager.setSoundVolume(1);
                 this.yinxiao.skin = "pubRes/ic_sound_yes_1.png";
             }
+            Session.gameData[DataKey.soundState] = GM.soundState;
+            Session.onSave();
             break;
             case this.zhendong:
             if(GM.shakeState == 1)
             {
                 GM.shakeState = 0;
-                GM.cookie.setCookie(CookieKey.SHAKE_SWITCH,{"state":0});
                 this.zhendong.skin = "pubRes/ic_shock_no_1.png";
             }
             else
             {
                 GM.shakeState = 1;
-                GM.cookie.setCookie(CookieKey.SHAKE_SWITCH,{"state":1});
                 this.zhendong.skin = "pubRes/ic_shock_yes_1.png";
             }
+            Session.gameData[DataKey.shakeState] = GM.shakeState;
+            Session.onSave();
             break;
             case this.fankui:
             break;

@@ -92,21 +92,25 @@ import Level_67 from "./levels/Level_67";
 import Level_68 from "./levels/Level_68";
 import Level_69 from "./levels/Level_69";
 import Level_70 from "./levels/Level_70";
+import Session from "./sessions/Session";
+import { DataKey } from "./sessions/DataKey";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.2.191107";
-    static resVer:string = "1.1.2.191107";
+    static codeVer:string = "1.1.2.191111";
+    static resVer:string = "1.1.2.191111";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
+
+    static helpIndex:number = 0;
 
     static userName:string;
     static userHeadUrl:string;
     static viewManager:ViewManager = new ViewManager();
     static imgEffect:ImageEffect = new ImageEffect();
     static imgEffect2:ImageEffect2 = new ImageEffect2();
-    static cookie:BaseCookie;
+    // static cookie:BaseCookie;
     static platform:BasePlatform;
     static musicState:number = 1;
     static soundState:number = 1;
@@ -124,22 +128,22 @@ export default class GM{
 
         if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
-            GM.cookie = new TestCookie();
+            // GM.cookie = new TestCookie();
             GM.platform = new TestPlatform();
         }
         else if(config.platformId == PlatformID.WX)
         {
-            GM.cookie = new WXCookie();
+            // GM.cookie = new WXCookie();
             GM.platform = new WXPlatform();
         }
         else if(config.platformId == PlatformID.TT)
         {
-            GM.cookie = new TTCookie();
+            // GM.cookie = new TTCookie();
             GM.platform = new TTPlatform();
         }
         else if(config.platformId == PlatformID.QQ)
         {
-            GM.cookie = new QQCookie();
+            // GM.cookie = new QQCookie();
             GM.platform = new QQPlatform();
         }
         
@@ -154,52 +158,29 @@ export default class GM{
 		// 	// Laya.MiniAdpter.nativefiles = GM.nativefiles;
         // }
         
-        // this.setMusic();
-        // this.setSound();
-        // this.setShake();
+        this.setMusic();
+        this.setSound();
+        this.setShake();
     }
 
     static setMusic():void
     {
-        GM.cookie.getCookie(CookieKey.MUSIC_SWITCH, (res) => {
-			if (res == null) {
-				GM.cookie.setCookie(CookieKey.MUSIC_SWITCH, { "state": 1 });
-                Game.soundManager.setMusicVolume(1);
-                GM.musicState = 1;
-			}
-			else {
-                Game.soundManager.setMusicVolume(res.state);
-                GM.musicState = res.state;
-			}
-		});
+        let musicState = Session.gameData[DataKey.musicState];
+        Game.soundManager.setMusicVolume(musicState);
+        GM.musicState = musicState;
     }
 
     static setSound():void
     {
-        GM.cookie.getCookie(CookieKey.SOUND_SWITCH, (res) => {
-			if (res == null) {
-				GM.cookie.setCookie(CookieKey.SOUND_SWITCH, { "state": 1 });
-                Game.soundManager.setSoundVolume(1);
-                GM.soundState = 1;
-			}
-			else {
-                Game.soundManager.setSoundVolume(res.state);
-                GM.soundState = res.state;
-			}
-		});
+        let soundState = Session.gameData[DataKey.soundState];
+        Game.soundManager.setSoundVolume(soundState);
+        GM.soundState = soundState;
     }
 
     static setShake():void
     {
-        GM.cookie.getCookie(CookieKey.SHAKE_SWITCH, (res) => {
-			if (res == null) {
-                GM.cookie.setCookie(CookieKey.SHAKE_SWITCH, { "state": 1 });
-                GM.shakeState = 1;
-			}
-			else {
-                GM.shakeState = res.state;
-			}
-		});
+        let shakeState = Session.gameData[DataKey.shakeState];
+        GM.shakeState = shakeState;
     }
 
     static playMusic(musicUrl):void

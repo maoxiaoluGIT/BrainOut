@@ -21,7 +21,23 @@ class Main {
 		GM.log("code version:" + GM.codeVer);
 		GM.log("res version:" + GM.resVer);
 
-		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/qq/" + GM.resVer + "/";
+		if(Laya.Browser.window.qq)
+		{
+			Laya.Browser.window.qq.onShow(res => {
+				console.log("打开微信的参数",res);
+				if (res.query) {
+					if(res.query.helpIndex)
+					{
+						let helpIndex:number = Number(res.query.helpIndex);
+						GM.helpIndex = helpIndex;
+						console.log("需要帮助的关卡",helpIndex);
+					}
+				}
+			});
+		}
+		let p = "wx";
+		p = "qq";
+		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
 
 		Game.init("res/sounds/");
 		GM.startGame();

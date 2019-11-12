@@ -5,5 +5,8 @@ export enum DataKey{
     lastTime,
     signinDay,
     signinState,
-    lastIndex
+    lastIndex,
+    musicState,
+    soundState,
+    shakeState
 }

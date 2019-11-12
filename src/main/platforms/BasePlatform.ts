@@ -1,9 +1,10 @@
-export abstract  class BasePlatform{
-    abstract checkUpdate():void;
-    abstract getUserInfo(callback):void;
-    abstract login(callback):void;
-    abstract onShare(callback,isMain):void;
-    abstract shake(isRight:boolean):void;
-    abstract playAd(codeId:string,type:number):void;
-    abstract showBanner():void;
+export class BasePlatform{
+    checkUpdate():void{};
+    getUserInfo(callback):void{};
+    login(callback):void{};
+    onShare(callback,isMain):void{};
+    shake(isRight:boolean):void{};
+    playAd(codeId:string,type:number):void{};
+    showBanner():void{};
+    helpMe(index:number):void{}
 }

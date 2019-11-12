@@ -41,7 +41,14 @@ export default class HomeLoading extends ui.loadingUI {
         Game.tableManager.onParse(arr);
 
         GM.imgEffect.start();
-        GM.viewManager.showView(Session.gameData[DataKey.signinState] == 0 ? ViewID.signin : ViewID.main,false);
+        if(GM.helpIndex > 0)
+        {
+            GM.viewManager.showView(ViewID.main,false);
+        }
+        else
+        {
+            GM.viewManager.showView(Session.gameData[DataKey.signinState] == 0 ? ViewID.signin : ViewID.main,false);
+        }
         GM.playMusic("bg.mp3");
         this.destroy(true);
     }

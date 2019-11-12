@@ -6,8 +6,10 @@ import GameEvent from "../../GameEvent";
 import { ViewID } from "../ViewID";
 import Session from "../../sessions/Session";
 import { DataKey } from "../../sessions/DataKey";
+import PlatformID from "../../platforms/PlatformID";
 
 export default class MainFace extends ui.mainuiUI {
+    private sys:SysTitles;
     constructor() { 
         super(); 
         this.shezhi.on(Laya.Event.CLICK,this,this.onClick,[1]);
@@ -51,6 +53,7 @@ export default class MainFace extends ui.mainuiUI {
 
     setTitle(sys:SysTitles):void
     {
+        this.sys = sys;
         this.titleTxt.text = sys.stageQuestion;
         this.dengjishuzi.value = "" + sys.id;
         if(this.titleTxt.lines.length > 1)
@@ -85,7 +88,14 @@ export default class MainFace extends ui.mainuiUI {
         }
         else if(type == 5)
         {
-            GM.platform.onShare(0,true);//求助
+            if(GM.platformId == PlatformID.QQ)
+            {
+                GM.platform.helpMe(this.sys.id);//求助
+            }
+            else
+            {
+                GM.platform.onShare(0,true);//分享
+            }
         }
     }
 }

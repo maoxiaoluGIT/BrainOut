@@ -196,6 +196,26 @@ export default class QQPlatform extends BasePlatform {
         GM.sysLog(LogType.share_msg);
     }
 
+    helpMe(index:number):void{
+        let obj: any = {};
+        let arr: string[] = QQPlatform.shareMsgs2;
+        let index2: number = Math.floor(arr.length * Math.random());
+        obj.title = arr[index2];
+        // obj.imageUrl = Laya.Browser.window.canvas.toTempFilePathSync({
+        //     destWidth: 500,
+        //     destHeight: 400
+        //   })
+        
+        obj.query = "helpIndex=" + index;
+        obj.shareAppType = "qqFastShareList";
+        obj.entryDataHash = "helpMe";
+        obj.destWidth = 500;
+        obj.destHeight = 400;
+        obj.shareTemplateId = "EE558DDCEFB407FD811CC6C06181D6AF",
+        obj.shareTemplateData = { "txt1": "这关我过不了，快来帮帮忙！", "txt2": "应邀前往小游戏" },
+        this.qq.shareAppMessage(obj);
+    }
+
     private shareTime: number;
 
     private shareSuccess(type: number): void {
@@ -220,6 +240,8 @@ export default class QQPlatform extends BasePlatform {
             }
         }
     }
+
+    static shareMsgs2: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！"];
 
     static shareMsgs: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！", "有人@你 进来和我一起玩！"];
 

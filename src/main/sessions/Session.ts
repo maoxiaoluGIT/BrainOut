@@ -8,6 +8,7 @@ import LogType from "../LogType";
 export default class Session{
     static SKEY:string = "Session01";
     static gameData:number[] = [];
+    static isNew:boolean = false;
 
     static userData:any = {};
     constructor() {}
@@ -24,10 +25,15 @@ export default class Session{
             Session.gameData[DataKey.signinDay] = 0;//该签哪一天
             Session.gameData[DataKey.signinState] = 0;//是否签过
             Session.gameData[DataKey.lastIndex] = 1;
+            Session.gameData[DataKey.musicState] = 1;
+            Session.gameData[DataKey.soundState] = 1;
+            Session.gameData[DataKey.shakeState] = 1;
+            Session.isNew = true;
             GM.sysLog(LogType.new_player);
         }
         else
         {
+            Session.isNew = false;
             Session.gameData = JSON.parse(data);
             if(Date.now() > Session.gameData[DataKey.lastTime])
             {
@@ -65,6 +71,21 @@ export default class Session{
             if(Session.gameData[DataKey.lastIndex] == null)
             {
                 Session.gameData[DataKey.lastIndex] = 1;
+            }
+
+            if(Session.gameData[DataKey.musicState] == null)
+            {
+                Session.gameData[DataKey.musicState] = 1;
+            }
+
+            if(Session.gameData[DataKey.soundState] == null)
+            {
+                Session.gameData[DataKey.soundState] = 1;
+            }
+
+            if(Session.gameData[DataKey.shakeState] == null)
+            {
+                Session.gameData[DataKey.shakeState] = 1;
             }
         }
         Session.onSave();
