@@ -36,7 +36,7 @@ class Main {
 			});
 		}
 		let p = "wx";
-		p = "qq";
+		// p = "qq";
 		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
 
 		Game.init("res/sounds/");

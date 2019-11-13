@@ -2,17 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":341,
+    "selecteID":6,
     "searchKey":"View",
-    "referenceLines":[
-        {
-            "value":-616,
-            "type":0,
-            "id":1
-        }],
-    "props":{"width":750,"sceneColor":"#ffffff","height":1334},
+    "props":{"width":750,"sceneColor":"#844342","height":1334},
     "nodeParent":-1,
-    "maxID":342,
+    "maxID":14,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -22,15 +16,15 @@
     "child":[
         {
             "x":15,
-            "type":"Image",
-            "searchKey":"Image,item1",
-            "props":{"y":475,"x":416,"width":253,"var":"item1","skin":"guanqia/56/hong.png","height":263},
+            "type":"Box",
+            "searchKey":"Box,box",
+            "props":{"y":185,"x":25,"width":700,"visible":false,"var":"box","height":916,"bgColor":"#eadfdf"},
             "nodeParent":2,
-            "label":"item1",
+            "label":"box",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":337,
+            "compId":10,
             "child":[
                 ]
         },
@@ -38,27 +32,27 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,item2",
-            "props":{"y":823,"x":88,"width":270,"var":"item2","skin":"guanqia/56/ti.png","height":256},
+            "props":{"y":980,"x":180,"width":268,"var":"item2","skin":"guanqia/56/pic_03_2.png","height":165,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"item2",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":338,
+            "compId":6,
             "child":[
                 ]
         },
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,item3",
-            "props":{"y":519,"x":86.5,"width":273,"var":"item3","skin":"guanqia/56/yuan.png","height":272},
+            "searchKey":"Image,item1",
+            "props":{"y":438,"x":579,"width":267,"var":"item1","skin":"guanqia/56/pic_03_3.png","height":271,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
-            "label":"item3",
+            "label":"item1",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":339,
+            "compId":7,
             "child":[
                 ]
         },
@@ -66,13 +60,55 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,item0",
-            "props":{"y":823,"x":406,"width":273,"var":"item0","skin":"guanqia/56/ao.png","height":272},
+            "props":{"y":438,"x":164,"width":267,"var":"item0","skin":"guanqia/56/pic_03_4.png","height":256,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"item0",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":340,
+            "compId":8,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,item4",
+            "props":{"y":957,"x":582,"width":273,"var":"item4","skin":"guanqia/56/pic_39_2.png","height":268,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item4",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":9,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,item3",
+            "props":{"y":709,"x":356,"width":262,"var":"item3","skin":"guanqia/56/pic_.png","height":271,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"item3",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":5,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,rightBox",
+            "props":{"y":764,"x":391,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"rightBox",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":12,
             "child":[
                 ]
         }],

@@ -13,6 +13,8 @@ export default class BaseLevel extends Laya.Box{
     curLevel:number;
     weixin;
 
+    wrongCount:number;
+
     static noRes:number[] = [22,41,44,64];
     constructor(){
         super();
@@ -24,6 +26,8 @@ export default class BaseLevel extends Laya.Box{
         {
             this.weixin = Laya.Browser.window.tt;
         }
+
+        this.wrongCount = 0;
     }
 
     onInit():void
@@ -72,6 +76,11 @@ export default class BaseLevel extends Laya.Box{
             setTimeout(() => {
                 Laya.MouseManager.enabled = true;
             }, 1300);
+            this.wrongCount++;
+            if(this.wrongCount == 3)
+            {
+                Game.eventManager.event(GameEvent.SHOW_HAND);
+            }
         }
     }
 

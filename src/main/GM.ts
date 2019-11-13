@@ -97,8 +97,8 @@ import { DataKey } from "./sessions/DataKey";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.2.191111";
-    static resVer:string = "1.1.2.191111";
+    static codeVer:string = "1.1.2.191113";
+    static resVer:string = "1.1.2.191113";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -157,10 +157,6 @@ export default class GM{
         //     // Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
 		// 	// Laya.MiniAdpter.nativefiles = GM.nativefiles;
         // }
-        
-        this.setMusic();
-        this.setSound();
-        this.setShake();
     }
 
     static setMusic():void

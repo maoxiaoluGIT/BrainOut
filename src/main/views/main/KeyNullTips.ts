@@ -9,8 +9,14 @@ export default class KeyNullTips extends ui.keyTipsUI {
         super(); 
         this.nextAdBtn.clickHandler = new Laya.Handler(this,this.onPlay);
         this.cha.on(Laya.Event.CLICK,this,this.onClose);
+        this.shareBtn.on(Laya.Event.CLICK,this,this.onShare);
         GM.imgEffect.addEffect(this.cha);
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+    }
+
+    private onShare():void
+    {
+        GM.platform.onShare(0,true);
     }
 
     private onDis():void

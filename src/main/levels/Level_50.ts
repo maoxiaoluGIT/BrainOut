@@ -41,6 +41,13 @@ export default class Level_50 extends BaseLevel {
         this.ui = new ui.level50UI();
         this.addChild(this.ui);
         this.isInit = true;
+
+        this.refresh();
+    }
+
+    refresh():void
+    {
+        super.refresh();
     }
 
     private onUndis():void

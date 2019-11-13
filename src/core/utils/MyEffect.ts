@@ -82,9 +82,9 @@ export default class MyEffect{
 
     public static bigSmall( sp:Laya.Sprite , big:number ,small:number ):void{
         let t = new Laya.TimeLine();
-        t.to( sp , { scaleX:big , scaleY:big } , 100 );
-        t.to( sp , { scaleX:small , scaleY:small } , 300 , Laya.Ease.backOut );
-        t.play();
+        t.to( sp , { scaleX:big , scaleY:big } , 300 );
+        t.to( sp , { scaleX:small , scaleY:small } , 500 , Laya.Ease.backOut );
+        t.play(0,true);
     }
 
     public static smallBig( sp:Laya.Sprite , big:number ,small:number ):void{

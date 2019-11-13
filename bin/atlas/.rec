@@ -101,6 +101,7 @@ P 18A7F72C shuzi3.png
 P F0FE025A shuzi4.png
 P 8F3D4D00 top_blue.png
 P F9344B19 top_yellow.png
+P E1040ADB xiaoshou.png
 D guanqia/1
 P 0EAFBECD 3_pic_3_1.png
 P 966C88E3 apple.png
@@ -346,11 +347,10 @@ P 0AD0A362 pic_162_4.png
 P 071E2744 pic_7_4.png
 P 14451434 tui.png
 D guanqia/5
-P 692284A9 pic_.png
-P 72F6DA2E pic_03_2.png
-P 0DE524D0 pic_03_3.png
-P 54B1EE9D pic_03_4.png
-P 15F9F813 pic_39_2.png
+P 6293C9BA ao.png
+P 9FADF6B1 hong.png
+P 8AC2BA84 ti.png
+P A40081B9 yuan.png
 D guanqia/50
 P 2B5BFDF9 pic_33_1.png
 P 11EA8A4E you.png
@@ -374,10 +374,11 @@ P C0F97163 pic_161_3.png
 P 8095D569 pic_161_4.png
 P 8C8364FB pic_161_5.png
 D guanqia/56
-P 6293C9BA ao.png
-P 9FADF6B1 hong.png
-P 8AC2BA84 ti.png
-P A40081B9 yuan.png
+P 692284A9 pic_.png
+P 72F6DA2E pic_03_2.png
+P 0DE524D0 pic_03_3.png
+P 54B1EE9D pic_03_4.png
+P 15F9F813 pic_39_2.png
 D guanqia/57
 P AF0ED8F4 pic_37_1.png
 D guanqia/58

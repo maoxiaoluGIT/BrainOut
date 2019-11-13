@@ -6,7 +6,7 @@ import { DataKey } from "./DataKey";
 import LogType from "../LogType";
 
 export default class Session{
-    static SKEY:string = "Session01";
+    static SKEY:string = "ntx";
     static gameData:number[] = [];
     static isNew:boolean = false;
 

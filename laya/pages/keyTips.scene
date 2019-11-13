@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":15,
+    "selectedBox":23,
+    "selecteID":39,
     "searchKey":"View",
     "props":{"y":667,"x":375,"width":750,"height":1334,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
-    "maxID":34,
+    "maxID":45,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -46,43 +46,86 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":338,"x":47,"width":656,"skin":"pubRes/fram_big.png","height":297},
+                    "props":{"y":338,"x":57,"width":656,"skin":"pubRes/fram_big.png","height":504},
                     "nodeParent":23,
                     "label":"Image",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":24,
+                    "compId":39,
                     "child":[
                         {
                             "x":45,
-                            "type":"Image",
-                            "searchKey":"Image",
-                            "props":{"y":37,"x":116,"width":424,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},
-                            "nodeParent":24,
-                            "label":"Image",
-                            "isOpen":true,
-                            "isDirectory":true,
+                            "type":"Text",
+                            "searchKey":"Text,zi2",
+                            "props":{"y":334,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":" 本关提示需要一把钥匙","height":118,"fontSize":46,"align":"center"},
+                            "nodeParent":39,
+                            "label":"zi2",
+                            "isDirectory":false,
                             "isAniNode":true,
-                            "hasChild":true,
-                            "compId":26,
+                            "hasChild":false,
+                            "compId":43,
                             "child":[
-                                {
-                                    "x":60,
-                                    "type":"Text",
-                                    "searchKey":"Text,zi1",
-                                    "props":{"y":18,"x":104,"width":216,"var":"zi1","text":"提示","height":50,"fontSize":46,"align":"center"},
-                                    "nodeParent":26,
-                                    "label":"zi1",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":27,
-                                    "child":[
-                                        ]
-                                }],
-                            "$HIDDEN":false
+                                ]
+                        }],
+                    "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,jinyaoshi",
+                    "props":{"y":404,"x":260,"width":113,"var":"jinyaoshi","skin":"pubRes/ic_key_1.png","height":119},
+                    "nodeParent":23,
+                    "label":"jinyaoshi",
+                    "isOpen":null,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":40,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"FontClip",
+                    "searchKey":"FontClip,shuzi",
+                    "props":{"y":424,"x":352,"width":164,"var":"shuzi","value":"-1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":78,"align":"center"},
+                    "nodeParent":23,
+                    "label":"shuzi",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":41,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":551,"x":279,"width":214,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},
+                    "nodeParent":23,
+                    "label":"Image",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":42,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Text",
+                            "searchKey":"Text",
+                            "props":{"y":18,"x":53,"width":107,"text":"提示","height":50,"fontSize":46,"align":"center"},
+                            "nodeParent":42,
+                            "label":"Text",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":44,
+                            "child":[
+                                ]
                         }],
                     "$HIDDEN":false
                 }]
@@ -91,7 +134,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,nextAdBtn",
-            "props":{"y":684,"x":222,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   免费获取","height":125},
+            "props":{"y":877,"x":221,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   免费获取","height":125},
             "nodeParent":2,
             "label":"nextAdBtn",
             "isOpen":true,
@@ -162,35 +205,6 @@
         {
             "x":15,
             "type":"Image",
-            "searchKey":"Image,jinyaoshi",
-            "props":{"y":484,"x":250,"width":113,"var":"jinyaoshi","skin":"pubRes/ic_key_1.png","height":119},
-            "nodeParent":2,
-            "label":"jinyaoshi",
-            "isOpen":null,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":28,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"FontClip",
-            "searchKey":"FontClip,shuzi",
-            "props":{"y":504,"x":342,"width":164,"var":"shuzi","value":"+1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":78,"align":"center"},
-            "nodeParent":2,
-            "label":"shuzi",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":29,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
             "searchKey":"Image,cha",
             "props":{"y":299,"x":648,"width":75,"var":"cha","skin":"pubRes/ic_colse_1.png","height":75,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
@@ -201,6 +215,37 @@
             "compId":30,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,shareBtn",
+            "props":{"y":1025,"x":221,"width":305,"var":"shareBtn","stateNum":"1","skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"       问问好友","height":125},
+            "nodeParent":2,
+            "label":"shareBtn",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":34,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image,qiuzhu",
+            "props":{"y":1089.5,"x":297.5,"width":69,"var":"qiuzhu","skin":"pubRes/ic_share_1.png","height":74,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"qiuzhu",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":35,
+            "child":[
+                ],
+            "$HIDDEN":false
         }],
     "animations":[
         {

@@ -33,6 +33,6 @@ export default class SigninView extends ui.qiandaoUI{
 
     private onBack():void
     {
-        GM.viewManager.showView(ViewID.main);
+        GM.viewManager.closeView2(ViewID.signin);
     }
 }

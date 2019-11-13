@@ -60,6 +60,10 @@ export default class InitView extends ui.initViewUI {
 		Game.layerManager.addChild(this._homeLoading);
 		this.destroy(true);
 		GM.sysLog(LogType.open_game);
+
+		GM.setMusic();
+		GM.setSound();
+		GM.setShake();
 	}
     
 }

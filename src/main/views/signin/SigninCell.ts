@@ -4,6 +4,7 @@ import Session from "../../sessions/Session";
 import KeyIcon from "../main/KeyIcon";
 import { DataKey } from "../../sessions/DataKey";
 import LogType from "../../LogType";
+import { ViewID } from "../ViewID";
 
 export default class SigninCell extends ui.qiandao1UI{
     private state:number = 0;
@@ -28,6 +29,7 @@ export default class SigninCell extends ui.qiandao1UI{
                 GM.sysLog(LogType.get_key);
             }
             this.update(this._index,this._keyNum);
+            GM.viewManager.closeView2(ViewID.signin);
         }
     }
 

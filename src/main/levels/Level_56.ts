@@ -1,18 +1,18 @@
 import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
-import GM from "../GM";
-import RightIcon from "./RightIcon";
-import Game from "../../core/Game";
-import GameEvent from "../GameEvent";
 
-export default class Level_56 extends BaseLevel {
+export default class Level_56 extends BaseLevel{
     private ui: ui.level56UI;
-    private _num1: number = 0;
-    private _num2: number = 0;
-    private _num3: number = 0;
-    constructor() {
-        super();
-    }
+
+    static itemskins: any[] = [
+        { skin: "guanqia/56/pic_03_4.png", right: 0, ww: 267, hh: 256 },
+        { skin: "guanqia/56/pic_03_3.png", right: 0, ww: 267, hh: 271 },
+        { skin: "guanqia/56/pic_03_2.png", right: 0, ww: 268, hh: 165 },
+        { skin: "guanqia/56/pic_.png", right: 1, ww: 262, hh: 271 },
+        { skin: "guanqia/56/pic_39_2.png", right: 0, ww: 273, hh: 268 },
+    ];
+    
+    constructor() { super(); }
 
     onInit(): void {
         if (this.isInit) {
@@ -22,21 +22,45 @@ export default class Level_56 extends BaseLevel {
         this.addChild(this.ui);
         this.isInit = true;
 
-        for(let i = 0; i < 4; i++)
-        {
-            this.addEvent(this.ui["item" + i],this.onClick);
+        for (let i = 0; i < 5; i++)  {
+            let itemImg: Laya.Image = this.ui["item" + i];
+            this.addEvent(itemImg, null,true);
         }
 
         this.refresh();
     }
 
-   
-    private onClick(img): void  {
-        this.setAnswer(img,img == this.ui.item3);
-    }
-
     refresh(): void {
         super.refresh();
+        let skins: any[] = Level_56.itemskins;
+        skins.sort((a: any, b: any) => {
+            return Math.random() > 0.5 ? 1 : -1;
+        })
+        for (let i = 0; i < skins.length; i++)  {
+            let obj:any = skins[i];
+            let itemImg: Laya.Image = this.ui["item" + i];
+            itemImg.skin = obj.skin;
+            itemImg.tag = obj.right;
+            itemImg.size(obj.ww,obj.hh);
+        }
+    }
+
+    onDown(sprite: Laya.Sprite):void
+    {
+        sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
+    }
+
+    onUp(sprite):void
+    {
+        super.onUp(sprite);
+
+        if(sprite.tag == 1)
+        {
+            if(sprite.x < 50 || sprite.x > 700)
+            {
+                this.setAnswer(this.ui.rightBox,true);
+            }
+        }
     }
 
 }

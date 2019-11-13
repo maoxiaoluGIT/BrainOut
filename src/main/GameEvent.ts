@@ -18,4 +18,7 @@ export default class GameEvent{
 
     static AD_SUCCESS_CLOSE:string = "AD_SUCCESS_CLOSE";
     static SHARE_SUCCESS:string = "SHARE_SUCCESS";
+
+    static SHOW_HAND:string = "SHOW_HAND";
+    
 }

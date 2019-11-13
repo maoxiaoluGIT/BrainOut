@@ -8,8 +8,8 @@ import GameEvent from "../GameEvent";
 export default class Level_61 extends BaseLevel {
     private ui: ui.level61UI;
 
-    constructor() { 
-        super(); 
+    constructor() {
+        super();
     }
 
     onInit(): void {
@@ -20,13 +20,17 @@ export default class Level_61 extends BaseLevel {
         this.addChild(this.ui);
         this.isInit = true;
 
-        this.addEvent(this.ui.maoBox,this.onClick);
-        this.addEvent(this.ui.img,this.onClick);
+        this.addEvent(this.ui.maoBox, this.onClick);
+        this.addEvent(this.ui.img, this.onClick);
+        this.refresh();
     }
 
-    private onClick(sprite):void
-    {
-        this.setAnswer(sprite,sprite == this.ui.maoBox);
+    refresh(): void  {
+        super.refresh();
+    }
+
+    private onClick(sprite): void  {
+        this.setAnswer(sprite, sprite == this.ui.maoBox);
     }
 
 }

@@ -7,6 +7,7 @@ import { ViewID } from "../ViewID";
 import Session from "../../sessions/Session";
 import { DataKey } from "../../sessions/DataKey";
 import PlatformID from "../../platforms/PlatformID";
+import MyEffect from "../../../core/utils/MyEffect";
 
 export default class MainFace extends ui.mainuiUI {
     private sys:SysTitles;
@@ -32,6 +33,27 @@ export default class MainFace extends ui.mainuiUI {
         this.updateKeyNum();
 
         Game.eventManager.on(GameEvent.UPDATE_KEY_NUM,this,this.updateKeyNum);
+        Game.eventManager.on(GameEvent.SHOW_HAND,this,this.showHand);
+        this.handImg.visible = false;
+
+        MyEffect.bigSmall(this.handImg,1,0.7);
+    }
+
+    private showHand():void
+    {
+        if(Session.gameData[DataKey.keyNum] > 0)
+        {
+            // Game.eventManager.event(GameEvent.SHOW_TIPS);
+            this.handImg.visible = true;
+            setTimeout(() => {
+                this.handImg.visible = false;
+            }, 10000);
+        }
+        else
+        {
+            Game.eventManager.event(GameEvent.SHOW_TIPS_NULL)
+        }
+        
     }
 
     private updateKeyNum():void
@@ -49,10 +71,12 @@ export default class MainFace extends ui.mainuiUI {
         {
             Game.eventManager.event(GameEvent.SHOW_TIPS_NULL)
         }
+        this.handImg.visible = false;
     }
 
     setTitle(sys:SysTitles):void
     {
+        this.handImg.visible = false;
         this.sys = sys;
         this.titleTxt.text = sys.stageQuestion;
         this.dengjishuzi.value = "" + sys.id;
@@ -72,7 +96,7 @@ export default class MainFace extends ui.mainuiUI {
     {
         if(type == 1)
         {
-            GM.viewManager.showView(ViewID.setting);//满意
+            GM.viewManager.showView2(ViewID.setting);//满意
         }
         else if(type == 2)
         {

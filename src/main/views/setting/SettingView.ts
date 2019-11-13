@@ -25,6 +25,7 @@ export default class SettingView extends ui.shezhiUI {
 
     private onDis():void
     {
+        console.log("按钮状态",GM.musicState,GM.soundState,GM.shakeState);
         this.yinyue.skin = GM.musicState == 1 ? "pubRes/ic_muisc_yes_1.png" : "pubRes/ic_muisc_no_1.png";
         this.yinxiao.skin = GM.soundState == 1 ? "pubRes/ic_sound_yes_1.png" : "pubRes/ic_sound_no_1.png";
         this.zhendong.skin = GM.shakeState == 1 ? "pubRes/ic_shock_yes_1.png" : "pubRes/ic_shock_no_1.png";
@@ -40,7 +41,7 @@ export default class SettingView extends ui.shezhiUI {
         switch(sprite)
         {
             case this.fanhui:
-            GM.viewManager.showView(ViewID.main);
+            GM.viewManager.closeView2(ViewID.setting);
             break;
             case this.yinyue:
             if(GM.musicState == 1)
@@ -94,7 +95,7 @@ export default class SettingView extends ui.shezhiUI {
             case this.fankui:
             break;
             case this.meiri:
-            GM.viewManager.showView(ViewID.signin);
+            GM.viewManager.showView2(ViewID.signin);
             break;
             case this.qiuzhu:
             GM.platform.onShare(0,true);
