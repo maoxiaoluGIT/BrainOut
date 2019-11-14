@@ -4,4 +4,5 @@ export default class PlatformID{
     static WX:number = 41;
     static TT:number = 2;
     static QQ:number = 51;
+    static OPPO:number = 61;
 }

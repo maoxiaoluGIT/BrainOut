@@ -13,7 +13,7 @@ class Main {
 		// Laya.stage.alignV = GameConfig.alignV;
 		// Laya.stage.alignH = GameConfig.alignH;
 		Laya.stage.bgColor = "#ffffff";
-		Laya.stage.frameRate = Laya.Stage.FRAME_SLOW;
+		Laya.stage.frameRate = Laya.Stage.FRAME_FAST;
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 		if (GameConfig.stat) Laya.Stat.show();
@@ -36,7 +36,9 @@ class Main {
 			});
 		}
 		let p = "wx";
-		// p = "qq";
+		p = "qq";
+		// p = "oppo";
+		// p = "h5";
 		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
 
 		Game.init("res/sounds/");

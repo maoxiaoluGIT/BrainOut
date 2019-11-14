@@ -94,6 +94,7 @@ import Level_69 from "./levels/Level_69";
 import Level_70 from "./levels/Level_70";
 import Session from "./sessions/Session";
 import { DataKey } from "./sessions/DataKey";
+import OppoPlatform from "./platforms/OppoPlatform";
 
 /**游戏总管理 */
 export default class GM{
@@ -145,6 +146,11 @@ export default class GM{
         {
             // GM.cookie = new QQCookie();
             GM.platform = new QQPlatform();
+        }
+        else if(config.platformId == PlatformID.OPPO)
+        {
+            // GM.cookie = new QQCookie();
+            GM.platform = new OppoPlatform();
         }
         
         // if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT || config.platformId == PlatformID.QQ)

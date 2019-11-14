@@ -26,6 +26,14 @@ export default class BaseLevel extends Laya.Box{
         {
             this.weixin = Laya.Browser.window.tt;
         }
+        else if(GM.platformId == PlatformID.QQ)
+        {
+            this.weixin = Laya.Browser.window.qq;
+        }
+        else if(GM.platformId == PlatformID.OPPO)
+        {
+            this.weixin = Laya.Browser.window.qg;
+        }
 
         this.wrongCount = 0;
     }

@@ -41,17 +41,21 @@ export default class InitView extends ui.initViewUI {
 
 		Game.layerManager.y = (Laya.stage.height - Laya.stage.designHeight) * 0.5;
 		// console.log("================",Laya.stage.height,Laya.stage.designHeight,Game.layerManager.y);
+
+		console.log("登录");
 		GM.platform.checkUpdate();
 		new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
 	}
 	
 	private onSuccess(data):void
 	{
+		console.log("登录成功");
 		ReceiverHttp.create(new Laya.Handler(this, this.onReceiveData)).send();
 	}
 
 	private onReceiveData(data):void
 	{
+		console.log("显示loading");
 		Session.onParse(data);
 		if(!this._homeLoading)
 		{

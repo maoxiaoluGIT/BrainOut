@@ -10,7 +10,7 @@ export default class Level_40 extends BaseLevel {
 
     constructor() { 
         super(); 
-        this.on(Laya.Event.DISPLAY,this,this.onDis);
+        // this.on(Laya.Event.DISPLAY,this,this.onDis);
         this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
     }
 
@@ -78,7 +78,8 @@ export default class Level_40 extends BaseLevel {
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.ui.keyImg.visible = false;
-        this.ui.keyImg.pos(620,1040);
+        this.ui.keyImg.pos(589,976);
+        this.onDis();
     }
 
     private onUndis():void
