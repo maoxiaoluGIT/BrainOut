@@ -9,6 +9,6 @@ else if (typeof qq!=="undefined") {
 	require("weapp-adapter.js");
 	require("libs/laya.qqmini.js");
 }
-window.JSZip = require("jszip.min.js");
+// window.JSZip = require("jszip.min.js");
 window.loadLib = require;
 require("index.js");

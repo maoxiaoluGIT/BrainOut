@@ -5,6 +5,7 @@ import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import AdType from "./AdType";
 import LogType from "../../LogType";
+import PlatformID from "../../platforms/PlatformID";
 export default class RightView extends ui.shengliUI{
     
     constructor() { 
@@ -14,11 +15,24 @@ export default class RightView extends ui.shengliUI{
         this.nextBtn.clickHandler = new Laya.Handler(this,this.onNext);
         this.nextAdBtn.clickHandler = new Laya.Handler(this,this.playAd);
         this.shareBtn.clickHandler = new Laya.Handler(this,this.onShare);
+
+        this.shareBtn.label = "向朋友炫耀";
+        if(GM.platformId == PlatformID.TT)
+        {
+            this.shareBtn.label = "分享录屏";
+        }
     }
 
     private onShare():void
     {
-        GM.platform.onShare(0,true);//求助
+        if(GM.platformId == PlatformID.TT)
+        {
+            GM.platform.stopRecorder();
+        }
+        else
+        {
+            GM.platform.onShare(0,true);//求助
+        }
     }
 
     private playAd():void

@@ -39,7 +39,10 @@ class Main {
 		p = "qq";
 		// p = "oppo";
 		// p = "h5";
+		// p = "tt";
 		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
+
+		console.log("cdn",Laya.URL.basePath);
 
 		Game.init("res/sounds/");
 		GM.startGame();

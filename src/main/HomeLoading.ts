@@ -18,7 +18,8 @@ export default class HomeLoading extends ui.loadingUI {
         this.off(Laya.Event.DISPLAY,this,this.onDis);
         this.dengjishuzi.value = "0";
 
-        let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/tables.zip", type: Laya.Loader.BUFFER }];
+        // let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/tables.zip", type: Laya.Loader.BUFFER }];
+        let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/sys_titles.json", type: Laya.Loader.JSON }];
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
 
         GM.platform && GM.platform.showBanner();
@@ -32,13 +33,28 @@ export default class HomeLoading extends ui.loadingUI {
 
     private onCom():void
     {
-        ZipLoader.instance.zipFun(Laya.loader.getRes("res/tables.zip"), new Laya.Handler(this, this.zipFun));
-        Laya.loader.clearRes("res/tables.zip");
-    }
+        console.log("开始解析zip");
+        // ZipLoader.instance.zipFun(Laya.loader.getRes("res/tables.zip"), new Laya.Handler(this, this.zipFun));
+        // Laya.loader.clearRes("res/tables.zip");
+        let sysJson = Laya.loader.getRes("res/sys_titles.json");
+        SysTitles.list = [];
+        for(let i = 0; i < sysJson.RECORDS.length; i++)
+        {
+            let obj = sysJson.RECORDS[i];
+            let sys:SysTitles = new SysTitles();
+            sys.id = obj.id;
+            sys.stageLv = obj.stageLv;
+            sys.stageQuestion = obj.stageQuestion;
+            sys.stageTips = obj.stageTips;
+            sys.stageWin = obj.stageWin;
+            SysTitles.list.push(sys);
 
-    private zipFun(arr: any[]):void
-    {
-        Game.tableManager.onParse(arr);
+            SysTitles.allData[sys.id] = sys;
+        }
+
+        SysTitles.list.sort((a:any,b:any)=>{
+            return a.id - b.id;
+        });
 
         GM.imgEffect.start();
         GM.viewManager.showView(ViewID.main);
@@ -47,6 +63,7 @@ export default class HomeLoading extends ui.loadingUI {
             GM.viewManager.showView2(ViewID.signin);
         }
         GM.playMusic("bg.mp3");
+        Laya.loader.clearRes("res/sys_titles.json");
         this.destroy(true);
     }
 }

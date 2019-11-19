@@ -31,7 +31,7 @@ export default class CellsView extends ui.xuanguan1UI{
         this.addChild(this.list);
         this.list.pos(30,150);
         
-        this._dataList = Game.tableManager.getTable(SysTitles.NAME);
+        this._dataList = SysTitles.list;
         this._dataList.length = GM.indexNum;
         this._dataList.push(null);
 

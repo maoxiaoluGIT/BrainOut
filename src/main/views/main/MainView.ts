@@ -288,6 +288,8 @@ export default class MainView extends ui.mainViewUI {
         this._mainFace.setTitle(this.curView.sys);
         Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");
         GM.sysLog(2000 + lv);
+
+        GM.platform.recorder();
     }
 
     helpLevel(lv:number):void

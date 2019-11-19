@@ -279,4 +279,33 @@ export default class TTPlatform extends BasePlatform {
         } );
         b.show();
     }
+
+    private recorde;
+    recorder(): void {
+        console.log("开始录屏");
+        if (!this.recorde) {
+            this.recorde = this.tt.getGameRecorderManager();
+            this.recorde.onStart(res => {
+            });
+        }
+
+        this.recorde.start({
+            duration: 15,
+        })
+    }
+
+    stopRecorder(): void {
+        console.log("停止录屏");
+        this.recorde.onStop(({ videoPath }) => {
+            Game.eventManager.event(GameEvent.STOP_RECORDE);
+            this.tt.shareVideo({
+                videoPath: `${videoPath}`,
+                success() {
+                },
+                fail(e) {
+                }
+            });
+        })
+        this.recorde.stop();
+    }
 }

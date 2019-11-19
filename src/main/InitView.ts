@@ -17,8 +17,9 @@ export default class InitView extends ui.initViewUI {
 
     private onDis():void
     {
+		console.log("显示InitView");
         this.txt.text = "0%";
-        Laya.loader.load(["config.json"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
+        Laya.loader.load(["res/config.json"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
     }
     
     private onProgress(value:number):void
@@ -32,9 +33,9 @@ export default class InitView extends ui.initViewUI {
 	private onCom():void
 	{
 		GM.onReg();
-        let config = Laya.loader.getRes("config.json");
+        let config = Laya.loader.getRes("res/config.json");
 		GM.setConfig(config);
-		Laya.loader.clearRes("config.json");
+		Laya.loader.clearRes("res/config.json");
 
 		// Game.tableManager.onParse(["sys_titles.txt",Laya.loader.getRes("sys_titles.txt")]);
 		// Laya.loader.clearRes("sys_titles.txt");

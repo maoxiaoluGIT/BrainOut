@@ -1,5 +1,5 @@
 import LayerManager from "./manager/LayerManager";
-import TableManager from "./manager/TableManager";
+// import TableManager from "./manager/TableManager";
 import BitmapNumber from "./display/BitmapNumber";
 import SoundManager from "./manager/SoundManager";
 import DialogManager from "./manager/DialogManager";
@@ -9,7 +9,7 @@ export default class Game{
     static platformId:number = 0;
 
     static layerManager:LayerManager = null;
-    static tableManager:TableManager = null;
+    // static tableManager:TableManager = null;
     static soundManager:SoundManager = null;
     static eventManager:Laya.EventDispatcher = new Laya.EventDispatcher();
     static dialogManager:DialogManager = new DialogManager();
@@ -17,7 +17,7 @@ export default class Game{
     static init(soundPre:string):void{
         Game.layerManager = new LayerManager();
         Laya.stage.addChild(Game.layerManager);
-        Game.tableManager = new TableManager();
+        // Game.tableManager = new TableManager();
         Game.soundManager = new SoundManager();
         Game.soundManager.pre = soundPre;
 

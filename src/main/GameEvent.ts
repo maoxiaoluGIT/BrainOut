@@ -20,5 +20,7 @@ export default class GameEvent{
     static SHARE_SUCCESS:string = "SHARE_SUCCESS";
 
     static SHOW_HAND:string = "SHOW_HAND";
+
+    static STOP_RECORDE:string = "STOP_RECORDE";
     
 }

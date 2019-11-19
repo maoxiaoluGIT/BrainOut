@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":23,
-    "selecteID":39,
+    "selectedBox":2,
+    "selecteID":34,
     "searchKey":"View",
     "props":{"y":667,"x":375,"width":750,"height":1334,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
-    "maxID":45,
+    "maxID":46,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -33,20 +33,19 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box",
-            "props":{"width":750,"height":1334},
+            "props":{"y":241,"x":46.5,"width":657,"height":505},
             "nodeParent":2,
             "label":"Box",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":23,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":338,"x":57,"width":656,"skin":"pubRes/fram_big.png","height":504},
+                    "props":{"y":0,"x":0,"width":656,"skin":"pubRes/fram_big.png","height":504},
                     "nodeParent":23,
                     "label":"Image",
                     "isOpen":true,
@@ -56,7 +55,6 @@
                     "compId":39,
                     "child":[
                         {
-                            "x":45,
                             "type":"Text",
                             "searchKey":"Text,zi2",
                             "props":{"y":334,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":" 本关提示需要一把钥匙","height":118,"fontSize":46,"align":"center"},
@@ -72,10 +70,9 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,jinyaoshi",
-                    "props":{"y":404,"x":260,"width":113,"var":"jinyaoshi","skin":"pubRes/ic_key_1.png","height":119},
+                    "props":{"y":66,"x":203,"width":113,"var":"jinyaoshi","skin":"pubRes/ic_key_1.png","height":119},
                     "nodeParent":23,
                     "label":"jinyaoshi",
                     "isOpen":null,
@@ -87,10 +84,9 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"FontClip",
                     "searchKey":"FontClip,shuzi",
-                    "props":{"y":424,"x":352,"width":164,"var":"shuzi","value":"-1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":78,"align":"center"},
+                    "props":{"y":86,"x":295,"width":164,"var":"shuzi","value":"-1","skin":"pubRes/shuzi2.png","sheet":"-+09 8765 4321","height":78,"align":"center"},
                     "nodeParent":23,
                     "label":"shuzi",
                     "isDirectory":false,
@@ -101,10 +97,9 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":551,"x":279,"width":214,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},
+                    "props":{"y":213,"x":222,"width":214,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},
                     "nodeParent":23,
                     "label":"Image",
                     "isOpen":true,
@@ -114,7 +109,6 @@
                     "compId":42,
                     "child":[
                         {
-                            "x":45,
                             "type":"Text",
                             "searchKey":"Text",
                             "props":{"y":18,"x":53,"width":107,"text":"提示","height":50,"fontSize":46,"align":"center"},
@@ -134,17 +128,16 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,nextAdBtn",
-            "props":{"y":877,"x":221,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   免费获取","height":125},
+            "props":{"y":772,"x":224,"width":305,"var":"nextAdBtn","stateNum":"1","skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"   免费获取","height":125},
             "nodeParent":2,
             "label":"nextAdBtn",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":15,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,ads",
                     "props":{"y":25,"x":48,"width":69,"var":"ads","texture":"pubRes/ic_ad_1.png","height":74},
@@ -159,7 +152,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"y":-28,"x":212,"width":134,"texture":"pubRes/hongyuan.png","height":69},
@@ -172,7 +164,6 @@
                     "compId":31,
                     "child":[
                         {
-                            "x":45,
                             "type":"Text",
                             "searchKey":"Text",
                             "props":{"y":11,"x":-21,"width":127,"text":"+","height":50,"fontSize":40,"align":"center"},
@@ -186,7 +177,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite",
                             "props":{"y":6,"x":58,"width":57,"texture":"pubRes/ic_key_1.png","height":55},
@@ -206,7 +196,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,cha",
-            "props":{"y":299,"x":648,"width":75,"var":"cha","skin":"pubRes/ic_colse_1.png","height":75,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":204,"x":677,"width":75,"var":"cha","skin":"pubRes/ic_colse_1.png","height":75,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"cha",
             "isDirectory":false,
@@ -220,32 +210,31 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,shareBtn",
-            "props":{"y":1025,"x":221,"width":305,"var":"shareBtn","stateNum":"1","skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"       问问好友","height":125},
+            "props":{"y":920,"x":225,"width":305,"var":"shareBtn","stateNum":"1","skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"       问问好友","height":125},
             "nodeParent":2,
             "label":"shareBtn",
             "isOpen":true,
-            "isDirectory":false,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
+            "hasChild":true,
             "compId":34,
             "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,qiuzhu",
-            "props":{"y":1089.5,"x":297.5,"width":69,"var":"qiuzhu","skin":"pubRes/ic_share_1.png","height":74,"anchorY":0.5,"anchorX":0.5},
-            "nodeParent":2,
-            "label":"qiuzhu",
-            "isOpen":true,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":35,
-            "child":[
-                ],
-            "$HIDDEN":false
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,qiuzhu",
+                    "props":{"y":65.5,"x":79.5,"width":69,"var":"qiuzhu","skin":"pubRes/ic_share_1.png","height":74,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":34,
+                    "label":"qiuzhu",
+                    "isOpen":false,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":35,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                }]
         }],
     "animations":[
         {

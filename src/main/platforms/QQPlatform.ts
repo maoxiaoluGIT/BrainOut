@@ -196,7 +196,7 @@ export default class QQPlatform extends BasePlatform {
         GM.sysLog(LogType.share_msg);
     }
 
-    helpMe(index:number):void{
+    helpMe(index: number): void {
         let obj: any = {};
         let arr: string[] = QQPlatform.shareMsgs2;
         let index2: number = Math.floor(arr.length * Math.random());
@@ -205,15 +205,15 @@ export default class QQPlatform extends BasePlatform {
         //     destWidth: 500,
         //     destHeight: 400
         //   })
-        
+
         obj.query = "helpIndex=" + index;
         obj.shareAppType = "qqFastShareList";
         obj.entryDataHash = "helpMe";
         obj.destWidth = 500;
         obj.destHeight = 400;
         obj.shareTemplateId = "EE558DDCEFB407FD811CC6C06181D6AF",
-        obj.shareTemplateData = { "txt1": "这关我过不了，快来帮帮忙！", "txt2": "应邀前往小游戏" },
-        this.qq.shareAppMessage(obj);
+            obj.shareTemplateData = { "txt1": "这关我过不了，快来帮帮忙！", "txt2": "应邀前往小游戏" },
+            this.qq.shareAppMessage(obj);
     }
 
     private shareTime: number;
@@ -296,25 +296,41 @@ export default class QQPlatform extends BasePlatform {
 
     showBanner(): void {
         console.log("创建banner");
+        this.onLoop();
+        Laya.timer.loop(60 * 1000, this, this.onLoop);
+    }
+
+    private onLoop(): void {
         let sysInfo = this.qq.getSystemInfoSync();
         let delta = 0;
         if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS") {
             delta = 20;
         }
-        console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);
+        console.log("======================", sysInfo.model, sysInfo.windowWidth, sysInfo.windowHeight, sysInfo.screenWidth, sysInfo.screenHeight);
         let obj: any = {};
         obj.adUnitId = "84ebadbbe23ddd6527c3c6c446252894";
-        let l = (Laya.Browser.clientWidth - 300) / 2;
-        obj.style = { left: l, top: Laya.Browser.clientHeight - 100, width: 300, height: 100 };
+        let l = (sysInfo.windowWidth - 320) / 2;
+        obj.style = { left: l, top: sysInfo.windowHeight - 100, width: 320, height: 100 };
 
         let b = this.qq.createBannerAd(obj);
         b.onError(function (res) {
             console.log("banner拉取失败", res);
         });
         b.onResize(res => {
-            b.style.top = Laya.Browser.clientHeight - res.height - delta;
-            console.log("banner top",b.style.top);
+            b.style.top = sysInfo.windowHeight - res.height - delta - 4;
+            console.log("banner top", b.style.top);
         });
-        b.show();
+        b.show().then(() => {
+            console.log('bannerAd show ok')
+        }).catch((res) => {
+            console.log('bannerAd show error', res)
+        });
+
+        b.onError(res => {
+            console.log('bannerAd onError', res)
+        })
+        b.onLoad(res => {
+            console.log('bannerAd onLoad', res)
+        })
     }
 }

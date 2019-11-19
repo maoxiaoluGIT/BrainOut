@@ -98,8 +98,8 @@ import OppoPlatform from "./platforms/OppoPlatform";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.2.191113";
-    static resVer:string = "1.1.2.191113";
+    static codeVer:string = "2.0.1.19112001";
+    static resVer:string = "2.0.1.19112001";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -217,7 +217,7 @@ export default class GM{
 
     static onReg():void
     {
-        Game.tableManager.register(SysTitles.NAME , SysTitles );
+        // Game.tableManager.register(SysTitles.NAME , SysTitles );
         
         let REG: Function = Laya.ClassUtils.regClass;
 		//界面

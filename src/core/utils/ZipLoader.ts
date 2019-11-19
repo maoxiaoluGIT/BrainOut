@@ -21,6 +21,7 @@ export default class ZipLoader {
 
     public zipFun(ab: ArrayBuffer, handler: Handler): void {
         this.handler = handler;
+        console.log("jszip有没有啊",Laya.Browser.window.JSZip);
         Laya.Browser.window.JSZip.loadAsync(ab).then((jszip)=> {
             this.analysisFun(jszip);
         });

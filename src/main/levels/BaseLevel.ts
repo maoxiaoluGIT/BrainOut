@@ -100,7 +100,7 @@ export default class BaseLevel extends Laya.Box{
     onShow(level:number,parentBox:Laya.Sprite):void
     {
         this.curLevel = level;
-        this.sys = Game.tableManager.getDataByNameAndId(SysTitles.NAME,level);
+        this.sys = SysTitles.allData[this.curLevel];
         parentBox && parentBox.addChild(this);
         if(BaseLevel.noRes.indexOf(level) == -1)
         {

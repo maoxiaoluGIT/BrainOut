@@ -242,7 +242,7 @@ export default class OppoPlatform extends BasePlatform {
         // }
         this._type = type;
         if (!this.ad)  {
-            this.ad = Laya.Browser.window.qg.createRewardedVideoAd({ adUnitId: "adunit-3fd6aadde1de6f5a" });
+            this.ad = Laya.Browser.window.qg.createRewardedVideoAd({ posId: "adunit-3fd6aadde1de6f5a" });
             this.ad.onError(function (res) { });
             this.ad.onClose((res) => {
                 if (res && res.isEnded || res === undefined) {

@@ -6,5 +6,7 @@ export class BasePlatform{
     shake(isRight:boolean):void{};
     playAd(codeId:string,type:number):void{};
     showBanner():void{};
-    helpMe(index:number):void{}
+    helpMe(index:number):void{};
+    recorder():void{}
+    stopRecorder():void{}
 }
