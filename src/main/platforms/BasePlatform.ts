@@ -9,4 +9,6 @@ export class BasePlatform{
     helpMe(index:number):void{};
     recorder():void{}
     stopRecorder():void{}
+    showBanner2():void{}
+    hideBanner():void{}
 }

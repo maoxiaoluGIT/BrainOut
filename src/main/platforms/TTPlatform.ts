@@ -267,17 +267,42 @@ export default class TTPlatform extends BasePlatform {
         GM.sysLog(LogType.play_ad_total);
     }
 
+    private bannerAd;
     showBanner():void{
-        let obj:any = {};
-        obj.adUnitId = "";
-        let l = (Laya.Browser.clientWidth - 300)/2;
-        obj.style = {left:l,top:0,width:300,height:125};
-        
-        let b = this.tt.createBannerAd( obj );
-        b.onResize( res=>{
-            b.style.top = Laya.Browser.clientHeight - res.height - 20;
-        } );
-        b.show();
+        const { windowWidth, windowHeight } = wx.getSystemInfoSync();
+        var targetBannerAdWidth = 200;
+        // 创建一个居于屏幕底部正中的广告
+        this.bannerAd = this.tt.createBannerAd({
+            adUnitId: "5bh4dotmr272fa2ne5",
+            adIntervals:60,
+            style: {
+                width: targetBannerAdWidth,
+                top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度
+            }
+        });
+        this.bannerAd.onError(function (res) { });
+        // 也可以手动修改属性以调整广告尺寸
+        this.bannerAd.style.left = (windowWidth - targetBannerAdWidth) / 2;
+
+        // 尺寸调整时会触发回调，通过回调拿到的广告真实宽高再进行定位适配处理
+        // 注意：如果在回调里再次调整尺寸，要确保不要触发死循环！！！
+        this.bannerAd.onResize(size => {
+            // good
+            this.bannerAd.style.top = windowHeight - size.height;
+            this.bannerAd.style.left = (windowWidth - size.width) / 2;
+        })
+
+        this.bannerAd.show();
+    }
+
+    showBanner2():void
+    {
+        this.bannerAd.show();
+    }
+
+    hideBanner():void
+    {
+        this.bannerAd.hide();
     }
 
     private recorde;
