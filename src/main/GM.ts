@@ -98,8 +98,8 @@ import OppoPlatform from "./platforms/OppoPlatform";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "2.0.1.19112001";
-    static resVer:string = "2.0.1.19112001";
+    static codeVer:string = "2.0.1.191120";
+    static resVer:string = "2.0.1.191120";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;

@@ -8,8 +8,8 @@ import LogType from "../LogType";
 
 export default class TTPlatform extends BasePlatform {
     private tt;
-    constructor() { 
-        super(); 
+    constructor() {
+        super();
         this.tt = Laya.Browser.window.tt;
     }
 
@@ -73,9 +73,9 @@ export default class TTPlatform extends BasePlatform {
 
         this.tt.updateShareMenu({});
         this.tt.showShareMenu({});
-        this.tt.onShareAppMessage( ()=>{
+        this.tt.onShareAppMessage(() => {
             return this.getShareObj();
-        } );
+        });
     }
 
     login(callback): void {
@@ -91,7 +91,7 @@ export default class TTPlatform extends BasePlatform {
 
     private userBtn;
     getUserInfo(callback): void {
-        if (this.userBtn)  {
+        if (this.userBtn) {
             return;
         }
         this.userBtn = this.tt.createUserInfoButton(
@@ -170,57 +170,53 @@ export default class TTPlatform extends BasePlatform {
         console.log("过滤之后", GM.userName);
     }
 
-    onShare(type:number,isMain): void {
-        if(isMain)
-        {
+    onShare(type: number, isMain): void {
+        if (isMain)  {
             this.tt.shareAppMessage(this.getShareObj());
             GM.log("主动分享");
         }
-        else
-        {
+        else  {
             this.shareTime = Date.now();
-            Game.eventManager.once( GameEvent.WX_ON_SHOW ,this,this.shareSuccess,[type]);
+            Game.eventManager.once(GameEvent.WX_ON_SHOW, this, this.shareSuccess, [type]);
             this.tt.shareAppMessage(this.getShareObj());
             GM.log("视频失败分享");
         }
         GM.sysLog(LogType.share_msg);
     }
 
-    private shareTime:number;
+    private shareTime: number;
 
-    private shareSuccess(type:number):void
-    {
-        if(Session.gameData[DataKey.shareTimes] > 0)
-        {
+    private shareSuccess(type: number): void  {
+        if (Session.gameData[DataKey.shareTimes] > 0)  {
             // if(Date.now() - this.shareTime >= 2500)
             // {
-                Session.gameData[DataKey.shareTimes]--;
-                Game.eventManager.event(GameEvent.SHARE_SUCCESS,type);
-                return;
+            Session.gameData[DataKey.shareTimes]--;
+            Game.eventManager.event(GameEvent.SHARE_SUCCESS, type);
+            return;
             // }
         }
     }
 
 
-    shake(isRight: boolean): void  {
+    shake(isRight: boolean): void {
         if (GM.shakeState == 1) {
-            if (isRight)  {
+            if (isRight) {
                 this.tt.vibrateShort();
             }
-            else  {
+            else {
                 this.tt.vibrateLong();
             }
         }
     }
 
-    static shareMsgs:string[] = ["万万没想到，还有这种骚操作！","脑洞是个什么洞？","哎呀！妈呀！脑瓜疼！","有人@你 进来和我一起玩！"];
+    static shareMsgs: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！", "有人@你 进来和我一起玩！"];
 
-    private getShareObj():any
-    {
-        let arr:string[] = TTPlatform.shareMsgs;
-        let obj:any = {};
-        let index:number = Math.floor(arr.length * Math.random());
-        obj.title = arr[index];
+    private getShareObj(): any  {
+        let arr: string[] = TTPlatform.shareMsgs;
+        let obj: any = {};
+        let index: number = Math.floor(arr.length * Math.random());
+        obj.title = '脑洞大爆炸';
+        obj.desc = arr[index];
         obj.imageUrl = "https://img.kuwan511.com/brainOut/share.jpg";
         obj.destWidth = 500;
         obj.destHeight = 400;
@@ -228,53 +224,48 @@ export default class TTPlatform extends BasePlatform {
     }
 
     private ad;
-    playAd(codeId:string,type:number):void
-    {
-        if(codeId == "")
-        {
+    playAd(codeId: string, type: number): void  {
+        if (codeId == "")  {
             this.ad = null;
         }
-        if(this.ad)
-        {
+        if (this.ad)  {
             this.ad.destroy();
             this.ad = null;
         }
-        this.ad = this.tt.createRewardedVideoAd({adUnitId:codeId});
-        if(this.ad)
-        {
-            this.ad.onClose( (res)=>{
-                if ( res && res.isEnded || res===undefined ){
+        this.ad = this.tt.createRewardedVideoAd({ adUnitId: 'ai30ir9tj7157kjkim' });
+        if (this.ad)  {
+            this.ad.onClose((res) => {
+                if (res && res.isEnded || res === undefined) {
                     GM.log("关闭广告");
                     GM.sysLog(LogType.play_ad_com_total);
-                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE,type);
+                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, type);
                 }
             });
-    
+
             this.ad.show().catch(() => {
                 // 失败重试
                 this.ad.load()
-                  .then(() => this.ad.show())
-                  .catch(err => {
-                    GM.log("广告拉取失败");
-                    this.onShare(type,false);
-                  })
-              })
+                    .then(() => this.ad.show())
+                    .catch(err => {
+                        GM.log("广告拉取失败");
+                        this.onShare(type, false);
+                    })
+            })
         }
-        else
-        {
-            this.onShare(type,false);
+        else  {
+            this.onShare(type, false);
         }
         GM.sysLog(LogType.play_ad_total);
     }
 
     private bannerAd;
-    showBanner():void{
+    showBanner(): void {
         const { windowWidth, windowHeight } = wx.getSystemInfoSync();
         var targetBannerAdWidth = 200;
         // 创建一个居于屏幕底部正中的广告
         this.bannerAd = this.tt.createBannerAd({
-            adUnitId: "5bh4dotmr272fa2ne5",
-            adIntervals:60,
+            adUnitId: "6qo6tc5agtb3hb06f0",
+            adIntervals: 60,
             style: {
                 width: targetBannerAdWidth,
                 top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度
@@ -295,42 +286,59 @@ export default class TTPlatform extends BasePlatform {
         this.bannerAd.show();
     }
 
-    showBanner2():void
-    {
+    showBanner2(): void  {
         this.bannerAd.show();
     }
 
-    hideBanner():void
-    {
+    hideBanner(): void  {
         this.bannerAd.hide();
     }
 
     private recorde;
+    private videoUrl;
+    private isEnd:boolean;
+    private isClickStop:boolean;
     recorder(): void {
         console.log("开始录屏");
-        if (!this.recorde) {
+        if(!this.recorde)
+        {
             this.recorde = this.tt.getGameRecorderManager();
             this.recorde.onStart(res => {
             });
-        }
+            this.recorde.onStop((res) => {
+                this.videoUrl = res.videoPath;
+                console.log("录屏结束");
+                this.isEnd = true;
 
+                if(this.isClickStop)
+                {
+                    this.stopRecorder();
+                }
+            });
+        }
+        
+        this.isClickStop = false;
+        this.isEnd = false;
         this.recorde.start({
             duration: 15,
         })
     }
 
     stopRecorder(): void {
-        console.log("停止录屏");
-        this.recorde.onStop(({ videoPath }) => {
-            Game.eventManager.event(GameEvent.STOP_RECORDE);
+        this.isClickStop = true;
+        if(this.isEnd)
+        {
             this.tt.shareVideo({
-                videoPath: `${videoPath}`,
+                videoPath: this.videoUrl,
                 success() {
                 },
                 fail(e) {
                 }
             });
-        })
-        this.recorde.stop();
+        }
+        else
+        {
+            this.recorde.stop();
+        }
     }
 }
