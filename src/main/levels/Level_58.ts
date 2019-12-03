@@ -60,9 +60,15 @@ export default class Level_58 extends BaseLevel {
         if(this.weixin)
         {
             this.weixin.onAccelerometerChange((res)=>{
-                if(res.x > 0.9)
-                {
-                    Game.eventManager.event(GameEvent.WX_ROTATE);
+                if (GM.platformId == PlatformID.OPPO)  {
+                    if (res.y < -0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
+                }
+                else  {
+                    if (res.y > 0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
                 }
             });
             this.weixin.startAccelerometer({
@@ -109,9 +115,15 @@ export default class Level_58 extends BaseLevel {
         if(this.weixin)
         {
             this.weixin.onAccelerometerChange((res)=>{
-                if(res.x > 0.9)
-                {
-                    Game.eventManager.event(GameEvent.WX_ROTATE);
+                if (GM.platformId == PlatformID.OPPO)  {
+                    if (res.y < -0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
+                }
+                else  {
+                    if (res.y > 0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
                 }
             });
             this.weixin.startAccelerometer({

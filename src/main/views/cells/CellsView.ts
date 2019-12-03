@@ -4,6 +4,7 @@ import { ViewID } from "../ViewID";
 import CellItem from "./CellItem";
 import Game from "../../../core/Game";
 import SysTitles from "../../sys/SysTitles";
+import OppoPlatform from "../../platforms/OppoPlatform";
 
 export default class CellsView extends ui.xuanguan1UI{
     
@@ -40,7 +41,11 @@ export default class CellsView extends ui.xuanguan1UI{
 
     private onDis():void
     {
-        
+        if(GM.platform instanceof OppoPlatform)
+        {
+            (GM.platform as OppoPlatform).hideBanner();
+        }
+        GM.platform && GM.platform.InsertAd("142905");
         this.list.array = this._dataList;
     }
 

@@ -57,6 +57,6 @@ export default class SkipView extends ui.tishi2UI {
     private playAd():void
     {
         GM.sysLog(LogType.skip_ad_play);
-        GM.platform.playAd("",AdType.skip);
+        GM.platform.playAd("142902",AdType.skip);
     }
 }

@@ -20,6 +20,7 @@ import { DataKey } from "../../sessions/DataKey";
 import TipsView42 from "./TipsView42";
 import LogType from "../../LogType";
 import TipsView61 from "./TipsView61";
+import OppoPlatform from "../../platforms/OppoPlatform";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
@@ -290,6 +291,11 @@ export default class MainView extends ui.mainViewUI {
         GM.sysLog(2000 + lv);
 
         GM.platform.recorder();
+
+        if(GM.platform instanceof OppoPlatform)
+        {
+            (GM.platform as OppoPlatform).showBanner("142894");
+        }
     }
 
     helpLevel(lv:number):void

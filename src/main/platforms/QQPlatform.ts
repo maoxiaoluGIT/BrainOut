@@ -294,7 +294,7 @@ export default class QQPlatform extends BasePlatform {
         GM.sysLog(LogType.play_ad_total);
     }
 
-    showBanner(): void {
+    showBanner(bannerId:string): void {
         console.log("创建banner");
         this.onLoop();
         Laya.timer.loop(60 * 1000, this, this.onLoop);

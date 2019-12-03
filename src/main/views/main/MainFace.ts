@@ -37,6 +37,8 @@ export default class MainFace extends ui.mainuiUI {
         this.handImg.visible = false;
 
         MyEffect.bigSmall(this.handImg,1,0.7);
+
+        this.qiuzhu.visible = GM.platformId != PlatformID.OPPO;
     }
 
     private showHand():void

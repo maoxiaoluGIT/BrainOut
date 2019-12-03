@@ -5,4 +5,5 @@ export default class PlatformID{
     static QQ:number = 51;
     static TT:number = 61;
     static OPPO:number = 71;
+    static VIVO:number = 81;
 }

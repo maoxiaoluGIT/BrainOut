@@ -6,8 +6,11 @@ import GameEvent from "../../GameEvent";
 import AdType from "./AdType";
 import LogType from "../../LogType";
 import PlatformID from "../../platforms/PlatformID";
+import GameBox from "../../GameBox";
+import OppoPlatform from "../../platforms/OppoPlatform";
 export default class RightView extends ui.shengliUI{
     
+    private gameBox: GameBox;
     constructor() { 
         super(); 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
@@ -21,6 +24,12 @@ export default class RightView extends ui.shengliUI{
         {
             this.shareBtn.label = "分享录屏";
         }
+
+        if (GM.platformId == PlatformID.WX)  {
+            this.gameBox = new GameBox();
+        }
+
+        this.shareBtn.visible = GM.platformId != PlatformID.OPPO;
     }
 
     private onShare():void
@@ -37,24 +46,39 @@ export default class RightView extends ui.shengliUI{
 
     private playAd():void
     {
-        GM.platform.playAd("",AdType.answerRight);
+        GM.platform.playAd("142899",AdType.answerRight);
         GM.sysLog(LogType.shengli_ad_play);
     }
 
     private onNext():void
     {
         this.removeSelf();
+        this.gameBox && this.gameBox.removeSelf();
         Game.eventManager.event(GameEvent.ON_NEXT);
     }
 
     private onDis():void
     {
+        if(GM.platform instanceof OppoPlatform)
+        {
+            (GM.platform as OppoPlatform).hideBanner();
+        }
+        GM.platform && GM.platform.InsertAd("142904");
         this.paishou.y = 1334;
         Laya.Tween.to(this.paishou,{y:857},500,null,new Laya.Handler(this,this.onEff),600);
         this.nextBtn.alpha = 0;
         setTimeout(() => {
             Laya.Tween.to(this.nextBtn,{alpha:1},500);
         }, 1500);
+
+        this.addBox();
+    }
+
+    addBox(): void  {
+        if (GM.platformId == PlatformID.WX)  {
+            this.addChild(this.gameBox);
+            this.gameBox.pos(0,912);
+        }
     }
 
     private onunDis():void

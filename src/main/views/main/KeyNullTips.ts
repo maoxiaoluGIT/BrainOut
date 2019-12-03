@@ -2,6 +2,7 @@ import { ui } from "../../../ui/layaMaxUI";
 import GM from "../../GM";
 import AdType from "./AdType";
 import LogType from "../../LogType";
+import PlatformID from "../../platforms/PlatformID";
 
 export default class KeyNullTips extends ui.keyTipsUI {
     
@@ -12,6 +13,7 @@ export default class KeyNullTips extends ui.keyTipsUI {
         this.shareBtn.on(Laya.Event.CLICK,this,this.onShare);
         GM.imgEffect.addEffect(this.cha);
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+        this.shareBtn.visible = GM.platformId != PlatformID.OPPO;
     }
 
     private onShare():void
@@ -31,7 +33,7 @@ export default class KeyNullTips extends ui.keyTipsUI {
 
     private onPlay():void
     {
-        GM.platform.playAd("",AdType.nullKey);
+        GM.platform.playAd("142901",AdType.nullKey);
         this.removeSelf();
         GM.sysLog(LogType.key_null_ad_play);
     }

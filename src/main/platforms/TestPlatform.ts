@@ -54,7 +54,7 @@ export default class TestPlatform extends BasePlatform{
         this.onShare(type,false);
     }
 
-    showBanner():void{
+    showBanner(bannerId:string):void{
 
     }
 }

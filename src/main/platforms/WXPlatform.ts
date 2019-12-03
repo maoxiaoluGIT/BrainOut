@@ -262,7 +262,7 @@ export default class WXPlatform extends BasePlatform {
         GM.sysLog(LogType.play_ad_total);
     }
 
-    showBanner(): void {
+    showBanner(bannerId:string): void {
         let sysInfo = Laya.Browser.window.wx.getSystemInfoSync();
         let delta = 0;
         if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")  {

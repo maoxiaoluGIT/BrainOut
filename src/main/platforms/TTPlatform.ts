@@ -259,7 +259,7 @@ export default class TTPlatform extends BasePlatform {
     }
 
     private bannerAd;
-    showBanner(): void {
+    showBanner(bannerId:string): void {
         const { windowWidth, windowHeight } = wx.getSystemInfoSync();
         var targetBannerAdWidth = 200;
         // 创建一个居于屏幕底部正中的广告

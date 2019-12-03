@@ -98,11 +98,12 @@ import OppoPlatform from "./platforms/OppoPlatform";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "2.0.1.191120";
-    static resVer:string = "2.0.1.191120";
+    static codeVer:string = "1.1.2.191203";
+    static resVer:string = "1.1.2.191203";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
+    static gamesInfo:string[][];
 
     static helpIndex:number = 0;
 
@@ -126,6 +127,7 @@ export default class GM{
     {
         GM.platformId = config.platformId;
         GM.serverIP = config.platforms[GM.platformId];
+        GM.gamesInfo = config.gamesInfo;
 
         if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
@@ -211,6 +213,11 @@ export default class GM{
     {
         // console.log("%c" + message, "color:green");
         console.log(message);
+    }
+
+    static addLog(str):void
+    {
+        // Game.layerManager.logTxt.text += str + "\n";
     }
 
     static indexNum;

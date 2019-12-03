@@ -1,4 +1,5 @@
 import Http from "./Http";
+import GM from "../../main/GM";
 
 /*
 * name;
@@ -6,6 +7,7 @@ import Http from "./Http";
 export default class BaseHttp{
     private _http:Http;
     protected handler:Laya.Handler;
+    private _url;
     constructor(hand:Laya.Handler){
         this.handler = hand;
         this._http = Http.create().success(this.onSuccess,this).error(this.onErro,this);
@@ -19,6 +21,7 @@ export default class BaseHttp{
      private onErro(e):void
     {
         console.error(e);
+        GM.addLog(this._url + "http error:"  + e);
     }
 
     /**
@@ -30,6 +33,8 @@ export default class BaseHttp{
      */
     send(url:string,data?:any, method?: string,responseType?:string):void
     {
+        this._url = url;
         this._http.send(url,data,method,responseType);
+        GM.addLog("url:" + url + data);
     }
 }

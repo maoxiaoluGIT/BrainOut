@@ -5,6 +5,8 @@ import GameEvent from "../GameEvent";
 import Session from "../sessions/Session";
 import { DataKey } from "../sessions/DataKey";
 import LogType from "../LogType";
+import PlatformID from "./PlatformID";
+import { ViewID } from "../views/ViewID";
 
 export default class OppoPlatform extends BasePlatform {
     constructor() { super(); }
@@ -75,28 +77,44 @@ export default class OppoPlatform extends BasePlatform {
             Game.eventManager.event(GameEvent.WX_ON_HIDE);
         });
 
-        Laya.Browser.window.qg.onError(res => {
-            res.message, res.stack
-        });
+        Laya.Browser.window.qg.initAdService({
+            appId: "30222864",
+            success: function (res) {
+                GM.addLog("initAdService success");
+            },
+            fail: function (res) {
+                GM.addLog("initAdService fail:" + res.code + res.msg);
+            },
+            complete: function (res) {
+                GM.addLog("initAdService complete");
+            }
+        })
 
-        Laya.Browser.window.qg.updateShareMenu({});
-        Laya.Browser.window.qg.showShareMenu({});
-        Laya.Browser.window.qg.onShareAppMessage(() => {
-            return this.getShareObj();
-        });
+        // Laya.Browser.window.qg.onError(res => {
+        //     res.message, res.stack
+        // });
+
+        // Laya.Browser.window.qg.updateShareMenu({});
+        // Laya.Browser.window.qg.showShareMenu({});
+        // Laya.Browser.window.qg.onShareAppMessage(() => {
+        //     return this.getShareObj();
+        // });
     }
 
     login(callback): void {
         Laya.Browser.window.qg.login(
             {
                 success: (res) => {
-                    if (res.code) {
-                        callback && callback(res.code);
+                    console.log("oppo token", res, res.token);
+                    GM.addLog("oppo token:" + res + "-------" + res.token)
+                    if (res.token) {
+                        callback && callback(res.token);
                     }
+                },
+                fail: (res) => {
+                    GM.addLog("oppo login fail:" + res);
                 }
             });
-
-            console.log("oppo 登录");
     }
 
     private userBtn;
@@ -181,11 +199,11 @@ export default class OppoPlatform extends BasePlatform {
     }
 
     onShare(type: number, isMain): void {
-        if (isMain)  {
+        if (isMain) {
             Laya.Browser.window.qg.shareAppMessage(this.getShareObj());
             GM.log("主动分享");
         }
-        else  {
+        else {
             this.shareTime = Date.now();
             Game.eventManager.once(GameEvent.WX_ON_SHOW, this, this.shareSuccess, [type]);
             Laya.Browser.window.qg.shareAppMessage(this.getShareObj());
@@ -196,8 +214,8 @@ export default class OppoPlatform extends BasePlatform {
 
     private shareTime: number;
 
-    private shareSuccess(type: number): void  {
-        if (Session.gameData[DataKey.shareTimes] > 0)  {
+    private shareSuccess(type: number): void {
+        if (Session.gameData[DataKey.shareTimes] > 0) {
             // if(Date.now() - this.shareTime >= 2500)
             // {
             Session.gameData[DataKey.shareTimes]--;
@@ -221,7 +239,7 @@ export default class OppoPlatform extends BasePlatform {
 
     static shareMsgs: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！", "有人@你 进来和我一起玩！"];
 
-    private getShareObj(): any  {
+    private getShareObj(): any {
         let arr: string[] = OppoPlatform.shareMsgs;
         let obj: any = {};
         let index: number = Math.floor(arr.length * Math.random());
@@ -232,58 +250,115 @@ export default class OppoPlatform extends BasePlatform {
         return obj;
     }
 
-    private ad;
-    private _type:number;
-    playAd(codeId: string, type: number): void  {
-        // if(this.ad)
-        // {
-        //     this.ad.destroy();
-        //     this.ad = null;
-        // }
-        this._type = type;
-        if (!this.ad)  {
-            this.ad = Laya.Browser.window.qg.createRewardedVideoAd({ posId: "adunit-3fd6aadde1de6f5a" });
-            this.ad.onError(function (res) { });
-            this.ad.onClose((res) => {
-                if (res && res.isEnded || res === undefined) {
-                    GM.log("关闭广告");
-                    GM.sysLog(LogType.play_ad_com_total);
-                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, this._type);
-                }
-            });
+    private videoAd;
+    private _type: number;
+    playAd(codeId: string, type: number): void {
+        if(this.videoAd)
+        {
+            this.videoAd.destroy();
+            this.videoAd = null;
         }
-        this.ad.show().catch(() => {
-            // 失败重试
-            this.ad.load()
-                .then(() => this.ad.show())
-                .catch(err => {
-                    GM.log("广告拉取失败");
-                    this.onShare(type, false);
-                })
+        this._type = type;
+        // if (!this.ad) {
+        this.videoAd = Laya.Browser.window.qg.createRewardedVideoAd({ adUnitId: codeId });
+        this.videoAd.offError(function(res){});
+        this.videoAd.offLoad(function(res){});
+        this.videoAd.offClose(function(res){});
+        this.videoAd.onError(function (res) {
+            GM.addLog('videoAd onError====' + res.errMsg);
         })
-        GM.sysLog(LogType.play_ad_total);
+        this.videoAd.onVideoStart(function() {
+            GM.addLog('激励视频 开始播放');
+          })
+        this.videoAd.onClose((res) =>{
+            GM.addLog('videoAd onClose=====' + res);
+            if (res.isEnded) {
+                GM.addLog("关闭广告");
+                GM.sysLog(LogType.play_ad_com_total);
+                Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, this._type);
+            }
+        });
+        this.videoAd.onLoad((res)=> {
+            if(res.msg == "ok")
+            {
+                GM.addLog('激励视频加载成功' + this.videoAd);
+                this.videoAd.show();
+            }
+            else
+            {
+                GM.addLog('激励视频加载失败');
+                // this.onShare(this._type, false);
+            }
+        });
+        this.videoAd.load();
     }
 
-    showBanner(): void {
+
+    showBanner(bannerId?: string): void {
         let sysInfo = Laya.Browser.window.qg.getSystemInfoSync();
-        let delta = 0;
-        if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")  {
-            delta = 24;
-        }
-        // console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);
+        GM.addLog("======================"+sysInfo.model+","+sysInfo.windowWidth+","+sysInfo.windowHeight+","+sysInfo.pixelRatio);
         let obj: any = {};
-        obj.adUnitId = "adunit-13a7c564acbbe142";
-        obj.adIntervals = 60;
-        let l = (Laya.Browser.clientWidth - 300) / 2;
-        obj.style = { left: l, top: 0, width: 300, height: 1 };
+        obj.adUnitId = bannerId ? bannerId : "142892";
+        obj.style = { left: 0, top: sysInfo.windowHeight - 100, width: sysInfo.windowWidth, height: 100 };
 
-        let b = Laya.Browser.window.qg.createBannerAd(obj);
-        b.onError(function (res) {
+        if(this.banner)
+        {
+            this.banner.destroy();
+        }
 
+        this.banner = Laya.Browser.window.qg.createBannerAd(obj);
+        this.banner.onError((res)=> {
+            GM.addLog("banner error====" + res.errMsg);
         });
-        b.onResize(res => {
-            b.style.top = Laya.Browser.clientHeight - res.height - delta;
+
+        this.banner.onResize((res) => {
+            this.banner.style.top = sysInfo.windowHeight - res.height;
+            GM.addLog("banner top=========" + this.banner.style.top + "," + res.height);
         });
-        b.show();
+
+        this.banner.show();
+
+        this.banner.onShow(()=> {
+            console.log('banner成功展示');
+          });
+
+        
+    }
+
+    showOVBanner(viewId): void  {
+        this.hideBanner();
+        if (GM.platformId == PlatformID.OPPO || GM.platformId == PlatformID.VIVO)  {
+            if (viewId == ViewID.setting)  {
+                this.showBanner("142892");
+            }
+            else if (viewId == ViewID.signin)  {
+                this.showBanner("142893");
+            }
+        }
+    }
+
+    hideBanner(): void  {
+        this.banner && this.banner.hide();
+    }
+
+    private insertAds;
+    InsertAd(codeId?): void  {
+        this.hideBanner();
+
+        if(this.insertAds)
+        {
+            this.insertAds.destroy();
+        }
+
+        this.insertAds = Laya.Browser.window.qg.createInsertAd({
+            adUnitId: codeId
+        });
+        this.insertAds.onError((res)=> {
+            GM.addLog("insertAD error====" + res.errMsg);
+        });
+        this.insertAds.load();
+        this.insertAds.onLoad((res)=> {
+            this.insertAds.show();
+        });
     }
 }

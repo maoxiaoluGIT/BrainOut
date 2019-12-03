@@ -28,12 +28,14 @@ export default class LoginHttp extends BaseHttp {
     onSuccess(data): void {
         Session.SKEY = data;
         super.onSuccess(data);
-        GM.log("login success,key=" + Session.SKEY)
+        GM.addLog("login success,key=" + Session.SKEY)
     }
     
 
     checkLogin(): void {
+        GM.addLog("调用oppo的login");
         GM.platform.login((code:string)=>{
+            GM.addLog("jsCode:" + code);
             this.jsCode = code;
             this.send();
         });
