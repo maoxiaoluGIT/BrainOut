@@ -16,12 +16,14 @@ export default class SenderHttp extends BaseHttp {
 
 
     send(): void {
-        let obj = Session.gameData;
-        super.send(GM.serverIP + "gamex3/save4","skey=" + Session.SKEY + "&gamedata=" + JSON.stringify(obj), "post", "text");
+        if (Session.SKEY)  {
+            let obj = Session.gameData;
+            super.send(GM.serverIP + "gamex3/save4", "skey=" + Session.SKEY + "&gamedata=" + JSON.stringify(obj), "post", "text");
+        }
     }
 
     onSuccess(data): void {
         super.onSuccess(data);
-        GM.log("save success" +data);
+        GM.log("save success" + data);
     }
 }

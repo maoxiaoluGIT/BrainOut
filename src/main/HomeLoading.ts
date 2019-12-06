@@ -6,7 +6,6 @@ import GM from "./GM";
 import { ViewID } from "./views/ViewID";
 import Session from "./sessions/Session";
 import { DataKey } from "./sessions/DataKey";
-import GameBox from "./GameBox";
 import PlatformID from "./platforms/PlatformID";
 
 export default class HomeLoading extends ui.loadingUI {
@@ -63,6 +62,7 @@ export default class HomeLoading extends ui.loadingUI {
 
         GM.imgEffect.start();
         GM.viewManager.showView(ViewID.main);
+        GM.hideTTBanner();
         if(Session.gameData[DataKey.signinState] == 0)
         {
             GM.viewManager.showView2(ViewID.signin);

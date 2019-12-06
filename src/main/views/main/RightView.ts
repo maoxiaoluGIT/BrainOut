@@ -27,6 +27,7 @@ export default class RightView extends ui.shengliUI{
 
         if (GM.platformId == PlatformID.WX)  {
             this.gameBox = new GameBox();
+            this.gameBox.fromTag = GameBox.jiesuan;
         }
 
         this.shareBtn.visible = GM.platformId != PlatformID.OPPO;
@@ -55,6 +56,7 @@ export default class RightView extends ui.shengliUI{
         this.removeSelf();
         this.gameBox && this.gameBox.removeSelf();
         Game.eventManager.event(GameEvent.ON_NEXT);
+        GM.hideTTBanner();
     }
 
     private onDis():void
@@ -84,6 +86,7 @@ export default class RightView extends ui.shengliUI{
     private onunDis():void
     {
         GM.imgEffect.removeEffect2(this.paishou);
+        GM.hideTTBanner();
     }
 
     private onEff():void

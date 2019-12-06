@@ -51,7 +51,14 @@ export default class InitView extends ui.initViewUI {
 	private onSuccess(data):void
 	{
 		GM.addLog("登录成功");
-		ReceiverHttp.create(new Laya.Handler(this, this.onReceiveData)).send();
+		if(Session.SKEY)
+		{
+			ReceiverHttp.create(new Laya.Handler(this, this.onReceiveData)).send();
+		}
+		else
+		{
+			this.onReceiveData("");
+		}
 	}
 
 	private onReceiveData(data):void

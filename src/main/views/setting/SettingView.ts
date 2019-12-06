@@ -23,6 +23,7 @@ export default class SettingView extends ui.shezhiUI {
 
         if (GM.platformId == PlatformID.WX)  {
             this.gameBox = new GameBox();
+            this.gameBox.fromTag = GameBox.shezhi;
         }
 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
@@ -65,6 +66,7 @@ export default class SettingView extends ui.shezhiUI {
             case this.fanhui:
             GM.viewManager.closeView2(ViewID.setting);
             this.gameBox && this.gameBox.removeSelf();
+            GM.hideTTBanner();
             break;
             case this.yinyue:
             if(GM.musicState == 1)

@@ -18,6 +18,7 @@ class Main {
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 		if (GameConfig.stat) Laya.Stat.show();
 
+
 		GM.log("code version:" + GM.codeVer);
 		GM.log("res version:" + GM.resVer);
 

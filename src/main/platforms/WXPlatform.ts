@@ -179,11 +179,11 @@ export default class WXPlatform extends BasePlatform {
     }
 
     onShare(type: number, isMain): void {
-        if (isMain)  {
+        if (isMain) {
             Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
             GM.log("主动分享");
         }
-        else  {
+        else {
             this.shareTime = Date.now();
             Game.eventManager.once(GameEvent.WX_ON_SHOW, this, this.shareSuccess, [type]);
             Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
@@ -194,8 +194,8 @@ export default class WXPlatform extends BasePlatform {
 
     private shareTime: number;
 
-    private shareSuccess(type: number): void  {
-        if (Session.gameData[DataKey.shareTimes] > 0)  {
+    private shareSuccess(type: number): void {
+        if (Session.gameData[DataKey.shareTimes] > 0) {
             // if(Date.now() - this.shareTime >= 2500)
             // {
             Session.gameData[DataKey.shareTimes]--;
@@ -219,7 +219,7 @@ export default class WXPlatform extends BasePlatform {
 
     static shareMsgs: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！", "有人@你 进来和我一起玩！"];
 
-    private getShareObj(): any  {
+    private getShareObj(): any {
         let arr: string[] = WXPlatform.shareMsgs;
         let obj: any = {};
         let index: number = Math.floor(arr.length * Math.random());
@@ -231,15 +231,15 @@ export default class WXPlatform extends BasePlatform {
     }
 
     private ad;
-    private _type:number;
-    playAd(codeId: string, type: number): void  {
+    private _type: number;
+    playAd(codeId: string, type: number): void {
         // if(this.ad)
         // {
         //     this.ad.destroy();
         //     this.ad = null;
         // }
         this._type = type;
-        if (!this.ad)  {
+        if (!this.ad) {
             this.ad = Laya.Browser.window.wx.createRewardedVideoAd({ adUnitId: "adunit-3fd6aadde1de6f5a" });
             this.ad.onError(function (res) { });
             this.ad.onClose((res) => {
@@ -253,7 +253,12 @@ export default class WXPlatform extends BasePlatform {
         this.ad.show().catch(() => {
             // 失败重试
             this.ad.load()
-                .then(() => this.ad.show())
+                .then(() => {
+                    this.ad.show(); 
+                    if (Session.isNew) {
+                        Laya.Browser.window.wx.aldSendEvent('新用户激励视频拉取完成次数');
+                    }
+                })
                 .catch(err => {
                     GM.log("广告拉取失败");
                     this.onShare(type, false);
@@ -262,10 +267,10 @@ export default class WXPlatform extends BasePlatform {
         GM.sysLog(LogType.play_ad_total);
     }
 
-    showBanner(bannerId:string): void {
+    showBanner(bannerId: string): void {
         let sysInfo = Laya.Browser.window.wx.getSystemInfoSync();
         let delta = 0;
-        if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")  {
+        if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS") {
             delta = 24;
         }
         // console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);

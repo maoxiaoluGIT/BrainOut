@@ -81,10 +81,16 @@ export default class TTPlatform extends BasePlatform {
     login(callback): void {
         this.tt.login(
             {
+                force: false,
                 success: (res) => {
-                    if (res.code) {
-                        callback && callback(res.code);
-                    }
+                    console.log("tt.login success",res.code);
+                    callback && callback(res.code);
+                },
+                fail: (res) => {
+                    console.log(`login调用失败` + res.errMsg);
+                },
+                complete:(res)=>{
+                    console.log("tt.login complete");
                 }
             });
     }
@@ -171,11 +177,11 @@ export default class TTPlatform extends BasePlatform {
     }
 
     onShare(type: number, isMain): void {
-        if (isMain)  {
+        if (isMain) {
             this.tt.shareAppMessage(this.getShareObj());
             GM.log("主动分享");
         }
-        else  {
+        else {
             this.shareTime = Date.now();
             Game.eventManager.once(GameEvent.WX_ON_SHOW, this, this.shareSuccess, [type]);
             this.tt.shareAppMessage(this.getShareObj());
@@ -186,8 +192,8 @@ export default class TTPlatform extends BasePlatform {
 
     private shareTime: number;
 
-    private shareSuccess(type: number): void  {
-        if (Session.gameData[DataKey.shareTimes] > 0)  {
+    private shareSuccess(type: number): void {
+        if (Session.gameData[DataKey.shareTimes] > 0) {
             // if(Date.now() - this.shareTime >= 2500)
             // {
             Session.gameData[DataKey.shareTimes]--;
@@ -211,11 +217,11 @@ export default class TTPlatform extends BasePlatform {
 
     static shareMsgs: string[] = ["万万没想到，还有这种骚操作！", "脑洞是个什么洞？", "哎呀！妈呀！脑瓜疼！", "有人@你 进来和我一起玩！"];
 
-    private getShareObj(): any  {
+    private getShareObj(): any {
         let arr: string[] = TTPlatform.shareMsgs;
         let obj: any = {};
         let index: number = Math.floor(arr.length * Math.random());
-        obj.title = '脑洞大爆炸';
+        obj.title = '最强脑洞';
         obj.desc = arr[index];
         obj.imageUrl = "https://img.kuwan511.com/brainOut/share.jpg";
         obj.destWidth = 500;
@@ -224,84 +230,108 @@ export default class TTPlatform extends BasePlatform {
     }
 
     private ad;
-    playAd(codeId: string, type: number): void  {
-        if (codeId == "")  {
-            this.ad = null;
-        }
-        if (this.ad)  {
-            this.ad.destroy();
-            this.ad = null;
-        }
-        this.ad = this.tt.createRewardedVideoAd({ adUnitId: 'ai30ir9tj7157kjkim' });
-        if (this.ad)  {
+    private _type;
+    playAd(codeId: string, type: number): void {
+        this._type = type;
+        // if (codeId == "") {
+        //     this.ad = null;
+        // }
+        // if (this.ad) {
+        //     this.ad.destroy();
+        //     this.ad = null;
+        // }
+        if(!this.ad)
+        {
+            this.ad = this.tt.createRewardedVideoAd({ adUnitId: '198p04cqapdc0j6954' });
             this.ad.onClose((res) => {
                 if (res && res.isEnded || res === undefined) {
                     GM.log("关闭广告");
                     GM.sysLog(LogType.play_ad_com_total);
-                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, type);
+                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, this._type);
                 }
             });
+        }
 
-            this.ad.show().catch(() => {
-                // 失败重试
-                this.ad.load()
-                    .then(() => this.ad.show())
-                    .catch(err => {
-                        GM.log("广告拉取失败");
-                        this.onShare(type, false);
-                    })
-            })
-        }
-        else  {
-            this.onShare(type, false);
-        }
+        this.ad.show().catch(() => {
+            // 失败重试
+            this.ad.load()
+                .then(() => this.ad.show())
+                .catch(err => {
+                    GM.log("广告拉取失败");
+                    this.onShare(this._type, false);
+                })
+        });
         GM.sysLog(LogType.play_ad_total);
     }
 
     private bannerAd;
-    showBanner(bannerId:string): void {
-        const { windowWidth, windowHeight } = wx.getSystemInfoSync();
+    showBanner(bannerId: string): void {
+        let sysInfo = Laya.Browser.window.wx.getSystemInfoSync();
+        console.log("======================",sysInfo.model,sysInfo.windowWidth,sysInfo.windowHeight,sysInfo.screenWidth,sysInfo.screenHeight);
+        let delta = 0;
+        if (sysInfo.model == "iPhone X" || sysInfo.model == "iPhone XR" || sysInfo.model == "iPhone XS Max" || sysInfo.model == "iPhone XS")  {
+            delta = 24;
+        }
         var targetBannerAdWidth = 200;
+        let ll = (sysInfo.windowWidth - targetBannerAdWidth) / 2;
         // 创建一个居于屏幕底部正中的广告
         this.bannerAd = this.tt.createBannerAd({
-            adUnitId: "6qo6tc5agtb3hb06f0",
+            adUnitId: "cha8ploh81o2ajcof0",
             adIntervals: 60,
             style: {
                 width: targetBannerAdWidth,
-                top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度
+                left:ll
             }
         });
+        // top: sysInfo.windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度
         this.bannerAd.onError(function (res) { });
-        // 也可以手动修改属性以调整广告尺寸
-        this.bannerAd.style.left = (windowWidth - targetBannerAdWidth) / 2;
 
         // 尺寸调整时会触发回调，通过回调拿到的广告真实宽高再进行定位适配处理
         // 注意：如果在回调里再次调整尺寸，要确保不要触发死循环！！！
         this.bannerAd.onResize(size => {
-            // good
-            this.bannerAd.style.top = windowHeight - size.height;
-            this.bannerAd.style.left = (windowWidth - size.width) / 2;
+            this.bannerAd.style.left = (sysInfo.windowWidth - size.width) * 0.5;
+            this.bannerAd.style.top = sysInfo.windowHeight - size.height - delta;
+            console.log("banner pos",this.bannerAd.style.left,this.bannerAd.style.top);
         })
 
         this.bannerAd.show();
+
+
+        
+        
+        
+        // let obj: any = {};
+        // obj.adUnitId = "cha8ploh81o2ajcof0";
+        // obj.adIntervals = 60;
+        // let l = (sysInfo.windowWidth - 208) / 2;
+        // obj.style = { left: l, top: 0, width: 208, height: 1 };
+
+        // this.bannerAd = Laya.Browser.window.wx.createBannerAd(obj);
+        // this.bannerAd.onError(function (res) {
+
+        // });
+        // this.bannerAd.onResize(res => {
+        //     this.bannerAd.style.left = l;
+        //     this.bannerAd.style.top = sysInfo.windowWidth - res.height - delta;
+        // });
+        // this.bannerAd.show();
     }
 
-    showBanner2(): void  {
+    showBanner2(): void {
         this.bannerAd.show();
     }
 
-    hideBanner(): void  {
+    hideBanner(): void {
         this.bannerAd.hide();
     }
 
     private recorde;
     private videoUrl;
-    private isEnd:boolean;
-    private isClickStop:boolean;
+    private isEnd: boolean;
+    private isClickStop: boolean;
     recorder(): void {
         console.log("开始录屏");
-        if(!this.recorde)
-        {
+        if (!this.recorde)  {
             this.recorde = this.tt.getGameRecorderManager();
             this.recorde.onStart(res => {
             });
@@ -310,13 +340,12 @@ export default class TTPlatform extends BasePlatform {
                 console.log("录屏结束");
                 this.isEnd = true;
 
-                if(this.isClickStop)
-                {
+                if (this.isClickStop)  {
                     this.stopRecorder();
                 }
             });
         }
-        
+
         this.isClickStop = false;
         this.isEnd = false;
         this.recorde.start({
@@ -326,8 +355,7 @@ export default class TTPlatform extends BasePlatform {
 
     stopRecorder(): void {
         this.isClickStop = true;
-        if(this.isEnd)
-        {
+        if (this.isEnd)  {
             this.tt.shareVideo({
                 videoPath: this.videoUrl,
                 success() {
@@ -336,8 +364,7 @@ export default class TTPlatform extends BasePlatform {
                 }
             });
         }
-        else
-        {
+        else  {
             this.recorde.stop();
         }
     }

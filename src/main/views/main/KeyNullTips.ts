@@ -36,11 +36,13 @@ export default class KeyNullTips extends ui.keyTipsUI {
         GM.platform.playAd("142901",AdType.nullKey);
         this.removeSelf();
         GM.sysLog(LogType.key_null_ad_play);
+        GM.hideTTBanner();
     }
 
     private onClose():void
     {
         GM.sysLog(LogType.close_key_null);
         this.removeSelf();
+        GM.hideTTBanner();
     }
 }

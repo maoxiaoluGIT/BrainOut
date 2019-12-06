@@ -17,7 +17,10 @@ export default class ReceiverHttp extends BaseHttp {
     }
 
     send(): void {
-        super.send(GM.serverIP + "gamex3/get4","skey=" + Session.SKEY, "post", "text");
+        if(Session.SKEY)
+        {
+            super.send(GM.serverIP + "gamex3/get4","skey=" + Session.SKEY, "post", "text");
+        }
     }
 
     onSuccess(data): void {

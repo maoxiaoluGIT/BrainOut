@@ -86,11 +86,12 @@ export default class MainView extends ui.mainViewUI {
         this.addChild(this._nullTipsView);
         this._nullTipsView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
         MyEffect.popup(this._nullTipsView,1,500,100);
+        GM.showTTBanner();
     }
 
     private showWx():void
     {
-        Game.soundManager.setMusicVolume(1);
+        Game.soundManager.setMusicVolume(GM.musicState);
     }
 
     private hideWx():void
@@ -128,6 +129,7 @@ export default class MainView extends ui.mainViewUI {
         this.addChild(this._skipView);
         this._skipView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
         MyEffect.popup(this._skipView,1,500,100);
+        GM.showTTBanner();
     }
 
     private onMouseDown():void
@@ -177,11 +179,13 @@ export default class MainView extends ui.mainViewUI {
         Session.onSave();
         KeyIcon.fly("-1");
         GM.sysLog(LogType.resume_key);
+        GM.showTTBanner();
     }
 
     private onRefresh():void
     {
         this.curView.refresh();
+        GM.hideTTBanner();
     }
 
     private showRight():void
@@ -217,6 +221,8 @@ export default class MainView extends ui.mainViewUI {
         }
 
         Session.onSave();
+
+        GM.showTTBanner();
     }
 
     private goLastIndex():void
@@ -264,6 +270,7 @@ export default class MainView extends ui.mainViewUI {
         this._passView.anchorX = this._passView.anchorY = 0.5;
         this._passView.pos(GameConfig.width * 0.5,GameConfig.height * 0.5);
         MyEffect.popup(this._passView,1,500,250);
+        GM.showTTBanner();
     }
 
     private curView:BaseLevel;
@@ -296,6 +303,7 @@ export default class MainView extends ui.mainViewUI {
         {
             (GM.platform as OppoPlatform).showBanner("142894");
         }
+        GM.hideTTBanner();
     }
 
     helpLevel(lv:number):void
@@ -318,5 +326,6 @@ export default class MainView extends ui.mainViewUI {
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
         Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");
+        GM.hideTTBanner();
     }
 }

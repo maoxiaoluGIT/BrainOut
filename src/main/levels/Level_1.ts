@@ -1,8 +1,10 @@
 import BaseLevel from "./BaseLevel";
 import { ui } from "../../ui/layaMaxUI";
+import Session from "../sessions/Session";
 
 export default class Level_1 extends BaseLevel {
     private ui: ui.level1UI;
+    private isClick:boolean = false;
     static itemskins: any[] = [
         { skin: "guanqia/1/3_pic_3_1.png", right: 1, ww: 184, hh: 173 },
         { skin: "guanqia/1/pic_20_2.png", right: 0, ww: 222, hh: 167 },
@@ -45,5 +47,12 @@ export default class Level_1 extends BaseLevel {
 
     private onClick(img: Laya.Image): void {
         this.setAnswer(img,img.tag == 1);
+        if(!this.isClick)
+        {
+            if(Session.isNew)
+            {
+                Laya.Browser.window.wx.aldSendEvent('新用户首关点击人数');
+            }
+        }
     }
 }

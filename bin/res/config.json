@@ -1,14 +1,15 @@
 {
-    "platformId": 61,
+    "platformId": 41,
     "platforms": {
         "0": "http://10.21.6.93:8082/",
         "1": "https://s1.kuwan511.com/",
         "41": "https://s1.kuwan511.com/",
         "51": "https://s1.kuwan511.com/",
-        "61": "https://s1.kuwan511.com/"
+        "61": "https://s1.kuwan511.com/",
+        "71": "https://s1.kuwan511.com/"
     },
     "gamesInfo":[
-        ["wx7a4290a2d4e76ca7","其中孩子去哪野了"],
+        ["wx7a4290a2d4e76ca7","孩子去哪野了"],
         ["wx97ce1f849ac4b1f1","老婆去哪嗨了"],
         ["wxf4335314b18062c4","我不要挂科"],
         ["wxc8a95db85504b64a","史上最坑爹游戏"],

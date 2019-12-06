@@ -4,9 +4,10 @@ import Game from "../../core/Game";
 import GameEvent from "../GameEvent";
 import { DataKey } from "./DataKey";
 import LogType from "../LogType";
+import PlatformID from "../platforms/PlatformID";
 
 export default class Session{
-    static SKEY:string = "ntx";
+    static SKEY:string;
     static gameData:number[] = [];
     static isNew:boolean = false;
 
@@ -28,6 +29,11 @@ export default class Session{
             Session.gameData[DataKey.musicState] = 1;
             Session.gameData[DataKey.soundState] = 1;
             Session.gameData[DataKey.shakeState] = 1;
+            if(GM.platformId == PlatformID.OPPO)
+            {
+                Session.gameData[DataKey.bannerTimes] = 5;
+                Session.gameData[DataKey.insertAdTimes] = 7;
+            }
             Session.isNew = true;
             GM.sysLog(LogType.new_player);
         }
@@ -48,6 +54,12 @@ export default class Session{
                         Session.gameData[DataKey.signinDay] = 0;
                     }
                     Session.gameData[DataKey.signinState] = 0;
+                }
+
+                if(GM.platformId == PlatformID.OPPO)
+                {
+                    Session.gameData[DataKey.bannerTimes] = 5;
+                    Session.gameData[DataKey.insertAdTimes] = 7;
                 }
             }
 
@@ -87,6 +99,21 @@ export default class Session{
             {
                 Session.gameData[DataKey.shakeState] = 1;
             }
+
+            if(GM.platformId == PlatformID.OPPO)
+            {
+                if(Session.gameData[DataKey.bannerTimes] == null)
+                {
+                    Session.gameData[DataKey.bannerTimes] = 5;
+                }
+                if(Session.gameData[DataKey.insertAdTimes] == null)
+                {
+                    Session.gameData[DataKey.insertAdTimes] = 7;
+                }
+            }
+
+            // Session.gameData[DataKey.bannerTimes] = 5;
+            // Session.gameData[DataKey.insertAdTimes] = 7;
         }
         Session.onSave();
     }

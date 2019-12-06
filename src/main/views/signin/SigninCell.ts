@@ -50,6 +50,7 @@ export default class SigninCell extends ui.qiandao1UI {
         }
         this.update(this._index, this._keyNum);
         GM.viewManager.closeView2(ViewID.signin);
+        GM.hideTTBanner();
     }
 
     update(index: number, keyNum: number): void {

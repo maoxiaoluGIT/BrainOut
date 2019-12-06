@@ -8,5 +8,7 @@ export enum DataKey{
     lastIndex,
     musicState,
     soundState,
-    shakeState
+    shakeState,
+    bannerTimes,
+    insertAdTimes
 }

@@ -1,5 +1,6 @@
 import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
+import Session from "../sessions/Session";
 
 export default class Level_11 extends BaseLevel{
     private ui: ui.level11UI;
@@ -16,6 +17,10 @@ export default class Level_11 extends BaseLevel{
 
         this.ui.sureBtn.clickHandler = new Laya.Handler(this,this.onSure);
         this.refresh();
+
+        if (Session.isNew)  {
+            Laya.Browser.window.wx.aldSendEvent('新用户第11关进入人数');
+        }
     }
 
     refresh():void

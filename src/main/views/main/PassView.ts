@@ -22,6 +22,7 @@ export default class PassView extends ui.passGameUI{
     {
         this.paishou.y = 1334;
         Laya.Tween.to(this.paishou,{y:857},500,null,Laya.Handler.create(this,this.onEff),600)
+        GM.hideTTBanner();
     }
 
     private onEff():void

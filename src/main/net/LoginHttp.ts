@@ -33,11 +33,18 @@ export default class LoginHttp extends BaseHttp {
     
 
     checkLogin(): void {
-        GM.addLog("调用oppo的login");
+        GM.addLog("调用平台的login");
         GM.platform.login((code:string)=>{
             GM.addLog("jsCode:" + code);
             this.jsCode = code;
-            this.send();
+            if(code)
+            {
+                this.send();
+            }
+            else
+            {
+                super.onSuccess("");
+            }
         });
     }
 

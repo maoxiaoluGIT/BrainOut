@@ -22,6 +22,7 @@ export default class TipsView61 extends ui.tishi61UI{
     private onClose():void
     {
         this.removeSelf();
+        GM.hideTTBanner();
     }
 
     setTips(sys:SysTitles):void

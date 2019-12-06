@@ -253,24 +253,23 @@ export default class OppoPlatform extends BasePlatform {
     private videoAd;
     private _type: number;
     playAd(codeId: string, type: number): void {
-        if(this.videoAd)
-        {
+        if (this.videoAd) {
             this.videoAd.destroy();
             this.videoAd = null;
         }
         this._type = type;
         // if (!this.ad) {
         this.videoAd = Laya.Browser.window.qg.createRewardedVideoAd({ adUnitId: codeId });
-        this.videoAd.offError(function(res){});
-        this.videoAd.offLoad(function(res){});
-        this.videoAd.offClose(function(res){});
+        this.videoAd.offError(function (res) { });
+        this.videoAd.offLoad(function (res) { });
+        this.videoAd.offClose(function (res) { });
         this.videoAd.onError(function (res) {
             GM.addLog('videoAd onError====' + res.errMsg);
         })
-        this.videoAd.onVideoStart(function() {
+        this.videoAd.onVideoStart(function () {
             GM.addLog('激励视频 开始播放');
-          })
-        this.videoAd.onClose((res) =>{
+        })
+        this.videoAd.onClose((res) => {
             GM.addLog('videoAd onClose=====' + res);
             if (res.isEnded) {
                 GM.addLog("关闭广告");
@@ -278,14 +277,12 @@ export default class OppoPlatform extends BasePlatform {
                 Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, this._type);
             }
         });
-        this.videoAd.onLoad((res)=> {
-            if(res.msg == "ok")
-            {
+        this.videoAd.onLoad((res) => {
+            if (res.msg == "ok") {
                 GM.addLog('激励视频加载成功' + this.videoAd);
                 this.videoAd.show();
             }
-            else
-            {
+            else {
                 GM.addLog('激励视频加载失败');
                 // this.onShare(this._type, false);
             }
@@ -294,71 +291,88 @@ export default class OppoPlatform extends BasePlatform {
     }
 
 
+    private isBool: boolean;
     showBanner(bannerId?: string): void {
         let sysInfo = Laya.Browser.window.qg.getSystemInfoSync();
-        GM.addLog("======================"+sysInfo.model+","+sysInfo.windowWidth+","+sysInfo.windowHeight+","+sysInfo.pixelRatio);
+        GM.addLog("======================" + sysInfo.model + "," + sysInfo.windowWidth + "," + sysInfo.windowHeight + "," + sysInfo.pixelRatio);
         let obj: any = {};
-        obj.adUnitId = bannerId ? bannerId : "142892";
+        obj.adUnitId = "142892";
         obj.style = { left: 0, top: sysInfo.windowHeight - 100, width: sysInfo.windowWidth, height: 100 };
 
-        if(this.banner)
-        {
-            this.banner.destroy();
+        if (!this.banner) {
+            this.banner = Laya.Browser.window.qg.createBannerAd(obj);
+            this.banner.onError((res) => {
+                GM.addLog("banner error====" + res.errMsg);
+            });
+
+            this.banner.onResize((res) => {
+                this.banner.style.top = sysInfo.windowHeight - res.height;
+                GM.addLog("banner top=========" + this.banner.style.top + "," + res.height);
+            });
+
+            this.banner.onHide((res) => {
+                console.log("调用banner的hide", this.isBool);
+                if (!this.isBool)  {
+                    if (Session.gameData[DataKey.bannerTimes] > 0) {
+                        Session.gameData[DataKey.bannerTimes]--;
+                        Session.onSave();
+                        console.log("刷新banner的次数");
+                    }
+                }
+            });
         }
-
-        this.banner = Laya.Browser.window.qg.createBannerAd(obj);
-        this.banner.onError((res)=> {
-            GM.addLog("banner error====" + res.errMsg);
-        });
-
-        this.banner.onResize((res) => {
-            this.banner.style.top = sysInfo.windowHeight - res.height;
-            GM.addLog("banner top=========" + this.banner.style.top + "," + res.height);
-        });
-
-        this.banner.show();
-
-        this.banner.onShow(()=> {
-            console.log('banner成功展示');
-          });
-
         
+        if (Session.gameData[DataKey.bannerTimes] > 0) {
+            this.isBool = false;
+            this.banner.show();
+            console.log("显示banner");
+        }
     }
 
-    showOVBanner(viewId): void  {
-        this.hideBanner();
-        if (GM.platformId == PlatformID.OPPO || GM.platformId == PlatformID.VIVO)  {
-            if (viewId == ViewID.setting)  {
+    showOVBanner(viewId): void {
+        if (GM.platformId == PlatformID.OPPO || GM.platformId == PlatformID.VIVO) {
+            if (viewId == ViewID.setting) {
                 this.showBanner("142892");
             }
-            else if (viewId == ViewID.signin)  {
+            else if (viewId == ViewID.signin) {
                 this.showBanner("142893");
             }
         }
     }
 
-    hideBanner(): void  {
+    hideBanner(): void {
+        console.log("自动隐藏banner");
+        this.isBool = true;
+        // this.banner && this.banner.offHide();
         this.banner && this.banner.hide();
     }
 
     private insertAds;
-    InsertAd(codeId?): void  {
+    InsertAd(codeId?): void {
         this.hideBanner();
 
-        if(this.insertAds)
-        {
+        if (this.insertAds) {
             this.insertAds.destroy();
         }
 
         this.insertAds = Laya.Browser.window.qg.createInsertAd({
             adUnitId: codeId
         });
-        this.insertAds.onError((res)=> {
+        this.insertAds.onError((res) => {
             GM.addLog("insertAD error====" + res.errMsg);
         });
+        this.insertAds.onClose(() => {
+            if (Session.gameData[DataKey.insertAdTimes] > 0) {
+                Session.gameData[DataKey.insertAdTimes]--;
+                Session.onSave();
+            }
+        });
         this.insertAds.load();
-        this.insertAds.onLoad((res)=> {
-            this.insertAds.show();
+        this.insertAds.onLoad((res) => {
+
+            if (Session.gameData[DataKey.insertAdTimes] > 0) {
+                this.insertAds.show();
+            }
         });
     }
 }

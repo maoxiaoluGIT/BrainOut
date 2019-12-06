@@ -36,6 +36,7 @@ export default class SigninView extends ui.qiandaoUI {
 
         if (GM.platformId == PlatformID.WX)  {
             this.gameBox = new GameBox();
+            this.gameBox.fromTag = GameBox.qiandao;
         }
 
         this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
@@ -74,5 +75,6 @@ export default class SigninView extends ui.qiandaoUI {
     private onBack(): void  {
         GM.viewManager.closeView2(ViewID.signin);
         this.gameBox && this.gameBox.removeSelf();
+        GM.hideTTBanner();
     }
 }

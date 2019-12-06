@@ -38,6 +38,7 @@ export default class SkipView extends ui.tishi2UI {
     {
         this.removeSelf();
         GM.sysLog(LogType.close_skip);
+        GM.hideTTBanner();
     }
 
     private onNext():void
@@ -46,7 +47,7 @@ export default class SkipView extends ui.tishi2UI {
         {
             Session.gameData[DataKey.keyNum] -= 2;
             Session.onSave();
-            this.removeSelf();
+            this.onClose();
             KeyIcon.fly("-2");
             GM.sysLog(LogType.resume_key);
             GM.sysLog(LogType.resume_key);

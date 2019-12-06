@@ -98,8 +98,8 @@ import OppoPlatform from "./platforms/OppoPlatform";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.2.191203";
-    static resVer:string = "1.1.2.191203";
+    static codeVer:string = "1.1.3.191206";
+    static resVer:string = "1.1.3.191206";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -218,6 +218,7 @@ export default class GM{
     static addLog(str):void
     {
         // Game.layerManager.logTxt.text += str + "\n";
+        console.log(str);
     }
 
     static indexNum;
@@ -267,5 +268,21 @@ export default class GM{
     static hitPoint2(xx,yy , box:Laya.Sprite):boolean{
         return xx >= box.x && xx <= box.x + box.width 
         && yy >= box.y && yy <= box.y + box.height;
+    }
+
+    static showTTBanner():void
+    {
+        if(GM.platformId == PlatformID.TT)
+        {
+            GM.platform.showBanner2();
+        }
+    }
+
+    static hideTTBanner():void
+    {
+        if(GM.platformId == PlatformID.TT)
+        {
+            GM.platform.hideBanner();
+        }
     }
 }
