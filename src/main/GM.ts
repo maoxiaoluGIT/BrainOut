@@ -100,11 +100,16 @@ import Level_72 from "./levels/Level_72";
 import Level_73 from "./levels/Level_73";
 import Level_74 from "./levels/Level_74";
 import Level_75 from "./levels/Level_75";
+import Level_76 from "./levels/Level_76";
+import Level_77 from "./levels/Level_77";
+import Level_78 from "./levels/Level_78";
+import Level_79 from "./levels/Level_79";
+import Level_80 from "./levels/Level_80";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.3.191206";
-    static resVer:string = "1.1.3.191206";
+    static codeVer:string = "1.1.3.191207";
+    static resVer:string = "1.1.3.191207";
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
@@ -247,7 +252,7 @@ export default class GM{
             Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50,
             Level_51,Level_52,Level_53,Level_54,Level_55,Level_56,Level_57,Level_58,Level_59,Level_60,
             Level_61,Level_62,Level_63,Level_64,Level_65,Level_66,Level_67,Level_68,Level_69,Level_70,
-            Level_71,Level_72,Level_73,Level_74,Level_75
+            Level_71,Level_72,Level_73,Level_74,Level_75,Level_76,Level_77,Level_78,Level_79,Level_80
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
