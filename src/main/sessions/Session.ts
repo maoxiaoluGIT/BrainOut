@@ -111,7 +111,7 @@ export default class Session{
                     Session.gameData[DataKey.insertAdTimes] = 7;
                 }
             }
-
+            Session.gameData[DataKey.maxIndex] = Session.gameData[DataKey.lastIndex] = 75;
             // Session.gameData[DataKey.bannerTimes] = 5;
             // Session.gameData[DataKey.insertAdTimes] = 7;
         }

@@ -37,6 +37,9 @@ export default class MainView extends ui.mainViewUI {
     constructor() { 
         super(); 
         this.addChild(this._box);
+        // this._box.mouseThrough = true;
+        // this.mouseThrough = true;
+        this._box.name = "LevelsBox";
         this._mainFace = new MainFace();
         this.addChild(this._mainFace);
 

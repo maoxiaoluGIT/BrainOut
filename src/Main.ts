@@ -3,6 +3,7 @@ import Game from "./core/Game";
 import GM from "./main/GM";
 import HomeLoading from "./main/HomeLoading";
 import InitView from "./main/InitView";
+import Session from "./main/sessions/Session";
 
 class Main {
 	constructor() {
@@ -41,7 +42,9 @@ class Main {
 		// p = "oppo";
 		// p = "h5";
 		// p = "tt";
-		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
+
+		// Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
+		Session.SKEY = "ntx01"
 		Game.init("res/sounds/");
 		GM.addLog("cdn:"+Laya.URL.basePath);
 		GM.startGame();

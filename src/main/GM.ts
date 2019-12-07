@@ -95,6 +95,11 @@ import Level_70 from "./levels/Level_70";
 import Session from "./sessions/Session";
 import { DataKey } from "./sessions/DataKey";
 import OppoPlatform from "./platforms/OppoPlatform";
+import Level_71 from "./levels/Level_71";
+import Level_72 from "./levels/Level_72";
+import Level_73 from "./levels/Level_73";
+import Level_74 from "./levels/Level_74";
+import Level_75 from "./levels/Level_75";
 
 /**游戏总管理 */
 export default class GM{
@@ -241,7 +246,8 @@ export default class GM{
             Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37,Level_38,Level_39,Level_40,
             Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50,
             Level_51,Level_52,Level_53,Level_54,Level_55,Level_56,Level_57,Level_58,Level_59,Level_60,
-            Level_61,Level_62,Level_63,Level_64,Level_65,Level_66,Level_67,Level_68,Level_69,Level_70
+            Level_61,Level_62,Level_63,Level_64,Level_65,Level_66,Level_67,Level_68,Level_69,Level_70,
+            Level_71,Level_72,Level_73,Level_74,Level_75
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
