@@ -36,13 +36,9 @@ export default class Level_71 extends BaseLevel{
         console.log("点击图片");
     }
 
-    private _isTarget:boolean;
-    private _lastX:number = 0;
-    private _lastY:number = 0;
-    private _count:number = 0;
 
-    private _downPos:Laya.Point = new Laya.Point();
     private _curName:string;
+    private _startTime:number;
     onDown(sprite: Laya.Sprite):void
     {
         console.log("================" + sprite.name);
@@ -50,17 +46,15 @@ export default class Level_71 extends BaseLevel{
         {
             return;
         }
+        this._startTime = Date.now();
         this._curName = sprite.name;
-        this._downPos.x = Laya.stage.mouseX;
-        this._downPos.y = Laya.stage.mouseY;
-        this._lastX = this._lastY = this._count = 0;
         sprite.startDrag();
     }
 
     onUp(sprite:Laya.Sprite):void
     {
         this._curName = null;
-        if(Laya.stage.mouseX == this._downPos.x && Laya.stage.mouseY == this._downPos.y)
+        if(Date.now() - this._startTime < 200)
         {
             this.onClick(sprite);
         }
@@ -72,7 +66,6 @@ export default class Level_71 extends BaseLevel{
 
     refresh(): void  {
         Laya.MouseManager.enabled = true;
-        this._count = 0;
         super.refresh();
         this.ui.item0.pos(this.posList[0][0],this.posList[0][1]);
         this.ui.item1.pos(this.posList[1][0],this.posList[1][1]);

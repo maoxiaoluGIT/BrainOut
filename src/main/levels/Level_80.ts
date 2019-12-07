@@ -51,6 +51,13 @@ export default class Level_80 extends BaseLevel{
             this.ui.ji.y += this._delta;
         }
 
+        this.ui.ji.x = Math.max(this.ui.box.x,this.ui.ji.x);
+        this.ui.ji.x = Math.min(this.ui.box.x +this.ui.box.width,this.ui.ji.x);
+
+        this.ui.ji.y = Math.max(this.ui.box.y,this.ui.ji.y);
+        this.ui.ji.y = Math.min(this.ui.box.y + this.ui.box.height,this.ui.ji.y);
+
+
         this.onCheck();
     }
     
