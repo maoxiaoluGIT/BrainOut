@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":4,
+    "selecteID":33,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
-    "maxID":33,
+    "maxID":38,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -18,14 +18,27 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":351,"x":225,"width":500,"skin":"guanqia/75/pic_23_1.png","scaleY":0.6,"scaleX":0.6,"height":500},
+            "props":{"y":351,"x":125,"width":500,"skin":"guanqia/74/pic_31_1.png","height":500},
             "nodeParent":2,
             "label":"Image",
-            "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":28,
+            "compId":33,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "searchKey":"Image",
+            "props":{"y":864,"x":166,"width":420,"skin":"pubRes/top_yellow.png","sizeGrid":"0,181,0,173","height":74},
+            "nodeParent":2,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":34,
             "child":[
                 ]
         },
@@ -33,13 +46,27 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,sureBtn",
-            "props":{"y":985,"x":145,"width":468,"var":"sureBtn","stateNum":"1","skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"观看视频","height":125},
+            "props":{"y":985,"x":145,"width":468,"var":"sureBtn","stateNum":"1","skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},
             "nodeParent":2,
             "label":"sureBtn",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":4,
+            "compId":35,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"TextInput",
+            "searchKey":"TextInput,shuru",
+            "props":{"y":876,"x":218,"width":318,"var":"shuru","prompt":"输入答案","height":55,"fontSize":40,"align":"center"},
+            "nodeParent":2,
+            "label":"shuru",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":36,
             "child":[
                 ]
         },
@@ -53,35 +80,7 @@
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":29,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image",
-            "props":{"y":351,"x":225,"width":500,"skin":"guanqia/75/pic_23_1.png","scaleY":0.6,"scaleX":0.6,"height":500},
-            "nodeParent":2,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":31,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Button",
-            "searchKey":"Button",
-            "props":{"y":212,"x":33,"width":262,"stateNum":"1","skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"复制","height":125},
-            "nodeParent":2,
-            "label":"Button",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":32,
+            "compId":37,
             "child":[
                 ]
         }],
