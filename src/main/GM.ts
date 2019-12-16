@@ -67,44 +67,8 @@ import Level_47 from "./levels/Level_47";
 import Level_48 from "./levels/Level_48";
 import Level_49 from "./levels/Level_49";
 import Level_50 from "./levels/Level_50";
-import Log from "./Log";
-import TTCookie from "./gameCookie/TTCookie";
-import TTPlatform from "./platforms/TTPlatform";
-import Level_51 from "./levels/Level_51";
-import Level_52 from "./levels/Level_52";
-import Level_53 from "./levels/Level_53";
-import Level_54 from "./levels/Level_54";
-import Level_55 from "./levels/Level_55";
-import Level_56 from "./levels/Level_56";
-import Level_57 from "./levels/Level_57";
-import Level_58 from "./levels/Level_58";
-import Level_59 from "./levels/Level_59";
-import Level_60 from "./levels/Level_60";
-import Level_62 from "./levels/Level_62";
-import Level_61 from "./levels/Level_61";
-import Level_63 from "./levels/Level_63";
-import Level_64 from "./levels/Level_64";
-import Level_65 from "./levels/Level_65";
-import QQCookie from "./gameCookie/QQCookie";
-import QQPlatform from "./platforms/QQPlatform";
-import Level_66 from "./levels/Level_66";
-import Level_67 from "./levels/Level_67";
-import Level_68 from "./levels/Level_68";
-import Level_69 from "./levels/Level_69";
-import Level_70 from "./levels/Level_70";
 import Session from "./sessions/Session";
 import { DataKey } from "./sessions/DataKey";
-import OppoPlatform from "./platforms/OppoPlatform";
-import Level_71 from "./levels/Level_71";
-import Level_72 from "./levels/Level_72";
-import Level_73 from "./levels/Level_73";
-import Level_74 from "./levels/Level_74";
-import Level_75 from "./levels/Level_75";
-import Level_76 from "./levels/Level_76";
-import Level_77 from "./levels/Level_77";
-import Level_78 from "./levels/Level_78";
-import Level_79 from "./levels/Level_79";
-import Level_80 from "./levels/Level_80";
 
 /**游戏总管理 */
 export default class GM{
@@ -128,8 +92,6 @@ export default class GM{
     static soundState:number = 1;
     static shakeState:number = 1;
 
-    static sysLog:Function = Log.syslog;
-
     /**本地资源 */
     static nativefiles:string[] = ["loading/loding.png","loading/shuzi2.png","loading/jiazaizhong.png","atlas/pubRes.atlas","atlas/pubRes.png","config.json"];
 
@@ -141,28 +103,11 @@ export default class GM{
 
         if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
-            // GM.cookie = new TestCookie();
             GM.platform = new TestPlatform();
         }
         else if(config.platformId == PlatformID.WX)
         {
-            // GM.cookie = new WXCookie();
             GM.platform = new WXPlatform();
-        }
-        else if(config.platformId == PlatformID.TT)
-        {
-            // GM.cookie = new TTCookie();
-            GM.platform = new TTPlatform();
-        }
-        else if(config.platformId == PlatformID.QQ)
-        {
-            // GM.cookie = new QQCookie();
-            GM.platform = new QQPlatform();
-        }
-        else if(config.platformId == PlatformID.OPPO)
-        {
-            // GM.cookie = new QQCookie();
-            GM.platform = new OppoPlatform();
         }
         
         // if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT || config.platformId == PlatformID.QQ)
@@ -249,10 +194,7 @@ export default class GM{
             Level_11,Level_12,Level_13,Level_14,Level_15,Level_16,Level_17,Level_18,Level_19,Level_20,
             Level_21,Level_22,Level_23,Level_24,Level_25,Level_26,Level_27,Level_28,Level_29,Level_30,
             Level_31,Level_32,Level_33,Level_34,Level_35,Level_36,Level_37,Level_38,Level_39,Level_40,
-            Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50,
-            Level_51,Level_52,Level_53,Level_54,Level_55,Level_56,Level_57,Level_58,Level_59,Level_60,
-            Level_61,Level_62,Level_63,Level_64,Level_65,Level_66,Level_67,Level_68,Level_69,Level_70,
-            Level_71,Level_72,Level_73,Level_74,Level_75,Level_76,Level_77,Level_78,Level_79,Level_80
+            Level_41,Level_42,Level_43,Level_44,Level_45,Level_46,Level_47,Level_48,Level_49,Level_50
         ];
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)

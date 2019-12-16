@@ -23,28 +23,23 @@ class Main {
 		GM.log("code version:" + GM.codeVer);
 		GM.log("res version:" + GM.resVer);
 
-		if(Laya.Browser.window.qq)
-		{
-			Laya.Browser.window.qq.onShow(res => {
-				console.log("打开微信的参数",res);
-				if (res.query) {
-					if(res.query.helpIndex)
-					{
-						let helpIndex:number = Number(res.query.helpIndex);
-						GM.helpIndex = helpIndex;
-						console.log("需要帮助的关卡",helpIndex);
-					}
-				}
-			});
-		}
-		let p = "wx";
-		// p = "qq";
-		// p = "oppo";
-		// p = "h5";
-		// p = "tt";
+		// if(Laya.Browser.window.qq)
+		// {
+		// 	Laya.Browser.window.qq.onShow(res => {
+		// 		console.log("打开微信的参数",res);
+		// 		if (res.query) {
+		// 			if(res.query.helpIndex)
+		// 			{
+		// 				let helpIndex:number = Number(res.query.helpIndex);
+		// 				GM.helpIndex = helpIndex;
+		// 				console.log("需要帮助的关卡",helpIndex);
+		// 			}
+		// 		}
+		// 	});
+		// }
 
-		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
-		// Session.SKEY = "ntx01"
+		// Laya.URL.basePath = "https://img.kuwan511.com/ZeYueBrainOut/";
+		Session.SKEY = "ntx01"
 		Game.init("res/sounds/");
 		GM.addLog("cdn:"+Laya.URL.basePath);
 		GM.startGame();

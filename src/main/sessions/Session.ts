@@ -35,7 +35,6 @@ export default class Session{
                 Session.gameData[DataKey.insertAdTimes] = 7;
             }
             Session.isNew = true;
-            GM.sysLog(LogType.new_player);
         }
         else
         {

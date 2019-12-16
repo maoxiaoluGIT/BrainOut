@@ -6,10 +6,8 @@ import CookieKey from "../../gameCookie/CookieKey";
 import Session from "../../sessions/Session";
 import { DataKey } from "../../sessions/DataKey";
 import PlatformID from "../../platforms/PlatformID";
-import GameBox from "../../GameBox";
 
 export default class SettingView extends ui.shezhiUI {
-    private gameBox: GameBox;
     constructor() { 
         super(); 
         let arr:Laya.Image[] = [this.fanhui,this.yinyue,this.yinxiao,this.zhendong,this.fankui,this.meiri,this.qiuzhu];
@@ -21,30 +19,12 @@ export default class SettingView extends ui.shezhiUI {
         GM.imgEffect.addEffect(this.topImg,2);
         GM.imgEffect.addEffect(this.bottomImg,2);
 
-        if (GM.platformId == PlatformID.WX)  {
-            this.gameBox = new GameBox();
-            this.gameBox.fromTag = GameBox.shezhi;
-        }
-
         this.on(Laya.Event.DISPLAY,this,this.onDis);
 
         this.verTxt.text = "version:" + GM.codeVer;
 
         this.qiuzhu.visible = GM.platformId != PlatformID.OPPO;
         this.shareTxt.visible = this.qiuzhu.visible;
-    }
-
-    addBox():void
-    {
-        if (GM.platformId == PlatformID.WX)  {
-            this.addChild(this.gameBox);
-            this.gameBox.pos(0,220);
-        }
-    }
-
-    removeBox():void
-    {
-        this.gameBox && this.gameBox.removeSelf();
     }
 
     private onDis(): void  {
@@ -65,7 +45,6 @@ export default class SettingView extends ui.shezhiUI {
         {
             case this.fanhui:
             GM.viewManager.closeView2(ViewID.setting);
-            this.gameBox && this.gameBox.removeSelf();
             GM.hideTTBanner();
             break;
             case this.yinyue:

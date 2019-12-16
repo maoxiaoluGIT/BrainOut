@@ -5,7 +5,6 @@ import KeyIcon from "../main/KeyIcon";
 import { DataKey } from "../../sessions/DataKey";
 import LogType from "../../LogType";
 import { ViewID } from "../ViewID";
-import OppoPlatform from "../../platforms/OppoPlatform";
 import AdType from "../main/AdType";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
@@ -23,20 +22,7 @@ export default class SigninCell extends ui.qiandao1UI {
 
     private onClick(): void {
         if (this.state == 1) {
-            if (GM.platform instanceof OppoPlatform)  {
-                if(this._keyNum > 1)
-                {
-                    SigninView.INDEX = this._index;
-                    GM.platform.playAd("142903", AdType.signin);
-                }
-                else
-                {
-                    this.updateView();
-                }
-            }
-            else  {
-                this.updateView();
-            }
+            this.updateView();
         }
     }
 
@@ -45,9 +31,6 @@ export default class SigninCell extends ui.qiandao1UI {
         Session.gameData[DataKey.keyNum] += this._keyNum;
         Session.onSave();
         KeyIcon.fly("+" + this._keyNum);
-        for (let i = 0; i < this._keyNum; i++) {
-            GM.sysLog(LogType.get_key);
-        }
         this.update(this._index, this._keyNum);
         GM.viewManager.closeView2(ViewID.signin);
         GM.hideTTBanner();

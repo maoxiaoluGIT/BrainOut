@@ -27,21 +27,17 @@ export default class KeyNullTips extends ui.keyTipsUI {
         setTimeout(() => {
             Laya.Tween.to(this.cha,{alpha:1},500);
         }, 600);
-
-        GM.sysLog(LogType.open_key_null);
     }
 
     private onPlay():void
     {
         GM.platform.playAd("142901",AdType.nullKey);
         this.removeSelf();
-        GM.sysLog(LogType.key_null_ad_play);
         GM.hideTTBanner();
     }
 
     private onClose():void
     {
-        GM.sysLog(LogType.close_key_null);
         this.removeSelf();
         GM.hideTTBanner();
     }

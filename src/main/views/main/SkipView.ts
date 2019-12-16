@@ -30,14 +30,11 @@ export default class SkipView extends ui.tishi2UI {
         setTimeout(() => {
             Laya.Tween.to(this.cha,{alpha:1},500);
         }, 600);
-
-        GM.sysLog(LogType.open_skip);
     }
 
     private onClose():void
     {
         this.removeSelf();
-        GM.sysLog(LogType.close_skip);
         GM.hideTTBanner();
     }
 
@@ -49,15 +46,12 @@ export default class SkipView extends ui.tishi2UI {
             Session.onSave();
             this.onClose();
             KeyIcon.fly("-2");
-            GM.sysLog(LogType.resume_key);
-            GM.sysLog(LogType.resume_key);
             Game.eventManager.event(GameEvent.ON_SKIP);
         }
     }
 
     private playAd():void
     {
-        GM.sysLog(LogType.skip_ad_play);
         GM.platform.playAd("142902",AdType.skip);
     }
 }

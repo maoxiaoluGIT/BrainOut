@@ -1,5 +1,4 @@
 import Game from "../Game";
-import GameSoundManager from "./GameSoundManager";
 
 /*
 * name;

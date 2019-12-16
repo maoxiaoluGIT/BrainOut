@@ -20,7 +20,6 @@ import { DataKey } from "../../sessions/DataKey";
 import TipsView42 from "./TipsView42";
 import LogType from "../../LogType";
 import TipsView61 from "./TipsView61";
-import OppoPlatform from "../../platforms/OppoPlatform";
 
 export default class MainView extends ui.mainViewUI {
     private _mainFace:MainFace;
@@ -107,20 +106,6 @@ export default class MainView extends ui.mainViewUI {
         Session.gameData[DataKey.keyNum] += 1;
         Session.onSave();
         KeyIcon.fly("+1");
-        GM.sysLog(LogType.get_key);
-        
-        if(type == AdType.answerRight)
-        {
-            GM.sysLog(LogType.shengli_ad_com);
-        }
-        else if(type == AdType.skip)
-        {
-            GM.sysLog(LogType.skip_ad_com);
-        }
-        else if(type == AdType.nullKey)
-        {
-            GM.sysLog(LogType.key_null_ad_com);
-        }
     }
 
     private showSkip():void
@@ -181,7 +166,6 @@ export default class MainView extends ui.mainViewUI {
         Session.gameData[DataKey.keyNum]--;
         Session.onSave();
         KeyIcon.fly("-1");
-        GM.sysLog(LogType.resume_key);
         GM.showTTBanner();
     }
 
@@ -214,7 +198,6 @@ export default class MainView extends ui.mainViewUI {
         }
         else
         {
-            GM.sysLog(3000 + this.curLv);
             this.curLv++;
             Session.gameData[DataKey.lastIndex] = this.curLv;
         }
@@ -298,14 +281,6 @@ export default class MainView extends ui.mainViewUI {
         this.curView.onShow(lv,this._box);
         this._mainFace.setTitle(this.curView.sys);
         Laya.SoundManager.stopSound(Game.soundManager.pre + "win.mp3");
-        GM.sysLog(2000 + lv);
-
-        GM.platform.recorder();
-
-        if(GM.platform instanceof OppoPlatform)
-        {
-            (GM.platform as OppoPlatform).showBanner("142894");
-        }
         GM.hideTTBanner();
     }
 

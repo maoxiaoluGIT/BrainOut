@@ -189,7 +189,6 @@ export default class WXPlatform extends BasePlatform {
             Laya.Browser.window.wx.shareAppMessage(this.getShareObj());
             GM.log("视频失败分享");
         }
-        GM.sysLog(LogType.share_msg);
     }
 
     private shareTime: number;
@@ -245,7 +244,6 @@ export default class WXPlatform extends BasePlatform {
             this.ad.onClose((res) => {
                 if (res && res.isEnded || res === undefined) {
                     GM.log("关闭广告");
-                    GM.sysLog(LogType.play_ad_com_total);
                     Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, this._type);
                 }
             });
@@ -264,7 +262,6 @@ export default class WXPlatform extends BasePlatform {
                     this.onShare(type, false);
                 })
         })
-        GM.sysLog(LogType.play_ad_total);
     }
 
     showBanner(bannerId: string): void {

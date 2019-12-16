@@ -3,13 +3,11 @@ import SigninCell from "./SigninCell";
 import GM from "../../GM";
 import { ViewID } from "../ViewID";
 import PlatformID from "../../platforms/PlatformID";
-import GameBox from "../../GameBox";
 import Game from "../../../core/Game";
 import GameEvent from "../../GameEvent";
 import AdType from "../main/AdType";
 
 export default class SigninView extends ui.qiandaoUI {
-    private gameBox: GameBox;
     private itemList: SigninCell[] = [];
     private data: number[] = [1, 1, 1, 2, 3];
 
@@ -34,11 +32,6 @@ export default class SigninView extends ui.qiandaoUI {
 
         this.fanhui.on(Laya.Event.CLICK, this, this.onBack);
 
-        if (GM.platformId == PlatformID.WX)  {
-            this.gameBox = new GameBox();
-            this.gameBox.fromTag = GameBox.qiandao;
-        }
-
         this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
 
         Game.eventManager.on(GameEvent.AD_SUCCESS_CLOSE,this,this.onAddKey);
@@ -55,26 +48,13 @@ export default class SigninView extends ui.qiandaoUI {
         }
     }
 
-    removeBox():void
-    {
-        this.gameBox && this.gameBox.removeSelf();
-    }
-
     private onUndis():void
     {
-        this.gameBox && this.gameBox.removeSelf();
-    }
-
-    addBox(): void  {
-        if (GM.platformId == PlatformID.WX)  {
-            this.addChild(this.gameBox);
-            this.gameBox.pos(0,220);
-        }
+        
     }
 
     private onBack(): void  {
         GM.viewManager.closeView2(ViewID.signin);
-        this.gameBox && this.gameBox.removeSelf();
         GM.hideTTBanner();
     }
 }
