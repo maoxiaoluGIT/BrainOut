@@ -22,18 +22,23 @@ export default class Level_17 extends BaseLevel{
         this.ui.shi.tag = [this.ui.shi.x,this.ui.shi.y];
         this.ui.ping.tag = [this.ui.ping.x,this.ui.ping.y];
 
-        this.ui.ya.on(Laya.Event.MOUSE_DOWN,this,this.imgDown);
-        this.ui.ya.on(Laya.Event.MOUSE_UP,this,this.imgUp);
+        this.ui.ui.on(Laya.Event.MOUSE_DOWN,this,this.imgDown);
+        this.ui.ui.on(Laya.Event.MOUSE_UP,this,this.imgUp);
         
         this.refresh();
+    }
+
+    refresh():void
+    {
+        super.refresh();
+        this.ui.ya.height = 331;
     }
 
     private _downY:number;
     private imgDown():void
     {
         this._downY = Laya.stage.mouseY;
-        this.ui.ya.on(Laya.Event.MOUSE_MOVE,this,this.imgMove);
-        console.log("点了长颈鹿",this._downY);
+        this.ui.ui.on(Laya.Event.MOUSE_MOVE,this,this.imgMove);
     }
 
     private imgUp():void
@@ -42,15 +47,28 @@ export default class Level_17 extends BaseLevel{
         {
             this.setAnswer(this.ui.rightBox,true);
         }
-        this.ui.ya.on(Laya.Event.MOUSE_MOVE,this,this.imgMove);
+        this.ui.ui.off(Laya.Event.MOUSE_MOVE,this,this.imgMove);
     }
 
     private imgMove():void
     {
-        console.log("移动长颈鹿",Laya.stage.mouseY);
         if(Laya.stage.mouseY < this._downY)
         {
-            this.ui.ya.height++;
+            this.ui.ya.height+=4;
+        }
+        else
+        {
+            this.ui.ya.height-=4;
+        }
+
+        if(this.ui.ya.height > 660)
+        {
+            this.ui.ya.height = 600;
+        }
+
+        if(this.ui.ya.height < 311)
+        {
+            this.ui.ya.height = 311;
         }
     }
 

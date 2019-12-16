@@ -27,8 +27,6 @@ export default class Level_10 extends BaseLevel{
     refresh():void
     {
         super.refresh();
-        this.ui.blankBox.visible = false;
-        this.ui.birdImg0.visible = true;
         this.ui.birdImg1.visible = false;
         this.ui.sunImg.pos(this._startX,this._startY);
     }
@@ -44,12 +42,7 @@ export default class Level_10 extends BaseLevel{
         if(this.ui.sunImg.x <= -50 || this.ui.sunImg.x >= GameConfig.width + 50)
         {
             this.setAnswer(this.ui.rightBox,true);
-            this.ui.blankBox.visible = true;
-            this.ui.birdImg0.visible = false;
             this.ui.birdImg1.visible = true;
-            setTimeout(() => {
-                this.ui.blankBox.visible = false;
-            }, 1000);
         }
     }
 
