@@ -10,11 +10,9 @@ export default class Session{
     static SKEY:string;
     static gameData:number[] = [];
     static isNew:boolean = false;
-
-    static userData:any = {};
     constructor() {}
 
-    static onParse(data:string):void
+    static onParse(data):void
     {
         GM.log("player Data:" + data);
         if(data == null || data == "" || data == "0")
@@ -39,7 +37,7 @@ export default class Session{
         else
         {
             Session.isNew = false;
-            Session.gameData = JSON.parse(data);
+            Session.gameData = data;
             if(Date.now() > Session.gameData[DataKey.lastTime])
             {
                 Session.gameData[DataKey.shareTimes] = 3;
@@ -110,16 +108,14 @@ export default class Session{
                     Session.gameData[DataKey.insertAdTimes] = 7;
                 }
             }
-            // Session.gameData[DataKey.maxIndex] = Session.gameData[DataKey.lastIndex] = 79;
-            // Session.gameData[DataKey.bannerTimes] = 5;
-            // Session.gameData[DataKey.insertAdTimes] = 7;
         }
         Session.onSave();
     }
 
     static onSave():void
     {
-        SenderHttp.create().send();
+        // SenderHttp.create().send();
+        GM.cookie.setCookie("gamedata",Session.gameData);
         Game.eventManager.event(GameEvent.UPDATE_DATA);
     }
 }

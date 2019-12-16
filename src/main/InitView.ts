@@ -45,22 +45,11 @@ export default class InitView extends ui.initViewUI {
 
 		GM.addLog("登录");
 		GM.platform.checkUpdate();
-		new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
+		// new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
+		GM.cookie.getCookie("gamedata",(data)=>{
+			this.onReceiveData(data);
+		});
 	}
-	
-	private onSuccess(data):void
-	{
-		GM.addLog("登录成功");
-		if(Session.SKEY)
-		{
-			ReceiverHttp.create(new Laya.Handler(this, this.onReceiveData)).send();
-		}
-		else
-		{
-			this.onReceiveData("");
-		}
-	}
-
 	private onReceiveData(data):void
 	{
 		console.log("显示loading");

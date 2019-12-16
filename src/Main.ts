@@ -39,7 +39,7 @@ class Main {
 		// }
 
 		// Laya.URL.basePath = "https://img.kuwan511.com/ZeYueBrainOut/";
-		Session.SKEY = "ntx01"
+		// Session.SKEY = "ntx01"
 		Game.init("res/sounds/");
 		GM.addLog("cdn:"+Laya.URL.basePath);
 		GM.startGame();

@@ -86,7 +86,7 @@ export default class GM{
     static viewManager:ViewManager = new ViewManager();
     static imgEffect:ImageEffect = new ImageEffect();
     static imgEffect2:ImageEffect2 = new ImageEffect2();
-    // static cookie:BaseCookie;
+    static cookie:BaseCookie;
     static platform:BasePlatform;
     static musicState:number = 1;
     static soundState:number = 1;
@@ -98,28 +98,17 @@ export default class GM{
     static setConfig(config):void
     {
         GM.platformId = config.platformId;
-        GM.serverIP = config.platforms[GM.platformId];
-        GM.gamesInfo = config.gamesInfo;
 
         if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
             GM.platform = new TestPlatform();
+            GM.cookie = new TestCookie();
         }
         else if(config.platformId == PlatformID.WX)
         {
             GM.platform = new WXPlatform();
+            GM.cookie = new WXCookie();
         }
-        
-        // if(config.platformId == PlatformID.WX || config.platformId == PlatformID.TT || config.platformId == PlatformID.QQ)
-        // {
-        //     // for(let i = 1; i < 11;i++)
-		// 	// {
-		// 	// 	GM.nativefiles.push("atlas/guanqia/" + i + ".atlas");
-		// 	// 	GM.nativefiles.push("atlas/guanqia/" + i + ".png");
-		// 	// }
-        //     // Laya.URL.basePath = "https://img.kuwan511.com/brainOut/" + GM.resVer + "/";
-		// 	// Laya.MiniAdpter.nativefiles = GM.nativefiles;
-        // }
     }
 
     static setMusic():void
