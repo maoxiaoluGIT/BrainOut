@@ -1,4 +1,5 @@
 D .
+R 27764FAA 脑洞资源.rar
 D gamebox
 D guanqia
 D loading
@@ -72,9 +73,6 @@ P AD3A9BC9 ic_shock_no_3.png
 P BC0403E1 ic_shock_yes_1.png
 P 9521C468 ic_shock_yes_2.png
 P 5C0DD919 ic_shock_yes_3.png
-P 87FA1847 ic_shop_1.png
-P 7DDE8890 ic_shop_2.png
-P BB97F801 ic_shop_3.png
 P 5DC7C066 ic_skip_1.png
 P F7F240C8 ic_skip_2.png
 P E9641845 ic_skip_3.png
@@ -88,9 +86,6 @@ P A9A2E62A ic_terms_1.png
 P A6321C02 ic_terms_2.png
 P 3277CDDF ic_terms_3.png
 P 19B1149B ic_wrong.png
-P 3FFD41A7 noads_1.png
-P FE2E2FD0 noads_2.png
-P E280FC35 noads_3.png
 P 9063A5C7 pic_color_add.png
 P C6909B84 pic_color_reduce.png
 P 0A5D38F7 pic_hand_1.png
@@ -478,5 +473,9 @@ P FD2E0DF7 pic_35_3 .png
 P E1D857DF pic_35_4.png
 P 18DE8C21 pic_35_5.png
 P 2ADBB61E pic_35_6.png
+D guanqia/81
+P 7B369C76 pic_3_1.png
+P A6DCE691 pic_3_2.png
+P BD3B9390 pic_3_5.png
 D guanqia/9
 P BB010A2A choice_frame_while_1.png
