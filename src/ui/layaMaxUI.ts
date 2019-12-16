@@ -181,12 +181,13 @@ export module ui {
     }
     REG("ui.level15UI",level15UI);
     export class level16UI extends View {
+		public windowImg2:Laya.Image;
 		public humanImg:Laya.Image;
 		public windowImg:Laya.Image;
 		public sureBtn:Laya.Button;
 		public shuru:Laya.TextInput;
 		public rightBox:Laya.Box;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":549,"x":120,"width":526,"var":"humanImg","skin":"guanqia/16/3_pic_24_1.png","height":369},"compId":4},{"type":"Image","props":{"y":321,"x":158,"width":480,"var":"windowImg","skin":"guanqia/16/3_pic_24_2.png","height":318},"compId":5},{"type":"Image","props":{"y":853,"x":165,"width":420,"skin":"pubRes/top_yellow.png","sizeGrid":"0,181,0,173","height":74},"compId":6},{"type":"Button","props":{"y":984,"x":144,"width":468,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},"compId":7},{"type":"TextInput","props":{"y":863,"x":217,"width":318,"var":"shuru","text":"输入答案","prompt":"输入答案","height":55,"fontSize":40,"align":"center"},"compId":8},{"type":"Box","props":{"y":749,"x":378,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":10}],"loadList":["guanqia/16/3_pic_24_1.png","guanqia/16/3_pic_24_2.png","pubRes/top_yellow.png","pubRes/btn_2.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":347,"x":217,"width":347,"var":"windowImg2","skin":"guanqia/16/3_pic_24_3.png","height":197},"compId":14},{"type":"Image","props":{"y":549,"x":120,"width":526,"var":"humanImg","skin":"guanqia/16/3_pic_24_1.png","height":369},"compId":4},{"type":"Image","props":{"y":321,"x":162,"width":425,"var":"windowImg","skin":"guanqia/16/3_pic_24_2.png","height":251},"compId":5},{"type":"Image","props":{"y":853,"x":165,"width":420,"skin":"pubRes/top_yellow.png","sizeGrid":"0,181,0,173","height":74},"compId":6},{"type":"Button","props":{"y":984,"x":144,"width":468,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},"compId":7},{"type":"TextInput","props":{"y":863,"x":217,"width":318,"var":"shuru","text":"输入答案","prompt":"输入答案","height":55,"fontSize":40,"align":"center"},"compId":8},{"type":"Box","props":{"y":749,"x":378,"width":40,"var":"rightBox","height":40,"anchorY":0.5,"anchorX":0.5},"compId":10}],"loadList":["guanqia/16/3_pic_24_3.png","guanqia/16/3_pic_24_1.png","guanqia/16/3_pic_24_2.png","pubRes/top_yellow.png","pubRes/btn_2.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
