@@ -280,6 +280,10 @@ export default class MainView extends ui.mainViewUI {
     private curLv:number;
     showLevel(lv:number):void
     {
+        if(!GM.fromOtherGame)
+        {
+            lv = 1;
+        }
         this._box.removeChildren();
         Laya.MouseManager.multiTouchEnabled = false;
 
@@ -290,6 +294,7 @@ export default class MainView extends ui.mainViewUI {
             this.curView.onClear();
             this.curView.destroy(true)
         }
+
         let VIEW:any = Laya.ClassUtils.getClass(lv + "");
         if(VIEW)
         {
@@ -311,6 +316,10 @@ export default class MainView extends ui.mainViewUI {
 
     helpLevel(lv:number):void
     {
+        if(!GM.fromOtherGame)
+        {
+            lv = 1;
+        }
         this._box.removeChildren();
         Laya.MouseManager.multiTouchEnabled = false;
 

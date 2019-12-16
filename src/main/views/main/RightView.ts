@@ -25,7 +25,7 @@ export default class RightView extends ui.shengliUI{
             this.shareBtn.label = "分享录屏";
         }
 
-        if (GM.platformId == PlatformID.WX)  {
+        if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.gameBox = new GameBox();
             this.gameBox.fromTag = GameBox.jiesuan;
         }
@@ -77,7 +77,7 @@ export default class RightView extends ui.shengliUI{
     }
 
     addBox(): void  {
-        if (GM.platformId == PlatformID.WX)  {
+        if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.addChild(this.gameBox);
             this.gameBox.pos(0,912);
         }

@@ -34,7 +34,7 @@ export default class SigninView extends ui.qiandaoUI {
 
         this.fanhui.on(Laya.Event.CLICK, this, this.onBack);
 
-        if (GM.platformId == PlatformID.WX)  {
+        if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.gameBox = new GameBox();
             this.gameBox.fromTag = GameBox.qiandao;
         }
@@ -66,7 +66,7 @@ export default class SigninView extends ui.qiandaoUI {
     }
 
     addBox(): void  {
-        if (GM.platformId == PlatformID.WX)  {
+        if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.addChild(this.gameBox);
             this.gameBox.pos(0,220);
         }

@@ -108,12 +108,14 @@ import Level_80 from "./levels/Level_80";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "1.1.3.191207";
-    static resVer:string = "1.1.3.191207";
+    static codeVer:string = "2.0.0.191213";
+    static resVer:string = "2.0.0.191213";
+    static fromOtherGame:boolean = false;
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
     static gamesInfo:string[][];
+    static iconSwitch:number;
 
     static helpIndex:number = 0;
 
@@ -138,6 +140,7 @@ export default class GM{
         GM.platformId = config.platformId;
         GM.serverIP = config.platforms[GM.platformId];
         GM.gamesInfo = config.gamesInfo;
+        GM.iconSwitch = config.iconSwitch;
 
         if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
@@ -254,6 +257,12 @@ export default class GM{
             Level_61,Level_62,Level_63,Level_64,Level_65,Level_66,Level_67,Level_68,Level_69,Level_70,
             Level_71,Level_72,Level_73,Level_74,Level_75,Level_76,Level_77,Level_78,Level_79,Level_80
         ];
+
+        if(!GM.fromOtherGame)
+        {
+            CLAS.length = 1;
+        }
+
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)
         {

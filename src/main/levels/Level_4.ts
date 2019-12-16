@@ -57,7 +57,7 @@ export default class Level_4 extends BaseLevel{
 
         let index:number = Math.floor(Math.random() * 6);
         let img:Laya.Image = this.ui["img" + index];
-        this.ui.img6.pos(img.x + 10,img.y + 16);
+        this.ui.img6.pos(img.x,img.y);
     }
 
     private onClick(img):void

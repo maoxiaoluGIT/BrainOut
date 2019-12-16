@@ -37,14 +37,30 @@ class Main {
 				}
 			});
 		}
+
+		GM.fromOtherGame = true;
+		if(Laya.Browser.window.wx)
+		{
+			Laya.Browser.window.wx.onShow(res => {
+				console.log("打开微信的参数",res);
+				if(res.referrerInfo)
+				{
+					if(res.referrerInfo.appId)
+					{
+						console.log("从别的小游戏进来的",res.referrerInfo.appId);
+						GM.fromOtherGame = true;
+					}
+				}
+			});
+		}
+
 		let p = "wx";
 		// p = "qq";
 		// p = "oppo";
 		// p = "h5";
 		// p = "tt";
-
-		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
-		// Session.SKEY = "ntx01"
+		// Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
+		Session.SKEY = "ntx003"
 		Game.init("res/sounds/");
 		GM.addLog("cdn:"+Laya.URL.basePath);
 		GM.startGame();

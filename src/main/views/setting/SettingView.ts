@@ -21,7 +21,7 @@ export default class SettingView extends ui.shezhiUI {
         GM.imgEffect.addEffect(this.topImg,2);
         GM.imgEffect.addEffect(this.bottomImg,2);
 
-        if (GM.platformId == PlatformID.WX)  {
+        if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.gameBox = new GameBox();
             this.gameBox.fromTag = GameBox.shezhi;
         }
@@ -36,7 +36,7 @@ export default class SettingView extends ui.shezhiUI {
 
     addBox():void
     {
-        if (GM.platformId == PlatformID.WX)  {
+        if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.addChild(this.gameBox);
             this.gameBox.pos(0,220);
         }
