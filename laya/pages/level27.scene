@@ -82,7 +82,8 @@
                     "hasChild":false,
                     "compId":63,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":true
                 }]
         },
         {
