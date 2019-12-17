@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":185,
+    "selecteID":174,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -38,7 +38,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,lu",
-            "props":{"y":416,"x":248,"width":253,"var":"lu","skin":"guanqia/40/pic_23_2 2.png","height":374},
+            "props":{"y":543,"x":285,"width":180,"var":"lu","skin":"guanqia/40/pic_23_2 2.png","height":248},
             "nodeParent":2,
             "label":"lu",
             "isDirectory":false,

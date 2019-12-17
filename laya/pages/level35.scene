@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":139,
+    "selectedBox":142,
+    "selecteID":133,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -52,7 +52,7 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,luoboBox",
-            "props":{"y":692,"x":624,"width":42,"var":"luoboBox","height":100},
+            "props":{"y":705,"x":592,"width":77,"var":"luoboBox","height":91},
             "nodeParent":2,
             "label":"luoboBox",
             "isOpen":true,
@@ -65,7 +65,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":-31.5,"x":-20,"width":62,"skin":"guanqia/35/4_6_3.png","height":163},
+                    "props":{"y":19,"x":-40.5,"width":79,"skin":"guanqia/35/4_6_3.png","height":72},
                     "nodeParent":142,
                     "label":"Image",
                     "isDirectory":false,
@@ -80,7 +80,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,tu",
-            "props":{"y":793,"x":90,"width":152,"var":"tu","skin":"guanqia/35/4_6_1.png","mouseEnabled":false,"height":144,"anchorY":1,"anchorX":0.5},
+            "props":{"y":792,"x":117,"width":134,"var":"tu","skin":"guanqia/35/4_6_1.png","mouseEnabled":false,"height":97,"anchorY":1,"anchorX":0.5},
             "nodeParent":2,
             "label":"tu",
             "isOpen":true,

@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":165,
+    "selecteID":158,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -94,7 +94,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,item2",
-            "props":{"y":682,"x":567,"width":215,"var":"item2","skin":"guanqia/38/pic_smoke.png","height":66,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":694,"x":582,"width":114,"var":"item2","skin":"guanqia/38/pic_smoke.png","height":172,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"item2",
             "isDirectory":false,

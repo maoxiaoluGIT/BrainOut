@@ -30,7 +30,7 @@ export default class Level_31 extends BaseLevel {
 
     private onClickYun(img:Laya.Image):void
     {
-        this.ui.yu.visible = true;
+        // this.ui.yu.visible = true;
         this.ui.shui.visible = true;
         setTimeout(() => {
             this.ui.item7.visible = true;
@@ -57,7 +57,7 @@ export default class Level_31 extends BaseLevel {
     {
         Laya.MouseManager.enabled = true;
         super.refresh();
-        this.ui.yu.visible = false;
+        // this.ui.yu.visible = false;
         this.ui.item7.visible = false;
         this.ui.shui.visible = false;
 
