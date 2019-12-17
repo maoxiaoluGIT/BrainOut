@@ -41,22 +41,8 @@ export default class Level_32 extends BaseLevel {
         {
             if(GM.hit(this.ui.monthBox,this.ui.item2))
             {
-                this._num++;
-                this.ui.item2.pos(310,578);
-            }
-            else
-            {
                 this.ui.rightBox.pos(Laya.stage.mouseX,Laya.stage.mouseY);
-                this.setAnswer(this.ui.rightBox,false);
-                this.gotoStartPos(sprite);
-            }
-        }
-        else if(sprite == this.ui.item0)
-        {
-            if(GM.hit(this.ui.headBox,this.ui.item0))
-            {
-                this._num++;
-                this.ui.item0.pos(212,268);
+                this.setAnswer(this.ui.rightBox,true);
             }
             else
             {
@@ -68,14 +54,8 @@ export default class Level_32 extends BaseLevel {
         else
         {
             this.ui.rightBox.pos(Laya.stage.mouseX,Laya.stage.mouseY);
-            this.setAnswer(this.ui.rightBox,false);
-            this.gotoStartPos(sprite);
-        }
-
-        if(this._num == 2)
-        {
-            this.ui.rightBox.pos(Laya.stage.mouseX,Laya.stage.mouseY);
-            this.setAnswer(this.ui.rightBox,true);
+                this.setAnswer(this.ui.rightBox,false);
+                this.gotoStartPos(sprite);
         }
     }
 

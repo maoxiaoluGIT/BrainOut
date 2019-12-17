@@ -37,7 +37,7 @@ export default class Level_18 extends BaseLevel{
         sprite.stopDrag();
         if(GM.hit(sprite,this.ui.hitBox))
         {
-            Laya.Tween.to(this.ui.hengBox,{x:583,y:705},100,null,Laya.Handler.create(this,this.showRigit));
+            Laya.Tween.to(this.ui.hengBox,{x:628,y:682},100,null,Laya.Handler.create(this,this.showRigit));
         }
     }
 

@@ -16,25 +16,27 @@ export default class Level_31 extends BaseLevel {
         this.addChild(this.ui);
         this.isInit = true;
 
-        for(let i = 0; i < 8; i++)
+        for(let i = 0; i < 6; i++)
         {
             let img:Laya.Image = this.ui["item" + i];
             this.addEvent(img,this.onClick);
 
             this.quanList.push(this.ui["quan" + i]);
         }
-        this.addEvent(this.ui.yun,this.onClickYun);
+        this.addEvent(this.ui.giftBox,this.onClickGift);
+        this.ui.topBox.tag = [this.ui.topBox.x,this.ui.topBox.y];
 
         this.refresh();
     }
 
-    private onClickYun(img:Laya.Image):void
+    private onClickGift(img:Laya.Image):void
     {
-        // this.ui.yu.visible = true;
-        this.ui.shui.visible = true;
-        setTimeout(() => {
-            this.ui.item7.visible = true;
-        }, 1000);
+        Laya.Tween.to(this.ui.topBox,{y:632},500,null,new Laya.Handler(this,this.onCom));
+    }
+
+    private onCom():void
+    {
+        this.ui.item1.visible = true;
     }
 
     private onClick(img:Laya.Image):void
@@ -57,12 +59,11 @@ export default class Level_31 extends BaseLevel {
     {
         Laya.MouseManager.enabled = true;
         super.refresh();
-        // this.ui.yu.visible = false;
-        this.ui.item7.visible = false;
-        this.ui.shui.visible = false;
+        this.ui.topBox.pos(this.ui.topBox.tag[0],this.ui.topBox.tag[1]);
+        this.ui.item1.visible = false;
 
         this.quanList.length = 0;
-        for(let i = 0; i < 8; i++)
+        for(let i = 0; i < 6; i++)
         {
             let img:Laya.Image = this.ui["item" + i];
             img.tag = null;

@@ -60,7 +60,7 @@ export default class Level_24 extends BaseLevel {
 
     private onSure():void
     {
-        this.setAnswer(this.ui.rightBox,this.ui.shuru.text == "15");
+        this.setAnswer(this.ui.rightBox,this.ui.shuru.text == "0");
     }
 
     onDown(sprite: Laya.Sprite):void
