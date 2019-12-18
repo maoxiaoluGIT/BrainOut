@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":161,
+    "selecteID":171,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -94,7 +94,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image,shu",
-            "props":{"y":783.5,"x":569.5,"width":85,"var":"shu","skin":"guanqia/39/3_pic_29_2.png","height":94,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":758,"x":569.5,"width":119,"var":"shu","skin":"guanqia/39/3_pic_29_2.png","height":132,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"shu",
             "isDirectory":false,
