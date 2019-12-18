@@ -18,8 +18,6 @@ export default class SettingView extends ui.shezhiUI {
             this.addEvent(arr[i],this.onClick);
             GM.imgEffect.addEffect(arr[i]);
         }
-        GM.imgEffect.addEffect(this.topImg,2);
-        GM.imgEffect.addEffect(this.bottomImg,2);
 
         if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
             this.gameBox = new GameBox();

@@ -53,7 +53,7 @@ export default class Level_25 extends BaseLevel {
             if(hitDan)
             {
                 isHit = true;
-                this.ui.item1.pos(95,780);
+                this.ui.item1.pos(98,822);
                 setTimeout(() => {
                     this.ui.rightBox.pos(this.ui.item1.x + this.ui.item1.width * 0.5,this.ui.item1.y + this.ui.item1.height * 0.5);
                     this.setAnswer(this.ui.rightBox, true);

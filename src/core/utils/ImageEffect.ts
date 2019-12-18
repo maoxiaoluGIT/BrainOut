@@ -40,12 +40,12 @@ export default class ImageEffect{
 
     addEffect(spr:Laya.Image,times:number = 3):void
     {
-        let vo = new EffectVO();
-        vo.spr = spr;
-        vo.times = times;
-        vo.curTimes = 1;
-        spr.on(Laya.Event.DISPLAY,this,this.onDis,[vo]);
-        spr.on(Laya.Event.UNDISPLAY,this,this.onUndis,[vo]);
+        // let vo = new EffectVO();
+        // vo.spr = spr;
+        // vo.times = times;
+        // vo.curTimes = 1;
+        // spr.on(Laya.Event.DISPLAY,this,this.onDis,[vo]);
+        // spr.on(Laya.Event.UNDISPLAY,this,this.onUndis,[vo]);
     }
 
     addEffect2(spr:Laya.Image,times:number = 3):void

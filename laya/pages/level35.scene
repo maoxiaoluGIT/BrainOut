@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":142,
-    "selecteID":133,
+    "selectedBox":2,
+    "selecteID":142,
     "searchKey":"View",
     "referenceLines":[
         {
@@ -65,7 +65,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":19,"x":-40.5,"width":79,"skin":"guanqia/35/4_6_3.png","height":72},
+                    "props":{"y":19,"x":-1,"width":79,"skin":"guanqia/35/4_6_3.png","height":72},
                     "nodeParent":142,
                     "label":"Image",
                     "isDirectory":false,

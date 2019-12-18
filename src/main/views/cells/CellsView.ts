@@ -13,8 +13,6 @@ export default class CellsView extends ui.xuanguan1UI{
     constructor() { 
         super(); 
         GM.imgEffect.addEffect(this.fanhui,3);
-        GM.imgEffect.addEffect(this.topImg,2);
-        GM.imgEffect.addEffect(this.bottomImg,2);
 
         this.fanhui.on(Laya.Event.CLICK,this,this.onClick);
 
