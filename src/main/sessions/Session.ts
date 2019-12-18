@@ -111,6 +111,18 @@ export default class Session{
                     Session.gameData[DataKey.insertAdTimes] = 7;
                 }
             }
+
+            if(!GM.fromOtherGame)
+            {
+                if(Session.gameData[DataKey.maxIndex] > 40)
+                {
+                    Session.gameData[DataKey.maxIndex] = 40;
+                }
+                if(Session.gameData[DataKey.lastIndex] > 40)
+                {
+                    Session.gameData[DataKey.lastIndex] = 40;
+                }
+            }
             // Session.gameData[DataKey.maxIndex] = Session.gameData[DataKey.lastIndex] = 79;
             // Session.gameData[DataKey.bannerTimes] = 5;
             // Session.gameData[DataKey.insertAdTimes] = 7;

@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":54,
+    "selectedBox":61,
+    "selecteID":63,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
@@ -65,26 +65,12 @@
             "nodeParent":2,
             "label":"shi",
             "isOpen":true,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
+            "hasChild":false,
             "compId":61,
             "child":[
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image,antImg",
-                    "props":{"y":64,"x":161,"width":64,"var":"antImg","skin":"guanqia/27/3_pic_26_3.png","height":64,"anchorY":0.5,"anchorX":0.5},
-                    "nodeParent":61,
-                    "label":"antImg",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":63,
-                    "child":[
-                        ],
-                    "$HIDDEN":true
-                }]
+                ]
         },
         {
             "x":15,

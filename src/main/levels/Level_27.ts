@@ -38,7 +38,6 @@ export default class Level_27 extends BaseLevel {
     private onMouseMove(e: Laya.Event = null): void {
         let touches: any[] = e.touches;
         if (touches && touches.length == 2) {
-            this.ui.antImg.visible = true;
             var distance: number = this.getDistance(touches);
             //判断当前距离与上次距离变化，确定是放大还是缩小
             var a: number = distance / this._lastDistance;
@@ -71,10 +70,9 @@ export default class Level_27 extends BaseLevel {
         super.refresh();
         this.ui.shuru.text = "";
         this.ui.shi.scaleX = this.ui.shi.scaleY = 1;
-        this.ui.antImg.visible = false;
     }
 
     private onSure(): void {
-        this.setAnswer(this.ui.rightBox, this.ui.shuru.text == "17");
+        this.setAnswer(this.ui.rightBox, this.ui.shuru.text == "14");
     }
 }

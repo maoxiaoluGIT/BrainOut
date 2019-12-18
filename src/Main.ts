@@ -38,7 +38,7 @@ class Main {
 			});
 		}
 
-		GM.fromOtherGame = true;
+		GM.fromOtherGame = false;
 		if(Laya.Browser.window.wx)
 		{
 			Laya.Browser.window.wx.onShow(res => {
@@ -59,8 +59,8 @@ class Main {
 		// p = "oppo";
 		// p = "h5";
 		// p = "tt";
-		// Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
-		Session.SKEY = "ntx003"
+		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
+		// Session.SKEY = "ntx003"
 		Game.init("res/sounds/");
 		GM.addLog("cdn:"+Laya.URL.basePath);
 		GM.startGame();

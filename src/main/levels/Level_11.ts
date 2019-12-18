@@ -31,6 +31,6 @@ export default class Level_11 extends BaseLevel{
 
     private onSure():void
     {
-        this.setAnswer(this.ui.rightBox,this.ui.shuru.text == "9");
+        this.setAnswer(this.ui.rightBox,this.ui.shuru.text == "12");
     }
 }

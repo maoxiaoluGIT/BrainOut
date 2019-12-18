@@ -67,7 +67,7 @@ export default class RightView extends ui.shengliUI{
         }
         GM.platform && GM.platform.InsertAd("142904");
         this.paishou.y = 1334;
-        Laya.Tween.to(this.paishou,{y:857},500,null,new Laya.Handler(this,this.onEff),600);
+        Laya.Tween.to(this.paishou,{y:900},500,null,new Laya.Handler(this,this.onEff),600);
         this.nextBtn.alpha = 0;
         setTimeout(() => {
             Laya.Tween.to(this.nextBtn,{alpha:1},500);

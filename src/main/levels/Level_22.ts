@@ -28,6 +28,6 @@ export default class Level_22 extends BaseLevel {
 
     private onSure():void
     {
-        this.setAnswer(this.ui.rightBox,this.ui.shuru.text.toLowerCase() == "cd");
+        this.setAnswer(this.ui.rightBox,this.ui.shuru.text.toLowerCase() == "15");
     }
 }
