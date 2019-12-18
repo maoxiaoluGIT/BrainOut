@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":61,
+    "selecteID":54,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334},
     "nodeParent":-1,
@@ -85,20 +85,6 @@
                         ],
                     "$HIDDEN":true
                 }]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image,yi0",
-            "props":{"y":301,"x":46.5,"var":"yi0","skin":"guanqia/27/3_pic_26_1.png"},
-            "nodeParent":2,
-            "label":"yi0",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":54,
-            "child":[
-                ]
         },
         {
             "x":15,
