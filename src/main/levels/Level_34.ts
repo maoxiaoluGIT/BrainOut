@@ -15,7 +15,7 @@ export default class Level_34 extends BaseLevel {
         this.addChild(this.ui);
         this.isInit = true;
 
-        for (let i = 0; i < 3; i++)  {
+        for (let i = 0; i < 3; i++) {
             let img = this.ui["item" + i];
             img.tag = [img.x, img.y];
             this.addEvent(img, null, true);
@@ -25,43 +25,40 @@ export default class Level_34 extends BaseLevel {
         this.refresh();
     }
 
-    onDown(sprite: Laya.Sprite): void  {
-        sprite.startDrag(new Laya.Rectangle(this.ui.box.x,this.ui.box.y,this.ui.box.width,this.ui.box.height));
+    onDown(sprite: Laya.Sprite): void {
+        sprite.startDrag(new Laya.Rectangle(this.ui.box.x, this.ui.box.y, this.ui.box.width, this.ui.box.height));
     }
 
 
-    onUp(sprite: Laya.Sprite): void  {
+    onUp(sprite: Laya.Sprite): void {
         sprite.stopDrag();
-        if (sprite == this.ui.item0)  {
-            if (!GM.hit(this.ui.item0, this.ui.sunImg))  {
-                Laya.MouseManager.enabled = false;
-                setTimeout(() => {
-                    this.ui.bing.visible = false;
-                    this.ui.bing2.alpha = 1;
-                    Laya.Tween.to(this.ui.bing2,{alpha:0},2000);
-                    Laya.Tween.to(this.ui.che, { x: this.ui.pai.x }, 2000, null, new Laya.Handler(this, this.showRight),2000);
-                }, 1000);
-
-            }
+        if (!GM.hit(this.ui.item0, this.ui.sunImg)) {
+            Laya.MouseManager.enabled = false;
+            setTimeout(() => {
+                this.ui.bing.visible = false;
+                this.ui.bing2.alpha = 1;
+                Laya.Tween.to(this.ui.bing2, { alpha: 0 }, 2000);
+                Laya.Tween.to(this.ui.che, { x: this.ui.pai.x }, 2000, null, new Laya.Handler(this, this.showRight), 2000);
+            }, 1000);
         }
     }
 
-    private showRight(): void  {
+    private showRight(): void {
         this.setAnswer(this.ui.rightBox, true);
     }
 
-    private onClick(img: Laya.Image): void  {
+    private onClick(img: Laya.Image): void {
         this.setAnswer(img, true);
     }
 
 
-    refresh(): void  {
+    refresh(): void {
         Laya.MouseManager.enabled = true;
         super.refresh();
         this.ui.bing.visible = true;
         this.ui.bing2.alpha = 0;
 
-        for (let i = 0; i < 3; i++)  {
+        for (let i = 0; i < 3; i++) {
             let img = this.ui["item" + i];
             img.pos(img.tag[0], img.tag[1]);
         }
