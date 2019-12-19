@@ -108,8 +108,8 @@ import Level_80 from "./levels/Level_80";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "5.0.1.191219";
-    static resVer:string = "5.0.1.191219";
+    static codeVer:string = "5.0.2.191220";
+    static resVer:string = "5.0.2.191220";
     static fromOtherGame:boolean = false;
     static isConsoleLog:number;
     static platformId:number;

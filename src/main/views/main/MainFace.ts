@@ -24,7 +24,8 @@ export default class MainFace extends ui.mainuiUI {
         GM.imgEffect.addEffect(this.shuaxin);
         GM.imgEffect.addEffect(this.kuaijin);
         GM.imgEffect.addEffect(this.qiuzhu);
-        GM.imgEffect.addEffect(this.jinyaoshi);
+        // GM.imgEffect.addEffect(this.jinyaoshi);
+        GM.imgEffect.addEffect2(this.jinyaoshi,4);
 
         this.keyBtn.on(Laya.Event.CLICK,this,this.onTips);
 
