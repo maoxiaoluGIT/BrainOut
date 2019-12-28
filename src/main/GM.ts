@@ -108,14 +108,17 @@ import Level_80 from "./levels/Level_80";
 
 /**游戏总管理 */
 export default class GM{
-    static codeVer:string = "5.0.2.191220";
-    static resVer:string = "5.0.2.191220";
+    static codeVer:string = "5.0.2.191228";
+    static resVer:string = "5.0.2.191228";
     static fromOtherGame:boolean = false;
     static isConsoleLog:number;
     static platformId:number;
     static serverIP:string;
     static gamesInfo:string[][];
     static iconSwitch:number;
+    static oppoGames:any[];
+    static rightGame:any;
+    static oppoSwitch:number;
 
     static helpIndex:number = 0;
 
@@ -141,6 +144,9 @@ export default class GM{
         GM.serverIP = config.platforms[GM.platformId];
         GM.gamesInfo = config.gamesInfo;
         GM.iconSwitch = config.iconSwitch;
+        GM.oppoGames = config.oppoGames;
+        GM.rightGame = config.rightGame;
+        GM.oppoSwitch = config.oppoSwitch;
 
         if(config.platformId == PlatformID.TEST || config.platformId == PlatformID.H5)
         {
@@ -258,10 +264,10 @@ export default class GM{
             Level_71,Level_72,Level_73,Level_74,Level_75,Level_76,Level_77,Level_78,Level_79,Level_80
         ];
 
-        if(!GM.fromOtherGame)
-        {
-            CLAS.length = 40;
-        }
+        // if(!GM.fromOtherGame)
+        // {
+        //     CLAS.length = 40;
+        // }
 
         let index:number = 1;
         for(let i = 0; i < CLAS.length; i++)

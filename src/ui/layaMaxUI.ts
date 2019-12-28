@@ -1568,7 +1568,8 @@ export module ui {
 		public ads:Laya.Sprite;
 		public nextBtn:Laya.Button;
 		public paishou:Laya.Image;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":-1,"x":0,"width":750,"height":1334,"bgColor":"#ffffff","alpha":0.75},"compId":20},{"type":"Box","props":{"y":-1,"x":0,"width":750,"height":1334},"compId":23,"child":[{"type":"Image","props":{"y":133,"x":47,"width":656,"skin":"pubRes/fram_big.png","height":297},"compId":24,"child":[{"type":"Text","props":{"y":155,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":"恭喜你呀！","height":118,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":25},{"type":"Image","props":{"y":37,"x":116,"width":424,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},"compId":26,"child":[{"type":"Text","props":{"y":16,"x":104,"width":216,"var":"zi1","text":"恭喜你呀！","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":27}]}]}]},{"type":"Button","props":{"y":627,"x":221,"width":305,"var":"shareBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"向朋友炫耀","height":125},"compId":30},{"type":"Button","props":{"y":479,"x":223.5,"width":305,"var":"nextAdBtn","stateNum":1,"skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"  免费获取","height":125},"compId":15,"child":[{"type":"Sprite","props":{"y":24,"x":48,"width":69,"var":"ads","texture":"pubRes/ic_ad_1.png","height":74},"compId":10},{"type":"Sprite","props":{"y":-28,"x":212,"width":134,"texture":"pubRes/hongyuan.png","height":69},"compId":17}]},{"type":"Button","props":{"y":774,"x":222.5,"width":305,"var":"nextBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"下一关","height":125},"compId":9},{"type":"Image","props":{"y":900,"x":0,"width":750,"var":"paishou","skin":"pubRes/pic_hand_1.png","height":434},"compId":19}],"loadList":["pubRes/fram_big.png","pubRes/top_yellow.png","pubRes/btn_1.png","pubRes/btn_3.png","pubRes/ic_ad_1.png","pubRes/hongyuan.png","pubRes/pic_hand_1.png"],"loadList3D":[]};
+		public oppoBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":-1,"x":0,"width":750,"height":1334,"bgColor":"#ffffff","alpha":0.75},"compId":20},{"type":"Box","props":{"y":-1,"x":0,"width":750,"height":1334},"compId":23,"child":[{"type":"Image","props":{"y":133,"x":47,"width":656,"skin":"pubRes/fram_big.png","height":297},"compId":24,"child":[{"type":"Text","props":{"y":155,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":"恭喜你呀！","height":118,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":25},{"type":"Image","props":{"y":37,"x":116,"width":424,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},"compId":26,"child":[{"type":"Text","props":{"y":16,"x":104,"width":216,"var":"zi1","text":"恭喜你呀！","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":27}]}]}]},{"type":"Button","props":{"y":627,"x":221,"width":305,"var":"shareBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"向朋友炫耀","height":125},"compId":30},{"type":"Button","props":{"y":479,"x":223.5,"width":305,"var":"nextAdBtn","stateNum":1,"skin":"pubRes/btn_3.png","labelStrokeColor":"‘","labelSize":40,"labelPadding":"10,10,10,40","labelColors":"#000000","label":"  免费获取","height":125},"compId":15,"child":[{"type":"Sprite","props":{"y":24,"x":48,"width":69,"var":"ads","texture":"pubRes/ic_ad_1.png","height":74},"compId":10},{"type":"Sprite","props":{"y":-28,"x":212,"width":134,"texture":"pubRes/hongyuan.png","height":69},"compId":17}]},{"type":"Button","props":{"y":774,"x":222.5,"width":305,"var":"nextBtn","stateNum":1,"skin":"pubRes/btn_1.png","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"下一关","height":125},"compId":9},{"type":"Image","props":{"y":900,"x":0,"width":750,"var":"paishou","skin":"pubRes/pic_hand_1.png","height":434},"compId":19},{"type":"Box","props":{"y":937,"x":130,"var":"oppoBox"},"compId":34}],"loadList":["pubRes/fram_big.png","pubRes/top_yellow.png","pubRes/btn_1.png","pubRes/btn_3.png","pubRes/ic_ad_1.png","pubRes/hongyuan.png","pubRes/pic_hand_1.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -1680,4 +1681,106 @@ export module ui {
         }
     }
     REG("ui.xuanguan2UI",xuanguan2UI);
+}
+export module ui.oppo {
+    export class CenterGameBoxUI extends View {
+		public bigBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":443,"height":209},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"width":443,"skin":"oppo/4.png","sizeGrid":"84,121,71,162","height":209},"compId":22},{"type":"Box","props":{"y":6,"x":9,"width":426,"var":"bigBox","height":197},"compId":27}],"loadList":["oppo/4.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(CenterGameBoxUI.uiView);
+        }
+    }
+    REG("ui.oppo.CenterGameBoxUI",CenterGameBoxUI);
+    export class hotUI extends View {
+		public ani1:Laya.FrameAnimation;
+        public static  uiView:any ={"type":"View","props":{},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"skin":"oppo/1.png","anchorY":0.5,"anchorX":0.5},"compId":3}],"animations":[{"nodes":[{"target":3,"keyframes":{"y":[{"value":0,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":0},{"value":0,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":20},{"value":-50,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":25},{"value":0,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":29},{"value":-25,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":32},{"value":0,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":35},{"value":-10,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":38},{"value":0,"tweenMethod":"linearNone","tween":true,"target":3,"key":"y","index":40}],"skin":[{"value":"oppo/1.png","tweenMethod":"linearNone","tween":false,"target":3,"key":"skin","index":0}],"scaleY":[{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":0},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":20},{"value":1.5,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":25},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":29},{"value":1.2,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":32},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":35},{"value":1.1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":38},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":40}],"scaleX":[{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":0},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":20},{"value":1.5,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":25},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":29},{"value":1.2,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":32},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":35},{"value":1.1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":38},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":40}]}}],"name":"ani1","id":1,"frameRate":24,"action":2}],"loadList":["oppo/1.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(hotUI.uiView);
+        }
+    }
+    REG("ui.oppo.hotUI",hotUI);
+    export class mainGameBoxUI extends View {
+		public hitBox:Laya.Box;
+		public bg:Laya.Image;
+		public hideBtn:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":0,"x":0,"width":750,"var":"hitBox","height":1334},"compId":38},{"type":"Image","props":{"y":300,"width":200,"var":"bg","skin":"oppo/6.png","sizeGrid":"73,85,87,95","height":785,"cacheAs":"bitmap"},"compId":5},{"type":"Image","props":{"y":330,"x":195,"width":38,"var":"hideBtn","skin":"oppo/2.png","mouseEnabled":false,"height":116},"compId":30}],"loadList":["oppo/6.png","oppo/2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(mainGameBoxUI.uiView);
+        }
+    }
+    REG("ui.oppo.mainGameBoxUI",mainGameBoxUI);
+    export class netErrorUI extends View {
+		public zi2:laya.display.Text;
+		public closeBtn:Laya.Image;
+		public sureBtn:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":414,"x":46,"width":657,"height":505},"compId":12,"child":[{"type":"Image","props":{"y":0,"x":0,"width":656,"skin":"pubRes/fram_big.png","height":504},"compId":13,"child":[{"type":"Text","props":{"y":150,"x":58.5,"wordWrap":true,"width":539,"var":"zi2","text":"网络中断","height":118,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":14}]},{"type":"Image","props":{"y":19,"x":221.5,"width":214,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},"compId":17,"child":[{"type":"Text","props":{"y":18,"x":53,"width":107,"text":"提示","height":50,"fontSize":46,"align":"center","runtime":"laya.display.Text"},"compId":18}]}]},{"type":"Image","props":{"y":486,"x":619,"width":75,"var":"closeBtn","skin":"pubRes/ic_colse_1.png","height":75,"anchorY":0.5,"anchorX":0.5},"compId":19},{"type":"Button","props":{"y":758,"x":221,"width":308,"var":"sureBtn","stateNum":1,"skin":"pubRes/btn_2.png","sizeGrid":"0,122,0,123","labelStrokeColor":"‘","labelSize":40,"labelColors":"#000000","label":"确定","height":125},"compId":20}],"loadList":["pubRes/fram_big.png","pubRes/top_yellow.png","pubRes/ic_colse_1.png","pubRes/btn_2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(netErrorUI.uiView);
+        }
+    }
+    REG("ui.oppo.netErrorUI",netErrorUI);
+    export class OppoBoxUI extends View {
+		public oppoBtn:Laya.Box;
+		public redPoint:ui.oppo.RedPointViewUI;
+		public rightBox:Laya.Box;
+		public centerBox:Laya.Box;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":370,"width":87,"var":"oppoBtn","height":74},"compId":4,"child":[{"type":"Image","props":{"y":0,"x":80,"skin":"oppo/btn_slide.png","scaleX":-1,"label":"label"},"compId":6},{"type":"RedPointView","props":{"y":-78,"x":60,"var":"redPoint","runtime":"ui.oppo.RedPointViewUI"},"compId":7}]},{"type":"Box","props":{"y":31,"x":599,"width":100,"var":"rightBox","height":100},"compId":5},{"type":"Box","props":{"y":943,"x":154,"var":"centerBox"},"compId":10}],"loadList":["oppo/btn_slide.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(OppoBoxUI.uiView);
+        }
+    }
+    REG("ui.oppo.OppoBoxUI",OppoBoxUI);
+    export class OppoIcon100UI extends View {
+		public iconImg:Laya.Image;
+		public nameTxt:Laya.Label;
+        public static  uiView:any ={"type":"View","props":{"y":65,"x":50,"width":100,"height":130,"anchorY":0.5,"anchorX":0.5},"compId":2,"child":[{"type":"Image","props":{"width":100,"var":"iconImg","height":100},"compId":3},{"type":"Label","props":{"y":110,"width":100,"var":"nameTxt","text":"脑洞大爆炸","height":20,"fontSize":20,"color":"#ffffff","align":"center"},"compId":5},{"type":"hot","props":{"y":-1,"x":65,"runtime":"ui.oppo.hotUI"},"compId":6}],"loadList":[],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(OppoIcon100UI.uiView);
+        }
+    }
+    REG("ui.oppo.OppoIcon100UI",OppoIcon100UI);
+    export class OppoIcon120UI extends View {
+		public iconImg:Laya.Image;
+		public nameTxt:Laya.Label;
+        public static  uiView:any ={"type":"View","props":{"y":77,"x":60,"width":120,"height":154,"anchorY":0.5,"anchorX":0.5},"compId":2,"child":[{"type":"Image","props":{"width":120,"var":"iconImg","height":120},"compId":3},{"type":"Label","props":{"y":130,"width":120,"var":"nameTxt","text":"脑洞大爆炸","height":24,"fontSize":24,"color":"#ffffff","align":"center"},"compId":5},{"type":"hot","props":{"y":0,"x":85,"runtime":"ui.oppo.hotUI"},"compId":6}],"loadList":[],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(OppoIcon120UI.uiView);
+        }
+    }
+    REG("ui.oppo.OppoIcon120UI",OppoIcon120UI);
+    export class RedPointViewUI extends View {
+		public ani1:Laya.FrameAnimation;
+        public static  uiView:any ={"type":"View","props":{"width":50,"height":100},"compId":2,"child":[{"type":"Image","props":{"y":59,"x":25,"skin":"oppo/hongdian.png","anchorY":0.5,"anchorX":0.5},"compId":3}],"animations":[{"nodes":[{"target":3,"keyframes":{"scaleY":[{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"label":null,"key":"scaleY","index":0},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":19},{"value":1.2,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":24},{"value":0.9,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":28},{"value":1.1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":32},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleY","index":35}],"scaleX":[{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"label":null,"key":"scaleX","index":0},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":19},{"value":1.2,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":24},{"value":0.9,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":28},{"value":1.1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":32},{"value":1,"tweenMethod":"linearNone","tween":true,"target":3,"key":"scaleX","index":35}]}}],"name":"ani1","id":1,"frameRate":24,"action":2}],"loadList":["oppo/hongdian.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(RedPointViewUI.uiView);
+        }
+    }
+    REG("ui.oppo.RedPointViewUI",RedPointViewUI);
+    export class rightGameBoxUI extends View {
+		public bigBox:Laya.Box;
+		public iconImg:Laya.Image;
+        public static  uiView:any ={"type":"View","props":{"width":100,"height":100},"compId":2,"child":[{"type":"Box","props":{"y":0,"x":50,"width":100,"var":"bigBox","height":100,"anchorX":0.5},"compId":12,"child":[{"type":"Image","props":{"y":0,"x":0,"width":100,"var":"iconImg","height":100},"compId":3},{"type":"Image","props":{"y":78,"x":0,"skin":"oppo/3.png"},"compId":11}]}],"loadList":["oppo/3.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(rightGameBoxUI.uiView);
+        }
+    }
+    REG("ui.oppo.rightGameBoxUI",rightGameBoxUI);
 }

@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":19,
+    "selecteID":36,
     "searchKey":"View",
     "props":{"width":750,"height":1334},
     "nodeParent":-1,
-    "maxID":33,
+    "maxID":41,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -36,14 +36,13 @@
             "props":{"y":-1,"x":0,"width":750,"height":1334},
             "nodeParent":2,
             "label":"Box",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":23,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":133,"x":47,"width":656,"skin":"pubRes/fram_big.png","height":297},
@@ -56,7 +55,6 @@
                     "compId":24,
                     "child":[
                         {
-                            "x":45,
                             "type":"Text",
                             "searchKey":"Text,zi2",
                             "props":{"y":155,"x":58,"wordWrap":true,"width":539,"var":"zi2","text":"恭喜你呀！","height":118,"fontSize":46,"align":"center"},
@@ -70,7 +68,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":37,"x":116,"width":424,"skin":"pubRes/top_yellow.png","sizeGrid":"0,79,0,72","height":87},
@@ -83,7 +80,6 @@
                             "compId":26,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Text",
                                     "searchKey":"Text,zi1",
                                     "props":{"y":16,"x":104,"width":216,"var":"zi1","text":"恭喜你呀！","height":50,"fontSize":46,"align":"center"},
@@ -187,6 +183,20 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":19,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,oppoBox",
+            "props":{"y":937,"x":130,"var":"oppoBox"},
+            "nodeParent":2,
+            "label":"oppoBox",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":34,
             "child":[
                 ]
         }],

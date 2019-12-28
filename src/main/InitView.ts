@@ -15,11 +15,13 @@ export default class InitView extends ui.initViewUI {
         this.on(Laya.Event.DISPLAY,this,this.onDis);
     }
 
+	private configUrl:string;
     private onDis():void
     {
 		GM.addLog("显示InitView");
-        this.txt.text = "0%";
-        Laya.loader.load(["res/config.json"],Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
+		this.txt.text = "0%";
+		this.configUrl = "res/config.json?ver=" + Date.now();
+        Laya.loader.load(this.configUrl,Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
     }
     
     private onProgress(value:number):void
@@ -33,7 +35,8 @@ export default class InitView extends ui.initViewUI {
 	private onCom():void
 	{
 		GM.onReg();
-        let config = Laya.loader.getRes("res/config.json");
+		let config = Laya.loader.getRes(this.configUrl);
+		console.log("config加载完毕",config);
 		GM.setConfig(config);
 		Laya.loader.clearRes("res/config.json");
 

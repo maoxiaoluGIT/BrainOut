@@ -21,6 +21,10 @@ export default class HomeLoading extends ui.loadingUI {
 
         // let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/tables.zip", type: Laya.Loader.BUFFER }];
         let arr:any[] = [{ url: "atlas/pubRes.atlas", type: Laya.Loader.ATLAS },{ url: "res/sys_titles.json", type: Laya.Loader.JSON }];
+        if(GM.platformId == PlatformID.OPPO)
+        {
+            arr.push({ url: "atlas/oppo.atlas", type: Laya.Loader.ATLAS });
+        }
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCom),new Laya.Handler(this,this.onProgress));
 
         if(GM.platformId != PlatformID.OPPO && GM.platformId != PlatformID.VIVO)

@@ -31,8 +31,11 @@ export default class RightView extends ui.shengliUI{
         }
 
         this.shareBtn.visible = GM.platformId != PlatformID.OPPO;
+        if(!this.shareBtn.visible)
+        {
+            this.nextBtn.y = this.shareBtn.y;
+        }
     }
-
     private onShare():void
     {
         if(GM.platformId == PlatformID.TT)

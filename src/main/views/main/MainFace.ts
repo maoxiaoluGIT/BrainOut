@@ -8,6 +8,8 @@ import Session from "../../sessions/Session";
 import { DataKey } from "../../sessions/DataKey";
 import PlatformID from "../../platforms/PlatformID";
 import MyEffect from "../../../core/utils/MyEffect";
+import MainGameBox from "../../oppoGame/MainGameBox";
+import RightGameBox from "../../oppoGame/RightGameBox";
 
 export default class MainFace extends ui.mainuiUI {
     private sys:SysTitles;
