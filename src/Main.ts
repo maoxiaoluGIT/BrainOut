@@ -56,9 +56,9 @@ class Main {
 
 		let p = "wx";
 		// p = "qq";
-		// p = "oppo";
+		p = "oppo";
 		// p = "h5";
-		p = "tt";
+		// p = "tt";
 		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";
 		// Session.SKEY = "ntx003"
 		Game.init("res/sounds/");
