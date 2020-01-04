@@ -20,9 +20,11 @@ export default class RightView extends ui.shengliUI{
         this.shareBtn.clickHandler = new Laya.Handler(this,this.onShare);
 
         this.shareBtn.label = "向朋友炫耀";
+        this.lupinImg.visible = false;
         if(GM.platformId == PlatformID.TT)
         {
             this.shareBtn.label = "分享录屏";
+            this.lupinImg.visible = true;
         }
 
         if (GM.platformId == PlatformID.WX && GM.iconSwitch == 1)  {
@@ -101,6 +103,10 @@ export default class RightView extends ui.shengliUI{
         let max:number = 1500;
         Laya.timer.loop(1,this,()=>{
             max--;
+            if(max < 0)
+            {
+                max = 0;
+            }
             Laya.SoundManager.setSoundVolume(max/1500);
         });
     }

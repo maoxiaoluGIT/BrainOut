@@ -1,6 +1,8 @@
 import BaseLevel from "./BaseLevel";
 import { ui } from "../../ui/layaMaxUI";
 import Session from "../sessions/Session";
+import GM from "../GM";
+import PlatformID from "../platforms/PlatformID";
 
 export default class Level_1 extends BaseLevel {
     private ui: ui.level1UI;
@@ -51,7 +53,10 @@ export default class Level_1 extends BaseLevel {
         {
             if(Session.isNew)
             {
-                Laya.Browser.window.wx.aldSendEvent('新用户首关点击人数');
+                if(GM.platformId == PlatformID.WX)
+                {
+                    Laya.Browser.window.wx.aldSendEvent('新用户首关点击人数');
+                }
             }
         }
     }

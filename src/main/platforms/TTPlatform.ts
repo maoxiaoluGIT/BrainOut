@@ -359,6 +359,7 @@ export default class TTPlatform extends BasePlatform {
             this.tt.shareVideo({
                 videoPath: this.videoUrl,
                 success() {
+                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, 0);
                 },
                 fail(e) {
                 }

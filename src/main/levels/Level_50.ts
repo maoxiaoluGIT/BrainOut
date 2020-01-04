@@ -64,8 +64,14 @@ export default class Level_50 extends BaseLevel {
         if(this.weixin)
         {
             this.weixin.onAccelerometerChange((res)=>{
+                console.log(res.x,res.y,res.z);
                 if (GM.platformId == PlatformID.OPPO)  {
                     if (res.y < -0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
+                }
+                else if (GM.platformId == PlatformID.TT)  {
+                    if (res.x > 0.9)  {
                         Game.eventManager.event(GameEvent.WX_ROTATE);
                     }
                 }

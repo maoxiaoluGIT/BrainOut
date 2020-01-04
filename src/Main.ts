@@ -56,7 +56,7 @@ class Main {
 
 		let p = "wx";
 		// p = "qq";
-		p = "oppo";
+		// p = "oppo";
 		// p = "h5";
 		p = "tt";
 		Laya.URL.basePath = "https://img.kuwan511.com/brainOut/"+p+"/" + GM.resVer + "/";

@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":36,
+    "selectedBox":30,
+    "selecteID":41,
     "searchKey":"View",
     "props":{"width":750,"height":1334},
     "nodeParent":-1,
-    "maxID":41,
+    "maxID":42,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -105,12 +105,27 @@
             "nodeParent":2,
             "label":"shareBtn",
             "isOpen":true,
-            "isDirectory":false,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
+            "hasChild":true,
             "compId":30,
             "child":[
-                ]
+                {
+                    "x":30,
+                    "type":"Sprite",
+                    "searchKey":"Sprite,lupinImg",
+                    "props":{"y":-28,"x":212,"width":134,"var":"lupinImg","texture":"pubRes/hongyuan.png","height":69},
+                    "nodeParent":30,
+                    "label":"lupinImg",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":41,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                }]
         },
         {
             "x":15,

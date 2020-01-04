@@ -1,6 +1,8 @@
 import { ui } from "../../ui/layaMaxUI";
 import BaseLevel from "./BaseLevel";
 import Session from "../sessions/Session";
+import GM from "../GM";
+import PlatformID from "../platforms/PlatformID";
 
 export default class Level_6 extends BaseLevel {
     private ui: ui.level6UI;
@@ -26,7 +28,10 @@ export default class Level_6 extends BaseLevel {
         this.ui.shuzi.value = "" + this.curValue;
 
         if (Session.isNew)  {
-            Laya.Browser.window.wx.aldSendEvent('新用户第6关进入人数');
+            if(GM.platformId == PlatformID.WX)
+            {
+                Laya.Browser.window.wx.aldSendEvent('新用户第6关进入人数');
+            }
         }
     }
 

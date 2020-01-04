@@ -65,6 +65,11 @@ export default class Level_58 extends BaseLevel {
                         Game.eventManager.event(GameEvent.WX_ROTATE);
                     }
                 }
+                else if (GM.platformId == PlatformID.TT)  {
+                    if (res.x > 0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
+                }
                 else  {
                     if (res.y > 0.9)  {
                         Game.eventManager.event(GameEvent.WX_ROTATE);
@@ -117,6 +122,11 @@ export default class Level_58 extends BaseLevel {
             this.weixin.onAccelerometerChange((res)=>{
                 if (GM.platformId == PlatformID.OPPO)  {
                     if (res.y < -0.9)  {
+                        Game.eventManager.event(GameEvent.WX_ROTATE);
+                    }
+                }
+                else if (GM.platformId == PlatformID.TT)  {
+                    if (res.x > 0.9)  {
                         Game.eventManager.event(GameEvent.WX_ROTATE);
                     }
                 }
