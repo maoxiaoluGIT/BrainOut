@@ -9,7 +9,7 @@ export class BasePlatform{
     showBanner(bannerId?:string):void{};
     helpMe(index:number):void{};
     recorder():void{}
-    stopRecorder():void{}
+    stopRecorder(hand?:Laya.Handler):void{}
     showBanner2():void{}
     hideBanner():void{}
 

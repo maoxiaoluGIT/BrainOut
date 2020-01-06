@@ -341,7 +341,7 @@ export default class TTPlatform extends BasePlatform {
                 this.isEnd = true;
 
                 if (this.isClickStop)  {
-                    this.stopRecorder();
+                    this.stopRecorder(this._hand);
                 }
             });
         }
@@ -353,16 +353,17 @@ export default class TTPlatform extends BasePlatform {
         })
     }
 
-    stopRecorder(): void {
+    private _hand:Laya.Handler;
+    stopRecorder(handler:Laya.Handler): void {
+        this._hand = handler;
         this.isClickStop = true;
         if (this.isEnd)  {
             this.tt.shareVideo({
                 videoPath: this.videoUrl,
-                success() {
-                    Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, 0);
+                success: (res) => {
+                    this._hand && this._hand.run();
                 },
-                fail(e) {
-                }
+                fail: (res) => {}
             });
         }
         else  {

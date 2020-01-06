@@ -42,12 +42,18 @@ export default class RightView extends ui.shengliUI{
     {
         if(GM.platformId == PlatformID.TT)
         {
-            GM.platform.stopRecorder();
+            GM.platform.stopRecorder(new Laya.Handler(this,this.recorderCom));
         }
         else
         {
             GM.platform.onShare(0,true);//求助
         }
+    }
+
+    private recorderCom():void
+    {
+        Game.eventManager.event(GameEvent.AD_SUCCESS_CLOSE, 0);
+        this.onNext();
     }
 
     private playAd():void
