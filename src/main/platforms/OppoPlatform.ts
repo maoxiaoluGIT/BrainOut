@@ -347,8 +347,16 @@ export default class OppoPlatform extends BasePlatform {
         this.banner && this.banner.hide();
     }
 
+    private lastTime:number;
     private insertAds;
     InsertAd(codeId?): void {
+        if(this.lastTime != null)
+        {
+            if(Date.now() <= this.lastTime)
+            {
+                return;
+            }
+        }
         this.hideBanner();
 
         if (this.insertAds) {
@@ -374,5 +382,6 @@ export default class OppoPlatform extends BasePlatform {
                 this.insertAds.show();
             }
         });
+        this.lastTime = Date.now() + 60000;
     }
 }
