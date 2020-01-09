@@ -35,6 +35,12 @@ export default class CellsView extends ui.xuanguan1UI{
         this._dataList.push(null);
 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+        this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+    }
+
+    private onUndis():void
+    {
+        // GM.isRightView = false;
     }
 
     private onDis():void
@@ -43,6 +49,7 @@ export default class CellsView extends ui.xuanguan1UI{
         {
             (GM.platform as OppoPlatform).hideBanner();
         }
+        // GM.isRightView = true;
         GM.platform && GM.platform.InsertAd("142905");
         this.list.array = this._dataList;
     }

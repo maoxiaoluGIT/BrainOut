@@ -63,6 +63,7 @@ export default class RightView extends ui.shengliUI {
     }
 
     private onDis(): void  {
+        // GM.isRightView = true;
         if (GM.platform instanceof OppoPlatform)  {
             (GM.platform as OppoPlatform).hideBanner();
         }
@@ -87,6 +88,7 @@ export default class RightView extends ui.shengliUI {
     }
 
     private onunDis(): void  {
+        // GM.isRightView = false;
         GM.imgEffect.removeEffect2(this.paishou);
         GM.hideTTBanner();
     }

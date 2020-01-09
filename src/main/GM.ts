@@ -133,6 +133,8 @@ export default class GM{
     static soundState:number = 1;
     static shakeState:number = 1;
 
+    static isRightView:boolean = false;
+
     static sysLog:Function = Log.syslog;
 
     /**本地资源 */

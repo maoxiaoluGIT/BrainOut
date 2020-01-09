@@ -79,13 +79,14 @@ export default class OppoPlatform extends BasePlatform {
 
         Laya.Browser.window.qg.initAdService({
             appId: "30222864",
-            success: function (res) {
+            success: (res) =>{
                 GM.addLog("initAdService success");
+                this.preloadChaping();
             },
-            fail: function (res) {
+            fail: (res)=> {
                 GM.addLog("initAdService fail:" + res.code + res.msg);
             },
-            complete: function (res) {
+            complete: (res)=> {
                 GM.addLog("initAdService complete");
             }
         })
@@ -347,24 +348,11 @@ export default class OppoPlatform extends BasePlatform {
         this.banner && this.banner.hide();
     }
 
-    private lastTime:number;
-    private insertAds;
-    InsertAd(codeId?): void {
-        if(this.lastTime != null)
-        {
-            if(Date.now() <= this.lastTime)
-            {
-                return;
-            }
-        }
-        this.hideBanner();
 
-        if (this.insertAds) {
-            this.insertAds.destroy();
-        }
-
+    private preloadChaping():void
+    {
         this.insertAds = Laya.Browser.window.qg.createInsertAd({
-            adUnitId: codeId
+            adUnitId: '142904'
         });
         this.insertAds.onError((res) => {
             GM.addLog("insertAD error====" + res.errMsg);
@@ -377,11 +365,48 @@ export default class OppoPlatform extends BasePlatform {
         });
         this.insertAds.load();
         this.insertAds.onLoad((res) => {
-
-            if (Session.gameData[DataKey.insertAdTimes] > 0) {
-                this.insertAds.show();
-            }
+            console.log('插屏已经加载好了');
         });
+    }
+
+    private lastTime:number;
+    private insertAds;
+    InsertAd(codeId?): void {
+        if(this.lastTime != null)
+        {
+            if(Date.now() <= this.lastTime)
+            {
+                return;
+            }
+        }
+
+        console.log("显示插屏");
+        this.hideBanner();
+
+        // if (this.insertAds) {
+        //     this.insertAds.destroy();
+        // }
+
+        // this.insertAds = Laya.Browser.window.qg.createInsertAd({
+        //     adUnitId: codeId
+        // });
+        // this.insertAds.onError((res) => {
+        //     GM.addLog("insertAD error====" + res.errMsg);
+        // });
+        // this.insertAds.onClose(() => {
+        //     if (Session.gameData[DataKey.insertAdTimes] > 0) {
+        //         Session.gameData[DataKey.insertAdTimes]--;
+        //         Session.onSave();
+        //     }
+        // });
+        // this.insertAds.load();
+        // this.insertAds.onLoad((res) => {
+            
+        // });
+        if (Session.gameData[DataKey.insertAdTimes] > 0) {
+            this.insertAds.show();
+            this.preloadChaping();
+        }
         this.lastTime = Date.now() + 60000;
     }
 }
