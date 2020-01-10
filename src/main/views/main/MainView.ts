@@ -108,6 +108,7 @@ export default class MainView extends ui.mainViewUI {
         if (!this._nullTipsView) {
             this._nullTipsView = new KeyNullTips();
         }
+        this._uiBox.removeChildren();
         this._uiBox.addChild(this._nullTipsView);
         this._nullTipsView.pos(GameConfig.width * 0.5, GameConfig.height * 0.5);
         MyEffect.popup(this._nullTipsView, 1, 500, 100);
@@ -143,6 +144,7 @@ export default class MainView extends ui.mainViewUI {
         if (!this._skipView) {
             this._skipView = new SkipView();
         }
+        this._uiBox.removeChildren();
         this._uiBox.addChild(this._skipView);
         this._skipView.pos(GameConfig.width * 0.5, GameConfig.height * 0.5);
         MyEffect.popup(this._skipView, 1, 500, 100);
@@ -156,6 +158,7 @@ export default class MainView extends ui.mainViewUI {
     }
 
     private showTips(): void  {
+        this._uiBox.removeChildren();
         if (this.curView.sys.id == 42) {
             if (!this._tipsView42) {
                 this._tipsView42 = new TipsView42();
@@ -200,6 +203,7 @@ export default class MainView extends ui.mainViewUI {
         if (!this._rightView) {
             this._rightView = new RightView();
         }
+        this._uiBox.removeChildren();
         this._uiBox.addChild(this._rightView);
         this._rightView.anchorX = this._rightView.anchorY = 0.5;
         this._rightView.pos(GameConfig.width * 0.5, GameConfig.height * 0.5);
@@ -261,6 +265,7 @@ export default class MainView extends ui.mainViewUI {
         if (!this._passView) {
             this._passView = new PassView();
         }
+        this._uiBox.removeChildren();
         this._uiBox.addChild(this._passView);
         this._passView.anchorX = this._passView.anchorY = 0.5;
         this._passView.pos(GameConfig.width * 0.5, GameConfig.height * 0.5);
