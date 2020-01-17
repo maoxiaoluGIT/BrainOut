@@ -1,0 +1,82 @@
+{
+    "platformId": 71,
+    "iconSwitch": 1,
+    "platforms": {
+        "0": "http://10.21.6.93:8082/",
+        "1": "https://s1.kuwan511.com/",
+        "41": "https://s1.kuwan511.com/",
+        "51": "https://s1.kuwan511.com/",
+        "61": "https://s1.kuwan511.com/",
+        "71": "https://s1.kuwan511.com/"
+    },
+    "gamesInfo": [
+        [
+            "wx7a4290a2d4e76ca7",
+            "孩子去哪野了"
+        ],
+        [
+            "wx97ce1f849ac4b1f1",
+            "老婆去哪嗨了"
+        ],
+        [
+            "wxf4335314b18062c4",
+            "我不要挂科"
+        ],
+        [
+            "wxc8a95db85504b64a",
+            "史上最坑爹游戏"
+        ],
+        [
+            "wxc9fe0062ebbc164b",
+            "救救臭弟弟"
+        ],
+        [
+            "wxd9739b2cf31ec66b",
+            "刺客传奇"
+        ],
+        [
+            "wx137fef3fac58c75e",
+            "救救小姐姐"
+        ],
+        [
+            "wx91f816f0267c8504",
+            "救救沙雕"
+        ],
+        [
+            "wxd608b1b150ed4a78",
+            "玩个火柴人"
+        ],
+        [
+            "wx519777e9b1d5b5f0",
+            "绳索救援队"
+        ]
+    ],
+    "oppoGames": [
+        {
+            "name": "勇闯恶魔大陆",
+            "url": "emo.png",
+            "packName": "com.handarui.ycemdl.nearme.gamecenter"
+        },
+        {
+            "name": "一拳之下",
+            "url": "yiquan.png",
+            "packName": "com.dreamjelly.yqzx.nearme.gamecenter"
+        },
+        {
+            "name": "手指魔法师",
+            "url": "mofashi.png",
+            "packName": "com.handarui.szmfs.nearme.gamecenter"
+        },
+        {
+            "name": "屠龙勇者",
+            "url": "tulong.png",
+            "packName": "com.thggame.tlyz.kyx.nearme.gamecenter"
+        }
+    ],
+    "rightGame": {
+        "name": "怪物岛",
+        "url": "guanwudao.png",
+        "packName": "com.handarui.gwd.nearme.gamecenter"
+    },
+    "oppoSwitch": 1
+}
