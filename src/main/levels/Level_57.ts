@@ -28,6 +28,6 @@ export default class Level_57 extends BaseLevel {
 
     private onSure():void
     {
-        this.setAnswer(this.ui.rightBox,this.ui.shuru.text == "16");
+        this.setAnswer(this.ui.rightBox,this.ui.shuru.text == "18");
     }
 }

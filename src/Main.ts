@@ -55,7 +55,7 @@ class Main {
 		}
 
 		let p = "wx";
-		p = "qq";
+		// p = "qq";
 		// p = "oppo";
 		// p = "h5";
 		// p = "tt";
